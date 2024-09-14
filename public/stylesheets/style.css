@@ -974,12 +974,12 @@ video {
   border-color: rgb(59 172 163 / var(--tw-border-opacity));
 }
 
-.bg-opacity-80 {
-  --tw-bg-opacity: 0.8;
-}
-
 .bg-opacity-45 {
   --tw-bg-opacity: 0.45;
+}
+
+.bg-opacity-80 {
+  --tw-bg-opacity: 0.8;
 }
 
 .bg-bg-1 {

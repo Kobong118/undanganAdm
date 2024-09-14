@@ -1,6 +1,7 @@
 const fs = require('fs');
+const path = require('path');
 
-const dataPath =path.join(__dirname, 'src', 'dataTextContent.json');
+const dataPath =path.join(__dirname, 'dataTextContent.json');
 
 
 const loadTextContent =()=>{

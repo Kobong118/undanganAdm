@@ -1,0 +1,260 @@
+<section id="header"
+    class="container h-screen bg-bg-m bg-108% lg:bg-100% bg-center font-sofia animate-zoo2 delay-1s lg:animate-zoo text-turqu-prime">
+    <div class="grid grid-cols-stack w-full h-full overflow-hidden">
+        <div
+            class="row-satu col-span-full flex relative ms-auto me-auto flex-col items-center backdrop-filter  font-Rundkursiv">
+            <h1 class="text-5xl font-kufi mt-24 lg:mt-8  drop-shadow-lg shadow-black"><%- textsContents[0].textContent
+                    %></h1>
+            <h6 class="text-xl mt-4"><%- textsContents[1].textContent %></h6>
+            <div class="logo mt-8 mb-8">
+                <img class="lg:w-80 w-40 animate-logo" src="/images/Logo.gif" alt="Al-Ukhuwwah Daarul Musthofa">
+            </div>
+            <div class="kepada flex flex-col items-center">
+                <h6 class="text-xl"><%- textsContents[2].textContent %></h6>
+                <h5 class="text-2xl font-zilla">
+                    <%= nama.toUpperCase() %>
+                </h5>
+            </div>
+            <div class="buka mt-14 lg:mt-3 text-xl animate-bounce">
+                <a href="#badan" class="px-8 py-1 rounded border-black border"><span><svg
+                            xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-envelope-open inline mx-1 my-1" viewBox="0 0 16 16">
+                            <path
+                                d="M8.47 1.318a1 1 0 0 0-.94 0l-6 3.2A1 1 0 0 0 1 5.4v.817l5.75 3.45L8 8.917l1.25.75L15 6.217V5.4a1 1 0 0 0-.53-.882zM15 7.383l-4.778 2.867L15 13.117zm-.035 6.88L8 10.082l-6.965 4.18A1 1 0 0 0 2 15h12a1 1 0 0 0 .965-.738ZM1 13.116l4.778-2.867L1 7.383v5.734ZM7.059.435a2 2 0 0 1 1.882 0l6 3.2A2 2 0 0 1 16 5.4V14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5.4a2 2 0 0 1 1.059-1.765z" />
+                        </svg></span>
+                    <%= textsContents[3].textContent %>
+                </a>
+            </div>
+        </div>
+        <div x-data="{visible:false}" x-intersect:enter="visible = true" x-intersect:leave="visible = false"
+            class="row-satu col-span-full flex justify-between items-center">
+            <div class="w-fit">
+                <img x-show="visible" x-bind:class="{'animate-scaleTransRot-l':visible}" src="/images/d-c.png"
+                    alt="circle" class="w-80 lg:w-[40rem] translate-x-m-50% ">
+            </div>
+            <div class="w-fit">
+                <img x-show="visible" x-bind:class="{'animate-scaleTransRot-r':visible}" src="/images/d-c.png"
+                    alt="circle" class="w-80 lg:w-[40rem] translate-x-50%">
+            </div>
+        </div>
+    </div>
+</section>
+<!-- badan -->
+<section class="text-turqu-prime w-screen h-screen">
+    <!-- post 1 -->
+    <div id="badan" x-data="{visible:false}" x-intersect:enter="visible = true" x-intersect:leave="visible = false"
+        class="h-screen container overflow-hidden">
+        <!-- frem post 1 -->
+        <div x-show="visible" x-bind:class="{'animate-zoo2 ':visible}"
+            class="h-full w-full bg-bg-m bg-108% lg:bg-100% bg-center lg:animate-zoo m-1 rounded-lg grid grid-cols-stack relative">
+            <!-- gambar masjid -->
+            <div :class="{'animate-bintang-hidd':visible}"
+                class="col-span-full row-satu z-10 bg-bg-1 bg-100% bg-bottom bg-no-repeat">
+            </div>
+            <div :class="{'animate-bintang-show':visible}"
+                class="col-span-full row-satu z-10 bg-d-l1 bg-100% bg-top lg:bg-100-100 origin-top-left bg-no-repeat">
+            </div>
+            <div :class="{'animate-bintang-show':visible}"
+                class="col-span-full row-satu z-10 bg-d-l2 bg-100% bg-top lg:bg-100-100 origin-top-right bg-no-repeat">
+            </div>
+            <!-- tulisan -->
+            <div :class="{'animate-bintang-show':visible}" class="col-span-full row-satu text-center z-20">
+                <h1 class="text-2xl mt-10 font-Rundkursiv"><%- textsContents[1].textContent %></h1>
+                <h2 class="text-3xl mt-10 font-kufi"><%- textsContents[4].textContent %></h1>
+                        <h4 class="text-base mt-2"><%- textsContents[5].textContent %></h4>
+                        <p class="text-base mt-2 mx-10"><%- textsContents[6].textContent %></p>
+                        <div class="w-fit pt-1 mx-auto rounded-full mt-8 grid grid-cols-stack">
+                            <div class="row-satu col-span-full">
+                                <img class="w-48 animate-spin-slow" src="/images/d-c.png"
+                                    alt="Al-Ukhuwwah Daarul Musthofa">
+                            </div>
+                            <div :class="{'animate-logo':visible}"
+                                class="row-satu col-span-full flex justify-center items-center z-10">
+                                <img class="w-40" src="/images/logo3.png" alt="Al-Ukhuwwah Daarul Musthofa">
+                            </div>
+                        </div>
+                        <h1
+                            class="text-lg lg:text-2xl mt-10 font-Rundkursiv outline bg-opacity-80 bg-d-d bg-top bg-100% p-4 rounded-full w-fit mx-auto">
+                            <%- textsContents[2].textContent %> <span>
+                                    <% if (nama=="muslimin" ) { %>
+                                        Seluruh Ummat Nabi Muhammad SAW
+                                        <% } else { %>
+                                            <%= nama %>
+                                                <% } %>
+                                </span>
+                        </h1>
+            </div>
+        </div>
+    </div>
+    <!-- screen2 -->
+    <div x-data="{visible:false}" x-intersect:enter="visible = true" x-intersect:leave="visible = false"
+        class="container h-screen overflow-hidden">
+        <!-- frem post 2 -->
+        <div x-show="visible" x-bind:class="{'animate-zoo2':visible}"
+            class="h-full w-full bg-bg-m bg-108% lg:bg-100% bg-center lg:animate-zoo m-1 rounded-lg overflow-hidden">
+            <!-- canvas -->
+            <div class="grid grid-cols-stack w-full h-full overflow-y-scroll scrollbar-none">
+                <!-- decorasi -->
+                <div class="col-span-full h-full row-satu d-tr bg-d-tr bg-50% lg:bg-20% bg-right-top bg-no-repeat">
+                </div>
+                <div class="col-span-full h-full row-satu d-tl bg-d-tl bg-50% lg:bg-20% bg-left-top bg-no-repeat"></div>
+                <div class="col-span-full h-full row-satu d-br bg-d-br bg-50% lg:bg-20% bg-right-bottom bg-no-repeat">
+                </div>
+                <div class="col-span-full h-full row-satu d-bl bg-d-bl bg-50% lg:bg-20% bg-left-bottom bg-no-repeat">
+                </div>
+                <!-- tekst -->
+                <div x-bind:class="{'animate-bintang-show':visible}"
+                    class="col-span-full row-satu h-full text-base text-center py-16 mx-6 lg:mx-3">
+                    <div class="w-fit mx-auto font-amiri">
+                        <h1>بسم الله الرحمن الرحيم</h1>
+                        <h3>السلام عليكم ورحمة الله وبركاته</h3>
+                    </div>
+                    <div class="w-fit mx-10 mt-4 font-sofia">
+                        <p><%- textsContents[7].textContent %> <br> <br> Hari: <%- textsContents[8].textContent %> <br>
+                                    Tanggal: <%- textsContents[5].textContent %> <br> Tempat: Majlis Ta'lim Al-Ukhuwwah
+                                        Daarul Musthofa <br> <%- textsContents[6].textContent %> <br> <%-
+                                                textsContents[9].textContent %> <br> <span class="font-amiri"><%-
+                                                        textsContents[10].textContent %></span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- screen 3 -->
+    <div x-data="{lihat:false}" x-intersect:enter="lihat = true" x-intersect:leave="lihat = false"
+        class="container h-screen">
+        <!-- frame post 3 -->
+        <div x-show="lihat" x-bind:class="{'animate-zoo2':lihat}"
+            class="h-full w-full bg-bg-m bg-108% lg:bg-100% bg-center lg:animate-zoo m-1 rounded-lg p-6  overflow-y-scroll scrollbar-none">
+            <!-- count down -->
+            <div
+                class="w-fit rounded-xl bg-d-d bg-top bg-100% mx-auto border border-turqu shadow-lg shadow-turqu-prime">
+                <div class="wrap text-center mx-6 lg:mx-44">
+                    <h1 class="text-4xl font-light mb-1">Hitungan Mundur <strong class="text-turqu">Menuju</strong></h1>
+                    <h3 class="text-2xl font-light mb-6"><strong class="text-turqu">Perayaan Maulid Nabi</strong>
+                        Muhammad SAW</h3>
+                    <div class="countdown grid grid-cols-4 gap-6">
+
+                        <!-- Days -->
+                        <div class="bloc-time days" data-init-value="00">
+                            <span class="count-title text-gray-700">Hari</span>
+                            <div class="figure text-5xl font-bold days-1">
+                                <span class="top">00</span>
+                                <span class="bottom">00</span>
+                            </div>
+                        </div>
+
+                        <!-- Hours -->
+                        <div class="bloc-time hours" data-init-value="00">
+                            <span class="count-title text-gray-700">Jam</span>
+                            <div class="figure text-5xl font-bold hours-1">
+                                <span class="top">00</span>
+                                <span class="bottom">00</span>
+                            </div>
+                        </div>
+
+                        <!-- Minutes -->
+                        <div class="bloc-time minutes" data-init-value="00">
+                            <span class="count-title text-gray-700">Menit</span>
+                            <div class="figure text-5xl font-bold minutes-1">
+                                <span class="top">00</span>
+                                <span class="bottom">00</span>
+                            </div>
+                        </div>
+
+                        <!-- Seconds -->
+                        <div class="bloc-time seconds" data-init-value="00">
+                            <span class="count-title text-gray-700">Detik</span>
+                            <div class="figure text-5xl font-bold seconds-1">
+                                <span class="top">00</span>
+                                <span class="bottom">00</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- susunan acara -->
+            <div class="w-full text-center mt-6">
+                <h1 class="text-4xl font-light mb-1">Susunan<strong class="text-turqu"> Acara</strong></h1>
+                <!-- acara 1 -->
+                 <div x-data="{visible:false}" x-intersect:enter="visible = true" x-intersect:leave="visible = false">
+                     <div x-bind:class="{'animate-bintang-show':visible}" class="mt-6 w-full font-sofia text-base shadow-lg shadow-turqu rounded-xl p-1 bg-d-d bg-top bg-100% bg-opacity-45">
+                         <h1 class="font-thin">Pengajian Bulanan Riyaadlul Jannah Desa Padasuka</h1>
+                         <div class="flex justify-center items-center w-full">
+                             <div class="w-full">
+                                 <h2 class=" mb-1 text-turqu">Ahad</h2>
+                                 <h4 class=""><%- textsContents[5].textContent %></h4>
+                             </div>
+                             <div class="w-full border-l border-turqu-prime">
+                                 <h6 class="font-bold text-turqu">Khusus Akhwat</h6>
+                                 <span class="block">Waktu: 07:00 (pagi-pagi) sampai Zhuhur</span>
+                                 <span class="block">Tempat: Di dalam Madrasah</span>
+                             </div>
+                         </div>
+                         <div class=" mt-4">
+                             <h1 class="">Muballighoh: Ustadzah Hj.Syifa Alawiyyah</h1>
+                             <h6>Puteri Abuya Prof.Dr.(H.C) KH Muhammad Muhyiddin Abdul qodir Al-Manafi</h6>
+                         </div>
+                     </div>
+                 </div>
+                <!-- acara 2 -->
+                <div x-data="{visible:false}" x-intersect:enter="visible = true" x-intersect:leave="visible = false">
+                    <div x-bind:class="{'animate-bintang-show':visible}" class="mt-6 w-full font-sofia text-base shadow-lg shadow-turqu rounded-xl p-1 bg-d-d bg-top bg-100% bg-opacity-45">
+                        <h1 class="font-thin">Tabligh Akbar</h1>
+                        <div class="flex justify-center items-center w-full">
+                            <div class="w-full">
+                                <h2 class=" mb-1 text-turqu">Ahad (Malam Senin)</h2>
+                                <h4 class=""><%- textsContents[5].textContent %></h4>
+                            </div>
+                            <div class="w-full border-l border-turqu-prime">
+                                <h6 class="font-bold text-turqu">Umum</h6>
+                                <span class="block">Waktu: 20:00 (pagi-pagi) sampai selesai</span>
+                            </div>
+                        </div>
+                        <div class=" mt-4  w-full text-base">
+                            <h1 class="">Muballig:</h1>
+                            <ul>
+                                <li class="mb-4">
+                                    Abuya KH Ahmad Bushiri Muslim <br>
+                                    <small class="font-zilla text-turqu">PP Al-Burdah</small>
+                                </li>
+                                <li class="mb-4">
+                                    Abuya Prof.Dr.(H.C) KH Muhammad Muhyiddin Abdul qodir Al-Manafi <br>
+                                    <small class="font-zilla text-turqu">PP Asy-Syifaa Wal Mahmudiyyah Simpang Sumedang</small>
+                                </li>
+                                <li class="mb-4">
+                                    KH Ahmad Zakaria
+                                </li>
+                                <li class="mb-4">
+                                    Al-Ustadz Muhammad Abdul Matin
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- panitia -->
+                <div x-data="{visible:false}" x-intersect:enter="visible = true" x-intersect:leave="visible = false">
+                    <div x-bind:class="{'animate-bintang-show':visible}" class="w-fit mx-auto my-4 font-Rundkursiv">
+                        <h1>Panitia</h1>
+                        <div
+                            class="rounded-lg bg-panitia bg-center bg-100% w-64 h-14 border border-turqu-prime shadow-lg shadow-turqu">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- screen 4 -->
+    <div x-data="{lihat:false}" x-intersect:enter="lihat = true" x-intersect:leave="lihat = false"
+    class=" h-screen container">
+    <!-- frame post 4 -->
+    <div x-show="lihat" x-bind:class="{'animate-zoo2':lihat}"
+        class="h-full w-full bg-bg-m bg-108% lg:bg-100% bg-center lg:animate-zoo m-1 rounded-lg p-6  overflow-y-scroll scrollbar-none">
+       
+    </div>
+</div>
+</section>
+
+
+<script defer src="/javascripts/countDown.js"></script>

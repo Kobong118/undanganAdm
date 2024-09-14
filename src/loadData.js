@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const dataPath ="./dataTextContent.json"
+const dataPath ="/dataTextContent.json"
 
 const loadTextContent =()=>{
     const fileBuffer = fs.readFileSync(dataPath,'utf-8');

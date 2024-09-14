@@ -1,4 +1,4 @@
-<div x-data="{scroll:false,music: new Audio('/mp3/Hubb.mp3')}" x-bind:class="scroll? 'overflow-auto':'overflow-hidden'" class="container max-h-screen">
+<div x-data="{scroll:false,music: new Audio('/mp3/hubb.mp3')}" x-bind:class="scroll? 'overflow-auto':'overflow-hidden'" class="container max-h-screen">
     <section id="header"
         class="container h-screen bg-bg-m bg-hv bg-center font-sofia animate-zhv delay-1s lg:animate-zoo text-turqu-prime">
         <div class="grid grid-cols-stack w-full h-full overflow-hidden">
@@ -17,7 +17,9 @@
                     </h5>
                 </div>
                 <div @click="() => {scroll = !scroll;
-                    music.play();
+                     music.play().catch(error => {
+                            console.log('Audio play failed:', error);
+                        });
                 }" class="buka mt-14 lg:mt-3 text-xl animate-bounce">
                     <a href="#badan" class="px-8 py-1 rounded border-black border"><span><svg
                                 xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"

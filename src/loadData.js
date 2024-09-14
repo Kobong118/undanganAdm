@@ -1,6 +1,7 @@
 const fs = require('fs');
 
-const dataPath ="./src/dataTextContent.json"
+const dataPath =path.join(__dirname, 'src', 'dataTextContent.json');
+
 
 const loadTextContent =()=>{
     const fileBuffer = fs.readFileSync(dataPath,'utf-8');

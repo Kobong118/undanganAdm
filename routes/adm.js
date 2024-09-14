@@ -9,7 +9,7 @@ router.get('/',(req,res,next)=>{
 router.get('/:kepada',(req,res,next)=>{
     const icon = path.join(__dirname, 'public', 'favicon.ico');
     const textsContents = loadTextContent();
-    res.render('adm',{layout:'layouts/main-layout',targetDate: new Date('2024-10-27T05:59:59'), title:`Undangan kepada ${req.params.kepada}`,nama:req.params.kepada,textsContents})
+    res.render('adm',{icon,layout:'layouts/main-layout',targetDate: new Date('2024-10-27T05:59:59'), title:`Undangan kepada ${req.params.kepada}`,nama:req.params.kepada,textsContents})
 });
 
 

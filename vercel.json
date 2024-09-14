@@ -8,6 +8,10 @@
   ],
   "routes": [
     {
+      "src": "/mp3/(.*)",
+      "dest": "/public/mp3/$1"
+    },
+	  {
       "src": "/(.*)",
       "dest": "/app.js"
     }

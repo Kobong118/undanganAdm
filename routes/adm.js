@@ -4,7 +4,6 @@ const app = express();
 const {loadTextContent}=require('../src/loadData');
 const path = require('path');
 
-app.use('/mp3', express.static(path.join(__dirname, 'public/mp3')));
 router.get('/',(req,res,next)=>{
     res.redirect('/muslimin')
 })

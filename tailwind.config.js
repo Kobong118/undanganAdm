@@ -77,7 +77,7 @@ module.exports = {
         },
         zoo2: {
           '0%': { 'background-size': '150%'},
-          '100%': { 'background-size': '108%' },
+          '100%': { 'background-size': '100%' },
         },
         zhv: {
           '0%': { 'background-size': 'auto 150%'},

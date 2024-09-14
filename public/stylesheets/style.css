@@ -596,8 +596,28 @@ video {
   visibility: collapse;
 }
 
+.fixed {
+  position: fixed;
+}
+
+.absolute {
+  position: absolute;
+}
+
 .relative {
   position: relative;
+}
+
+.bottom-0 {
+  bottom: 0px;
+}
+
+.left-0 {
+  left: 0px;
+}
+
+.right-0 {
+  right: 0px;
 }
 
 .z-10 {
@@ -614,6 +634,10 @@ video {
 
 .row-satu {
   grid-row: 1;
+}
+
+.row-dua {
+  grid-row: 2;
 }
 
 .m-1 {
@@ -728,6 +752,14 @@ video {
 
 .h-screen {
   height: 100vh;
+}
+
+.max-h-screen {
+  max-height: 100vh;
+}
+
+.min-h-screen {
+  min-height: 100vh;
 }
 
 .w-40 {
@@ -887,12 +919,26 @@ video {
   }
 
   100% {
-    background-size: 108%;
+    background-size: 100%;
   }
 }
 
 .animate-zoo2 {
   animation: zoo2 3s;
+}
+
+@keyframes zhv {
+  0% {
+    background-size: auto 150%;
+  }
+
+  100% {
+    background-size:  auto 100%;
+  }
+}
+
+.animate-zhv {
+  animation: zhv 3s;
 }
 
 .grid-cols-4 {
@@ -921,6 +967,10 @@ video {
 
 .gap-6 {
   gap: 1.5rem;
+}
+
+.overflow-auto {
+  overflow: auto;
 }
 
 .overflow-hidden {
@@ -1026,12 +1076,16 @@ video {
   background-size: 100%;
 }
 
-.bg-108\% {
-  background-size: 108%;
-}
-
 .bg-50\% {
   background-size: 50%;
+}
+
+.bg-cover {
+  background-size: cover;
+}
+
+.bg-hv {
+  background-size: auto 100%;
 }
 
 .bg-bottom {
@@ -1396,10 +1450,6 @@ video {
 
   .lg\:animate-zoo {
     animation: zoo 3s;
-  }
-
-  .lg\:bg-100\% {
-    background-size: 100%;
   }
 
   .lg\:bg-100-100 {

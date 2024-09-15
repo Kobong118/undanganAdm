@@ -4,9 +4,9 @@
         <div class="grid grid-cols-stack w-full h-full overflow-hidden">
             <div
                 class="row-satu col-span-full flex relative ms-auto me-auto flex-col items-center backdrop-filter  font-Rundkursiv">
-                <h1 class="text-5xl font-kufi mt-24 lg:mt-8  drop-shadow-lg shadow-black"><%- textsContents[0].textContent
+                <h1 class="text-5xl mt-24 lg:mt-8 drop-shadow-lg shadow-black"><%- textsContents[1].textContent %></h1>
+                <h1 class="text-5xl font-kufi mt-4 drop-shadow-lg shadow-black"><%- textsContents[0].textContent
                         %></h1>
-                <h6 class="text-xl mt-4"><%- textsContents[1].textContent %></h6>
                 <div class="logo mt-8 mb-8">
                     <img class="lg:w-80 w-40 animate-logo" src="/images/Logo.gif" alt="Al-Ukhuwwah Daarul Musthofa">
                 </div>
@@ -64,8 +64,8 @@
                 </div>
                 <!-- tulisan -->
                 <div :class="{'animate-bintang-show':visible}" class="col-span-full row-satu text-center z-20">
-                    <h1 class="text-2xl mt-10 font-Rundkursiv"><%- textsContents[1].textContent %></h1>
-                    <h2 class="text-3xl mt-10 font-kufi"><%- textsContents[4].textContent %></h1>
+                    <h1 class="text-3xl mt-10 font-kufi"><%- textsContents[4].textContent %></h1>
+                    <h1 class="text-3xl mt-10 font-Rundkursiv">Al-Ukhuwwah Daarul Mushthofa</h1>
                             <h4 class="text-base mt-2"><%- textsContents[5].textContent %></h4>
                             <p class="text-base mt-2 mx-10"><%- textsContents[6].textContent %></p>
                             <div class="w-fit pt-1 mx-auto rounded-full mt-8 grid grid-cols-stack">
@@ -78,16 +78,11 @@
                                     <img class="w-40" src="/images/logo3.png" alt="Al-Ukhuwwah Daarul Musthofa">
                                 </div>
                             </div>
-                            <h1 x-intersect:enter="sc = '#screen2'"
-                                class="text-lg lg:text-2xl mt-10 font-Rundkursiv outline bg-opacity-80 bg-d-d bg-top bg-100% p-4 rounded-full w-fit mx-auto">
-                                <%- textsContents[2].textContent %> <span>
-                                        <% if (nama=="muslimin" ) { %>
-                                            Seluruh Ummat Nabi Muhammad SAW
-                                            <% } else { %>
-                                                <%= nama %>
-                                                    <% } %>
-                                    </span>
-                            </h1>
+                            <!-- foto -->
+                            <div x-intersect:enter="sc = '#screen2'"
+                                class="mt-4 font-Rundkursiv container w-fit mx-auto">
+                                
+                                </div>
                 </div>
             </div>
         </div>

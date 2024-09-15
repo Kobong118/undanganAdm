@@ -2,6 +2,8 @@
 module.exports = {
   content: ["./views/**/*.{html,ejs,js}",
     './public/**/*.js',],
+	purge: ['./views/**/*.ejs', './public/**/*.js'], // Atur path ke file yang menggunakan CSS
+  darkMode: false,
   theme: {
     fontFamily: {
       kufi: ["kufi", "sans-serif"],

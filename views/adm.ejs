@@ -1,16 +1,16 @@
-<div x-data="{scroll:false,music: new Audio('/mp3/nabi.mp3')}" x-bind:class="scroll? 'overflow-auto':'overflow-hidden'" class="container max-h-screen">
+<div x-data="{sc:'', scroll:false,music: new Audio('/mp3/nabi.mp3')}" x-bind:class="scroll? 'overflow-auto':'overflow-hidden'" class="container max-h-screen">
     <section id="header"
         class="container h-screen bg-bg-m bg-hv bg-center font-sofia animate-zhv delay-1s lg:animate-zoo text-turqu-prime">
         <div class="grid grid-cols-stack w-full h-full overflow-hidden">
             <div
-                class="row-satu col-span-full flex relative ms-auto me-auto flex-col items-center backdrop-filter  font-Rundkursiv">
-                <h1 class="text-5xl mt-24 lg:mt-8 drop-shadow-lg shadow-black"><%- textsContents[1].textContent %></h1>
-                <h1 class="text-5xl font-kufi mt-4 drop-shadow-lg shadow-black"><%- textsContents[0].textContent
+                class="row-satu col-span-full flex relative ms-auto me-auto text-center flex-col items-center backdrop-filter  font-Rundkursiv">
+                <h1 class="text-5xl mt-4 lg:mt-8 drop-shadow-lg shadow-black"><%- textsContents[1].textContent %></h1>
+                <h1 class="text-4xl font-kufi mt-4 drop-shadow-lg shadow-black"><%- textsContents[0].textContent
                         %></h1>
                 <div class="logo mt-8 mb-8">
                     <img class="lg:w-80 w-40 animate-logo" src="/images/Logo.gif" alt="Al-Ukhuwwah Daarul Musthofa">
                 </div>
-                <div class="kepada flex flex-col items-center">
+                <div x-intersect:enter="sc = '#badan'" class="kepada flex flex-col items-center">
                     <h6 class="text-xl"><%- textsContents[2].textContent %></h6>
                     <h5 class="text-2xl font-zilla">
                         <%= nama.toUpperCase() %>
@@ -20,7 +20,7 @@
                      music.play().catch(error => {
                             console.log('Audio play failed:', error);
                         });
-                }" class="buka mt-14 lg:mt-3 text-xl animate-bounce">
+                }" :class="scroll? 'invisible':'visible'" class="buka mt-14 lg:mt-3 text-xl animate-bounce">
                     <a href="#badan" class="px-8 py-1 rounded border-black border"><span><svg
                                 xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-envelope-open inline mx-1 my-1" viewBox="0 0 16 16">
@@ -30,6 +30,22 @@
                         <%= textsContents[3].textContent %>
                     </a>
                 </div>
+		<div x-show="scroll" @click="() => {
+			if(music.paused || music.ended){
+				music.play();
+			}else{
+				music.pause();
+			}
+		}" class="mt-4 text-xl">
+			<span class="px-8 py-8 rounded-full border-black border" x-text="()=>
+			{
+				if(music.pused || music.ended){
+					"play"
+				}else{
+					"pause"
+				}
+			}"></span>
+		</div>
             </div>
             <div x-data="{visible:false}" x-intersect:enter="visible = true" x-intersect:leave="visible = false"
                 class="row-satu col-span-full flex justify-between items-center">
@@ -45,7 +61,7 @@
         </div>
     </section>
     <!-- badan -->
-    <section x-data="{sc:'',show:false}" x-intersect:leave="show = false" class="text-turqu-prime w-screen">
+    <section x-data="{show:false}" x-intersect:leave="show = false" class="text-turqu-prime w-screen">
         <!-- post 1 -->
         <div id="badan" x-data="{visible:false}" x-intersect:enter="() => { visible = true; show = true }"
             x-intersect:leave="visible = false" class="h-screen container overflow-hidden">
@@ -64,8 +80,8 @@
                 </div>
                 <!-- tulisan -->
                 <div :class="{'animate-bintang-show':visible}" class="col-span-full row-satu text-center z-20">
-                    <h1 class="text-3xl mt-10 font-kufi"><%- textsContents[4].textContent %></h1>
-                    <h1 class="text-3xl mt-10 font-Rundkursiv">Al-Ukhuwwah Daarul Mushthofa</h1>
+                    <h1 class="text-3xl mt-4 font-kufi"><%- textsContents[4].textContent %></h1>
+                    <h1 class="text-3xl mt-1 font-Rundkursiv">Al-Ukhuwwah Daarul Mushthofa</h1>
                             <h4 class="text-base mt-2"><%- textsContents[5].textContent %></h4>
                             <p class="text-base mt-2 mx-10"><%- textsContents[6].textContent %></p>
                             <div class="w-fit pt-1 mx-auto rounded-full mt-8 grid grid-cols-stack">
@@ -189,13 +205,13 @@
                                 </div>
                                 <div class="w-full border-l border-turqu-prime">
                                     <h6 class="font-bold text-turqu">Khusus Akhwat</h6>
-                                    <span class="block">Waktu: 07:00 (pagi-pagi) sampai Zhuhur</span>
+                                    <span class="block">Waktu: 07:00 WIB (pagi-pagi) sampai Zhuhur</span>
                                     <span class="block">Tempat: Di dalam Madrasah</span>
                                 </div>
                             </div>
                             <div class=" mt-4">
-                                <h1 class="">Muballighoh: Ustadzah Hj.Syifa Alawiyyah</h1>
-                                <h6>Puteri Abuya Prof.Dr.(H.C) KH Muhammad Muhyiddin Abdul qodir Al-Manafi</h6>
+                                <h1 class="">Muballighoh: Ustadzah Hj. Syifa Alawiyyah</h1>
+                                <h6>Puteri Abuya Prof. Dr. (H.C) KH Muhammad Muhyiddin Abdul Qodir Al-Manafi M.A</h6>
                             </div>
                         </div>
                     </div>
@@ -211,7 +227,7 @@
                                 </div>
                                 <div class="w-full border-l border-turqu-prime">
                                     <h6 class="font-bold text-turqu">Umum</h6>
-                                    <span class="block">Waktu: 20:00 sampai selesai</span>
+                                    <span class="block">Waktu: 20:00 WIB sampai selesai</span>
                                 </div>
                             </div>
                             <div class=" mt-4  w-full text-base">
@@ -222,7 +238,7 @@
                                         <small class="font-zilla text-turqu">PP Al-Burdah</small>
                                     </li>
                                     <li class="mb-4">
-                                        Abuya Prof.Dr.(H.C) KH Muhammad Muhyiddin Abdul qodir Al-Manafi <br>
+                                        Abuya Prof. Dr. (H.C) KH Muhammad Muhyiddin Abdul Qodir Al-Manafi M.A<br>
                                         <small class="font-zilla text-turqu">PP Asy-Syifaa Wal Mahmudiyyah Simpang
                                             Sumedang</small>
                                     </li>
@@ -258,7 +274,7 @@
         </div>
     
         <!-- to sc -->
-        <div x-show="show" class="fixed left-0 right-0 text-center z-20 bottom-0">
+        <div x-show="scroll" class="fixed left-0 right-0 text-center z-20 bottom-0">
             <div class="mx-auto w-fit animate-bounce">
                 <a x-bind:href="sc" href="" class="px-8 py-1"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
                         fill="currentColor" class="bi bi-arrow-down-circle" viewBox="0 0 16 16">

@@ -16,6 +16,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 // Set favicon
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use('/mp3', express.static(path.join(__dirname, 'public/mp3')));
 
 
 app.use(logger('dev'));

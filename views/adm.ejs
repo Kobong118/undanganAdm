@@ -6,6 +6,21 @@
             });
         }
 }" x-bind:class="scroll? 'overflow-auto':'overflow-hidden'" class="container max-h-screen">
+ <!-- to sc -->
+ <div x-show="scroll" class="container fixed left-0 right-0 text-center z-50 bottom-0 text-turqu">
+
+    <div class="mx-auto w-fit h-24 animate-bounce">
+        <a x-bind:href="sc" class="px-10 py-10" x-html="akhir ? 
+`<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' fill='currentColor' class='bi bi-arrow-up-circle' viewBox='0 0 16 16'>
+<path fill-rule='evenodd' d='M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707z'/>
+</svg>` : 
+`<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' fill='currentColor' class='bi bi-arrow-down-circle' viewBox='0 0 16 16'>
+<path fill-rule='evenodd' d='M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z'/>
+</svg>`">
+        </a>
+
+    </div>
+</div>
     <section id="header"
         class="container h-screen bg-bg-m bg-hv md:bg-100% bg-center font-sofia animate-zhv delay-1s md:animate-zoo text-turqu-prime">
         <div class="grid grid-cols-stack w-full h-full overflow-hidden">
@@ -334,43 +349,39 @@
                     <div class="relative w-52 h-52 bg-sdq bg-100% bg-top mx-auto bg-no-repeat">
                         <div x-intersect:enter="akhir=true; sc='#badan'" x-intersect:leave="akhir=false"
                             class="w-fit absolute bottom-0 left-1/2 transform -translate-x-1/2">
-                            <button @click="atm = !atm" class="animate-ping p-0.5 text-base">
+                            <button @click="atm = !atm; scroll = !scroll" class="animate-ping p-0.5 text-base">
                                 <span class="text-white">Klick Di Sini</span>
                             </button>
                         </div>
                     </div>
                     <div class="relative w-52 h-52 bg-sdq bg-100% bg-top mx-auto bg-no-repeat">
                         <div class="w-fit absolute bottom-0 left-1/2 transform -translate-x-1/2">
-                            <button @click="pesan = !pesan" class="animate-ping p-0.5 text-base">
+                            <button @click="pesan = !pesan; scroll = !scroll" class="animate-ping p-0.5 text-base">
                                   <span class="text-white">Klick Di Sini</span>
                             </button>
                         </div>
                     </div>
                 </div>
-                <div x-show="atm" class="absolute top-0 bottom-0 left-0 right-0">
-                      
+                <div x-show="atm" class="bg-d-d bg-100% bg-center absolute top-6 bottom-6 right-6 left-6 border border-turqu rounded-xl">
+                      <div class="absolute -top-2 -right-2">
+                        <button class="rounded-full bg-turqu text-white" @click="atm = !atm; scroll = !scroll"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+                          </svg></button>
+                      </div>
                 </div>
-                <div x-show="pesan" class="absolute top-0 bottom-0 left-0 right-0">
-
+                <div x-show="pesan" class=" bg-d-d bg-100% bg-center absolute top-6 bottom-6 right-6 left-6 border border-turqu rounded-xl">
+                    <div class="absolute -top-2 -right-2"></div>
+                        <button class="rounded-full bg-turqu text-white" @click="pesan = !pesan; scroll = !scroll"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+                          </svg></button>
+                      </div>
                 </div>
             </div>
         </div>
 
-        <!-- to sc -->
-        <div x-show="scroll" class="container fixed left-0 right-0 text-center z-50 bottom-0">
-
-            <div class="mx-auto w-fit h-24 animate-bounce">
-                <a x-bind:href="sc" class="px-10 py-10" x-html="akhir ? 
-   `<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' fill='currentColor' class='bi bi-arrow-up-circle' viewBox='0 0 16 16'>
-        <path fill-rule='evenodd' d='M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707z'/>
-    </svg>` : 
-   `<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' fill='currentColor' class='bi bi-arrow-down-circle' viewBox='0 0 16 16'>
-        <path fill-rule='evenodd' d='M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z'/>
-    </svg>`">
-                </a>
-
-            </div>
-        </div>
+       
     </section>
 </div>
 

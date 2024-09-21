@@ -48,4 +48,17 @@ document.addEventListener('DOMContentLoaded', function () {
   
     countdown.init();
   });
+
+  // Dalam file JavaScript Anda (atau menggunakan Alpine.js secara inline)
+document.addEventListener('alpine:init', () => {
+  Alpine.data('slideShow', (slideIndex) => ({
+    slideIndex: 0,
+    slides: [1, 2, 3, 4, 5],
+    init() {
+      setInterval(() => {
+        this.slideIndex = (this.slideIndex + 1) % this.slides.length;
+      }, 3000);
+    },
+  }));
+});
   

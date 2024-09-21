@@ -26,7 +26,15 @@ module.exports = {
         'panitia':"url('/images/panitia.png')",
         'd-d':"url('/images/d-d.png')",
         'd-l1':"url('/images/d-l1.png')",
-        'd-l2':"url('/images/d-l2.png')"
+        'd-l2':"url('/images/d-l2.png')",
+        'slide1':"url('/images/abuyaSimpang.gif')",
+        'slide2':"url('/images/buyaBurdah.gif')",
+        'slide3':"url('/images/akangHj.gif')",
+        'slide4':"url('/images/denMatin.gif')",
+        'slide5':"url('/images/ikhwani.gif')",
+        'slide-all':"url('/images/all.gif')",
+        'sdq':"url('/images/adq.png')",
+        'atm':"url('/images/atm.png')",
       },
       backgroundSize: {
         '20%':'20%',
@@ -68,6 +76,8 @@ module.exports = {
         'spin-slow': 'spin 6s linear infinite',
         'scaleTransRot-l':' scalaTransRotL 3s linear',
         'scaleTransRot-r':' scalaTransRotR 3s linear',
+        'slide-in':'slide-in 3s ease-in-out',
+        'slide-out':'slide-out 5s ease-in-out',
       },
       keyframes: {
         zoo: {
@@ -121,6 +131,14 @@ module.exports = {
         scalaTransRotR:{
           '0%':{transform:'scale(3.5) translateX(0%) rotate(-360deg)'},
           '100%':{transform:'scale(1) translateX(50%) rotate(0deg)'}
+        },
+        'slide-in': {
+          '0%': { opacity: 0, transform: 'translateY(100%)' },
+          '100%': { opacity: 1, transform: 'translateY(0)' },
+        },
+        'slide-out': {
+          '0%,50%': { height:'24rem',opacity:1 },
+          '100%': { height:'0px',opacity:0  },
         },
       },
       translate:{

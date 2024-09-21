@@ -321,7 +321,7 @@
         <div x-data="{lihat:false}" x-intersect:enter="lihat = true" x-intersect:leave="lihat = false"
             class=" container">
             <!-- frame post 4 -->
-            <div  x-data="{
+            <div  x-data="{atm:false,pesan:false,
                 atmInter(){
                     const el =document.getElementsByClassName('.bg-atm');
                     el[0].classList.toggle('w-52 h-32 animate-slide-out')
@@ -329,22 +329,29 @@
             }" id="screen4" x-bind:class="{'animate-zhv':lihat}"
                 class="h-screen w-full bg-bg-m bg-hv md:bg-100% bg-center md:animate-zoo m-1 rounded-lg p-6  overflow-y-scroll scrollbar-none">
                 <!-- infaq sodaqoh -->
-                <div class="container text-center">
-                    <h1 class="text-4xl font-light mb-1">Ikut<strong class="text-turqu"> Andil</strong></h1>
+                <h1 class="text-4xl font-light mb-1">Ikut<strong class="text-turqu"> Andil</strong></h1>
+                <div class="container text-center flex justify-between items-center">
                     <div class="relative w-52 h-52 bg-sdq bg-100% bg-top mx-auto bg-no-repeat">
                         <div x-intersect:enter="akhir=true; sc='#badan'" x-intersect:leave="akhir=false"
                             class="w-fit absolute bottom-0 left-1/2 transform -translate-x-1/2">
-                            <button @click="atmInter()" class="animate-ping border border-turqu rounded-lg p-0.5 bg-turqu-prime text-base">
+                            <button @click="atm = !atm" class="animate-ping p-0.5 text-base">
                                 <span class="text-white">Klick Di Sini</span>
                             </button>
                         </div>
-                        <div class="bg-atm bg-100% bg-top bg-no-repeat grid grid-cols-2 text-white">
-                            <span class="transform translate-x-2.5 translate-y-5"><%= textsContents[11].jenisAtm %></span>
-                            <span class="transform translate-x-4 translate-y-5"><%= textsContents[11].namaBank %></span>
-                            <span class=" col-span-2 transform -translate-x-5 translate-y-6"><%= textsContents[11].noRek %></span>
-                            <span class="transform -translate-x-1.5 translate-y-2.5"><%= textsContents[11].userName %></span>
+                    </div>
+                    <div class="relative w-52 h-52 bg-sdq bg-100% bg-top mx-auto bg-no-repeat">
+                        <div class="w-fit absolute bottom-0 left-1/2 transform -translate-x-1/2">
+                            <button @click="pesan = !pesan" class="animate-ping p-0.5 text-base">
+                                  <span class="text-white">Klick Di Sini</span>
+                            </button>
                         </div>
                     </div>
+                </div>
+                <div x-show="atm" class="absolute top-0 bottom-0 left-0 right-0">
+                      
+                </div>
+                <div x-show="pesan" class="absolute top-0 bottom-0 left-0 right-0">
+
                 </div>
             </div>
         </div>

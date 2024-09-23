@@ -34,8 +34,8 @@ module.exports = {
         'slide5':"url('/images/ikhwani.gif')",
         'slide-all':"url('/images/all.gif')",
         'sdq':"url('/images/adq.png')",
-        'atm':"url('/images/atm.png')",
-        'pesan':"url('/images/pesan.svg')",
+        'atm':"url('/images/atm.gif')",
+        'pesan':"url('/images/pesan.gif')",
       },
       backgroundSize: {
         '20%':'20%',

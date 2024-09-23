@@ -344,23 +344,27 @@
             }" id="screen4" x-bind:class="{'animate-zhv':lihat}"
                 class="h-screen w-full bg-bg-m bg-hv md:bg-100% bg-center md:animate-zoo m-1 rounded-lg p-6  overflow-y-scroll scrollbar-none">
                 <!-- infaq sodaqoh -->
-                <h1 class="text-4xl font-light mb-1">Ikut<strong class="text-turqu"> Andil</strong></h1>
-                <div class="container text-center flex justify-between items-center">
-                    <div class="relative w-52 h-52 bg-sdq bg-100% bg-top mx-auto bg-no-repeat">
+                <div class="container bg-d-d bg-center bg-100% border-b-8 shadow shadow-turqu text-center flex justify-between items-center py-8 rounded-lg">
+                  <h1 class="text-4xl font-light mb-1">Ikut<strong class="text-turqu"> Andil</strong></h1>
+                    <div class="relative w-24 h-24 bg-sdq bg-100% bg-top mx-auto bg-no-repeat">
                         <div x-intersect:enter="akhir=true; sc='#badan'" x-intersect:leave="akhir=false"
-                            class="w-fit absolute bottom-0 left-1/2 transform -translate-x-1/2">
-                            <button @click="atm = !atm; scroll = !scroll" class="animate-ping p-0.5 text-base">
-                                <span class="text-white">Klick Di Sini</span>
+                            class=" absolute -bottom-4 left-1/2 transform -translate-x-1/2">
+                            <button @click="atm = !atm; scroll = !scroll" class=" animate-bounce p-0.5 border border-turqu-prime text-turqu-prime rounded-xl w-40">
+                                Kirim Hadiah
                             </button>
                         </div>
                     </div>
-                    <div class="relative w-52 h-52 bg-sdq bg-100% bg-top mx-auto bg-no-repeat">
-                        <div class="w-fit absolute bottom-0 left-1/2 transform -translate-x-1/2">
-                            <button @click="pesan = !pesan; scroll = !scroll" class="animate-ping p-0.5 text-base">
-                                  <span class="text-white">Klick Di Sini</span>
+                    <div class="relative w-24 h-24 bg-pesan bg-100% bg-top mx-auto bg-no-repeat">
+                        <div class=" absolute -bottom-4 left-1/2 transform -translate-x-1/2">
+                            <button @click="pesan = !pesan; scroll = !scroll" class=" animate-bounce p-0.5 border border-turqu-prime text-turqu-prime rounded-xl w-40">
+                                  Kirim Ucapan
                             </button>
                         </div>
                     </div>
+                </div>
+                <!-- load donatur dan pesan -->
+                <div class="container h-96 grid grid-cols-2">
+                  <div class="w-80 h-80 bg-d-d bg-100% bg-center rounded-2xl border-2 border-turqu-prime shadow shadow-turqu"></div>
                 </div>
                 <div x-show="atm" class="bg-d-d bg-100% bg-center absolute top-6 bottom-6 right-6 left-6 border border-turqu rounded-xl">
                       <div class="absolute -top-2 -right-2">
@@ -369,14 +373,16 @@
                             <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
                           </svg></button>
                       </div>
+                      <%- include('atm') %>
                 </div>
                 <div x-show="pesan" class=" bg-d-d bg-100% bg-center absolute top-6 bottom-6 right-6 left-6 border border-turqu rounded-xl">
-                    <div class="absolute -top-2 -right-2"></div>
+                    <div class="absolute -top-2 -right-2">
                         <button class="rounded-full bg-turqu text-white" @click="pesan = !pesan; scroll = !scroll"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
                             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
                             <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
                           </svg></button>
                       </div>
+                      <%- include('pesan') %>
                 </div>
             </div>
         </div>

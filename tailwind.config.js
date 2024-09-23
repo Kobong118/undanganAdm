@@ -35,6 +35,7 @@ module.exports = {
         'slide-all':"url('/images/all.gif')",
         'sdq':"url('/images/adq.png')",
         'atm':"url('/images/atm.png')",
+        'pesan':"url('/images/pesan.svg')",
       },
       backgroundSize: {
         '20%':'20%',

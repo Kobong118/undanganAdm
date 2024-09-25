@@ -99,7 +99,7 @@
                     class="col-span-full row-satu z-40 bg-d-l1 bg-100% bg-top md:bg-100-100 origin-top-left bg-no-repeat h-screen">
                 </div>
                 <div :class="{'animate-bintang-show':visible}"
-                    class="col-span-full row-satu z-40 bg-d-l2 bg-100% bg-top md:bg-100-100 origin-top-right bg-no-repeat md:-translate-y-32 md:transform h-screen">
+                    class="col-span-full row-satu z-40 bg-d-l2 bg-100% bg-top md:bg-100-100 origin-top-right bg-no-repeat md:bg-d-l1 h-screen">
                 </div>
 
                 <!-- tulisan -->
@@ -118,43 +118,54 @@
                             <img class="w-40" src="/images/logo3.png" alt="Al-Ukhuwwah Daarul Musthofa">
                         </div>
                     </div>
-                    <div x-data="{
-                        v: false,
-                        animEnter() {
-                            const g = document.querySelectorAll('.g-slider');
-        
-                            g.forEach((element, i) => {
-                                setTimeout(() => {
-                                    if (i != g.length - 1) {
-                                        element.classList.add('animate-slide-out');
-                                    } else {
-                                        element.classList.add('h-96');
-                                    }
-                                }, i * 3000);
-                            });
-                        },
-                        animLeave() {
-                            const g = document.querySelectorAll('.g-slider');
-        
-                            g.forEach((element, i) => {
-                                    if (i != g.length - 1) {
-                                        element.classList.remove('animate-slide-out');
-                                    } else {
-                                        element.classList.remove('h-96');
-                                    }
-                            });
-                        }
-                    }" x-intersect:enter="v = true; animEnter()" x-intersect:leave="v = false; animLeave()"
-                        class="container transform -translate-y-10">
+                 <div class="container mx-auto my-1 p-6">
+    <div x-data="{
+        activeIndex: 0,
+        items: ['/images/buyaBurdah.gif', '/images/abuyaSimpang.gif', '/images/akangHj.gif', '/images/denMatin.gif', '/images/ikhwani.gif', '/images/all.gif'],
+        interval: null,
+        startCarousel() {
+            this.interval = setInterval(() => {
+                this.activeIndex = (this.activeIndex + 1) % this.items.length;
+            }, 3000);
+        },
+        stopCarousel() {
+            clearInterval(this.interval);
+        }
+    }"
+    x-intersect:enter="startCarousel()"
+    x-intersect:leave="stopCarousel()"
+    class="relative w-full max-w-4xl mx-auto overflow-hidden">
 
-                        <div class="g-slider bg-slide2 bg-100% bg-top mx-auto w-80 h-0 bg-no-repeat"></div>
-                        <div class="g-slider bg-slide1 bg-100% bg-top mx-auto w-80 h-0 bg-no-repeat"></div>
-                        <div class="g-slider bg-slide3 bg-100% bg-top mx-auto w-80 h-0 bg-no-repeat"></div>
-                        <div class="g-slider bg-slide4 bg-100% bg-top mx-auto w-80 h-0 bg-no-repeat"></div>
-                        <div class="g-slider bg-slide5 bg-100% bg-top mx-auto w-80 h-0 bg-no-repeat"></div>
-                        <div class="g-slider bg-slide-all bg-100% bg-top mx-auto w-80 bg-no-repeat"></div>
-                    </div>
+        <!-- Carousel Images -->
+        <div class="flex transition-transform duration-1000 ease-in-out"
+             :style="'transform: translateX(-' + (activeIndex * 100) + '%)'">
+            <template x-for="(image, index) in items" :key="index">
+                <div class="min-w-full h-96 md:bg-50% bg-100% bg-top bg-no-repeat"
+                     :style="'background-image: url(' + image + ')'">
+                </div>
+            </template>
+        </div>
 
+        <!-- Previous and Next Buttons -->
+        <button @click="activeIndex = (activeIndex - 1 + items.length) % items.length;console.log('aya')"
+                class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full z-50">
+            &#10094;
+        </button>
+        <button @click="activeIndex = (activeIndex + 1) % items.length"
+                class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full z-50">
+            &#10095;
+        </button>
+
+        <!-- Indicators -->
+        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+            <template x-for="(image, index) in items" :key="index">
+                <button @click="activeIndex = index" 
+                        :class="activeIndex === index ? 'bg-white' : 'bg-gray-500'"
+                        class="w-3 h-3 rounded-full"></button>
+            </template>
+        </div>
+    </div>
+</div>
 
                 </div>
             </div>

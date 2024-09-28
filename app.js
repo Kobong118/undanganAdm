@@ -9,6 +9,8 @@ const favicon = require('serve-favicon');
 var usersRouter = require('./routes/users');
 const undanganAdm = require('./routes/adm');
 const generateQrCode = require('./routes/generateQrCode');
+const hadiah = require('./routes/hadiah');
+const pesan = require('./routes/pesan');
 
 
 var app = express();
@@ -31,6 +33,8 @@ app.use(expressLayouts);
 app.use('/undangan-maulid-adm', undanganAdm);
 app.use('/users', usersRouter);
 app.use('/generate-qr', generateQrCode);
+app.use('/hadiah', hadiah);
+app.use('/pesan', pesan);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -33,8 +33,8 @@ module.exports = {
         'slide4':"url('/images/denMatin.gif')",
         'slide5':"url('/images/ikhwani.gif')",
         'slide-all':"url('/images/all.gif')",
-        'sdq':"url('/images/adq.png')",
-        'atm':"url('/images/atm.gif')",
+        'sdq':"url('/images/atm.gif')",
+        'atm':"url('/images/atm.png')",
         'pesan':"url('/images/pesan.gif')",
       },
       backgroundSize: {

@@ -5,7 +5,7 @@ const {loadTextContent}=require('../src/loadData');
 const path = require('path');
 
 router.get('/',(req,res,next)=>{
-    res.redirect('/muslimin')
+    res.redirect('/undangan-maulid-adm/muslimin')
 })
 router.get('/:kepada',(req,res,next)=>{
     const textsContents = loadTextContent();

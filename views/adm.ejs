@@ -5,22 +5,22 @@
                 this.music.play(); // Memutar ulang musik
             });
         }
-}" x-bind:class="scroll? 'overflow-auto':'overflow-hidden'" class="container max-h-screen">
- <!-- to sc -->
- <div x-show="scroll" class="container fixed left-0 right-0 text-center z-50 bottom-0 text-turqu">
+}" x-bind:class="scroll? 'overflow-auto':'overflow-hidden'" class="container max-h-screen scrollbar-none">
+    <!-- to sc -->
+    <div x-show="scroll" class="container fixed left-0 right-0 text-center z-50 bottom-0 text-turqu">
 
-    <div class="mx-auto w-fit h-24 animate-bounce">
-        <a x-bind:href="sc" class="px-10 py-10" x-html="akhir ? 
+        <div class="mx-auto w-fit h-24 animate-bounce">
+            <a x-bind:href="sc" class="px-10 py-10" x-html="akhir ? 
 `<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' fill='currentColor' class='bi bi-arrow-up-circle' viewBox='0 0 16 16'>
 <path fill-rule='evenodd' d='M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707z'/>
 </svg>` : 
 `<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' fill='currentColor' class='bi bi-arrow-down-circle' viewBox='0 0 16 16'>
 <path fill-rule='evenodd' d='M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z'/>
 </svg>`">
-        </a>
+            </a>
 
+        </div>
     </div>
-</div>
     <section id="header"
         class="container h-screen bg-bg-m bg-hv md:bg-100% bg-center font-sofia animate-zhv delay-1s md:animate-zoo text-turqu-prime">
         <div class="grid grid-cols-stack w-full h-full overflow-hidden">
@@ -94,17 +94,17 @@
             x-intersect:leave="visible = false" class="container">
             <!-- frem post 1 -->
             <div x-bind:class="{'animate-zhv ':visible}"
-                class="h-screen w-full bg-bg-m bg-hv md:bg-100% bg-center md:animate-zoo2 m-1 rounded-lg grid grid-cols-stack relative overflow-hidden scrollbar-none">
+                class="w-full bg-bg-m bg-hv md:bg-100% bg-center md:animate-zoo2 m-1 rounded-lg grid grid-cols-stack relative overflow-hidden scrollbar-none">
                 <div :class="{'animate-bintang-show':visible}"
-                    class="col-span-full row-satu z-40 bg-d-l1 bg-100% bg-top md:bg-100-100 origin-top-left bg-no-repeat h-screen">
+                    class="col-span-full row-satu bg-d-l1 bg-100% bg-top md:bg-100-100 origin-top-left bg-no-repeat h-screen">
                 </div>
                 <div :class="{'animate-bintang-show':visible}"
-                    class="col-span-full row-satu z-40 bg-d-l2 bg-100% bg-top md:bg-100-100 origin-top-right bg-no-repeat md:bg-d-l1 h-screen">
+                    class="col-span-full row-satu bg-d-l2 bg-100% bg-top md:bg-100-100 origin-top-right bg-no-repeat h-screen">
                 </div>
 
                 <!-- tulisan -->
                 <div x-intersect:enter="sc = '#screen2'" :class="{'animate-bintang-show':visible}"
-                    class="col-span-full row-satu text-center z-20">
+                    class="col-span-full row-satu text-center z-40">
                     <h1 class="text-3xl mt-1 font-kufi"><%- textsContents[4].textContent %></h1>
                     <h1 class="text-3xl mt-1 font-Rundkursiv">Al-Ukhuwwah Daarul Mushthofa</h1>
                     <h4 class="text-base"><%- textsContents[5].textContent %></h4>
@@ -118,8 +118,8 @@
                             <img class="w-40" src="/images/logo3.png" alt="Al-Ukhuwwah Daarul Musthofa">
                         </div>
                     </div>
-                 <div class="container mx-auto my-1 p-6">
-    <div x-data="{
+                    <div class="container mx-auto my-1 p-6">
+                        <div x-data="{
         activeIndex: 0,
         items: ['/images/buyaBurdah.gif', '/images/abuyaSimpang.gif', '/images/akangHj.gif', '/images/denMatin.gif', '/images/ikhwani.gif', '/images/all.gif'],
         interval: null,
@@ -131,41 +131,40 @@
         stopCarousel() {
             clearInterval(this.interval);
         }
-    }"
-    x-intersect:enter="startCarousel()"
-    x-intersect:leave="stopCarousel()"
-    class="relative w-full max-w-4xl mx-auto overflow-hidden">
+    }" x-intersect:enter="startCarousel()" x-intersect:leave="stopCarousel()"
+                            class="relative w-full max-w-4xl mx-auto overflow-hidden">
 
-        <!-- Carousel Images -->
-        <div class="flex transition-transform duration-1000 ease-in-out"
-             :style="'transform: translateX(-' + (activeIndex * 100) + '%)'">
-            <template x-for="(image, index) in items" :key="index">
-                <div class="min-w-full h-96 md:bg-50% bg-100% bg-top bg-no-repeat"
-                     :style="'background-image: url(' + image + ')'">
-                </div>
-            </template>
-        </div>
+                            <!-- Carousel Images -->
+                            <div class="flex transition-transform duration-1000 ease-in-out"
+                                :style="'transform: translateX(-' + (activeIndex * 100) + '%)'">
+                                <template x-for="(image, index) in items" :key="index">
+                                    <div class="min-w-full h-96 bg-hv bg-center bg-no-repeat"
+                                        :style="'background-image: url(' + image + ')'">
+                                    </div>
+                                </template>
+                            </div>
 
-        <!-- Previous and Next Buttons -->
-        <button @click="activeIndex = (activeIndex - 1 + items.length) % items.length;console.log('aya')"
-                class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full z-50">
-            &#10094;
-        </button>
-        <button @click="activeIndex = (activeIndex + 1) % items.length"
-                class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full z-50">
-            &#10095;
-        </button>
+                            <!-- Previous and Next Buttons -->
+                            <button
+                                @click="activeIndex = (activeIndex - 1 + items.length) % items.length;console.log('aya')"
+                                class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full">
+                                &#10094;
+                            </button>
+                            <button @click="activeIndex = (activeIndex + 1) % items.length"
+                                class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full">
+                                &#10095;
+                            </button>
 
-        <!-- Indicators -->
-        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
-            <template x-for="(image, index) in items" :key="index">
-                <button @click="activeIndex = index" 
-                        :class="activeIndex === index ? 'bg-white' : 'bg-gray-500'"
-                        class="w-3 h-3 rounded-full"></button>
-            </template>
-        </div>
-    </div>
-</div>
+                            <!-- Indicators -->
+                            <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                                <template x-for="(image, index) in items" :key="index">
+                                    <button @click="activeIndex = index"
+                                        :class="activeIndex === index ? 'bg-white' : 'bg-gray-500'"
+                                        class="w-3 h-3 rounded-full"></button>
+                                </template>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
             </div>
@@ -347,63 +346,217 @@
         <div x-data="{lihat:false}" x-intersect:enter="lihat = true" x-intersect:leave="lihat = false"
             class=" container">
             <!-- frame post 4 -->
-            <div  x-data="{atm:false,pesan:false,
+            <div x-data="{atm:false,pesan:false,
                 atmInter(){
                     const el =document.getElementsByClassName('.bg-atm');
                     el[0].classList.toggle('w-52 h-32 animate-slide-out')
                 }
             }" id="screen4" x-bind:class="{'animate-zhv':lihat}"
-                class="h-screen w-full bg-bg-m bg-hv md:bg-100% bg-center md:animate-zoo m-1 rounded-lg p-6  overflow-y-scroll scrollbar-none">
-               <h1 class="text-4xl font-light mb-1">Ulasan<strong class="text-turqu"> Anda</strong></h1>
-              <!-- infaq sodaqoh -->
-                <div class="container text-center flex flex-col items-center">                  
-                    <div class="w-full flex justify-around items-center bg-d-d bg-center bg-100% border-b-8 shadow shadow-turqu rounded-lg">
-                        <div x-intersect:enter="akhir=true; sc='#badan'" x-intersect:leave="akhir=false"
-                             class="w-24 h-24 bg-sdq bg-100% bg-top"></div>
-                            <button @click="atm = !atm; scroll = !scroll" class=" animate-bounce p-0.5 border border-turqu-prime text-turqu-prime rounded-xl w-40 block">
-                                Kirim Hadiah
-                            </button>
+                class=" w-full bg-bg-m bg-hv md:bg-100% bg-center md:animate-zoo m-1 rounded-lg p-6">
+                <h1 class="text-4xl font-light mb-1">Ulasan<strong class="text-turqu"> Anda</strong></h1>
+                <!-- infaq sodaqoh -->
+                <div class="container text-center flex flex-col items-center">
+                    <div
+                        class="w-full flex justify-around items-center bg-d-d bg-center bg-100% border-b-8 shadow shadow-turqu rounded-lg">
+                        <div class="w-24 h-24 bg-sdq bg-100% bg-top"></div>
+                        <button @click="atm = !atm"
+                            class=" animate-bounce p-0.5 border border-turqu-prime text-turqu-prime rounded-xl w-40 block">
+                            Kirim Hadiah
+                        </button>
                     </div>
-                 <div x-show="atm" class="w-full mt-4 border border-turqu rounded-xl bg-d-d bg-center bg-100%">
-                    <h1 class="text-4xl font-light mb-1">Transfer<strong class="text-turqu"> Bank</strong></h1>
-                   <div class='flex justify-around items-center'>
-                    <div class="w-24 bg-atm bg-100 bg-top h-24"></div>
-                    <div class="w-3/4">
-                        <h6 class="text-sm font-light mb-1">Bank<strong class="text-turqu"> <%= textsContents[11].namaBank %></strong></h6>
-                       <label for="noRek">Nomor Rekening: </label>
-                       <input id="noRek" value="<%= textsContents[11].noRek %>" readonly class="text-turqu"/>
-                       <label for="AN">Atas Nama: </label>
-                       <input id="AN" value="<%= textsContents[11].userName %>" readonly class="text-turqu"/>
-                       <p class="text-xs">Catatan: Setelah melakukan transfer di mohon untuk melakukan konfirmasi dengan mengirim screenshot / foto bukti transfer di Form konfirmasi. Anda akan di arahkan ke Whatsapp Khodim Majlis</p>
+                    <div x-show="atm" class="w-full mt-4 border border-turqu rounded-xl bg-d-d bg-center bg-100%">
+                        <h1 class="text-4xl font-light mb-1">Transfer<strong class="text-turqu"> Bank</strong></h1>
+                        <div class='flex flex-col md:justify-around md:flex-row items-center'>
+                            <div class="w-full md:w-1/4 bg-atm bg-hv bg-top bg-no-repeat h-24"></div>
+                            <div class="w-10/12 md:w-3/4">
+                                <h6 class="text-sm font-light mb-1">Bank<strong class="text-turqu">
+                                        <%= textsContents[11].namaBank %>
+                                    </strong></h6>
+                                <div class="w-full flex flex-col justify-center items-start">
+                                    <label for="noRek">Nomor Rekening: </label>
+                                    <input id="noRek" value="<%= textsContents[11].noRek %>" readonly
+                                        class="text-turqu" />
+                                    <label for="AN">Atas Nama: </label>
+                                    <input id="AN" value="<%= textsContents[11].userName %>" readonly
+                                        class="text-turqu" />
+                                    <p class="text-xs">Catatan: Setelah melakukan transfer di mohon untuk melakukan
+                                        konfirmasi dengan mengirim screenshot / foto bukti transfer di Form konfirmasi.
+                                        Anda
+                                        akan di arahkan ke Whatsapp Khodim Majlis</p>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <hr />
+                        <!-- akhir info rekening -->
+                        <div class="container mx-auto p-4">
+                            <h6 class="text-sm font-light mb-1">Form<strong class="text-turqu"> Konfirmasi
+                                </strong></h6>
+                            <form id="donaturForm" class="space-y-4">
+                                <input id="namaDonatur" class="w-full p-2 border rounded"
+                                    placeholder="Tulis nama Anda..." name="namaDonatur" required maxlength="50" />
+                                <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded">
+                                    Konfirmasi</button>
+                            </form>
+
+                            <!-- Menampilkan donatur -->
+                            <div id="donatur" class="mt-6 space-y-4">
+                                <!-- loop donatur -->
+                                <h6 class="text-sm font-light mb-1">Terimakasih<strong class="text-turqu"> Kepada:
+                                    </strong></h6>
+                                <div class="flex flex-col items-start p-1 border border-turqu-prime rounded-xl">
+                                    <div class="flex justify-between items-center">
+                                        <div class="w-3/4">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor"
+                                                class="bi bi-person-circle fill-turqu-prime inline-block"
+                                                viewBox="0 0 16 16">
+                                                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                                                <path fill-rule="evenodd"
+                                                    d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+                                            </svg><span> Nama Dermawan</span>
+                                        </div>
+                                        <div class="w-1/4 text-xs">
+                                            <span>WPK: 14022024T04:05</span>
+                                        </div>
+                                    </div>
+                                    <div class="w-1/4 text-xs">
+                                        <img src="/images/person-check.svg" alt="Terkomfirmasi" class="inline-block" />
+                                        <span>Terkomfirmasi</span>
+                                    </div>
+                                </div>
+                                <!-- akhir loop -->
+                            </div>
+                        </div>
+                        <!-- akhir konfir dan tampilkan donatur -->
+
                     </div>
 
-                   </div>
-                   <!-- akhir info rekening -->
 
+                    <div
+                        class="w-full flex justify-around items-center bg-d-d bg-center bg-100% border-b-8 shadow shadow-turqu rounded-lg mt-4">
+                        <div class="w-24 h-24 bg-pesan bg-100% bg-top"></div>
+                        <button @click="pesan = !pesan"
+                            class=" animate-bounce p-0.5 border border-turqu-prime text-turqu-prime rounded-xl w-40 block">
+                            Kirim Pesan
+                        </button>
+                    </div>
+                    <div x-show="pesan" class="w-full mt-4 border border-turqu rounded-xl bg-d-d bg-center bg-100%">
+                        <h1 class="text-4xl font-light mb-1">Kirim <strong class="text-turqu">Pesan</strong></h1>
+                        <form id="messageForm" class="flex flex-col items-center">
+                            <% if (nama=='muslimin' ) { %>
+                                <div class="container flex flex-col items-start p-4">
+                                    <label for="namaPengirim">Nama: </label>
+                                    <input type="text" id="namaPengirim" name="namaPengirim" maxlength="50"
+                                        placeholder="Masukan nama anda" required class="w-1/2 p-2 border rounded" />
+                                </div>
+                                <% } else { %>
+                                    <div class="container flex flex-col items-start p-4">
+                                        <label for="namaPengirim">Nama: </label>
+                                        <input type="text" id="namaPengirim" name="namaPengirim" value="<%= nama %>"
+                                            readonly class="w-1/2 p-2 border rounded" />
+                                    </div>
+                                    <% } %>
+                                        <div class="container flex flex-col items-start p-4">
+                                            <label for="messagePengirim">Pesan: </label>
+                                            <textarea id="messagePengirim" maxlength="200"
+                                                placeholder="Tulis pesan Anda..."
+                                                class="w-full p-2 border rounded h-60"></textarea>
+                                        </div>
+                                        <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded">
+                                            Kirim</button>
+                        </form>
+                        <hr>
+                        <!-- Menampilkan pesan -->
+                        <div id="pesan" class="mt-6">
+                            <!-- loop pesan -->
+                            <h6 class="text-sm font-light mb-1">Pesan<strong class="text-turqu"> Masuk:
+                                </strong></h6>
+                            <div class="flex flex-col items-start border border-turqu-prime rounded-xl mx-4  mb-4">
+                                <div class="container flex justify-around p-1 items-center">
+                                    <div class="w-1/2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor"
+                                            class="bi bi-person-circle fill-turqu-prime inline-block"
+                                            viewBox="0 0 16 16">
+                                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                                            <path fill-rule="evenodd"
+                                                d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+                                        </svg><span> Nama Pengirim</span>
+                                    </div>
+                                    <div class="w-1/2 text-xs">
+                                        <span>WPK: 14022024T04:05</span>
+                                    </div>
+                                </div>
+                                <div class="container">
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam illum ab mollitia
+                                        blanditiis laboriosam totam quod libero! Dicta officia repellendus incidunt
+                                        suscipit enim alias architecto! Suscipit soluta temporibus fuga dignissimos!
+                                        Voluptate cumque laborum, saepe eum ad voluptas soluta rem sed repellat
+                                        voluptatem, quidem cupiditate autem iure quod nemo aspernatur cum! Reprehenderit
+                                        sint officia laborum, eaque voluptates error vero nemo tenetur.</p>
+                                </div>
 
+                            </div>
+                            <!-- akhir loop -->
+                        </div>
+                    </div>
                 </div>
+                <!-- akhir sodakoh dan pesan -->
+                <!-- maps -->
+                <h1 class="text-4xl font-light mt-4">Lokasi di <strong class="text-turqu">Google Maps</strong></h1>
+                <div x-intersect:enter="akhir = true; sc = '#badan'" x-intersect:leave="akhir = false"
+                    class="container flex flex-col items-center bg-d-d bg-center bg-100% border-b-8 shadow shadow-turqu rounded-lg">
+
+                    <div class="w-full">
+                        <img x-data="{
+                            qr:'',
+                            getQr(){
+                            // Fetch QR code dari server
+                            fetch('/generate-qr')
+                                .then(response => response.json())
+                                .then(data => {
+                                // Set QR code URL ke elemen <img>
+                                    this.qr = data.qrCodeUrl;
+                                     })
+                                  .catch(error => console.error('Error fetching QR code:', error));
  
-
-                    <div class="w-full flex justify-around items-center bg-d-d bg-center bg-100% border-b-8 shadow shadow-turqu rounded-lg mt-4">
-                      <div class="w-24 h-24 bg-sdq bg-100% bg-top"></div>
-                            <button @click="pesan = !pesan; scroll = !scroll" class=" animate-bounce p-0.5 border border-turqu-prime text-turqu-prime rounded-xl w-40 block">
-                                  Kirim Ucapan
-                            </button>
-                   </div>
-               <div x-show="pesan" class="w-full mt-4 border border-turqu rounded-xl bg-d-d bg-center bg-100%">
-                
+                        }}" x-intersect:enter="getQr()" :src="qr" alt="Qr Code Lokasi" class="mx-auto">
+                    </div>
+                    <div class="w-full m-1 rounded-xl h-96 overflow-hidden">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d350.01351372595707!2d107.526259885271!3d-7.015061433772681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68ed004cdddcc5%3A0x7aa9ccab763eb70!2sPesantren%20Al%20Ukhuwwah%20Darrul%20Mushtofa!5e0!3m2!1sid!2sid!4v1727464213681!5m2!1sid!2sid"
+                            width="600" height="450" style="border:0; margin-left:auto;margin-right: auto;"
+                            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
                 </div>
-              </div>
-              <!-- akhir sodakoh dan pesan -->
 
             </div>
         </div>
 
-       
+
     </section>
 </div>
-<div class='container text-center text-sm rounded-t-xl bg-turqu-prime text-white'>
-  <small>© 2024 Bebegig Al-Ukhuwwah @Santri118.</small>
+<div class='container text-center text-sm rounded-t-xl bg-turqu-prime text-white py-2'>
+    <small>© 2024 Bebegig Al-Ukhuwwah @Santri118.</small>
+    <div class="container flex justify-center items-center">
+        <div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-instagram inline-block" viewBox="0 0 16 16">
+                <path
+                    d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334" />
+            </svg> <a href="https://www.instagram.com/alukhuwwah_daarulmushtofaa?igsh=MWswM2dpbHc2aTNrZg==">
+                @alukhuwwah_daarulmushtofaa</a>
+        </div>
+        <div class="ms-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-instagram inline-block" viewBox="0 0 16 16">
+                <path
+                    d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334" />
+            </svg> <a href="https://www.instagram.com/ikhwaanii_adm?igsh=MXE0Ym52NDI3cXJ0dA=="> @ikhwaanii_adm</a>
+        </div>
+    </div>
 </div>
 
 

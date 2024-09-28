@@ -7,7 +7,9 @@ const expressLayouts = require('express-ejs-layouts');
 const favicon = require('serve-favicon');
 
 var usersRouter = require('./routes/users');
-const undanganAdm = require('./routes/adm')
+const undanganAdm = require('./routes/adm');
+const generateQrCode = require('./routes/generateQrCode');
+
 
 var app = express();
 
@@ -26,8 +28,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(expressLayouts);
-app.use('/', undanganAdm);
+app.use('/undangan-maulid-adm', undanganAdm);
 app.use('/users', usersRouter);
+app.use('/generate-qr', generateQrCode);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

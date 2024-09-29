@@ -1,72 +1,76 @@
 const express = require('express');
-const rateLimit = require('express-rate-limit');
 const fs = require('fs');
 const path = require('path');
-const app = express();
 const router = express.Router();
 
-const hadiahFile = path.join(__dirname,'..','src','data','hadiah.json');
+const pesanFile = path.join(__dirname,'..','src','data','pesan.json');
 // Pastikan file JSON sudah ada, jika belum, buat file kosong
-if (!fs.existsSync(hadiahFile)) {
-    fs.writeFileSync(hadiahFile, JSON.stringify([]));
+if (!fs.existsSync(pesanFile)) {
+    fs.writeFileSync(pesanFile, JSON.stringify([]));
 }
 
 router.post('/',(req, res) => {
-    const nama = req.body.namaDonatur;
+    const nama = req.body.namaPengirim;
     const ipAddress = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     const location = req.body.location;
     const timestamp = new Date().toISOString();
     const show = true;
-    const verifikasi = false;
+    const pesan = req.body.pesan
 
     // validasi nama
     if(!nama || nama.length > 20){
         return res.status(400).json({success:false, message:'Nama tidak boleh kosong atau melebihi 20 karakter'});
     }
+    if (!pesan || pesan.length > 200) {
+        return res.status(400).json({ success: false, message: 'Pesan tidak boleh kosong atau melebihi 500 karakter.' });
+    }
+
     // Baca file JSON dan periksa apakah IP sudah ada
-    fs.readFile(hadiahFile, (err, data) => {
+    fs.readFile(pesanFile, (err, data) => {
         if (err) {
             return res.status(500).json({ error: 'Gagal membaca file pesan.' });
         }
 
-        let hadiahData = JSON.parse(data || '{}');
-        let donatur = hadiahData.donatur || [];
-        let ipTracker = hadiahData.ipTracker || {};
+        let messagesData = JSON.parse(data || '{}');
+        let messages = messagesData.messages || [];
+        let ipTracker = messagesData.ipTracker || {};
 
         // Cek berapa kali IP ini sudah mengirim pesan
         if (ipTracker[ipAddress] && ipTracker[ipAddress] >= 3) {
-            return res.status(429).json({success:false, message: 'Anda telah mencapai batas maksimal 3 kali pengajuan.' });
+            return res.status(429).json({success:false, message: 'Anda telah mencapai batas maksimal 3 kali pengiriman pesan.' });
         }
 
         // Tambahkan pesan baru
-        const newDonatur = {
+        const newMessage = {
             nama,
-            verifikasi,
+            pesan,
             ip: ipAddress,
             date: timestamp,
             location,
             show
         };
 
-        donatur.push(newDonatur);
+        messages.push(newMessage);
 
         // Tambahkan atau perbarui counter untuk IP address
         ipTracker[ipAddress] = (ipTracker[ipAddress] || 0) + 1;
 
         // Simpan kembali data ke file JSON
-        hadiahData = { donatur, ipTracker };
+        messagesData = { messages, ipTracker };
 
-        fs.writeFile(hadiahFile, JSON.stringify(hadiahData, null, 2), (err) => {
+        fs.writeFile(pesanFile, JSON.stringify(messagesData, null, 2), (err) => {
             if (err) {
-                return res.status(500).json({ error: 'Gagal mengirim pengajuan.' });
+                return res.status(500).json({ error: 'Gagal mengirim pesan.' });
             }
-            res.status(200).json({ success: true, message: 'Pengajuan berhasil dikirim.' });
+            res.status(200).json({ success: true, message: 'Pesan berhasil dikirim.' });
         });
     });
+
 });
 router.get('/',(req, res)=>{
-    const donatur = JSON.parse(fs.readFileSync(hadiahFile, 'utf-8'));
-    res.json(donatur);
+    const pesans = JSON.parse(fs.readFileSync(pesanFile, 'utf-8'));
+    res.json(pesans);
 })
+
 
 module.exports = router

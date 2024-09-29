@@ -1147,6 +1147,10 @@ video {
   --tw-bg-opacity: 0.45;
 }
 
+.bg-opacity-40 {
+  --tw-bg-opacity: 0.4;
+}
+
 .bg-atm {
   background-image: url('/images/atm.png');
 }
@@ -1301,6 +1305,10 @@ video {
 
 .pt-1 {
   padding-top: 0.25rem;
+}
+
+.text-left {
+  text-align: left;
 }
 
 .text-center {

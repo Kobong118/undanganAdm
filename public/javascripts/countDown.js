@@ -188,7 +188,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                     </div>
                                     <div class="w-full text-xs">
                                         <img src="/images/${donat.verifikasi ? 'person-check.svg':'person-ex.svg'}" alt="Terkomfirmasi" class="inline-block" />
-                                        <span>${donat.verifikasi ? 'Terkonfirmasi':'masuk antrian konfirmasi...'}</span>
+                                        <span>${donat.verifikasi ? 'Terkonfirmasi':''}</span>
                                     </div>
         `;
         donaturContainer.appendChild(donaturElement);

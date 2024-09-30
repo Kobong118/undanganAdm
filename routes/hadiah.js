@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const app = express();
 const router = express.Router();
+const { v4: uuidv4 } = require('uuid'); 
 
 const hadiahFile = path.join(__dirname,'..','src','data','hadiah.json');
 // Pastikan file JSON sudah ada, jika belum, buat file kosong
@@ -40,6 +41,7 @@ router.post('/',(req, res) => {
 
         // Tambahkan pesan baru
         const newDonatur = {
+            id : uuidv4(),
             nama,
             verifikasi,
             ip: ipAddress,
@@ -67,6 +69,99 @@ router.post('/',(req, res) => {
 router.get('/',(req, res)=>{
     const donatur = JSON.parse(fs.readFileSync(hadiahFile, 'utf-8'));
     res.json(donatur);
-})
+});
+
+// Rute PUT untuk mengedit verifikasi
+router.put('/verifikasi/:id', (req, res) => {
+    const { id } = req.params;
+    const { verifikasi} = req.body;
+    
+    // baca file JSON
+    fs.readFile(hadiahFile,(err,data)=>{
+        if (err) {
+            return res.status(500).json({ error: 'Gagal membaca file pesan.' });
+        }
+
+        let hadiahData = JSON.parse(data || '{}');
+        let donatur = hadiahData.donatur || [];
+        let ipTracker = hadiahData.ipTracker || {};
+        const index = donatur.findIndex(p => p.id === id);
+
+        if (index !== -1) {
+        donatur[index].verifikasi = verifikasi;
+        // Simpan kembali data ke file JSON
+        hadiahData = { donatur, ipTracker };
+        fs.writeFileSync(hadiahFile, JSON.stringify(hadiahData, null, 2));
+        return res.json({ success: true, message: 'berhasil diperbarui.' });
+    } else {
+        return res.status(404).json({ success: false, message: 'tidak ditemukan.' });
+    }
+    })
+});
+
+// Rute PUT untuk mengedit donatur
+router.put('/show/:id', (req, res) => {
+    const { id } = req.params;
+    const { show} = req.body;
+
+     // baca file JSON
+     fs.readFile(hadiahFile,(err,data)=>{
+        if (err) {
+            return res.status(500).json({ error: 'Gagal membaca file pesan.' });
+        }
+
+        let hadiahData = JSON.parse(data || '{}');
+        let donatur = hadiahData.donatur || [];
+        let ipTracker = hadiahData.ipTracker || {};
+        const index = donatur.findIndex(p => p.id === id);
+
+        if (index !== -1) {
+        donatur[index].show = show;
+        // Simpan kembali data ke file JSON
+        hadiahData = { donatur, ipTracker };
+        fs.writeFileSync(hadiahFile, JSON.stringify(hadiahData, null, 2));
+        return res.json({ success: true, message: 'berhasil diperbarui.' });
+    } else {
+        return res.status(404).json({ success: false, message: 'tidak ditemukan.' });
+    }
+    })
+});
+
+// Rute DELETE untuk menghapus donatur
+router.delete('/:id', (req, res) => {
+    const { id } = req.params;
+
+    // // Hapus donatur dari file JSON
+    // const donatur = JSON.parse(fs.readFileSync(hadiahFile, 'utf-8'));
+    // const newDonatur = donatur.filter(p => p.id !== id);
+
+    // if (newDonatur.length === donatur.length) {
+    //     return res.status(404).json({ success: false, message: 'tidak ditemukan.' });
+    // }
+
+    // fs.writeFileSync(hadiahFile, JSON.stringify(newDonatur, null, 2));
+    // return res.json({ success: true, message: 'Donatur berhasil dihapus.' });
+
+     // baca file JSON
+     fs.readFile(hadiahFile,(err,data)=>{
+        if (err) {
+            return res.status(500).json({ error: 'Gagal membaca file pesan.' });
+        }
+
+        let hadiahData = JSON.parse(data || '{}');
+        let donatur = hadiahData.donatur || [];
+        let ipTracker = hadiahData.ipTracker || {};
+        const newDonatur = donatur.filter(p => p.id !== id);
+
+        if (newDonatur.length === donatur.length) {
+                return res.status(404).json({ success: false, message: 'tidak ditemukan.' });
+            }
+
+        // Simpan kembali data ke file JSON
+        hadiahData = { newDonatur, ipTracker };
+        fs.writeFileSync(hadiahFile, JSON.stringify(hadiahData, null, 2));
+        return res.json({ success: true, message: 'berhasil diperbarui.' });
+    })
+});
 
 module.exports = router

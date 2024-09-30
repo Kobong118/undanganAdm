@@ -1,50 +1,161 @@
-<div class="container">
-    <!-- data donatur -->
-     <div class="w-full h-screen overflow-y-auto scrollbar-none m-1 bg-d-d bg-100% bg-center border border-turqu-prime rounded-md">
-        <h1 class="text-center">Data Donatur</h1>
-        <table class="">
-            <thead class="">
-                <th class="No"></th>
-                <th class="">ip Address</th>
-                <th class="">Nama</th>
-                <th class="">Lokasi</th>
-                <th class="">Verifikasi</th>
-                <th class="">Show</th>
-                <th class="">Date</th>
-                <th class="">Aksi</th>
-            </thead>
-            <tbody class="">
-                <% if (dataHadiah.donatur) { %>
-                    <% dataHadiah.donatur.forEach((e,i) => { %>
-                     <tr class="">
-                        <td class=""><%= i+1 %></td>
-                     </tr>
-                     <tr class="">
-                        <td class=""><%= e.ip %></td>
-                     </tr>
-                     <tr class="">
-                        <td class=""><%= e.nama %></td>
-                     </tr>
-                     <tr class="">
-                        <td class=""><%= e.location %></td>
-                     </tr>
-                     <tr class="">
-                        <td class=""><%= e.verifikasi %></td>
-                     </tr>
-                     <tr class="">
-                        <td class=""><%= e.show %></td>
-                     </tr>
-                     <tr class="">
-                        <td class=""><%= e.date %></td>
-                     </tr>
-                     <tr class="">
-                        <td class="flex justify-between">
-                            <a href="#" class="text-xs p-1 border border-turqu bg-blue-500 text-white">Aksi</a>
-                        </td>
-                     </tr>
-                    <% }) %>
-                <% } %>
-            </tbody>
-        </table>
-     </div>
+<div x-data="{
+   donaturList: <%= JSON.stringify(dataHadiah.donatur) %>,
+   async Verifikasi(id, ver) {
+       try {
+           const response = await fetch(`/hadiah/verifikasi/${id}`, {
+               method: 'PUT',
+               headers: {
+                   'Content-Type': 'application/json'
+               },
+               body: JSON.stringify({
+                   verifikasi: ver
+               })
+           });
+
+           if (!response.ok) {
+               throw new Error(`HTTP error! Status: ${response.status}`);
+           }
+
+           const result = await response.json();
+
+           if (result.success) {
+               alert(result.message);
+               // Update UI locally without page reload
+               this.donaturList = this.donaturList.map(donatur => {
+                   if (donatur.id === id) {
+                       donatur.verifikasi = ver; // Update the verification status
+                   }
+                   return donatur;
+               });
+           } else {
+               alert(result.message);
+           }
+       } catch (error) {
+           console.error('Error:', error);
+           alert('Terjadi kesalahan. Silakan coba lagi.');
+       }
+   },
+
+   async Show(rout,id,sh){
+      try {
+         if (rout == '/hadiah/show') {
+            const response = await fetch(`${rout}/${id}`, {
+               method: 'PUT',
+               headers: {
+                   'Content-Type': 'application/json'
+               },
+               body: JSON.stringify({
+                   show: sh
+               })
+           });
+
+           if (!response.ok) {
+               throw new Error(`HTTP error! Status: ${response.status}`);
+           }
+
+           const result = await response.json();
+
+           if (result.success) {
+               alert(result.message);
+               // Update UI locally without page reload
+               this.donaturList = this.donaturList.map(donatur => {
+                   if (donatur.id === id) {
+                       donatur.show = sh; // Update the verification status
+                   }
+                   return donatur;
+               });
+           } else {
+               alert(result.message);
+           }
+         } else {
+            
+         }
+      } catch (error) {
+         console.error('Error:', error);
+           alert('Terjadi kesalahan. Silakan coba lagi.');
+      }
+   },
+
+   async Hapus(rout,id){
+      if (confirm('Apakah Anda yakin ingin menghapus donatur ini?')) {
+
+         try {
+            if (rout == '/hadiah') {
+               const response = await fetch(`${rout}/${id}`, {
+                  method: 'DELETE'
+              });
+   
+              if (!response.ok) {
+                  throw new Error(`HTTP error! Status: ${response.status}`);
+              }
+   
+              const result = await response.json();
+   
+              if (result.success) {
+                  alert(result.message);
+                  // Hapus donatur dari UI
+                  this.donaturList = this.donaturList.filter(donatur => donatur.id !== id);
+              } else {
+                  alert(result.message);
+              }
+            } else {
+               
+            }
+         } catch (error) {
+            console.error('Error:', error);
+              alert('Terjadi kesalahan. Silakan coba lagi.');
+         }
+      }
+   }
+}" class="container">
+<!-- Data Donatur -->
+<div class="w-full h-screen overflow-y-auto scrollbar-none m-1 bg-d-d bg-100% bg-center border border-turqu-prime rounded-md">
+  <h1 class="text-center">Data Donatur</h1>
+  <table class="w-full">
+      <thead>
+          <tr>
+              <th>No</th>
+              <th>Id</th>
+              <th>IP Address</th>
+              <th>Nama</th>
+              <th>Lokasi</th>
+              <th>Verifikasi</th>
+              <th>Show</th>
+              <th>Date</th>
+              <th>Aksi</th>
+          </tr>
+      </thead>
+      <tbody>
+          <!-- Looping Data Donatur -->
+          <template x-for="(donatur, i) in donaturList" :key="donatur.id">
+              <tr>
+                  <td x-text="i + 1"></td>
+                  <td x-text="donatur.id"></td>
+                  <td x-text="donatur.ip"></td>
+                  <td x-text="donatur.nama"></td>
+                  <td x-text="`${donatur.location.latitude} & ${donatur.location.longitude}`"></td>
+                  <td>
+                     <button @click="Verifikasi(donatur.id, !donatur.verifikasi)" 
+                             class="p-1 border border-turqu rounded-xl bg-blue-500 text-white">
+                         <span x-text="donatur.verifikasi ? 'Tangguhkan' : 'Verifikasi'"></span>
+                     </button>
+                  </td>
+                  <td>
+                     <button @click="Show('/hadiah/show',donatur.id, !donatur.show)" 
+                             class="p-1 border border-turqu rounded-xl bg-blue-500 text-white">
+                         <span x-text="donatur.show ? 'Sembunyikan' : 'Tampilkan'"></span>
+                     </button>
+                  </td>
+                  <td x-text="donatur.date"></td>
+                  <td class="">
+                     <button @click="Hapus('/hadiah',donatur.id)" 
+                             class="p-1 border border-turqu rounded-xl bg-blue-500 text-white">
+                         Hapus
+                     </button>
+                  </td>
+               </tr>
+          </template>
+      </tbody>
+  </table>
+</div>
 </div>

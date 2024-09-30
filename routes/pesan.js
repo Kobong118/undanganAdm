@@ -2,6 +2,7 @@ const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const router = express.Router();
+const { v4: uuidv4 } = require('uuid');
 
 const pesanFile = path.join(__dirname,'..','src','data','pesan.json');
 // Pastikan file JSON sudah ada, jika belum, buat file kosong
@@ -42,6 +43,7 @@ router.post('/',(req, res) => {
 
         // Tambahkan pesan baru
         const newMessage = {
+            id : uuidv4(), // Buat ID unik
             nama,
             pesan,
             ip: ipAddress,
@@ -70,7 +72,41 @@ router.post('/',(req, res) => {
 router.get('/',(req, res)=>{
     const pesans = JSON.parse(fs.readFileSync(pesanFile, 'utf-8'));
     res.json(pesans);
-})
+});
+
+// Rute PUT untuk mengedit pesan
+router.put('/:id', (req, res) => {
+    const { id } = req.params;
+    const { show } = req.body;
+
+    // Update pesan di dalam file JSON
+    const pesans = JSON.parse(fs.readFileSync(pesanFile, 'utf-8'));
+    const index = pesans.findIndex(p => p.id === id);
+    
+    if (index !== -1) {
+        pesans[index].show = show || pesans[index].show;
+        fs.writeFileSync(pesanFile, JSON.stringify(pesans, null, 2));
+        return res.json({ success: true, message: 'Pesan berhasil diperbarui.' });
+    } else {
+        return res.status(404).json({ success: false, message: 'Pesan tidak ditemukan.' });
+    }
+});
+
+// Rute DELETE untuk menghapus pesan
+router.delete('/:id', (req, res) => {
+    const { id } = req.params;
+
+    // Hapus pesan dari file JSON
+    const pesans = JSON.parse(fs.readFileSync(pesanFile, 'utf-8'));
+    const newPesans = pesans.filter(p => p.id !== id);
+
+    if (newPesans.length === pesans.length) {
+        return res.status(404).json({ success: false, message: 'Pesan tidak ditemukan.' });
+    }
+
+    fs.writeFileSync(pesanFile, JSON.stringify(newPesans, null, 2));
+    return res.json({ success: true, message: 'Pesan berhasil dihapus.' });
+});
 
 
 module.exports = router

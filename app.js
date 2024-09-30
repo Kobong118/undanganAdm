@@ -11,6 +11,7 @@ const undanganAdm = require('./routes/adm');
 const generateQrCode = require('./routes/generateQrCode');
 const hadiah = require('./routes/hadiah');
 const pesan = require('./routes/pesan');
+const admin = require('./routes/admin');
 
 
 var app = express();
@@ -35,6 +36,7 @@ app.use('/users', usersRouter);
 app.use('/generate-qr', generateQrCode);
 app.use('/hadiah', hadiah);
 app.use('/pesan', pesan);
+app.use('/admin', admin);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

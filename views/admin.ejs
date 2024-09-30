@@ -1,0 +1,50 @@
+<div class="container">
+    <!-- data donatur -->
+     <div class="w-full h-screen overflow-y-auto scrollbar-none m-1 bg-d-d bg-100% bg-center border border-turqu-prime rounded-md">
+        <h1 class="text-center">Data Donatur</h1>
+        <table class="">
+            <thead class="">
+                <th class="No"></th>
+                <th class="">ip Address</th>
+                <th class="">Nama</th>
+                <th class="">Lokasi</th>
+                <th class="">Verifikasi</th>
+                <th class="">Show</th>
+                <th class="">Date</th>
+                <th class="">Aksi</th>
+            </thead>
+            <tbody class="">
+                <% if (dataHadiah.donatur) { %>
+                    <% dataHadiah.donatur.forEach((e,i) => { %>
+                     <tr class="">
+                        <td class=""><%= i+1 %></td>
+                     </tr>
+                     <tr class="">
+                        <td class=""><%= e.ip %></td>
+                     </tr>
+                     <tr class="">
+                        <td class=""><%= e.nama %></td>
+                     </tr>
+                     <tr class="">
+                        <td class=""><%= e.location %></td>
+                     </tr>
+                     <tr class="">
+                        <td class=""><%= e.verifikasi %></td>
+                     </tr>
+                     <tr class="">
+                        <td class=""><%= e.show %></td>
+                     </tr>
+                     <tr class="">
+                        <td class=""><%= e.date %></td>
+                     </tr>
+                     <tr class="">
+                        <td class="flex justify-between">
+                            <a href="#" class="text-xs p-1 border border-turqu bg-blue-500 text-white">Aksi</a>
+                        </td>
+                     </tr>
+                    <% }) %>
+                <% } %>
+            </tbody>
+        </table>
+     </div>
+</div>

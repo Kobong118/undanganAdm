@@ -130,18 +130,6 @@ router.put('/show/:id', (req, res) => {
 // Rute DELETE untuk menghapus donatur
 router.delete('/:id', (req, res) => {
     const { id } = req.params;
-
-    // // Hapus donatur dari file JSON
-    // const donatur = JSON.parse(fs.readFileSync(hadiahFile, 'utf-8'));
-    // const newDonatur = donatur.filter(p => p.id !== id);
-
-    // if (newDonatur.length === donatur.length) {
-    //     return res.status(404).json({ success: false, message: 'tidak ditemukan.' });
-    // }
-
-    // fs.writeFileSync(hadiahFile, JSON.stringify(newDonatur, null, 2));
-    // return res.json({ success: true, message: 'Donatur berhasil dihapus.' });
-
      // baca file JSON
      fs.readFile(hadiahFile,(err,data)=>{
         if (err) {
@@ -158,7 +146,7 @@ router.delete('/:id', (req, res) => {
             }
 
         // Simpan kembali data ke file JSON
-        hadiahData = { newDonatur, ipTracker };
+        hadiahData = { donatur:newDonatur, ipTracker };
         fs.writeFileSync(hadiahFile, JSON.stringify(hadiahData, null, 2));
         return res.json({ success: true, message: 'berhasil diperbarui.' });
     })

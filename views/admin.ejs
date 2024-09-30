@@ -1,5 +1,7 @@
 <div x-data="{
-   donaturList: <%= JSON.stringify(dataHadiah.donatur) %>,
+   donaturList: <%= JSON.stringify(dataHadiah.donatur || []) %>,
+   pesanList: <%= JSON.stringify(dataPesan.messages || []) %>,
+
    async Verifikasi(id, ver) {
        try {
            const response = await fetch(`/hadiah/verifikasi/${id}`, {
@@ -7,9 +9,7 @@
                headers: {
                    'Content-Type': 'application/json'
                },
-               body: JSON.stringify({
-                   verifikasi: ver
-               })
+               body: JSON.stringify({ verifikasi: ver })
            });
 
            if (!response.ok) {
@@ -19,11 +19,9 @@
            const result = await response.json();
 
            if (result.success) {
-               alert(result.message);
-               // Update UI locally without page reload
                this.donaturList = this.donaturList.map(donatur => {
                    if (donatur.id === id) {
-                       donatur.verifikasi = ver; // Update the verification status
+                       donatur.verifikasi = ver;
                    }
                    return donatur;
                });
@@ -36,120 +34,116 @@
        }
    },
 
-   async Show(rout,id,sh){
+   async Show(rout, id, sh) {
       try {
-         if (rout == '/hadiah/show') {
-            const response = await fetch(`${rout}/${id}`, {
+         const response = await fetch(`${rout}/${id}`, {
                method: 'PUT',
-               headers: {
-                   'Content-Type': 'application/json'
-               },
-               body: JSON.stringify({
-                   show: sh
-               })
+               headers: { 'Content-Type': 'application/json' },
+               body: JSON.stringify({ show: sh })
            });
 
-           if (!response.ok) {
-               throw new Error(`HTTP error! Status: ${response.status}`);
-           }
+         if (!response.ok) {
+             throw new Error(`HTTP error! Status: ${response.status}`);
+         }
 
-           const result = await response.json();
+         const result = await response.json();
 
-           if (result.success) {
-               alert(result.message);
-               // Update UI locally without page reload
-               this.donaturList = this.donaturList.map(donatur => {
-                   if (donatur.id === id) {
-                       donatur.show = sh; // Update the verification status
-                   }
-                   return donatur;
-               });
-           } else {
-               alert(result.message);
-           }
+         if (result.success) {
+             if (rout === '/hadiah/show') {
+                 this.donaturList = this.donaturList.map(donatur => {
+                     if (donatur.id === id) {
+                         donatur.show = sh;
+                     }
+                     return donatur;
+                 });
+             } else {
+                 this.pesanList = this.pesanList.map(pesan => {
+                     if (pesan.id === id) {
+                         pesan.show = sh;
+                     }
+                     return pesan;
+                 });
+             }
          } else {
-            
+             alert(result.message);
          }
       } catch (error) {
          console.error('Error:', error);
-           alert('Terjadi kesalahan. Silakan coba lagi.');
+         alert('Terjadi kesalahan. Silakan coba lagi.');
       }
    },
 
-   async Hapus(rout,id){
-      if (confirm('Apakah Anda yakin ingin menghapus donatur ini?')) {
-
+   async Hapus(rout, id) {
+      if (confirm('Apakah Anda yakin ingin menghapus data ini?')) {
          try {
-            if (rout == '/hadiah') {
-               const response = await fetch(`${rout}/${id}`, {
-                  method: 'DELETE'
-              });
-   
-              if (!response.ok) {
-                  throw new Error(`HTTP error! Status: ${response.status}`);
-              }
-   
-              const result = await response.json();
-   
-              if (result.success) {
-                  alert(result.message);
-                  // Hapus donatur dari UI
-                  this.donaturList = this.donaturList.filter(donatur => donatur.id !== id);
-              } else {
-                  alert(result.message);
-              }
+            const response = await fetch(`${rout}/${id}`, { method: 'DELETE' });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+
+            const result = await response.json();
+
+            if (result.success) {
+                if (rout === '/hadiah') {
+                    this.donaturList = this.donaturList.filter(donatur => donatur.id !== id);
+                } else {
+                    this.pesanList = this.pesanList.filter(pesan => pesan.id !== id);
+                }
             } else {
-               
+                alert(result.message);
             }
          } catch (error) {
             console.error('Error:', error);
-              alert('Terjadi kesalahan. Silakan coba lagi.');
+            alert('Terjadi kesalahan. Silakan coba lagi.');
          }
       }
    }
 }" class="container">
+
+
 <!-- Data Donatur -->
-<div class="w-full h-screen overflow-y-auto scrollbar-none m-1 bg-d-d bg-100% bg-center border border-turqu-prime rounded-md">
-  <h1 class="text-center">Data Donatur</h1>
-  <table class="w-full">
+<div class="w-full h-screen overflow-auto scrollbar-none m-1 bg-gray-100 border border-turqu-prime rounded-md p-4">
+  <h1 class="text-center text-lg font-bold mb-4">Data Donatur</h1>
+  <table class="table-auto w-full">
       <thead>
-          <tr>
-              <th>No</th>
-              <th>Id</th>
-              <th>IP Address</th>
-              <th>Nama</th>
-              <th>Lokasi</th>
-              <th>Verifikasi</th>
-              <th>Show</th>
-              <th>Date</th>
-              <th>Aksi</th>
+          <tr class="bg-gray-200">
+              <th class="p-2">No</th>
+              <th class="p-2">Id</th>
+              <th class="p-2">IP Address</th>
+              <th class="p-2">Nama</th>
+              <th class="p-2">Lokasi</th>
+              <th class="p-2">Verifikasi</th>
+              <th class="p-2">Show</th>
+              <th class="p-2">Date</th>
+              <th class="p-2">Aksi</th>
           </tr>
       </thead>
       <tbody>
           <!-- Looping Data Donatur -->
           <template x-for="(donatur, i) in donaturList" :key="donatur.id">
-              <tr>
-                  <td x-text="i + 1"></td>
-                  <td x-text="donatur.id"></td>
-                  <td x-text="donatur.ip"></td>
-                  <td x-text="donatur.nama"></td>
-                  <td x-text="`${donatur.location.latitude} & ${donatur.location.longitude}`"></td>
-                  <td>
+              <tr class="text-center">
+                  <td class="p-2" x-text="i + 1"></td>
+                  <td class="p-2" x-text="donatur.id"></td>
+                  <td class="p-2" x-text="donatur.ip"></td>
+                  <td class="p-2" x-text="donatur.nama"></td>
+                  <td class="p-2" x-text="`${donatur.location.latitude} & ${donatur.location.longitude}`"></td>
+                  <td class="p-2">
                      <button @click="Verifikasi(donatur.id, !donatur.verifikasi)" 
                              class="p-1 border border-turqu rounded-xl bg-blue-500 text-white">
                          <span x-text="donatur.verifikasi ? 'Tangguhkan' : 'Verifikasi'"></span>
                      </button>
                   </td>
-                  <td>
-                     <button @click="Show('/hadiah/show',donatur.id, !donatur.show)" 
+                  <td class="p-2">
+                     <button @click="Show('/hadiah/show', donatur.id, !donatur.show)" 
                              class="p-1 border border-turqu rounded-xl bg-blue-500 text-white">
                          <span x-text="donatur.show ? 'Sembunyikan' : 'Tampilkan'"></span>
                      </button>
                   </td>
-                  <td x-text="donatur.date"></td>
-                  <td class="">
-                     <button @click="Hapus('/hadiah',donatur.id)" 
-                             class="p-1 border border-turqu rounded-xl bg-blue-500 text-white">
+                  <td class="p-2" x-text="donatur.date"></td>
+                  <td class="p-2">
+                     <button @click="Hapus('/hadiah', donatur.id)" 
+                             class="p-1 border border-red-500 rounded-xl bg-red-500 text-white">
                          Hapus
                      </button>
                   </td>
@@ -158,4 +152,50 @@
       </tbody>
   </table>
 </div>
+
+<!-- Data Pesan -->
+<div class="w-full h-screen overflow-auto scrollbar-none m-1 bg-gray-100 border border-turqu-prime rounded-md p-4">
+   <h1 class="text-center text-lg font-bold mb-4">Data Pesan</h1>
+   <table class="table-auto w-full">
+       <thead>
+           <tr class="bg-gray-200">
+               <th class="p-2">No</th>
+               <th class="p-2">Id</th>
+               <th class="p-2">IP Address</th>
+               <th class="p-2">Nama</th>
+               <th class="p-2">Lokasi</th>
+               <th class="p-2">Pesan</th>
+               <th class="p-2">Show</th>
+               <th class="p-2">Date</th>
+               <th class="p-2">Aksi</th>
+           </tr>
+       </thead>
+       <tbody>
+           <!-- Looping Data Pesan -->
+           <template x-for="(pesan, i) in pesanList" :key="pesan.id">
+               <tr class="text-center">
+                   <td class="p-2" x-text="i + 1"></td>
+                   <td class="p-2" x-text="pesan.id"></td>
+                   <td class="p-2" x-text="pesan.ip"></td>
+                   <td class="p-2" x-text="pesan.nama"></td>
+                   <td class="p-2" x-text="`${pesan.location.latitude} & ${pesan.location.longitude}`"></td>
+                   <td class="p-2" x-text="pesan.pesan"></td>
+                   <td class="p-2">
+                      <button @click="Show('/pesan', pesan.id, !pesan.show)" 
+                              class="p-1 border border-turqu rounded-xl bg-blue-500 text-white">
+                          <span x-text="pesan.show ? 'Sembunyikan' : 'Tampilkan'"></span>
+                      </button>
+                   </td>
+                   <td class="p-2" x-text="pesan.date"></td>
+                   <td class="p-2">
+                      <button @click="Hapus('/pesan', pesan.id)" 
+                              class="p-1 border border-red-500 rounded-xl bg-red-500 text-white">
+                          Hapus
+                      </button>
+                   </td>
+                </tr>
+           </template>
+       </tbody>
+   </table>
+ </div>
 </div>

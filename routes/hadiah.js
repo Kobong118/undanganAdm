@@ -60,7 +60,7 @@ router.post('/',(req, res) => {
 
         fs.writeFile(hadiahFile, JSON.stringify(hadiahData, null, 2), (err) => {
             if (err) {
-                return res.status(500).json({ error: 'Gagal mengirim pengajuan.' });
+                return res.status(500).json({ success: false, message: 'Gagal mengirim pengajuan.' });
             }
             res.status(200).json({ success: true, message: 'Pengajuan berhasil dikirim.' });
         });

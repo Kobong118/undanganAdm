@@ -62,7 +62,7 @@ router.post('/',(req, res) => {
 
         fs.writeFile(pesanFile, JSON.stringify(messagesData, null, 2), (err) => {
             if (err) {
-                return res.status(500).json({ error: 'Gagal mengirim pesan.' });
+                return res.status(500).json({ success: false, message: 'Gagal mengirim pesan.' });
             }
             res.status(200).json({ success: true, message: 'Pesan berhasil dikirim.' });
         });

@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node ./bin/www",
     "css": "npx tailwindcss -i ./cssinput/input.css -o ./public/stylesheets/style.css --watch",
-    "build:css": "npx postcss ./cssinput/input.css -o ./public/stylesheets/built.css"
+    "build:css": "npx tailwindcss -i ./cssinput/input.css -o ./public/stylesheets/style.css -m default"
   },
   "dependencies": {
     "@alpinejs/intersect": "^3.14.1",

@@ -1,6 +1,6 @@
 <div x-data="{
-   donaturList: <%= JSON.stringify(dataHadiah.donatur || []) %>,
-   pesanList: <%= JSON.stringify(dataPesan.messages || []) %>,
+   donaturList: <%= donaturList %>,
+   pesanList: <%= pesanList %>,
 
    async Verifikasi(id, ver) {
        try {

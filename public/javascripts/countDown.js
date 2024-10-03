@@ -49,9 +49,16 @@ document.addEventListener('DOMContentLoaded', function () {
     countdown.init();
   });
 
+const loading = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise animate-spin h-5 w-5 mr-3 inline" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/>
+  <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466"/>
+</svg> Memproses...`
+
 // fron end hendling submit donatur
     document.getElementById('donaturForm').addEventListener('submit', async function (e) {
         e.preventDefault();
+      const btn = document.querySelector('#donaturForm > button');
+      btn.innerHTML = loading;
 
         const namaDonatur = document.getElementById('namaDonatur').value;
 
@@ -84,17 +91,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 const result = await response.json();
                 if (result.success) {
+                  btn.innerHTML='Konfirmasi'
                     alert(result.message);
                     loadDonatur();
                     alert('Anda akan di arahkan ke nomor Whatsapp Khodim majlis, pastikan anda telah menyematkan bukti transfer berupa screenshot atau foto di kolom chat whastapp anda');
                     window.open(`https://wa.me/send?phone=6282315172068&text=Saya%20telah%20mengirim%20hadiah%20atas%20nama%20Undangan:%0A${namaDonatur}`)
                 } else {
+ btn.innerHTML='Konfirmasi'
                     alert(result.message);
                 }
             }, function (error) {
+ btn.innerHTML='Konfirmasi'
                 alert('Gagal mendapatkan lokasi.');
             });
         } else {
+ btn.innerHTML='Konfirmasi'
             alert('Geolocation tidak didukung oleh browser Anda.');
         }
     });
@@ -102,7 +113,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // fron end hendling submit pesan
     document.getElementById('messageForm').addEventListener('submit', async function (e) {
       e.preventDefault();
-
+      const btn = document.querySelector('#messageForm > button');
+       btn.innerHTML= loading
       const namaPengirim = document.getElementById('namaPengirim').value;
       const pesan = document.getElementById('messagePengirim').value
 
@@ -140,16 +152,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
               const result = await response.json();
               if (result.success) {
+ btn.innerHTML='Kirim'
                   alert(result.message);
                   pesan.value="";
                   loadPesan();
               } else {
+btn.innerHTML='Kirim'
                   alert(result.message);
               }
           }, function (error) {
+btn.innerHTML='Kirim'
               alert('Gagal mendapatkan lokasi.');
           });
       } else {
+btn.innerHTML='Kirim'
           alert('Geolocation tidak didukung oleh browser Anda.');
       }
   });
@@ -160,13 +176,13 @@ document.addEventListener('DOMContentLoaded', function () {
       const dataDonatur = await response.json();
       const donaturContainer = document.getElementById('donatur');
       donaturContainer.innerHTML = '';
-      if (dataDonatur.donatur){
+      if (dataDonatur){
         const h6 = document.createElement('h6');
         h6.classList.add('text-sm','font-light','mb-1');
         h6.innerHTML = `Terimakasih<strong class="text-turqu"> Kepada:</strong>`;
         donaturContainer.appendChild(h6);
 
-        dataDonatur.donatur.forEach(donat =>{
+        dataDonatur.data.forEach(donat =>{
           if(donat.show){
         const donaturElement = document.createElement('div');
         donaturElement.classList.add('flex','flex-col','items-start','p-1','border','border-turqu-prime','rounded-xl');
@@ -208,13 +224,12 @@ document.addEventListener('DOMContentLoaded', function () {
       const data = await response.json();
       const pesanContainer = document.getElementById('pesan');
       pesanContainer.innerHTML = '';
-      if (data.messages){
+      if (data){
         const h6 = document.createElement('h6');
         h6.classList.add('text-sm','font-light','mb-1');
         h6.innerHTML = `Pesan<strong class="text-turqu"> Masuk:</strong>`;
         pesanContainer.appendChild(h6);
-
-        data.messages.forEach(pesan =>{
+        data.data.forEach(pesan =>{
           if(pesan.show){
         const pesanElement = document.createElement('div');
         pesanElement.classList.add('flex','flex-col','items-start','border','border-turqu-prime','rounded-xl','mx-4','mb-4');

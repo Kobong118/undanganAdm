@@ -23,7 +23,7 @@ router.post('/',async(req, res) => {
     const pesan = req.body.pesan
 
     // validasi nama
-    if(!nama || nama.length > 20){
+    if(!nama || nama.length > 50){
         return res.status(400).json({success:false, message:'Nama tidak boleh kosong atau melebihi 20 karakter'});
     }
     if (!pesan || pesan.length > 200) {

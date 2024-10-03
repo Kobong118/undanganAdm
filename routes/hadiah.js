@@ -24,7 +24,7 @@ router.post('/', async (req, res) => {
     const verifikasi = false;
 
     // validasi nama
-    if(!nama || nama.length > 20){
+    if(!nama || nama.length > 50){
         return res.status(400).json({success:false, message:'Nama tidak boleh kosong atau melebihi 20 karakter'});
     }
     // Baca file JSON dan periksa apakah IP sudah ada

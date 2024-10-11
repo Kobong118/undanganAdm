@@ -176,7 +176,7 @@ btn.innerHTML='Kirim'
       const dataDonatur = await response.json();
       const donaturContainer = document.getElementById('donatur');
       donaturContainer.innerHTML = '';
-      if (dataDonatur){
+      if (dataDonatur.data.length != 0){
         const h6 = document.createElement('h6');
         h6.classList.add('text-sm','font-light','mb-1');
         h6.innerHTML = `Terimakasih<strong class="text-turqu"> Kepada:</strong>`;
@@ -224,7 +224,7 @@ btn.innerHTML='Kirim'
       const data = await response.json();
       const pesanContainer = document.getElementById('pesan');
       pesanContainer.innerHTML = '';
-      if (data){
+      if (data.data.length != 0){
         const h6 = document.createElement('h6');
         h6.classList.add('text-sm','font-light','mb-1');
         h6.innerHTML = `Pesan<strong class="text-turqu"> Masuk:</strong>`;

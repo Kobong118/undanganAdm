@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./views/**/*.ejs', './public/**/*.js'],
+  prefix: 'tw-',  // Prefix Tailwind class with 'tw-'
+  content: ['./views/**/*.ejs', './public/**/*.js','./src/**/*.js'],
   theme: {
     fontFamily: {
       kufi: ["kufi", "sans-serif"],

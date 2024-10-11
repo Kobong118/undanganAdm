@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const expressLayouts = require('express-ejs-layouts');
 const favicon = require('serve-favicon');
+const compression = require('compression');
 
 var usersRouter = require('./routes/users');
 const undanganAdm = require('./routes/adm');
@@ -22,6 +23,8 @@ app.set('view engine', 'ejs');
 // Set favicon
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use('/mp3', express.static(path.join(__dirname, 'public/mp3')));
+//middleware compression
+app.use(compression());
 
 
 app.use(logger('dev'));

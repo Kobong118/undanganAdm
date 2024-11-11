@@ -7,12 +7,13 @@ const expressLayouts = require('express-ejs-layouts');
 const favicon = require('serve-favicon');
 const compression = require('compression');
 
-var usersRouter = require('./routes/users');
+const usersRouter = require('./routes/users');
 const undanganAdm = require('./routes/adm');
 const generateQrCode = require('./routes/generateQrCode');
 const hadiah = require('./routes/hadiah');
 const pesan = require('./routes/pesan');
 const admin = require('./routes/admin');
+const blogger = require ('./routes/blogger')
 
 
 var app = express();
@@ -40,6 +41,7 @@ app.use('/generate-qr', generateQrCode);
 app.use('/hadiah', hadiah);
 app.use('/pesan', pesan);
 app.use('/admin', admin);
+app.use('/api/blog', blogger);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

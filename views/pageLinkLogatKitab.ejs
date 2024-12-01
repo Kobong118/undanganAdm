@@ -1,0 +1,85 @@
+<div class="slider-container">
+    <div class="slider" id="blogSlider">
+        <!-- Konten slider akan dimasukkan di sini -->
+        <div class="slide">
+            <h6 class="slide-title">Logatan Kitab Safinah <span class="id">1</span></h6>
+            <div class="slide-title-kitab">
+                <span>شرح كاشفة السجا</span>
+                <span class="sub">للشيخ الامام العالم الفاضل أبي المعطي محمد نووي الجاوي</span>
+                <span class="sub">على</span>
+                <span>سفينة النجا في أصول الدين والفقه</span>
+                <span class="sub">للشيخ الامام العالم الفاضل سالم بن سمير الحضرمي على مذهب الامام الشافعي</span>
+            </div>
+            <a href="#" target="_blank" class="slide-excerpt">Baca selengkapnya?</a>
+        </div>
+        <div class="slide">
+            <h6 class="slide-title">Logatan Kitab Safinah <span class="id">2</span></h6>
+            <div class="slide-title-kitab">
+                <span>شرح كاشفة السجا</span>
+                <span class="sub">للشيخ الامام العالم الفاضل أبي المعطي محمد نووي الجاوي</span>
+                <span class="sub">على</span>
+                <span>سفينة النجا في أصول الدين والفقه</span>
+                <span class="sub">للشيخ الامام العالم الفاضل سالم بن سمير الحضرمي على مذهب الامام الشافعي</span>
+            </div>
+            <a href="#" target="_blank" class="slide-excerpt">Baca selengkapnya?</a>
+        </div>
+        <div class="slide">
+            <h6 class="slide-title">Logatan Kitab Safinah <span class="id">3</span></h6>
+            <div class="slide-title-kitab">
+                <span>شرح كاشفة السجا</span>
+                <span class="sub">للشيخ الامام العالم الفاضل أبي المعطي محمد نووي الجاوي</span>
+                <span class="sub">على</span>
+                <span>سفينة النجا في أصول الدين والفقه</span>
+                <span class="sub">للشيخ الامام العالم الفاضل سالم بن سمير الحضرمي على مذهب الامام الشافعي</span>
+            </div>
+            <a href="#" target="_blank" class="slide-excerpt">Baca selengkapnya?</a>
+        </div>
+    </div>
+    
+    <div class="slide-search">
+        <input type="number" placeholder="Masukkan Nomor ID kitab" min="1">
+        <button onclick="cariKitab()">Cari</button>
+    </div>
+    <button class="nav-btn prev-btn" onclick="moveSlide(-1)">❮</button>
+    <button class="nav-btn next-btn" onclick="moveSlide(1)">❯</button>
+</div>
+
+<script>
+    // Fungsi untuk mengontrol pergeseran slide
+    function moveSlide(direction) {
+        const slider = document.getElementById('blogSlider');
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        let currentIndex = parseInt(slider.dataset.currentIndex || 0);
+
+        currentIndex += direction;
+        if (currentIndex < 0) {
+            currentIndex = totalSlides - 1;
+        } else if (currentIndex >= totalSlides) {
+            currentIndex = 0;
+        }
+
+        slider.dataset.currentIndex = currentIndex;
+        const offset = -currentIndex * 100;
+        slider.style.transform = `translateX(${offset}%)`;
+    };
+    // fungsi cari kitab
+    function cariKitab() {
+        const values = document.querySelector(".slide-search > input").value
+        const Id = parseInt(values);
+        console.log(Id)
+        const slider = document.getElementById('blogSlider');
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        if (Id > totalSlides) {
+            alert("Id kitab tidak tersedia")
+        } else {
+            let currentIndex = parseInt(slider.dataset.currentIndex || 0);
+            currentIndex = Id-1;
+            const offset = -currentIndex * 100;
+            slider.style.transform = `translateX(${offset}%)`;
+            slider.dataset.currentIndex = currentIndex;
+        }
+
+    }
+</script>

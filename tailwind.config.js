@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  prefix: 'tw-',  // Prefix Tailwind class with 'tw-'
   content: ['./views/**/*.ejs', './public/**/*.js','./src/**/*.js'],
+  //prefix: 'tw-',  // Prefix Tailwind class with 'tw-'
   theme: {
     fontFamily: {
       kufi: ["kufi", "sans-serif"],
@@ -12,6 +12,7 @@ module.exports = {
     },
     extend: {
       backgroundImage: {
+        'bg-madrasah':"url('/images/background1.gif')",
         'bg-m': "url('/images/Background.gif')",
         'bg-platen':"url('/images/platen.gif')",
         'aw' :"url('/images/bg-0.gif')",

@@ -44,6 +44,52 @@
   transform: rotateX(-180deg);
   transition: transform 0.8s ease;
 }
+/* ui logatan */
+@layer components {
+  .logat-container {
+    @apply mx-1 my-5 font-amiri; /* Margin 20px, font-family: 'Amiri', serif */
+  }
+
+  .arabic-text {
+    @apply text-right text-2xl leading-snug rtl:mr-0; /* Teks Arab */
+  }
+
+  .arabic-text span {
+    @apply relative mx-1 cursor-pointer; /* Margin 5px antara span */
+  }
+
+  .arabic-text span::before {
+    content: attr(data-irob); /* Menampilkan tanda i'rab */
+    @apply absolute -top-0 right-0 text-xs text-red-950 -rotate-45; /* Posisi di atas huruf */
+  }
+
+  .arabic-text span::after {
+    content: attr(data-logat); /* Menampilkan logat */
+    @apply absolute -bottom-4 right-1 text-xs text-red-950 -rotate-45; /* Posisi di atas huruf */
+  }
+
+  .meaning-text {
+    @apply text-left text-lg mt-10 text-gray-700; /* Teks makna di bawah */
+  }
+/* form input */
+  .form-container {
+    @apply m-5 p-4 border border-gray-300 rounded-lg bg-gray-50 w-full max-w-xl; /* Form logatan */
+  }
+
+  .form-container label {
+    @apply font-bold block mt-2; /* Label input */
+  }
+
+  .form-container textarea,
+  .form-container input {
+    @apply w-full p-2 mt-1 border border-gray-300 rounded text-base font-zilla; /* Input dan textarea */
+  }
+
+  .form-container button {
+    @apply mt-4 px-4 py-2 text-white bg-blue-500 border-none rounded cursor-pointer hover:bg-blue-700; /* Tombol */
+  }
+}
+
 }
 .countdown {
   .figure {

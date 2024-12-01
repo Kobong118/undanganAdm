@@ -14,6 +14,7 @@ const hadiah = require('./routes/hadiah');
 const pesan = require('./routes/pesan');
 const admin = require('./routes/admin');
 const blogger = require ('./routes/blogger')
+const rumah = require ('./routes/rumah');
 
 
 var app = express();
@@ -35,6 +36,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(expressLayouts);
+app.use('/', rumah);
 app.use('/undangan-maulid-adm', undanganAdm);
 app.use('/users', usersRouter);
 app.use('/generate-qr', generateQrCode);

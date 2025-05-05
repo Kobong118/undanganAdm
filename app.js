@@ -15,6 +15,7 @@ const pesan = require('./routes/pesan');
 const admin = require('./routes/admin');
 const blogger = require ('./routes/blogger')
 const rumah = require ('./routes/rumah');
+const haulApaLimbangan = require ('./routes/haulApaLimbangan');
 
 
 var app = express();
@@ -44,6 +45,7 @@ app.use('/hadiah', hadiah);
 app.use('/pesan', pesan);
 app.use('/admin', admin);
 app.use('/api/blog', blogger);
+app.use('/haul-apa-limbangan', haulApaLimbangan);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

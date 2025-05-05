@@ -1,0 +1,176 @@
+<div x-data="{sc:'', scroll:false,music: new Audio('/mp3/Senandung Jasa Guru.mp3'),akhir:false,
+init() {
+        this.music.addEventListener('ended', () => {
+            this.music.currentTime = 0; // Reset waktu ke awal
+            this.music.play(); // Memutar ulang musik
+        });
+    }
+}" x-bind:class="scroll? 'overflow-auto':'overflow-hidden'" class="h-screen">
+    <!-- cover -->
+    <div x-data="{terlihat:false,buka:false}" x-bind:class="{'invisible':buka}"
+        :class="buka?'transition-all delay-150 duration-500 ease-linear h-0':'h-screen p-1'"
+        class="relative w-screen overflow-hidden bg-haul-background">
+        <!-- dekorasi -->
+        <div x-bind:class="{'animate-[haul-awan_10s_linear_infinite]':terlihat}"
+            class="w-[2000px] h-full absolute top-0 bottom-0 left-0 right-0 bg-d-awan-top bg-5-1 bg-repeat-x">
+        </div>
+        <div x-bind:class="{'animate-[haul-awan-r_10s_linear_infinite]':terlihat}"
+            class="w-[2000px] h-full absolute top-0 bottom-0 left-0 right-0 bg-d-awan-bottom bg-5-1 bg-repeat-x">
+        </div>
+        <div x-bind:class="{'animate-slide-top-to-bottom':terlihat}"
+            class="w-full h-full absolute top-0 bottom-0 left-0 right-0 bg-d-top-left-lam bg-top bg-1-1 bg-no-repeat">
+        </div>
+        <div x-bind:class="{'animate-slide-top-to-bottom':terlihat}"
+            class="w-full h-full absolute top-0 bottom-0 left-0 right-0 bg-d-top-right-lam bg-top bg-1-1 bg-no-repeat">
+        </div>
+        <div x-bind:class="{'animate-haul-bintang':terlihat}"
+            class="w-full h-full absolute top-0 bottom-0 left-0 right-0 bg-start bg-top bg-1-1 bg-no-repeat"></div>
+        <div x-bind:class="{'animate-slide-top-to-bottom':terlihat}"
+            class="w-full h-full absolute top-0 bottom-0 left-0 right-0 bg-d-top bg-top bg-1-1 bg-no-repeat"></div>
+        <div x-bind:class="{'animate-slide-bottom-to-top':terlihat}"
+            class="w-full h-full absolute top-0 bottom-0 left-0 right-0 bg-d-bottom bg-top bg-1-1 bg-no-repeat"></div>
+        <div class="w-full h-full absolute top-0 bottom-0 left-0 right-0">
+            <div x-intersect:enter="terlihat = true" x-intersect:leave="terlihat = false" class="flex h-16 w-full">
+                <div class="w-1/5"></div>
+                <div class="w-1/5">
+                    <img x-show="terlihat" x-bind:class="{'animate-scaleRot-l':terlihat}"
+                        class="aspect-square object-cover" src="../images/haulapalimbangan2025/d-kotak.png" alt="">
+                </div>
+                <div class="w-1/5"></div>
+                <div class="w-1/5">
+                    <img x-show="terlihat" x-bind:class="{'animate-scaleRot-r':terlihat}"
+                        class="aspect-square object-cover" src="../images/haulapalimbangan2025/d-kotak.png" alt="">
+                </div>
+                <div class="w-1/5"></div>
+            </div>
+            <div class="flex h-32 w-full">
+                <div class="w-1/4">
+                    <img x-show="terlihat" x-bind:class="{'animate-scaleRot-l':terlihat}"
+                        class="aspect-square object-cover" src="../images/haulapalimbangan2025/d-kotak.png" alt="">
+                </div>
+                <div class="w-1/4"></div>
+                <div class="w-1/4"></div>
+                <div class="w-1/4">
+                    <img x-show="terlihat" x-bind:class="{'animate-scaleRot-r':terlihat}"
+                        class="aspect-square object-cover" src="../images/haulapalimbangan2025/d-kotak.png" alt="">
+                </div>
+            </div>
+        </div>
+        <!-- text -->
+        <div x-bind:class="{'animate-bintang-show':terlihat}"
+            class="absolute top-0 bottom-0 left-0 right-0 flex flex-col justify-around items-center">
+            <div class="w-1/2 text-center">
+                <h1 class="text-3xl font-sofia drop-shadow-2xl text-haul-text-header">Serat Uleman<span
+                        class="font-kufi block">وسيلة الهدى</span><span class="block text-sm font-sofia">Haol Apa Encep
+                        II (KH.M.Iskandar) anu ka-4 & Silaturahmi Alumni</span><span
+                        class="block text-sm font-sofia">Bojong Soreang & Balong Limbangan</span></h1>
+            </div>
+            <div class="w-full text-center relative">
+                <div class="absolute bottom-0 w-full text-haul-text">
+                    <h5 class="text-base font-sofia drop-shadow-2xl">Kahatur: <span class="font-zilla block">
+                            <%= nama.toUpperCase() %>
+                        </span></h5>
+                    <div @click="() => {scroll = !scroll;
+                        buka = !buka;
+                        music.play().catch(error => {
+                               console.log('Audio play failed:', error);
+                           });
+                   }" :class="scroll? 'invisible':'visible'" class="font-sofia my-4  animate-bounce">
+                        <a href="#" class="px-1 py-1 rounded border-haul-text border text-xs"><span><svg
+                                    xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-envelope-open inline mx-1 my-1" viewBox="0 0 16 16">
+                                    <path
+                                        d="M8.47 1.318a1 1 0 0 0-.94 0l-6 3.2A1 1 0 0 0 1 5.4v.817l5.75 3.45L8 8.917l1.25.75L15 6.217V5.4a1 1 0 0 0-.53-.882zM15 7.383l-4.778 2.867L15 13.117zm-.035 6.88L8 10.082l-6.965 4.18A1 1 0 0 0 2 15h12a1 1 0 0 0 .965-.738ZM1 13.116l4.778-2.867L1 7.383v5.734ZM7.059.435a2 2 0 0 1 1.882 0l6 3.2A2 2 0 0 1 16 5.4V14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5.4a2 2 0 0 1 1.059-1.765z" />
+                                </svg></span>
+                            Buka Serat Uleman</a>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- surat -->
+    <div class="relative w-screen h-screen overflow-hidden p-1 bg-haul-background">
+        <!-- decorasi -->
+        <div class="w-[2000px] h-full absolute top-0 bottom-0 left-0 right-0 bg-d-awan-top bg-5-1 bg-repeat-x">
+        </div>
+        <div class="w-[2000px] h-full absolute top-0 bottom-0 left-0 right-0 bg-d-awan-bottom bg-5-1 bg-repeat-x">
+        </div>
+        <div class="w-full h-full absolute top-0 bottom-0 left-0 right-0 bg-start bg-top bg-1-1 bg-no-repeat"></div>
+        <div
+            class="w-11/12 h-full absolute top-0 bottom-0 left-1/2 -translate-x-1/2 border-x border-haul-text bg-white bg-opacity-45">
+        </div>
+        <div
+            class="w-10/12 h-full absolute top-0 bottom-0 left-1/2 -translate-x-1/2 border-x border-haul-background bg-white bg-opacity-45 overflow-y-scroll">
+            <p class="text-center font-sofia text-haul-text mx-4">
+                <span class="block font-amiri text-haul-text">بِسْمِ اللهِ الرَّحْمَنِ الرَّحِيْمِ</span>
+                <span class="block font-amiri text-haul-text my-4">ٱلسَّلَامُ عَلَيْكُمْ وَرَحْمَةُ ٱللَّٰهِ وَبَرَكَاتُهُ</span>
+                Kahatur ka sadaya alumni santri Pangersa Apa KH.M.Iskandar boh nu kantos mondok di Ponpes Wasilatul Huda
+                Bojong Soreang atanapi nu di Balong Limbangan...
+                Sabada aya info ti pihak keluarga besar rehna bakal aya agenda Haol Apa Encep II (KH.M.Iskandar) anu
+                ka_4 sakantenan agenda *silaturahmi alumni*,
+
+                Kukituna atas nami ikatan pengurus alumni, nguningakeun oge ngahaturanan InsyaAlloh agenda nudisebat
+                diluhur bade dilaksanakeun dina dinten
+                Ahad ping 25 Mei 2025 (27 dzulqo'dah 1446H) tabuh 08.00 dugika rengse ..
+
+                Anapon kanggo kontribusi waragad acara anu di RAB keun kirang langkung 15jt seja disawerkn dina bentuk
+                infaq shodaqoh sakaikhlasanna.
+                Kanggo panampian kontribusi waragad anu cash, mangga tiasa ka koordinator Ust.M.Salman Mansur, tapi
+                tiasa oge transfer via rekening bank di handap ieu edaran , kantun kintunkeun we foto buktos
+                transferna.ka nmr WA Ust.M.Salman Mansur atawa ka.nmr WA simkuring Aat M Hatim..
+                Sakitu nu tiasa kahaturkeun. mugi jarembar rezekina, sarehat, dina waktosna pareng tiasa hadir, oge
+                acarana engke lungsur langsar pinuh ku kaberkahan. Amiin. Jazaakumulloh ahsanal jazaa.
+                <span class="block font-amiri text-haul-text">وَٱلسَّلَامُ عَلَيْكُمْ وَرَحْمَةُ ٱللَّٰهِ وَبَرَكَاتُهُ</span>
+            </p>
+        </div>
+    </div>
+    <!-- timedown dan rekening -->
+    <div class="relative w-screen h-screen overflow-hidden p-1 bg-haul-background">
+
+    </div>
+    <!-- footer -->
+    <div x-bind:class="scroll?'visible':'invisible'"
+        class="fixed bottom-0 w-screen bg-haul-background py-2 rounded-t-3xl">
+        <div class="grid grid-cols-2 gap-0 items-center justify-center">
+            <div x-data="{play:`<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' fill='currentColor' class='inline-block' viewBox='0 0 16 16'>
+                <path d='M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16'/>
+                <path d='M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445'/>
+              </svg> © 2025 ADM @Santri118.`,
+                pause:`<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' fill='currentColor' class='inline-block' viewBox='0 0 16 16'>
+                <path d='M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16'/>
+                <path d='M5 6.25a1.25 1.25 0 1 1 2.5 0v3.5a1.25 1.25 0 1 1-2.5 0zm3.5 0a1.25 1.25 0 1 1 2.5 0v3.5a1.25 1.25 0 1 1-2.5 0z'/>
+              </svg> © 2025 ADM @Santri118.`,span:`<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' fill='currentColor' class='inline-block' viewBox='0 0 16 16'>
+                <path d='M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16'/>
+                <path d='M5 6.25a1.25 1.25 0 1 1 2.5 0v3.5a1.25 1.25 0 1 1-2.5 0zm3.5 0a1.25 1.25 0 1 1 2.5 0v3.5a1.25 1.25 0 1 1-2.5 0z'/>
+              </svg> © 2025 ADM @Santri118.`}" @click="() => {
+                             if(music.paused || music.ended){
+                              music.play();
+                             span=pause;
+                              }else{
+                             music.pause();
+                             span=play;
+                                }
+                                    }" class="col-span-2 text-haul-text-header text-center px-4 text-[0.5rem]">
+                <span class="inline-block" x-html="span">
+                </span>
+            </div>
+            <div class="text-haul-text-header text-center px-4 text-[0.5rem]">
+                <a href="https://www.instagram.com/alukhuwwah_daarulmushtofaa?igsh=MWswM2dpbHc2aTNrZg==">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="inline-block" viewBox="0 0 16 16">
+                        <path
+                            d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334" />
+                    </svg> @alukhuwwah_daarulmushtofaa</a>
+            </div>
+            <div class="text-haul-text-header text-center px-4 text-[0.5rem]">
+                <a href="https://www.instagram.com/ikhwaanii_adm?igsh=MXE0Ym52NDI3cXJ0dA==">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-instagram inline-block" viewBox="0 0 16 16">
+                        <path
+                            d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334" />
+                    </svg> @ikhwaanii_adm</a>
+            </div>
+        </div>
+    </div>
+</div>

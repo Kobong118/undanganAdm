@@ -4,8 +4,11 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
+    "dev": "nodemon ./bin/www",
     "css": "npx tailwindcss -i ./cssinput/input.css -o ./public/stylesheets/style.css --watch",
-    "build:css": "npx tailwindcss -i ./cssinput/input.css -o ./public/stylesheets/style.css -m default"
+    "build:css": "npx tailwindcss -i ./cssinput/input.css -o ./public/stylesheets/style.css -m default",
+    "narkib-css": "npx tailwindcss -i ./cssinput/css-narkib-input.css -o ./public/stylesheets/style-narkib.css --watch",
+    "build:narkib-css": "npx tailwindcss -i ./stylesheets/style-narkib.css -o ./public/stylesheets/style-narkib-minify.css -m default"
   },
   "dependencies": {
     "@alpinejs/intersect": "^3.14.1",
@@ -22,6 +25,7 @@
     "express-rate-limit": "^7.4.0",
     "firebase": "^11.6.1",
     "http-errors": "~1.6.3",
+    "lucide-static": "^0.515.0",
     "morgan": "~1.9.1",
     "qrcode": "^1.5.4",
     "serve-favicon": "^2.5.0",
@@ -29,6 +33,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",
+    "nodemon": "^3.1.10",
     "postcss": "^8.4.47",
     "postcss-cli": "^11.0.0",
     "tailwindcss": "^3.4.13",

@@ -1,0 +1,14 @@
+<div class="bg-gray-200 rounded-lg m-1">
+    <h1 class="text-center text-xl">TourADM</h1>
+    <% if (masuk) { %>
+     <%- include('kartu-login') %>
+     <% } else { %>
+      <div class="flex flex-col mx-2">
+        <div class="m-10 text-center">Anda harus masuk terlebih dahulu</div>
+        <div class="flex justify-end items-center my-2">
+            <button class="bg-haul-background text-haul-text-header rounded-lg px-2 py-1">Masuk</button>
+        </div>
+    </div>
+    <% } %>
+    
+</div>

@@ -1,0 +1,449 @@
+<div class="w-screen h-svh relative">
+    <div
+        class="absolute size-full -inset-y-8 md:-inset-y-14 lg:-inset-y-[70px] bg-[url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgY6w0xgTBHMRa6mrURd1KlTqTIh57ybB5z4ZFB5uSySNHjDX1iEMOI50DydgHG2gNTHy4w6D9SUHoQjWnHFFdI3xDslemudQ5iSmLqf11JDF4nveQ0u3d1jwkVWTd_0OmEZ4ldYPg24-pZbB8WuDWIgskYL0zwRVBptQHg73jMyKpJtDFdQyc5iorUgJs/s1600/haul%20apa.jpg)] bg-top bg-100% bg-no-repeat">
+    </div>
+    <div class="absolute size-full top-0 bg-gradient-to-t from-haul-background from-50% to-transparent">
+        <div class="w-full min-h-screen flex items-center justify-center p-4">
+            <div x-data="typingFade" x-init="startLoop()"
+                x-bind:class="{ 'opacity-0 transition-opacity duration-[2000ms]': fading }" class="text-center">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgtUx97EARkdOnHx_qGjy0CYdGEsu0HfuACUrn0j1Y1PHCYmFSh-WNLqnEdS7lC52F0R858ccy0lbgyg5ZJV2jx6kjlS_tP72k5EWPrRqe2UdnYmxgTilzCRAdifF4DZr8EQhKGQZQM_8_UhuEzuTR90KvJSW1vXDmgJli58Myhn-8Zh-8i7EFMlVy1RQs/s1600/ukhuwwah.png"
+                    alt="Al-Ukhuwwah Daarul Musthofa" srcset="" class="size-2/4 rounded-full mx-auto">
+                <h1 class="text-2xl sm:text-4xl font-bold text-[#F1D0A8] drop-shadow-lg min-h-[3rem]">
+                    <span x-text="currentText"></span><span class="border-r-2 border-[#F1D0A8] animate-pulse"></span>
+                </h1>
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener('alpine:init', () => {
+                Alpine.data('typingFade', () => ({
+                    texts: ['TourAdm 2025', 'Haul Apa Limbangan & Ziyaroh makom Cinunuk', 'Berbakti untuk membina hati'],
+                    currentText: '',
+                    currentIndex: 0,
+                    charIndex: 0,
+                    fading: false,
+
+                    startLoop() {
+                        this.resetTyping();
+                        this.typeText();
+                    },
+
+                    resetTyping() {
+                        this.currentText = '';
+                        this.charIndex = 0;
+                        this.fading = false;
+                    },
+
+                    typeText() {
+                        let fullText = this.texts[this.currentIndex];
+
+                        if (this.charIndex < fullText.length) {
+                            this.currentText += fullText.charAt(this.charIndex);
+                            this.charIndex++;
+                            setTimeout(() => this.typeText(), 80);
+                        } else {
+                            // Selesai mengetik teks
+                            setTimeout(() => {
+                                this.fading = true;
+
+                                setTimeout(() => {
+                                    this.currentIndex++;
+                                    if (this.currentIndex >= this.texts.length) {
+                                        this.currentIndex = 0; // Reset loop
+                                    }
+                                    this.resetTyping();
+                                    this.typeText();
+                                }, 2000); // Fade duration
+                            }, 3000); // Tampil setelah diketik
+                        }
+                    }
+                }));
+            });
+        </script>
+
+    </div>
+</div>
+<!-- mobil letik -->
+<div x-data="tourADMComponent()" x-init="getData()" class="p-4" id="informasi-jamaah">
+    <h2 class="text-center text-xl font-bold mb-4">Data Penumpang</h2>
+
+    <template x-if="data.ikutTour.length">
+        <div class="space-y-8">
+            <template x-for="[judul, filter] in Object.entries(kelompokKendaraan)" :key="judul">
+                <div class="my-8">
+                    <h3 class="text-lg font-semibold mb-2 text-haul-text-header bg-haul-background p-1 rounded-t-3xl text-center"
+                        x-text="judul"></h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                        <template x-for="(item, index) in data.ikutTour.filter(filter)" :key="item.Nama">
+                            <div class="p-4 border rounded-lg shadow bg-white  relative">
+                                <div class="font-bold text-blue-600" x-text="item.Nama"></div>
+                                <div class="text-sm text-gray-600 mt-1">
+                                    Ongkos:
+                                    <template x-if="item.ongkos == 110000 || item.Gol === 'K'">
+                                        <span class="text-blue-500"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                height="16" fill="currentColor" class="inline-block"
+                                                viewBox="0 0 16 16">
+                                                <path
+                                                    d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708" />
+                                            </svg></span>
+                                    </template>
+                                    <template x-if="item.ongkos != 110000 && item.Gol !== 'K'">
+                                        <span class="text-red-500 font-semibold"
+                                            x-text="formatRupiah(item.ongkos)"></span>
+                                    </template>
+                                </div>
+                                <div class="absolute top-1 right-2 font-bold text-blue-600">
+                                  <div x-text="index + 1"></div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </template>
+
+    <div x-show="error" class="text-red-500 mt-4" x-text="error"></div>
+</div>
+
+<script>
+    function tourADMComponent() {
+        return {
+            data: { ikutTour: [] },
+            error: '',
+            kelompokKendaraan: {
+                "Mobil Pribadi": item => item.kursi >= 1 && item.kursi <= 7,
+                "Angkot 1": item => item.kursi >= 8 && item.kursi <= 19,
+                "Angkot 2": item => item.kursi >= 20 && item.kursi <= 30,
+                "Angkot 3": item => item.kursi >= 31 && item.kursi <= 41,
+                "Angkot 4": item => item.kursi >= 42 && item.kursi <= 53,
+                "Angkot 5": item => item.kursi >= 54 && item.kursi <= 64,
+            },
+            formatRupiah(angka) {
+                return new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR" }).format(angka);
+            },
+            async getData() {
+                try {
+                    const result = await fetch(urlTourADM);
+                    if (!result.ok) throw new Error("Data tidak bisa diakses, hubungi pengembang !!!");
+                    const response = await result.json();
+                    this.data.ikutTour = response.ikutTour || [];
+                } catch (err) {
+                    console.error(err);
+                    this.error = err.message;
+                }
+            }
+        }
+    }
+</script>
+
+<!-- info rekening -->
+<div x-data="{ copied: false }"
+    class="max-w-md mx-auto bg-white shadow-lg rounded-2xl overflow-hidden border border-gray-200 my-8"
+    id="bayar-ongkos">
+    <div class="px-6 py-4">
+        <div class="font-bold text-xl text-gray-800 mb-4">Informasi Rekening</div>
+
+        <!-- Rekening BNI -->
+        <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center space-x-4">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjy87uI1S2Rm0B0uBpviA3-NWD_57Z1JoySkCM1ipPUe-How7ToG0Y3ui2GDRFbp9c5svxHD2zBkUSVj1nTeAE5G2oQfVh_A_jSy5cJfZDhrWHRaw0cYI7bnTTdQaNACLF0rFhnOjMcVVlETmp0dcug91ScKaeB_RABHOBFRsQk8v2JP7AT2E4p2nIgCRo/s1600/bni.png"
+                    alt="Logo Bank" class="w-12 h-12 object-contain" />
+                <div>
+                    <p class="text-gray-700 font-medium">BNI - <span id="bni">1921083803</span></p>
+                    <p class="text-gray-500 text-sm">Siti Nurhalimah Alawiyyah</p>
+                </div>
+            </div>
+            <button
+                @click="navigator.clipboard.writeText(document.getElementById('bni').innerText); copied = true; setTimeout(() => copied = false, 2000)"
+                class="text-sm px-3 py-1 bg-blue-100 text-blue-700 rounded hover:bg-blue-200 transition">
+                Salin
+            </button>
+        </div>
+
+        <!-- DANA -->
+        <div class="flex items-center justify-between mb-4">
+            <div class="flex flex-col items-center space-x-4">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgWvBPSFzzllt4iLJF6I-qlfB5X3FXcpYuXCD8A33Q1VUP0QDJZrT7Xq9b7qIySyl124PEyAKDYEFg2tzUDsQH96TuCnZINJ7n-nK3uZeygLOQOTB4g7gdtwXO-5vlmR6H1THe-F8jPxM-DCGLnYwtrdexKL8RAVDxdqGGQU4q-HSxkY0dEEbz4S_KfxZQ/s1600/WhatsApp%20Image%202024-06-29%20at%2006.40.21.jpeg"
+                    alt="DANA" class="size-full object-contain" />
+                <div>
+                    <p class="text-gray-700 font-medium">DANA (e-wallet)</p>
+                    <p class="text-gray-500 text-sm">Scan barcode untuk Bayar</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tombol Konfirmasi -->
+        <div class="text-center mt-6 mb-11">
+            <a href="https://wa.me/6281220206315?text=Assalamualaikum,%20saya%20sudah%20mengirim%20ongkos%20ke%20[...?]%20yang%20tertera."
+                target="_blank"
+                class="inline-block px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition">
+                Konfirmasi Kiriman via WhatsApp
+            </a>
+        </div>
+    </div>
+
+    <!-- Notifikasi salin rekening-->
+    <div x-show="copied" x-transition
+        class="fixed bottom-1/2 left-1/2 transform -translate-x-1/2 bg-black text-white text-sm px-4 py-2 rounded shadow-lg">
+        ✅ Nomor rekening disalin!
+    </div>
+</div>
+<!-- CRUD data -->
+<!-- FORM TAMBAH DATA UNTUK DafJam -->
+<div x-data="formDafJam()" class="p-4 max-w-xl mx-auto space-y-4">
+  <h2 class="text-lg font-bold">Tambah Data Jamaah (DafJam)</h2>
+  <input type="text" x-model="form.nama" placeholder="Nama" class="input" required>
+  <div class="flex gap-4">
+    <label><input type="radio" x-model="form.gen" value="L"> Laki-laki</label>
+    <label><input type="radio" x-model="form.gen" value="P"> Perempuan</label>
+  </div>
+  <input type="text" x-model="form.nowa" placeholder="No. WA" class="input">
+  <div class="flex gap-4">
+    <label><input type="radio" x-model="form.gol" value="J"> Jamaah</label>
+    <label><input type="radio" x-model="form.gol" value="K"> Keluarga</label>
+    <label><input type="radio" x-model="form.gol" value="S"> Santri</label>
+  </div>
+  <input type="number" x-model="form.total" placeholder="Total Tabungan" class="input">
+  <div class="flex gap-4">
+    <label><input type="radio" x-model="form.acara" :value="true"> Ikut Tour</label>
+    <label><input type="radio" x-model="form.acara" :value="false"> Tidak Ikut</label>
+  </div>
+  <input type="number" x-model="form.ongkos" placeholder="Ongkos" class="input">
+  <input type="number" x-model="form.kursi" placeholder="Kursi" class="input">
+  <input type="password" x-model="form.kodeAkses" placeholder="kode Akses" class="input">
+  <label class="block"><input type="checkbox" x-model="form.setuju"> Saya menyetujui pengiriman data</label>
+  <button @click="submitData" class="btn">Simpan</button>
+</div>
+
+<!-- FORM TAMBAH DATA UNTUK notteTab -->
+<div x-data="formNotteTab()" x-init="init()" class="p-4 max-w-xl mx-auto space-y-4">
+  <h2 class="text-lg font-bold">Tambah Catatan Tabungan (notteTab)</h2>
+  <div class="relative w-full">
+  <label class="block text-sm font-medium text-gray-700 mb-1">Nama Nasabah</label>
+
+  <!-- Input pencarian -->
+  <input
+    type="text"
+    x-model="search"
+    x-on:focus="open = true"
+    x-on:click.away="open = false"
+    placeholder="Ketik nama..."
+    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-300 focus:outline-none"
+  >
+
+  <!-- Dropdown hasil pencarian -->
+  <ul
+    x-show="open"
+    x-transition
+    class="absolute z-10 mt-1 w-full bg-white border rounded-lg max-h-60 overflow-y-auto shadow"
+  >
+    <template x-for="(nama, index) in filtered" :key="index">
+      <li
+        x-text="nama"
+        @click="select(nama)"
+        class="px-4 py-2 hover:bg-blue-100 cursor-pointer"
+      ></li>
+    </template>
+
+    <li x-show="filtered.length === 0" class="px-4 py-2 text-gray-500">Tidak ditemukan</li>
+  </ul>
+</div>
+
+  <input type="date" x-model="form.Tanggal" class="input" required>
+  <input type="number" x-model="form.Setor" min="2000" placeholder="Setor (min 2000)" class="input">
+  <input type="number" x-model="form.Tarik" min="2000" placeholder="Tarik (min 2000)" class="input">
+  <input type="text" x-model="form.ket" placeholder="Keterangan" class="input">
+  <input type="password" x-model="form.kodeAkses" placeholder="kode Akses" class="input">
+  <label class="block"><input type="checkbox" x-model="form.setuju"> Saya menyetujui pengiriman data</label>
+  <button @click="submitData" class="btn">Simpan</button>
+</div>
+
+<!-- TOAST NOTIFICATION -->
+<div x-data="toastNotif()" x-init="window.toast = $data" x-show="show" x-transition class="fixed bottom-4 right-4 bg-green-500 text-white p-3 rounded shadow-lg">
+  <span x-text="message"></span>
+</div>
+
+<!-- LOADING SPINNER -->
+<div x-show="loading" x-data="{ loading: false }" x-init="window.loading = $data" class="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center z-50">
+  <div class="w-12 h-12 border-4 border-white border-t-transparent rounded-full animate-spin"></div>
+</div>
+
+<script>
+function toastNotif() {
+  return {
+    show: false,
+    message: '',
+    showToast(msg) {
+      this.message = msg;
+      this.show = true;
+      setTimeout(() => this.show = false, 4000);
+    }
+  }
+}
+
+function formDafJam() {
+  return {
+    form: {
+      nama: '', gen: '', nowa: '', gol: '', total: '', acara: null, ongkos: '', kursi: '', kodeAkses: '', setuju: false
+    },
+    async submitData() {
+      const { nama, gen, kodeAkses, setuju, gol, ongkos, kursi } = this.form;
+
+      if (!nama || !gen || !kodeAkses) {
+        window.toast.showToast('Nama, Gender, dan kodeAkses wajib diisi');
+        return;
+      }
+      if (!setuju) {
+        window.toast.showToast('Anda harus menyetujui pengiriman data');
+        return;
+      }
+      if (!gol || ongkos === '' || kursi === '') {
+        window.toast.showToast('Golongan, Ongkos, dan Kursi wajib diisi');
+        return;
+      }
+      if (isNaN(ongkos) || ongkos <= 0 || isNaN(kursi) || kursi <= 0) {
+        window.toast.showToast('Ongkos dan Kursi harus berupa angka lebih dari 0');
+        return;
+      }
+
+      window.loading.loading = true;
+      try {
+        const res = await fetch(urlTourADM, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            ...this.form,
+            action: 'add',
+            sheet: 'DafJam'
+          })
+        });
+        const data = await res.json();
+        if (res.ok) {
+          window.toast.showToast(data.message || 'Data tersimpan');
+          this.form.setuju = false;
+          window.location.reload();
+        } else {
+          throw new Error(data.message || 'Terjadi kesalahan saat menyimpan');
+        }
+      } catch (e) {
+        window.toast.showToast('Gagal mengirim data: ' + (e.message || e));
+      } finally {
+        window.loading.loading = false;
+      }
+    }
+  }
+}
+
+function formNotteTab() {
+  return {
+    form: {
+      Tanggal: '', Nama: '', Setor: '', Tarik: '', ket: '', kodeAkses: '', setuju: false
+    },
+    daftar: [],
+      open: false,
+      search: '',
+      get filtered() {
+        return this.daftar.filter(n =>
+          n.toLowerCase().includes(this.search.toLowerCase())
+        );
+      },
+      select(name) {
+        this.search = name;
+        this.form.Nama = name;
+        this.open = false;
+      },
+    async init() {
+      try {
+        const res = await fetch(urlTourADM);
+        const data = await res.json();
+          this.daftar = data.dataJamaah.map(item => item.Nama);
+      } catch (e) {
+        window.toast.showToast('Gagal mengambil daftar nama: ' + (e.message || e));
+      }
+    },
+    async submitData() {
+      const { Tanggal, Nama, Setor, Tarik, kodeAkses, setuju } = this.form;
+      if (!Tanggal || !Nama || (!Setor && !Tarik) || !kodeAkses) {
+        console.log(this.form);
+        window.toast.showToast('Tanggal, Nama, salah satu dari Setor/Tarik dan kodeAkses wajib diisi');
+        return;
+      }
+      if ((Setor && Setor < 2000) || (Tarik && Tarik < 2000)) {
+        window.toast.showToast('Setor dan Tarik minimal Rp 2000');
+        return;
+      }
+      if (!setuju) {
+        window.toast.showToast('Anda harus menyetujui pengiriman data');
+        return;
+      }
+
+      window.loading.loading = true;
+      console.log(JSON.stringify({...this.form,
+            action: 'add',
+            sheet: 'notteTab'}));
+      try {
+        const res = await fetch(urlTourADM, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            ...this.form,
+            action: 'add',
+            sheet: 'notteTab'
+          })
+        });
+        const data = await res.json();
+        if (res.ok) {
+          window.toast.showToast(data.message || 'Data tersimpan');
+          this.form.setuju = false;
+          window.location.reload();
+        } else {
+          throw new Error(data.message || 'Terjadi kesalahan saat menyimpan');
+        }
+      } catch (e) {
+        window.toast.showToast('Gagal mengirim data: ' + (e.message || e));
+      } finally {
+        window.loading.loading = false;
+      }
+    }
+  }
+}
+</script>
+<!-- navigasi -->
+<div
+    class="fixed left-1/2 -translate-x-1/2 w-11/12 h-10 bottom-0 rounded-3xl grid grid-cols-3 justify-around items-center justify-items-center bg-gradient-to-t from-haul-background to-haul-text-header bg-opacity-65">
+    <div class="m-auto p-1 px-3 rounded-3xl border border-haul-text-header">
+        <!-- Link ke Informasi Jamaah -->
+        <a href="#informasi-jamaah" class="flex flex-row items-center text-xs text-haul-background">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="inline-block"
+                viewBox="0 0 16 16">
+                <path
+                    d="M5 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0m8 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0m-6-1a1 1 0 1 0 0 2h2a1 1 0 1 0 0-2zm1-6c-1.876 0-3.426.109-4.552.226A.5.5 0 0 0 3 4.723v3.554a.5.5 0 0 0 .448.497C4.574 8.891 6.124 9 8 9s3.426-.109 4.552-.226A.5.5 0 0 0 13 8.277V4.723a.5.5 0 0 0-.448-.497A44 44 0 0 0 8 4m0-1c-1.837 0-3.353.107-4.448.22a.5.5 0 1 1-.104-.994A44 44 0 0 1 8 2c1.876 0 3.426.109 4.552.226a.5.5 0 1 1-.104.994A43 43 0 0 0 8 3" />
+                <path
+                    d="M15 8a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1V2.64c0-1.188-.845-2.232-2.064-2.372A44 44 0 0 0 8 0C5.9 0 4.208.136 3.064.268 1.845.408 1 1.452 1 2.64V4a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1v3.5c0 .818.393 1.544 1 2v2a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5V14h6v1.5a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5v-2c.607-.456 1-1.182 1-2zM8 1c2.056 0 3.71.134 4.822.261.676.078 1.178.66 1.178 1.379v8.86a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 11.5V2.64c0-.72.502-1.301 1.178-1.379A43 43 0 0 1 8 1" />
+            </svg>
+            Informasi
+        </a>
+    </div>
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhLMCuNK5PbAVOcqAfTRdjPV5JB4l79gGgbD2JI1pMWgVcNRPjOaHXZw83wiyzPctJVKueX8lZI9TR8vgdlr-CPcJIw5vXyo8HdF3yI5qEHFR-Yg35Tnr0FuSjm9GHCMZhnJRvVG8pJGjR12wLw_AVusSjB4gq9LPImPhNcJrxNm0gTkSOmyOohxtWhVfk/s200/logo3.png"
+        alt="ADM" class="size-8 m-auto" />
+    <div class="m-auto p-1 px-3 rounded-3xl border border-haul-text-header">
+        <!-- Link ke Bayar Ongkos -->
+        <a href="#bayar-ongkos" class="flex flex-row items-center text-xs text-haul-background">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="inline-block"
+                viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M11 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8m5-4a5 5 0 1 1-10 0 5 5 0 0 1 10 0" />
+                <path
+                    d="M9.438 11.944c.047.596.518 1.06 1.363 1.116v.44h.375v-.443c.875-.061 1.386-.529 1.386-1.207 0-.618-.39-.936-1.09-1.1l-.296-.07v-1.2c.376.043.614.248.671.532h.658c-.047-.575-.54-1.024-1.329-1.073V8.5h-.375v.45c-.747.073-1.255.522-1.255 1.158 0 .562.378.92 1.007 1.066l.248.061v1.272c-.384-.058-.639-.27-.696-.563h-.668zm1.36-1.354c-.369-.085-.569-.26-.569-.522 0-.294.216-.514.572-.578v1.1zm.432.746c.449.104.655.272.655.569 0 .339-.257.571-.709.614v-1.195z" />
+                <path
+                    d="M1 0a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4.083q.088-.517.258-1H3a2 2 0 0 0-2-2V3a2 2 0 0 0 2-2h10a2 2 0 0 0 2 2v3.528c.38.34.717.728 1 1.154V1a1 1 0 0 0-1-1z" />
+                <path d="M9.998 5.083 10 5a2 2 0 1 0-3.132 1.65 6 6 0 0 1 3.13-1.567" />
+            </svg>
+            Bayar
+        </a>
+    </div>
+</div>
+<!-- script utility -->
+<script>
+    const urlTourADM = "https://script.google.com/macros/s/AKfycbwfkoHCevue6ltFsB93gWib2xSvCgJbHBTJ2Gnq2nu07mzrUKOgyUSeVUYMBAQIi2m7/exec";
+</script>

@@ -12,7 +12,7 @@ module.exports = {
     },
     extend: {
       backgroundImage: {
-        'bg-madrasah': "url('/images/background1.gif')",
+        'bg-madrasah': "url('/images/Background1.gif')",
         'bg-m': "url('/images/Background.gif')",
         'bg-platen': "url('/images/platen.gif')",
         'aw': "url('/images/bg-0.gif')",
@@ -65,6 +65,7 @@ module.exports = {
         '4-1':'25% 100%',
         '3-1':'33.333% 100%',
         '5-1':'20% 100%',
+        'a-1':'auto 100%'
       },
       colors: {
         'turqu': "#2a7060",

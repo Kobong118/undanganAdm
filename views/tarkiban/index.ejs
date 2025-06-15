@@ -1,0 +1,658 @@
+<div x-data="modalComponent()" class="bg-gray-100 min-h-screen flex-row justify-center p-4 w-screen">
+    <h1 class="quran-font">بِسْمِ اللّٰهِ الرَّ حْمٰنِ الرَّحِيْمِ</h1>
+    <div class="text-center w-full flex items-center bg-white rounded-lg shadow-lg p-6 mx-auto mt-10">
+      <!-- Tombol -->
+      <button @click="open(`
+      <h2 class=' font-semibold mb-4'>Penjelasan <span class='kitab-font-reguler'>ب</span></h2>
+      <p class='text-gray-700 kitab-font-reguler'>
+      تعريف كلمة الحرف : كَلِمَةٌ دَلَّتْ عَلىَ مَعْنىً فِي غَيْرِهَا 
+      </p>
+      <p class='text-gray-700 '>
+      ta'rif kalimat huruf : kalimat anu nuduhkeun kana ma’na ku lianna eta kalimat
+      </p>
+      <hr class='my-4 border-gray-300'>
+      <p class='text-gray-700 kitab-font-reguler'>
+      ‌وعلامتها : لا تقبل شيأ من علامات الاسم ولا شيأ من علامات الفعل 
+      </p>
+      <p class='text-gray-700 '>
+      Jeung tanda-tanda na : teu nampa nanaon tina tanda-tanda isim atawa nanaon tina tanda-tanda fi'il
+      </p>
+      <p class='text-gray-700 kitab-font-reguler'>
+      كما قال الآجرومي  
+      </p>
+      <p class='text-gray-700 '>
+      sakumaha anu diucapkeun ku Al-Ajrumi
+      </p>
+      <p class='text-gray-700 kitab-font-reguler'>
+      وَالْحَرْفُ مَا لاَ يَصْلُحُ مَعَهُ دَلِيْلُ الْاِسْمِ وَﻻَ دَلِيْلُ الْفِعْلِ   
+      </p>
+      <p class='text-gray-700 kitab-font-reguler'>
+      وقال ابن مالك   
+      </p>
+      <p class='text-gray-700 '>
+      Jeung ceuk Ibn Malik
+      </p>
+      <p class='text-gray-700 kitab-font-reguler'>
+      سِوَاهُماَ الحَرْفُ كَهَلْ وَفِيْ وَلَمْ ١٢   
+      </p>
+      <hr class='my-4 border-gray-300'>
+      <p class='text-gray-700 kitab-font-reguler'>
+      مبني على الكسرة
+<br>تعريف مبني
+<br>لُزُوْمُ آخِرِ الكَلِمَةِ حَالَةً وَاحِدَةً   
+      </p>
+      <p class='text-gray-700 '>
+      Dimabnikeun kana kasroh
+<br>Ta'rif mabni:
+<br>Tetepna tungtung kalimat dina hiji tingkah
+</p>
+<h1 class='text-center mb-2 kitab-font-reguler text-[1.5rem]'>المبنيات</h1>
+<div class='grid grid-cols-1 gap-4 kitab-font-reguler mt-2'>
+    <div class='border-l border-gray-300 pl-4'>
+      <h5 class='mb-1 text-[1.5rem] text-center'>الاسماء</h5>
+      <ul class='list-disc pr-4 space-y-1'>
+        <li><span class='kitab-font-reguler'>الضمائر</span></li>
+        <li><span class='kitab-font-reguler'>أسماء الإشارة</span></li>
+        <li><span class='kitab-font-reguler'>الأسماء الموصولة</span></li>
+        <li><span class='kitab-font-reguler'>أسماء الإستفهام</span></li>
+        <li><span class='kitab-font-reguler'>أسماء الشرط</span></li>
+        <li><span class='kitab-font-reguler'>أسماء الأفعال</span></li>
+        <li><span class='kitab-font-reguler'>بعض الظروف</span></li>
+        <li><span class='kitab-font-reguler'>الأسماء المركبة</span></li>
+        <li><span class='kitab-font-reguler'>اسم لا النافية للجنس في بعض حالاته</span></li>
+      </ul>
+    </div>
+    <div class='border-l border-gray-300 pl-4'>
+      <h5 class='mb-1 text-[1.5rem] text-center'>الأفعال</h5>
+      <ul class='list-disc pr-4 space-y-1'>
+        <li><span class='kitab-font-reguler'>الفعل الماضي</span></li>
+        <li><span class='kitab-font-reguler'>فعل الأمر</span></li>
+        <li><span class='kitab-font-reguler'>الفعل المضارع المتصل بنون النسوة أو إحدى نوني التوكيد</span></li>
+      </ul>
+    </div>
+    <div class='border-l border-gray-300 pl-4'>
+      <h5 class='mb-1 text-[1.5rem] text-center'>الحروف</h5>
+      <ul class='list-disc pr-4 space-y-1'>
+        <li><span class='kitab-font-reguler'>جميعها مبنية</span></li>
+      </ul>
+    </div>
+    </ul>
+</div>
+
+      <hr class='my-4 border-gray-300'>
+      <p class='text-gray-700 kitab-font-reguler'>
+      تنقسم الحرف الى ثلاثة أقسام   
+      </p>
+      <p class='text-gray-700 '>
+      Huruf dibagi kana tilu bagian
+      </p>
+      <p class='text-gray-700 kitab-font-reguler'>
+      أ‌.	مشترك بين الاسماء والافعال مثل هَلْ   
+      </p>
+      <p class='text-gray-700 '>
+      A.	Anu umum antara isim jeung fi'il saperti <span class='kitab-font-reguler'>هَلْ</span>
+      </p>
+      <p class='text-gray-700 kitab-font-reguler'>
+      ب‌.	مختصّ بالاسماء مثل مِنْ   
+      </p>
+      <p class='text-gray-700 '>
+      B.	Anu husus pikeun isim saperti <span class='kitab-font-reguler'>مِنْ</span>
+      </p>
+      <p class='text-gray-700 kitab-font-reguler'>
+      ت‌.	مختصّ بالأفعال مثل لَمْ   
+      </p>
+      <p class='text-gray-700 '>
+      C.	Anu husus pikeun fi'il saperti <span class='kitab-font-reguler'>لَمْ</span>
+      </p>
+      <hr class='my-4 border-gray-300'>
+      <p class='text-gray-700 kitab-font-reguler'>
+      وعمل هذا الباء في البسملة : يجرّر ما بعدها لانها من حروف الجرّ   
+      </p>
+      <p class='text-gray-700 '>
+      Jeung ari amalna huruf <span class='kitab-font-reguler'>بِ</span> dina bismillah: nyaeta ngaje'erkeun kana isim anu aya saenggesna sabab eta mangrupa huruf jar
+      </p>
+      <p class='text-gray-700 kitab-font-reguler'>
+      وهي عشرون حرفا    
+      </p>
+      <p class='text-gray-700 '>
+      Jeung ari haraf jar eta aya dua puluh huruf <strong>*** 11 ceuk dina jurumiyyah mah</strong>
+      </p>
+      <div class='grid grid-cols-2 sm:grid-cols-4 gap-2 text-gray-700 kitab-font-reguler'>
+      <div><span>١.</span> الباء : للالصاق وللقسم</div>
+      <div><span>٢.</span> من : للابتداء الغاية</div>
+      <div><span>٣.</span> الى : للانتهاء الغاية</div>
+      <div><span>٤.</span> عن : للمجاوزة</div>
+      <div><span>٥.</span> على : للاستعلاء</div>
+      <div><span>٦.</span> في : للظرفية</div>
+      <div><span>٧.</span> الكاف : للتشبيه</div>
+      <div><span>٨.</span> اللام : للاستحقاق</div>
+      <div><span>٩.</span> واو القسم</div>
+      <div><span>١٠.</span> وتاؤ القسم</div>
+      <div><span>١١.</span> ربّ</div>
+      <div><span>١٢.</span> منذ</div>
+      <div><span>١٣.</span> مذ</div>
+      <div><span>١٤.</span> حتى</div>
+      <div><span>١٥.</span> خلا</div>
+      <div><span>١٦.</span> عدا</div>
+      <div><span>١٧.</span> حاشا</div>
+      <div><span>١٨.</span> كي</div>
+      <div><span>١٩.</span> متى -في لغة هُذَيْل-</div>
+      <div><span>٢٠.</span> لعل - في لغة عُقَيْل-</div>
+      </div>
+      </p>
+      
+      <p class='text-gray-700 kitab-font-reguler'>
+      كما قال الآجرومي  
+      </p>
+      <p class='text-gray-700 '>
+      sakumaha anu diucapkeun ku Al-Ajrumi
+      </p>
+      <p class='text-gray-700 kitab-font-reguler'>
+      وَحُرُوفِ الخَفْضِ وَهِيَ مِنْ وَاِلَى وَعَنْ وَعَلىَ وَفِيْ وَرُبَّ وَالْبَاءُ وَالكَافُ واللاَمُ  وَحُرُوْفُ القَسَمِ وهِيَ الوَاوُ والبَاءُ وَالتَّاءُ    
+      </p>
+      <p class='text-gray-700 kitab-font-reguler'>
+      وقال ابن مالك   
+      </p>
+      <p class='text-gray-700 '>
+      Jeung ceuk Ibn Malik
+      </p>
+      <p class='text-gray-700 kitab-font-reguler'>
+      364 هَاكَ حُرُوْفَ الجَّرِّ وَهْيَ مِنْ اِلىَ ۝ حَتَّى خَلاَ حَاشَا عَدَا فِيْ عَنْ عَلىَ
+  <br>365 مُذْ مُنْذُ رُبَّ اللاَمُ كَيْ وَاوٌ وَتَا  ۝ وَالكَافُ وَالبَاءُ وَلَعَلَّ وَمَتىَ
+     
+      </p>
+      <hr class='my-4 border-gray-300'>
+      <p class='text-gray-700 kitab-font-reguler'>
+      وينقسم حروف الجر على ثلاثة اقسام   
+      </p>
+      <p class='text-gray-700 '>
+      Huruf jar dibagi kana tilu bagian
+      </p>
+      <p class='text-gray-700 kitab-font-reguler'>
+      ١.	حروف الجر الاصلي : مَا يَحْتَاجُ اِلىَ مُتَعَلَّقٍ يَتَعَلَّقُ بِهِ وَتُفِيْدُ الْمَعْنَى الْمَقْصُوْدَ وَيَخْتَلُّ اَصْلُ مَعْنىَ الْكَلاَمِ بِاِسْقَاطِهِ   
+      </p>
+      <p class='text-gray-700 '>
+      1.	Huruf jar as-liyah: Haraf jar anu butuh kana muta’alaq ,sareng nuduhkeun kana ma’na anu dimaksud, sareng ruksak asal ma’na kalam ku miceunna eta haraf
+      </p>
+      <p class='text-gray-700 kitab-font-reguler'>
+      ٢.	حروف الجر الزائد : مَا ﻻَ يَحْتَاجُ اِلىَ مُتَعَلَّقٍ يَتَعَلَّقُ بِهِ وَ ﻻَ تُفِيْدُ الْمَعْنَى الْمَقْصُوْدَ وَ ﻻَ يَخْتَلُّ اَصْلُ مَعْنىَ الْكَلاَمِ بِاِسْقَاطِهِ   
+      </p>
+      <p class='text-gray-700 '>
+      2.	Huruf jar az-zā'idah: Haraf jar anu henteu butuh kana muta’alaq, sareng henteu nuduhkeun kana ma’na anu dimaksud, sareng henteu ruksak asal ma’na kalam ku miceunna eta haraf
+      </p>
+      <p class='text-gray-700 kitab-font-reguler'>
+      لايزاد من حروف الجر الا : الباء من اللام الكاف   
+      </p>
+      <p class='text-gray-700 '>
+      Anu sok jadi huruf jar za-idah ngan ukur: 
+      <ul class='list-disc pl-5 mt-2 space-y-1 text-gray-700 kitab-font-reguler'>
+        <li>
+        الباء:
+        <ul class='list-[circle] pl-5'>
+          <li>في فاعل كفى</li>
+          <li>في مفعول به</li>
+          <li>في مبتدأ</li>
+          <li>في حال معمولها منفي</li>
+          <li>في خبر ما وليس (كثير من الأمثلة)</li>
+        </ul>
+        </li>
+        <li>
+        من:
+        <ul class='list-[circle] pl-5'>
+          <li>في فاعل</li>
+          <li>في مفعول به</li>
+          <li>في مبتدأ</li>
+        </ul>
+        </li>
+        <li>
+        اللام:
+        <ul class='list-[circle] pl-5'>
+          <li>بين الفعل ومفعوله</li>
+          <li>في مفعول إذا تأخر الفعل</li>
+        </ul>
+        </li>
+        <li>
+        الكاف:
+        <ul class='list-[circle] pl-5'>
+          <li>في خبر ليس</li>
+        </ul>
+        </li>
+      </ul>
+      </p>
+      <p class='text-gray-700 kitab-font-reguler'>
+      فالباء في البسملة حرف جر أصلي ومتعلقها محذوف يقدّر آخر الجملة نحو بسم الله الرحمن الرحيم أعلّم او تعلّمي    
+      </p>
+      <p class='text-gray-700 '>
+      Jadi huruf <span class='kitab-font-reguler'>بِ</span> dina bismillah mangrupakeun huruf jar as-liyah, sareng ari muta’alaqna mah disamarkan, anu diperkirakeun dina ahir kalimatna saperti <span class='kitab-font-reguler'>بِسْمِ اللّٰهِ الرَّ حْمٰنِ الرَّحِيْمِ أعلّم 
+        </span> atawa <span class='kitab-font-reguler'> تعلّمي</span>
+      </p>
+      <hr class='my-4 border-gray-300'>
+      <p class='text-gray-700 kitab-font-reguler'>
+      حذف المتعلق في حرف الجر الأصلي ضربين:    
+      </p>
+      <p class='text-gray-700 '>
+      Miceun muta’alaq dina huruf jar as-liyah aya dua bagian:
+      <ul class='list-decimal pl-5 mt-2 text-gray-700 kitab-font-reguler'>
+        <li>
+        <span class='kitab-font-reguler'>الجائز</span>
+        <ul class='list-disc pl-5 mt-1'>
+          <li class='text-gray-700 kitab-font-reguler'>ان يكون كونا خاصا بشرط ان لا يضيع الفهم بحذفه</li>
+          <li class='text-gray-700 '>
+          Yen aya muta’alaqna mangrupa kaayaan husus, kalayan syarat pamahaman henteu leungit sanajan eta muta’alaq dihapus
+          </li>
+          <li class='text-gray-700 kitab-font-reguler'>مثل : بمن تستعين؟ <span class=' underline underline-offset-2'>بالله</span></li>
+        </ul>
+        </li>
+         <li>
+        <span class='kitab-font-reguler'>الواجب</span>
+        <ul class='list-disc pl-5 mt-1'>
+          <li class='text-gray-700 kitab-font-reguler'>ان يكون كونا عاما</li>
+          <li class='text-gray-700 '>
+          Yen aya muta’alaqna mangrupa kaayaan umum
+          </li>
+          <li class='text-gray-700 kitab-font-reguler'>مثل : العلم <span class=' underline underline-offset-2'>في الصدور</span></li>
+        </ul>
+        </li>
+      </ul>
+      </p>
+    `)" class="px-1 py-2 bg-blue-600 text-white rounded shadow hover:bg-blue-700 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-book" viewBox="0 0 16 16">
+  <path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783"/>
+</svg>
+      </button>
+      <!-- poin 1 -->
+      <div class="px-6 py-3 ">
+        <span class="kitab-font-reguler"> الباء في البسملة: حرف مبني على الكسرة هو من حروف الجرّ </span>
+        <span class="inline-block">Ari ب anu aya dina bismillah eta kalimat Haraf anu di mabnikeun kana kasroh, sapalih
+          tina pirang-pirang huruf jar.</span>
+      </div>
+    </div>
+
+    <!-- kalimat اسم -->
+    <div class="text-center w-full flex items-center bg-white rounded-lg shadow-lg p-6 mx-auto mt-6">
+      <!-- Tombol Template -->
+      <button @click="open(`
+      <h2 class=' font-semibold mb-4'>Penjelasan <span class='kitab-font-reguler'>اسم</span></h2>
+      <p class='text-gray-700 kitab-font-reguler'>
+        تعريف اسم : كَلِمَةٌ دَلَّتْ عَلىَ مَعْنىً فيِ نَفْسِهاَ وَلَمْ تُقْتَرَنْ بِزَمَانٍ وَضْعاً
+      </p>
+      <p class='text-gray-700 '>
+        Kalimat anu nuduhkeun kana ma’na ku dirina bari henteu dibarengan ku zaman ti asal didamelna
+      </p>
+      <hr class='my-4 border-gray-300'>
+      <p class='text-gray-700 kitab-font-reguler'>
+        وعلامة الاسميته بالخفض 
+      </p>
+      <p class='text-gray-700 '>
+        Tandana isim nyaéta kuKhofad
+      </p>
+      <p class='text-gray-700 kitab-font-reguler'>
+        كماقال الآجرومي<br> 
+فَالاِسْمُ يُعْرُ بِالخَفْضِ وَالتَّنْوِيْنِ وَدُخُوْلِ الاَلِفِ وَ اللَّامِ عَلَيْه<br>
+وقال ابن مالك<br>
+بِالجَرِّ وَالتَّنْوِيْنِ وَالنِّدَا وَ اَل ١٠ وَالمُسْنَدِ لِلاِسْمِ تَمْيِيْزٌ حَصَل
+ 
+      </p>
+      <hr class='my-4 border-gray-300'>
+      <p class='text-gray-700 kitab-font-reguler'>
+        خفض الاسم له ثلاث انواع 
+      </p>
+      <p class='text-gray-700 kitab-font-reguler'>
+        1. خفض بالحرف: مثل: زيدٌ في الدارِ
+      </p>
+      <p class='text-gray-700 kitab-font-reguler'>
+        2. خفض إضافي: مثل: كتابُ زيدٍ
+      </p>
+      <p class='text-gray-700 kitab-font-reguler'>
+        3. خفض تابع للمخفوض: مثل: مررت بزيدٍالعاقلِ
+      </p>
+      <p class='text-gray-700 kitab-font-reguler'>
+        كماقال الآجرومي<br>
+ المَخْفُوْضَاتُ ثَلاَثَةَ اَقْسَامٍ : مَخْفُوْضٌ بِالْحَرْفِ وَمَخْفُوْضٌ بِالْإِضَافَةِ وَتَابِعٌ لِلْمَخْفُوْضِ
+
+      </p>
+      <hr class='my-4 border-gray-300'>
+      <p class='text-gray-700 kitab-font-reguler'>
+        من حيث مفرده او تثنيته او جمعه كان من الاسماء المفرد 
+      </p>
+      <p class='text-gray-700 '>
+      tina segi mufrod, mutsanna, atawa jamakna, éta kaasup kana golongan isim mufrod
+      </p>
+      <p class='text-gray-700 kitab-font-reguler'>
+        تعريف اسم مفرد : مَا لَيْسَ مُثَنًّى وَلاَ مَجْمُوْعًا وَلاَ مُلْحَقًا بِهِمَا وَلاَ مِنَ الءاَسْمَاءِ الْخَمْسَةِ 
+      </p>
+      <p class='text-gray-700 '>
+        Ta'rif isim mufrod: nyaéta Kalimat anu sanes tatsniyyah sareng sanes jama’ sareng sanes anu diilukeun kana tastniyyah sareng jama’ sareng sanes sapalih tina isim lima
+      </p>
+      <hr class='my-4 border-gray-300'>
+      <p class='text-gray-700 kitab-font-reguler'>
+        من حيث اظهاره او اضماره كان من الظواهر 
+      </p>
+      <p class='text-gray-700 '>
+      tina segi dlohir atawa disamarkan, éta kaasup kana golongan isim dlohir
+      </p>
+      <p class='text-gray-700 kitab-font-reguler'>
+        تعريف اسم ظاهر : مَا دَلَّ عَلَى مُسَمَّاهُ بِلاَ قَيْدٍ
+ 
+      </p>
+      <p class='text-gray-700 '>
+        Ta'rif isim dlohir: nyaéta Lafadz anu nuduhkeun kanu disebatna kalawan henteu nganggo ciri mutakalim, mukhotob atanapi ghoib
+      </p>
+      <hr class='my-4 border-gray-300'>
+      <p class='text-gray-700 kitab-font-reguler'>
+        من حيث كونه صحيحَ الآخر أو مقصورًا أو ممدودًا أو منقوصًا، فهو من الصحيح الآخر، وإن كان أصله من 'سمو'، لأنه قد دخل عليه الإعلال  
+      </p>
+      <p class='text-gray-700 '>
+      tina segi akhirna shoheh atawa makshur atawa mamdud atawa manqush, éta kaasup kana golongan shoheh akhir, sanajan asalna tina isim <span class='kitab-font-reguler'>سما</span> sabab ges ngalaman perobahan (al-‘ilal)
+      </p>
+      <p class='text-gray-700 kitab-font-reguler'>
+        تعريف اسم صحيح الآخر : مَا لَيْسَ آخِرُُهُ حَرْفَ عِلَّةٍ وَ لاَ أَلِفًا مَمْدُوْدَةً
+ 
+      </p>
+      <p class='text-gray-700 '>
+        Ta'rif isim shoheh akhir: nyaéta Kalimat anu tungtungna lain huruf ‘ilal atawa alif mamdud
+      </p>
+      <p class='text-gray-700 kitab-font-reguler'>
+        تعريف اسم شِبهُ الصحيح الآخر : مَا كَانَ آخِرُُهُ حَرْفَ عِلَّةٍ سَاكِنًا مَا قَبْلَهُ
+ 
+      </p>
+      <p class='text-gray-700 '>
+        Ta'rif isim anu nyarupaan kana shoheh akhir: nyaéta Kalimat anu tungtungna huruf ‘ilal tapi saméméhna aya huruf anu sukun
+      </p>
+      <p class='text-gray-700 kitab-font-reguler'>
+        قال بعضهم<br> 
+وَاشْتَقَّ الْاِسْمُ مِنْ سَماَ الْبِصْريُّ ۩ وَاشْتَقَّهُ مِنْ وَسَمَ الْكُوْفِيُّ <br>
+وَمَذْهَبُ الْمُقَدَّمُ الْجَليُّ ۩ دَلِيْلُهُ الْاَسْمَاءُ وَالسُّمَيُّ
+
+      </p>
+      <hr class='my-4 border-gray-300'>
+      <p class='text-gray-700 kitab-font-reguler'>
+        من حيث كونه مرفوعا أو منصوبا أو مخفوضا فهو من المخفوضات  
+      </p>
+      <p class='text-gray-700 '>
+      tina segi statusna marfu’ (dirofakeun), manshub (dinasabkeun), atawa makhfudh (dijeerkeun), éta kaasup kana golongan anu makhfudh (dijeerkeun)
+      </p>
+      <p class='text-gray-700 kitab-font-reguler'>
+        وعلامة جره كسرة ظاهرة في اخره لانه اسمٌ مفرد 
+      </p>
+      <p class='text-gray-700 '>
+      Tandana dijeerkeun nyaéta kasroh anu jelas di ahirna sabab éta isim mufrod
+      </p>
+      <p class='text-gray-700 kitab-font-reguler'>
+        كما قال الآجرم <br> 
+فَأَمَّا الكَسْرَةُ فَتَكُوْنُ عَلاَمَةً لِلْخَفْضِ فِيْ ثَلاَثَةِ مَوَاضِعَ فِي الاِسْمِ المُفْرَدِ المُنْصَرِفِ
+
+      </p>
+      <p class='text-gray-700 kitab-font-reguler'>
+        تعريف خفض : عِبَرَةٌ عَنِ الْكَسْرَةِ اَلَّتِي تَحْدُثُ عِنْدَ دُخُوْلِ عَوَامِلِ الْخَفْضِ    
+      </p>
+      <p class='text-gray-700 '>
+        Ta'rif khofald: Hiji bahasa tina kasroh anu anyar datang nalika kalebetan amil tukang ngajeerkeun
+      </p>
+      <hr class='my-4 border-gray-300'>
+      <p class='text-gray-700 kitab-font-reguler'>
+        من حيث كونه معرفة او نكرة  فهو من المعارف  
+      </p>
+      <p class='text-gray-700 '>
+      tina segi ma'rifat atawa nakiroh, éta kaasup kana golongan isim ma'rifat
+      </p>
+      <p class='text-gray-700 kitab-font-reguler'>
+        تعريف اسم معرفة : مَا دَلَّ عَلَى مُعَيَّنٍ
+      </p>
+      <p class='text-gray-700 '>
+        Ta'rif isim ma'rifat: nyaéta Kalimat anu nuduhkeun kana anu ditangtukeun
+      </p>
+      <p class='text-gray-700 kitab-font-reguler'>
+        ب‌.	علامة تعريفه أُضِيفَ الى المعرفة
+      </p>
+      <p class='text-gray-700 '>
+      Tandana ma'rifat nyaéta diidlofatkeun kana anu ma'rifat
+      </p>
+      <p class='text-gray-700 kitab-font-reguler'>
+        كما قال الآجرومي <br> 
+وَالْمَعْرِفَةُ خَمْسَةُ اَشْيَاءَ الاِسمُ المُضْمَرُ نَحْوُ اَنَا وَاَنْتَ وَالاِسْمُ الْعَلَمُ نَحْوُ زَيْدٍ وَمَكَّةَ وِالاِسمُ الْمُبْهَمُ نَحْوُ هَذَا وَهَذِهِ وَهَؤُلاَءِ وَالاِسْمُ الَّذِيْ فِيْهِ الاَلِفُ وَاللَّامُ نَحْوُ الرَّجُلِ وَالغُلاَمِ وَ مَا أُضِيْفَ اِلىَ وَاحِدٍ مِنْ هَذِهِ الاَرْبَعَةِ
+
+      </p>
+      <p class='text-gray-700 kitab-font-reguler'>
+        وقال ابن مالك <br> 
+نَكِرَةٌ قَابِلُ أَل مُؤَثِّرَ ۩ اَوْ وَاقِعٌ مَوْقِعَ مَا قَدْ ذُكِرَ <br>
+وَغَيْرُهُ مَعْرِفَةٌ كَهُمْ وَذِي ۩ وَ هِنْدَ وَابْنِي وَالغُلاَمِ وَ الَّذِي
+      </p>
+      <hr class='my-4 border-gray-300'>
+      <p class='text-gray-700 kitab-font-reguler'>
+        أضيفَ الى الجلالة 'الله' المعرفة،  
+      </p>
+      <p class='text-gray-700 '>
+      diidlofatkeun kana nami pangagungan 'Allah' anu ma'rifat
+      </p>
+      <p class='text-gray-700 kitab-font-reguler'>
+        تنقسم الإضافة إلى أربعة أنواع من حيث تقدير حرف الجر بين المضاف والمضاف إليه 
+      </p>
+      <p class='text-gray-700 '>
+      Idlofat dibagi kana opat bagian tina segi perkiraan huruf jar antara mudlof jeung mudlof ileh
+      </p>
+      <ul class='list-decimal pr-5 mt-2 text-gray-700 kitab-font-reguler'>
+        <li>
+        لامية : ما كانت على تقدير اللام وتفيد الملك [نحو هذا حصان علي] او الاختحاص [ نحو أخذت بلجام الفرس]
+        <br>
+        Hartina: Lamiyah nyaéta idlofat anu dina perkiraan aya huruf lam, biasana pikeun nuduhkeun kapamilikan (misalna: ieu kuda Ali) atawa hususna hiji barang (misalna: abdi nyandak kana kekang kuda).
+
+        </li>
+        <li>
+          بيانية : ما كان على تقدير من وضابطها ان يكون المضاف اليه جنسا للمضاف بحيث يكون المضاف بعضا من المضاف اليه [هذا باب سَاج] فجنس الباب هو الساج والباب بعض من الساج
+          <br>
+          Hartina: Bayaniyah nyaéta idlofat anu dina perkiraan aya huruf min, biasana pikeun nuduhkeun yén mudlof ileh mangrupa bagian tina mudlof (misalna: ieu panto jati), dimana jati téh mangrupa jinis panto jeung panto téh mangrupa bagian tina jati.
+          <br>
+          كماقال الآجرومي وَ أَمَّا مَا يُخْفَضُ بِالإِضَافَةِ فَنَحْوُ قَوْلِكَ غُلاَمُ زَيْدٍ وَهُوَ عَلَى قِسْمَيْنِ مَا يُقَدَّرُ بِاللَّامِ وَ مَا يُقَدَّرُ بِمِنْ
+          
+          </li>
+        <li>
+          ظرفية : ما كانت على تقدير في وضابطها ان يكون المضاف اله ظرفا للمضاف وتفيد زمان المضاف او مكانه [سهر الليل مضنٍ قعود الدار مخمل]
+          <br>
+          Hartina: Zarfiyah nyaéta idlofat anu dina perkiraan aya huruf fi, biasana pikeun nuduhkeun yén mudlof ileh mangrupa zarf (waktu atawa tempat) pikeun mudlof (misalna: Begadang peuting téh matak nyeriawak,  cicing di imah anu ngeunah mah).
+          وقال ابن مالك <br> 
+۳۸۶ وَالثَّانِيَ اجْرُرْ وَانْوِ مِنْ اَوْ فِي اِذَا ۝ لَمْ يَصْلُحِ الَّاذَاكَ وَالَّامَ خُذَا
+        </li>
+        <li>
+          التشبيهية : ما كان على تقدير كاف التشبيه وضابطها ان يضاف المشبه به الى المشبة [ورد الخدود]
+          <br>
+          Hartina: Tasybihiyah nyaéta idlofat anu dina perkiraan aya huruf kaf, biasana pikeun nuduhkeun yén mudlof ileh téh saperti atawa sarupa jeung mudlof (misalna: Beureum pipina kawas kembang melati).
+        </li>
+      </ul>
+
+      <p class='text-gray-700 kitab-font-reguler'>
+        تنقسم الإضافة من حيث دلالة المضاف إلى معنوية ولفظية 
+      </p>
+      <p class='text-gray-700 '>
+      Idlofat dibagi kana dua bagian tina segi nuduhkeun kana ma'na atawa lafadz
+      </p>
+      <ol class='list-decimal pr-5 mt-2 text-gray-700 kitab-font-reguler'>
+        <li>
+          معنوية او حقيقية او محضة : ما تفيد تعريف المضاف او تخصيصه
+          <div class='mt-1'>
+            <span>ضابطها :
+              <br>
+              patokannana
+              </span>
+            <ol class='list-[lower-roman] pr-5 mt-1 space-y-1'>
+                <li>ان يكون المضاف غير وصف مضاف الى معموله بان يكون غير وصف [مفتاح الدار]
+                <br>
+                Hartina: mudlofna lain sifat anu diidlofatkeun kana ma’mulna [misal: konci imah]
+
+                </li>
+              <li>او يكون وصفا مضاف الى غير معموله [مأكول الناس]
+                <br>
+                Hartina:mudlofna mangrupakeun sifat anu diidlofatkeun kana lian ma'mulna [misal: kadaharan jalma]
+
+              </li>
+              <li>ان كان المضاف اليه معرفة [هذا كتاب سعيد]
+                <br>
+                Hartina: Lamun mudlof ilehna ma'rifat [misal: ieu buku Sadiq]<br>
+                أفاد تعريف المضاف
+                <br>
+                Maka Nuduhkeun kana ta'rif mudlof
+              <br>ان كان المضاف اليه نكرة [هذا كتاب رجل]
+                <br>
+                Hartina: Lamun mudlof ilehna nakiroh [misal: ieu buku hiji lalaki]<br>
+                أفاد تخصيص المضاف
+                <br>
+                Maka Nuduhkeun kana hususna mudlof
+              <br>
+      <p class='text-gray-700 kitab-font-reguler'>
+        قال ابن مالك <br> 
+٣٨٧ لِمَا سِوَى ذَيْنِكَ وَاخْصُصْ أَوَّلَا ۝ اَوْ أَعْطِهِ التَّعْرِيْفَ بِالَّذِي تَلاَ
+      </p>
+      </li>
+              <li>الا اذا كان المضاف متوغّلا في الابهام والتنكير فلا تفيده اضافته الى المعرفة تعريفا
+                <br>
+                Hartina: Kecuali lamun mudlofna meles isim anu samar jeung nakiroh, maka idlofatna kanu ma'rifat teu nuduhkeun kana tangtu
+                <br>
+                1.غير نحو جاء رجل غيرك
+                <br>
+                2.مثل نحو جاء رجل مثل سليم
+                <br>
+                3.شِبه نحو جاء رجل شبه خليل
+                <br>
+                4.نظير نحو جاء رجل نظير سعيد
+                <br>
+                5.المضاف الى ضمير يعود الى نكرة نحو جاءني رجل و أخوه
+                </li>
+            </ol>
+          </div>
+        </li>
+        <li class='mt-2'>
+          اللفظية او مجازية او غير محضة
+          <div class='mt-1'>
+            <span>ضابتها :
+              <br>
+              patokannana
+            </span>
+            <ol class='list-[lower-roman] pr-5 mt-1 space-y-1'>
+              <li>
+                ان يكون المضاف :
+                <br>
+                Nalika mudlofna:
+                <ol class='list-[decimal] pr-5 mt-1 space-y-1'>
+                  <li>1.اسم فاعل نحو هذا الرجل طالب علم
+                  <br>
+                  Hartina: Isim fā'il [misal: ieu lalaki nu diajar élmu]
+                    </li>
+                  <li>2.مبالغة اسم فاعل رايت رجلا نَصَّار المظلوم
+                  <br>
+                  Hartina: Isim mubālaghoh [misal: ninggal abdi ka jalma nu banget ngabela ka jalma nu hakna dipohokeun 'didolim']
+                  </li>
+                  <li>3.اسم مفعول انصر رجلا مهضوم الحقّ
+                  <br>
+                  Hartina: Isim maf'ul [misal: kudu ngabantu anjeun ka jalma nu hakna dirampas]
+                  </li>
+                  <li>4.صفة مشبّهة نحو عاشر رجلا حسن الخلق
+                  <br>
+                  Hartina: Sifat mushabbahah [misal: kudu ngagaulan anjen ka jalma nu hadé akhlaqna]
+                  </li>
+                </ol>
+                <div class='mt-1'>
+                    بشرط ان تضاف هذه الصفات الى فاعلها او مفعولها في المعنى
+                    <br>
+                    Kalayan syarat ieu sifat diidlofatkeun kana fa'il atawa maf'ulna dina ma'nana
+                  <br>
+                  والدليل على بقاء المضاف فيها على تنكيره انه قد وصفت به النكرة
+                  <br>
+                  Sareng bukti yén mudlofna tetep nakiroh nyaéta simudlof dijieun sifat pikeun isim nakiroh
+                </div>
+              </li>
+            </ol>
+          </div>
+        </li>
+      </ol>
+
+      <p class='text-gray-700 kitab-font-reguler'>
+        
+      </p>
+      `)" class="px-1 py-2 bg-green-600 text-white rounded shadow hover:bg-green-700 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-book" viewBox="0 0 16 16">
+  <path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783"/>
+</svg>
+      </button>
+      <!-- poin kalimat  اسم -->
+      <div class="px-6 py-3 ">
+        <span class="kitab-font-reguler"> اسم في البسملة: اسمٌ ظاهرٌ نكرةٌ، مفردٌ مذكّرٌ، صحيحُ الآخر، مجرورٌ بالباء،
+          وقد أُضيفَ إلى اسم الجلالة "الله" المعرفة، فاكتسب منه التعريف، فصار معرفةً بعد أن كان نكرة </span>
+        <span class="inline-block">
+          <span class="kitab-font-reguler">اسم</span> dina bismillah: mangrupikeun isim dlohir, nakiroh, mufrod,
+          mudzakar, shoheh akhir, dijeerkeun ku <span class="kitab-font-reguler">ب</span>, sareng diidlofatkeun kana
+          nami pangagungan "Allah" anu ma'rifat, teras hasil ta'rif tina eta idlofat maka janten isim ma'rifat anu
+          tadina isim nakiroh.
+        </span>
+      </div>
+    </div>
+
+    <!-- kalimat الله -->
+    <div class="text-center w-full flex items-center bg-white rounded-lg shadow-lg p-6 mx-auto mt-6">
+      <!-- Tombol Template -->
+      <button @click="open(`
+      <h2 class=' font-semibold mb-4'>Judul Penjelasan</h2>
+      <p class='text-gray-700 kitab-font-reguler'>
+        يُعلَمُ كونُ لفظِ (اللهِ) اسمًا بوجودِ علامتَينِ من علاماتِ الاسم، وهما: دخولُ (ألْ)، والجرُّ بالإضافة
+      </p>
+      <p class='text-gray-700 '>
+        Dipikanyaho yén kecap (اللهِ) téh kaasup isim ku ayana dua tanda isim, nyaéta: asupna (ألْ), jeung dijeerkeun ku sabab idlofat.
+      </p>
+      <hr class='my-4 border-gray-300'>
+      <p class='text-gray-700 kitab-font-reguler'>
+        و البحث عن مضاف و مضاف اليه مطولا فليرجع الفية ابن مالك
+      </p>
+      <p class='text-gray-700 '>
+        Pikeun bahasan ngeunaan mudlof jeung mudlof ileh sacara jero, mangga tingali kana kitab Alfiyah Ibn Malik.
+      </p>
+      `)" class="px-1 py-2 bg-purple-700 text-white rounded shadow hover:bg-purple-800 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-book" viewBox="0 0 16 16">
+  <path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783"/>
+</svg>
+      </button>
+      <!-- poin kalimat الله -->
+      <div class="px-6 py-3 ">
+        <span class="kitab-font-reguler"> الله في البسملة: مضافٌ إليه، وهو اسمٌ ظاهرٌ، معرفةٌ، مفردٌ، مذكّرٌ، صحيحُ الآخر، مجرورٌ بالإضافة، وعلامةُ جرّه الكسرةُ الظاهرةُ في آخره </span>
+        <span class="inline-block"></span> Allah dina bismillah: mangrupakeun mudlof ileh, ari lafadz alloh eta isim dlohir, ma'rifat, mufrod, mudzakar, shoheh akhir, sarta dijeerkeun ku sabab idlofat, ari ciri jeerna nyaeta kasroh anu jelas di ahir kecapna. </span>
+      </div>
+    </div>
+
+    <!-- Template baru di bawah sini -->
+    <div class="text-center w-full flex items-center bg-white rounded-lg shadow-lg p-6 mx-auto mt-6">
+      <!-- Tombol Template -->
+      <button @click="open(`
+      <h2 class=' font-semibold mb-4'>Judul Penjelasan</h2>
+      <p class='text-gray-700 kitab-font-reguler'>
+        <!-- Tulis penjelasan Arab di sini -->
+      </p>
+      <p class='text-gray-700 '>
+        <!-- Tulis penjelasan terjemahan di sini -->
+      </p>
+      <hr class='my-4 border-gray-300'>
+      <p class='text-gray-700 kitab-font-reguler'>
+        <!-- Tulis penjelasan tambahan Arab di sini -->
+      </p>
+      <p class='text-gray-700 '>
+        <!-- Tulis penjelasan tambahan terjemahan di sini -->
+      </p>
+      `)" class="px-1 py-2 bg-purple-700 text-white rounded shadow hover:bg-purple-800 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-book" viewBox="0 0 16 16">
+  <path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783"/>
+</svg>
+      </button>
+      <!-- poin template -->
+      <div class="px-6 py-3 ">
+        <span class="kitab-font-reguler"> <!-- Tulis ringkasan Arab di sini --> </span>
+        <span class="inline-block"> <!-- Tulis ringkasan terjemahan di sini --> </span>
+      </div>
+    </div>
+    <!-- Modal -->
+    <div x-show="show" @click.away="close" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+      <div class="bg-white max-w-lg w-full p-6 rounded shadow-lg relative">
+        <button @click="close" class="absolute top-2 right-2 text-gray-600 hover:text-black text-5xl">&times;</button>
+        <div class="overflow-y-auto h-h-screen-90" x-html="content"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- import utility -->
+     <script src="/javascripts/narkib-utility.js"></script>

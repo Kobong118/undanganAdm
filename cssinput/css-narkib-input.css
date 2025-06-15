@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+      font-family: 'HafsQuran';
+      src: url('/fonts/font-narkib/KFGQPC-Uthmanic-Script-HAFS-Regular.woff2') format('woff2');
+    }
+
+    @font-face {
+      font-family: ScheherazadeRW;
+      src: url('/fonts/font-narkib/ScheherazadeNew-Regular.woff2') format('woff2');
+    }
+
+    @font-face {
+      font-family: ScheherazadeBW;
+      src: url('/fonts/font-narkib/ScheherazadeNew-Bold.woff2') format('woff2');
+    }
+
+    .kitab-font-reguler {
+      font-family: 'ScheherazadeRW', sans-serif;
+      direction: rtl;
+      font-size: 1.3rem;
+      line-height: 1.6;
+    }
+
+    .kitab-font-bold {
+      font-family: 'ScheherazadeBW', sans-serif;
+      direction: rtl;
+    }
+
+    .quran-font {
+      font-family: 'HafsQuran', sans-serif;
+      direction: rtl;
+      line-height: 2.4;
+      font-size: 1.75rem;
+    }
+
+    .quran-font-xs {
+      font-family: 'HafsQuran', sans-serif;
+      direction: rtl;
+      line-height: 1.4;
+      font-size: 1.15rem;
+    }
+
+    .quran-font {
+      visibility: hidden;
+    }
+
+    .font-loaded .quran-font {
+      visibility: visible;
+      transition: all 0.3s ease-in;
+    }

@@ -1,15 +1,9 @@
-function interopRequireDefault(mod) {
-    return mod && mod.__esModule ? mod.default : mod;
-  }
-  
-  const Alpine = interopRequireDefault(require('alpinejs'));
-  const intersect = interopRequireDefault(require('@alpinejs/intersect'));
-  
-  Alpine.plugin(intersect);
-  
-  window.Alpine = Alpine;
-  Alpine.start();
+import Alpine from "alpinejs";
+import persist from "@alpinejs/persist";
+import intersect from "@alpinejs/intersect"; // gunakan default import ✅
 
+Alpine.plugin(persist);
+Alpine.plugin(intersect);
 
-
-       
+window.Alpine = Alpine;
+Alpine.start();

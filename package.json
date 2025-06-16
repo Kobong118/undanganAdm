@@ -4,15 +4,16 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "nodemon ./bin/www",
+    "start:dev": "cross-env DEBUG=undanganadm:* nodemon ./bin/www",
     "css": "npx tailwindcss -i ./cssinput/input.css -o ./public/stylesheets/style.css --watch",
     "build:css": "npx tailwindcss -i ./cssinput/input.css -o ./public/stylesheets/style.css -m default",
     "narkib-css": "npx tailwindcss -i ./cssinput/css-narkib-input.css -o ./public/stylesheets/style-narkib.css --watch",
     "build:narkib-css": "npx tailwindcss -i ./stylesheets/style-narkib.css -o ./public/stylesheets/style-narkib-minify.css -m default"
   },
   "dependencies": {
-    "@alpinejs/intersect": "^3.14.1",
-    "alpinejs": "^3.14.1",
+    "@alpinejs/intersect": "^3.14.9",
+    "@alpinejs/persist": "^3.14.9",
+    "alpinejs": "^3.14.9",
     "axios": "^1.7.7",
     "compression": "^1.7.4",
     "cookie-parser": "~1.4.4",
@@ -32,7 +33,11 @@
     "uuid": "^10.0.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.27.4",
+    "@babel/preset-env": "^7.27.2",
     "autoprefixer": "^10.4.20",
+    "babel-loader": "^10.0.0",
+    "cross-env": "^7.0.3",
     "nodemon": "^3.1.10",
     "postcss": "^8.4.47",
     "postcss-cli": "^11.0.0",

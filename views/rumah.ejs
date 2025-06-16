@@ -1,3 +1,21 @@
-<div class="w-screen">
-    <%- include('tourAdm/komponen/kartu') %>
+<div class="container">
+   <%- include('navbar') %>
+</div>
+<div class="bg-haul-background/5 rounded-md p-1 m-1 ">
+   <!-- dekorasi -->
+<div class="flex flex-row items-end justify-between gap-1">
+   <div class="text-haul-text-header w-4/5">Agenda Kegiatan ADM</div>
+   <div class="w-1/4 h-1 bg-haul-text-header rounded-full"></div>
+</div>
+   <%- include('slide-agenda') %>
+</div>
+<div class="bg-haul-background/5 rounded-md p-1 m-1">
+   <!-- dekorasi -->
+<div class="flex items-end justify-between gap-1">
+   <div class="text-haul-text-header">Postingan</div>
+   <div class="w-full h-1 bg-haul-text-header rounded-full"></div>
+</div>
+<div class="grid md:grid-cols-1 lg:grid-cols-2 lg:gap-1">
+   <%- include('post') %>
+</div>
 </div>

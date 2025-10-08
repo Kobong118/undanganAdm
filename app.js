@@ -18,6 +18,7 @@ const rumah = require ('./routes/rumah');
 const haulApaLimbangan = require ('./routes/haulApaLimbangan');
 const tourADM = require ('./routes/tourADM');
 const tarkiban = require ('./routes/tarkib');
+const undanganMaulid2025 = require ('./routes/undanganMaulid2025');
 
 
 var app = express();
@@ -41,6 +42,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(expressLayouts);
 app.use('/', rumah);
 app.use('/undangan-maulid-adm', undanganAdm);
+app.use('/undangan-maulid-adm-2025', undanganMaulid2025);
 app.use('/users', usersRouter);
 app.use('/generate-qr', generateQrCode);
 app.use('/hadiah', hadiah);

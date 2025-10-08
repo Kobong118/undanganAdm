@@ -1,0 +1,10 @@
+{
+    // format on save
+  "editor.formatOnSave": true,
+//   auto save after delay
+  "files.autoSave": "afterDelay",
+//   agar tailwindcss mengenali class di alpinejs
+  "tailwindCSS.experimental.classRegex": [
+    ["x-bind:class=\"([^\"]*)\"", "'([^']*)'"]
+  ]
+}

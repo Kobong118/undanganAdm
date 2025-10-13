@@ -1,7 +1,29 @@
 <!-- background -->
- <div class="min-w-[1080px] bg-emerald-600 flex justify-center items-center">
+ <div x-data="{ loaded: false }"
+  x-init="
+    const img = new Image();
+    img.src = '/images/maulid2025/bg-cover-web.gif';
+    img.onload = () => loaded = true;
+  "
+  class="min-h-screen bg-emerald-600 flex justify-center items-center">
+  <!-- LAYER: LOADING SCREEN -->
+  <div 
+    x-show="!loaded" 
+    class="absolute inset-0 flex items-center justify-center text-white z-50"
+  >
+    <div class="flex flex-col items-center gap-3">
+      <div class="animate-spin rounded-full h-10 w-10 border-t-4 border-white"></div>
+      <span class="animate-pulse text-sm">Memuat undangan...</span>
+    </div>
+  </div>
+  
 <!-- cover -->
-<div class="min-h-[1920px] min-w-[1080px] bg-[url('/images/maulid2025/bg-cover-web.gif')] bg-top bg-100%">
+<div x-show="loaded" 
+    x-transition.opacity.duration.700ms 
+    class="absolute inset-0 flex justify-center items-center">
+        <div class="h-screen w-full max-w-lg bg-[url('/images/maulid2025/bg-cover-web.gif')] bg-top bg-1-1">
+
+        </div>
     
 </div>
  </div>

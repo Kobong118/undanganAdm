@@ -1313,6 +1313,10 @@ video {
   max-height: 100vh;
 }
 
+.min-h-\[1920px\] {
+  min-height: 1920px;
+}
+
 .min-h-\[3rem\] {
   min-height: 3rem;
 }
@@ -1400,6 +1404,10 @@ video {
 
 .w-screen {
   width: 100vw;
+}
+
+.min-w-\[1080px\] {
+  min-width: 1080px;
 }
 
 .min-w-full {
@@ -2040,6 +2048,11 @@ video {
   background-color: rgb(37 99 235 / var(--tw-bg-opacity, 1));
 }
 
+.bg-emerald-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(5 150 105 / var(--tw-bg-opacity, 1));
+}
+
 .bg-gray-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity, 1));
@@ -2139,6 +2152,10 @@ video {
 
 .bg-opacity-85 {
   --tw-bg-opacity: 0.85;
+}
+
+.bg-\[url\(\'\/images\/maulid2025\/bg-cover-web\.gif\'\)\] {
+  background-image: url('/images/maulid2025/bg-cover-web.gif');
 }
 
 .bg-\[url\(https\:\/\/blogger\.googleusercontent\.com\/img\/b\/R29vZ2xl\/AVvXsEgY6w0xgTBHMRa6mrURd1KlTqTIh57ybB5z4ZFB5uSySNHjDX1iEMOI50DydgHG2gNTHy4w6D9SUHoQjWnHFFdI3xDslemudQ5iSmLqf11JDF4nveQ0u3d1jwkVWTd_0OmEZ4ldYPg24-pZbB8WuDWIgskYL0zwRVBptQHg73jMyKpJtDFdQyc5iorUgJs\/s1600\/haul\%20apa\.jpg\)\] {

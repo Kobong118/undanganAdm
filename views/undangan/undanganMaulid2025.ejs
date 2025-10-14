@@ -62,51 +62,55 @@
 </div>
 
 <!-- ================= SLIDE 1 ================= -->
-<div id="slide1" x-data="{terlihat:false}"
-  class="min-h-[768px] md:min-h-[1080px] lg:min-h-[1920px] bg-emerald-600 flex flex-col justify-center items-center opacity-0 transition-opacity duration-700 ease-in-out">
-  <div
-    class="relative min-h-[768px] md:min-h-[1080px] lg:min-h-[1920px] w-screen bg-gradient-to-r from-[#269265] to-[#12533B]">
-    <video autoplay loop muted playsinline
-      class="absolute top-0 left-1/2 transform -translate-x-1/2 md:min-h-[768px] w-screen max-w-[1080px] object-cover">
-      <source src="/images/maulid2025/undangan-slide1.webm" type="video/webm" />
-    </video>
-  </div>
-  <!-- teks surat -->
+<div id="slide1" x-data="{ terlihat:false }"
+  class="relative min-h-[768px] md:min-h-[1080px] lg:min-h-[1920px] flex flex-col items-center justify-center overflow-hidden bg-gradient-to-r from-[#269265] to-[#12533B]">
+
+  <!-- 🎥 Video latar belakang -->
+  <video autoplay loop muted playsinline
+    class="absolute inset-0 w-full h-full object-cover z-0">
+    <source src="/images/maulid2025/undangan-slide1.webm" type="video/webm" />
+  </video>
+
+  <!-- 📜 Konten teks di atas video -->
   <div x-intersect:enter="terlihat = true" x-intersect:leave="terlihat = false"
-    class="absolute top-[10%] w-10/12 left-1/2 transform -translate-x-1/2 text-xs md:text-4xl text-hijau2025 text-center">
+    class="relative z-10 w-11/12 md:w-9/12 text-center text-xl md:text-4xl text-hijau2025 py-16 md:py-24">
 
-    <div x-bind:class="{'animate-bintang-show':terlihat}" class="w-fit mx-auto font-amiri">
-      <h1>بسم الله الرحمن الرحيم</h1>
-      <h3>السلام عليكم ورحمة الله وبركاته</h3>
-      <p class="font-Rundkursiv mt-6">
-        Puji syukur kepada Alloh SWT atas segala limpahan rahmatNya kepada kita semua baik berupa kesehatan maupun
-        keberkahan.</p>
+    <div x-bind:class="{'animate-bintang-show': terlihat}"
+      class="max-h-[75vh] overflow-y-auto scroll-smooth scrollbar-hide mx-auto font-amiri px-3 md:px-6">
 
-      <p class="font-Rundkursiv mt-4">Sholawat dan salam juga tak lupa kita panjatkan kepada Junjungan Nabi Besar
-        Muhammad SAW, kepada keluarganya
-        para sahabatnya sampai kepada kita semua sebagai umatnya hingga hari kiamat.</p>
+      <h1 class="text-outline-white">بسم الله الرحمن الرحيم</h1>
+      <h3 class="text-outline-white mt-4">السلام عليكم ورحمة الله وبركاته</h3>
 
-      <p class="font-Rundkursiv mt-4">
-        Dalam rangka memperingati Maulid Nabi Muhammad SAW, Kami akan menyelenggarakan acara Tabligh Akbar.
-        Maka dengan rasa hurmat kami mengundang Bapak/Ibu untuk Ikut berpatisipasi dalam acara tersebut yang Insya Alloh
-        akan dilaksanakan pada:
+      <p class="font-Rundkursiv text-outline-white mt-6">
+        Puji syukur kepada Alloh SWT atas segala limpahan rahmatNya kepada kita semua baik berupa kesehatan maupun keberkahan.
       </p>
 
-      <p class="font-Rundkursiv mt-4">
+      <p class="font-Rundkursiv text-outline-white mt-4">
+        Sholawat dan salam juga tak lupa kita panjatkan kepada Junjungan Nabi Besar Muhammad SAW, kepada keluarganya para sahabatnya sampai kepada kita semua sebagai umatnya hingga hari kiamat.
+      </p>
+
+      <p class="font-Rundkursiv text-outline-white mt-4">
+        Dalam rangka memperingati Maulid Nabi Muhammad SAW, Kami akan menyelenggarakan acara Tabligh Akbar. Maka dengan rasa hurmat kami mengundang Bapak/Ibu untuk ikut berpatisipasi dalam acara tersebut yang Insya Alloh akan dilaksanakan pada:
+      </p>
+
+      <p class="font-Rundkursiv text-outline-white mt-4">
         Hari: Ahad <br>
         Tanggal: 19 Oktober 2025 M (malam senin)<br>
         Tempat: Majlis Ta'lim Al-Ukhuwwah Daarul Mushthofa <br>
         Bunisari RT 04 RW 04 Desa Padasuka Kec. Kutawaringin Kab. Bandung <br>
       </p>
-      <p class="font-Rundkursiv mt-4">
+
+      <p class="font-Rundkursiv text-outline-white mt-4">
         Demikian undangan dari kami Besar harapan kami Bapak/Ibu Jama'ah bisa berkenan hadir pada waktunya. Atas
         perhatian dan kerjasananya kami atas nama Panitia mengucapkan <br>
         terimakasih
       </p>
-      <h3>والسلام عليكم ورحمة الله وبركاته</h3>
+
+      <h3 class="text-outline-white mt-6">والسلام عليكم ورحمة الله وبركاته</h3>
     </div>
   </div>
 </div>
+
 <!-- ================= SLIDE 2 ================= -->
 <div id="slide2"
   class="min-h-[768px] md:min-h-[1080px] lg:min-h-[1920px] bg-emerald-600 flex flex-col justify-center items-center opacity-0 transition-opacity duration-700 ease-in-out">
@@ -122,7 +126,7 @@
 <div id="slide3"
   class="bg-gradient-to-r from-[#269265] to-[#12533B] flex flex-col justify-center items-center opacity-0 transition-opacity duration-700 ease-in-out">
   <div
-    class="relative min-h-[768px] md:min-h-[1080px] lg:min-h-[1920px] w-screen flex flex-col justify-center items-center bg-gradient-to-r from-[#269265] to-[#12533B]">
+    class="relative flex flex-col justify-center items-center bg-gradient-to-r from-[#269265] to-[#12533B]">
     <!-- infaq sodaqoh -->
     <div class="text-center flex flex-col items-center justify-center">
       <div class="w-full mt-4 border border-hijau2025 rounded-xl bg-d-d bg-center bg-100%">
@@ -256,14 +260,14 @@
 </div>
 <!-- ================= SLIDE 4 ================= -->
 <div id="slide4"
-  class="min-h-[768px] md:min-h-[1080px] lg:min-h-[1920px] w-screen bg-gradient-to-r from-[#269265] to-[#12533B] flex flex-col justify-center items-center opacity-0 transition-opacity duration-700 ease-in-out">
+  class="bg-gradient-to-r from-[#269265] to-[#12533B] flex flex-col justify-center items-center opacity-0 transition-opacity duration-700 ease-in-out">
     <h1 class="text-4xl text-white font-light my-4">Lokasi di <strong class="text-hijau2025">Google Maps</strong></h1>
   <div
-    class="relative max-w-screen bg-gradient-to-r from-[#269265] to-[#12533B]">
+    class="w-full overflow-hidden bg-gradient-to-r from-[#269265] to-[#12533B]">
     <!-- maps -->
     <div class="flex flex-col items-center bg-d-d bg-center bg-100% border-b-8 shadow shadow-hijau2025 rounded-lg">
 
-      <div class="w-full">
+      <div class="">
         <img x-data="{
                             qr:'',
                             getQr(){
@@ -278,7 +282,7 @@
  
                         }}" x-intersect:enter="getQr()" :src="qr" alt="Qr Code Lokasi" class="mx-auto">
       </div>
-      <div class="w-full m-1 rounded-xl h-96 overflow-hidden">
+      <div class=" m-1 rounded-xl h-96 overflow-hidden">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d350.01351372595707!2d107.526259885271!3d-7.015061433772681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68ed004cdddcc5%3A0x7aa9ccab763eb70!2sPesantren%20Al%20Ukhuwwah%20Darrul%20Mushtofa!5e0!3m2!1sid!2sid!4v1727464213681!5m2!1sid!2sid"
           width="600" height="450" style="border:0; margin-left:auto;margin-right: auto;" allowfullscreen=""

@@ -200,6 +200,35 @@
 
 }
 
+@layer utilities {
+
+  /* Ketebalan stroke */
+  .stroke-1 {
+    -webkit-text-stroke-width: 1px;
+  }
+
+  .stroke-2 {
+    -webkit-text-stroke-width: 2px;
+  }
+
+  /* Warna stroke */
+  .stroke-white {
+    -webkit-text-stroke-color: #ffffff;
+  }
+
+  .text-outline-white {
+    text-shadow:1px 0 #ffffff,-1px 0 #ffffff,0 1px #ffffff,0 -1px #ffffff,1px 1px #ffffff,-1px 1px #ffffff,1px -1px #ffffff,-1px -1px #ffffff;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
 .countdown {
   .figure {
     position: relative;
@@ -237,6 +266,7 @@
     }
   }
 }
+
 /* count down 2025 */
 .perspective {
   perspective: 1000px;

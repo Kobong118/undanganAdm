@@ -40,6 +40,10 @@
     <link rel="icon" href="/favicon.ico">
     <meta name="theme-color" content="#FFFFFF">
 
+    <!-- no translite -->
+     <meta name="google" content="notranslate">
+
+
     <title><%= title %></title>
     <link rel="stylesheet" href="/stylesheets/style.css?v=<%= Date.now() %>">
 </head>
@@ -47,6 +51,6 @@
     <%- body %>
 
     <!-- Import Alpine.js -->
-    <script src="/javascripts/bundle.js"></script>
+    <script type="module" src="/javascripts/bundle.js"></script>
 </body>
 </html>

@@ -73,7 +73,8 @@ module.exports = {
         'text1': '#f4d390',
         'haul-background': '#4C5B8D',
         'haul-text-header': '#F1D0A8',
-        'haul-text': '#B3966E'
+        'haul-text': '#B3966E',
+        hijau2025:'#8B6033'
       },
       animationDelay: {
         '1s': '1s',

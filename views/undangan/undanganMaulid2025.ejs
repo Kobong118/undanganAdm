@@ -1,29 +1,410 @@
-<!-- background -->
- <div x-data="{ loaded: false }"
-  x-init="
-    const img = new Image();
-    img.src = '/images/maulid2025/bg-cover-web.gif';
-    img.onload = () => loaded = true;
-  "
-  class="min-h-screen bg-emerald-600 flex justify-center items-center">
-  <!-- LAYER: LOADING SCREEN -->
-  <div 
-    x-show="!loaded" 
-    class="absolute inset-0 flex items-center justify-center text-white z-50"
-  >
-    <div class="flex flex-col items-center gap-3">
-      <div class="animate-spin rounded-full h-10 w-10 border-t-4 border-white"></div>
-      <span class="animate-pulse text-sm">Memuat undangan...</span>
+<!-- ================= COVER ================= -->
+<div x-data="cover" x-init="init()" x-show="!opened" x-transition.opacity.duration.800ms
+  class="fixed inset-0 z-50 overflow-hidden md:min-h-[1920px] min-h-[768px]">
+  <div class="h-screen w-screen overflow-auto -webkit-overflow-scrolling-touch">
+    <div
+      class="min-h-[768px] md:min-h-[1080px] lg:min-h-[1920px] bg-emerald-600 flex flex-col justify-center items-center">
+      <div
+        class="relative min-h-[768px] md:min-h-[1080px] lg:min-h-[1920px] w-screen bg-gradient-to-r from-[#EFECE7] to-[#C9CACC]">
+        <!-- Video latar -->
+        <video autoplay loop muted playsinline
+          class="absolute top-0 left-1/2 transform -translate-x-1/2 md:min-h-[768px] w-screen max-w-[1080px] object-cover">
+          <source src="/images/maulid2025/bg-cover-web.webm" type="video/webm" />
+        </video>
+
+        <!-- Konten Undangan -->
+        <div class="absolute bottom-16 md:bottom-28 w-full flex flex-col items-center justify-end text-hijau2025">
+          <div class="flex flex-col items-center justify-center">
+            <h6 class="text-xs md:text-4xl">Kepada YTH:</h6>
+            <h5 class="text-xl md:text-5xl mr-2">
+              <%= nama.toUpperCase() %>
+            </h5>
+
+            <!-- Tombol Buka Undangan -->
+            <button @click="openInvitation()"
+              class="text-xs md:text-4xl rounded border mt-2 px-10 border-hijau2025 animate-bounce shadow hover:scale-105 transition">
+              <span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                  class="bi bi-envelope-open inline mx-1 my-1" viewBox="0 0 16 16">
+                  <path
+                    d="M8.47 1.318a1 1 0 0 0-.94 0l-6 3.2A1 1 0 0 0 1 5.4v.817l5.75 3.45L8 8.917l1.25.75L15 6.217V5.4a1 1 0 0 0-.53-.882zM15 7.383l-4.778 2.867L15 13.117zm-.035 6.88L8 10.082l-6.965 4.18A1 1 0 0 0 2 15h12a1 1 0 0 0 .965-.738ZM1 13.116l4.778-2.867L1 7.383v5.734ZM7.059.435a2 2 0 0 1 1.882 0l6 3.2A2 2 0 0 1 16 5.4V14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5.4a2 2 0 0 1 1.059-1.765z" />
+                </svg>
+              </span>
+              Buka
+            </button>
+          </div>
+
+          <!-- Countdown -->
+          <div x-data="countdown" x-init="init()" class="text-center mt-1">
+            <div class="flex justify-center gap-4 sm:gap-6 items-center font-sans select-none">
+              <template x-for="(label, i) in ['Hari','Jam','Menit','Detik']" :key="label">
+                <div class="flex flex-col items-center">
+                  <div class="relative w-8 h-8">
+                    <div
+                      class="absolute inset-0 flex items-center justify-center text-xs md:text-4xl font-extrabold text-white"
+                      x-text="getValue(label)"></div>
+                    <div
+                      class="absolute inset-0 flex items-center justify-center text-xs md:text-4xl font-extrabold text-hijau2025"
+                      x-text="getValue(label)" x-show="animating[label]"
+                      x-transition:enter="transform rotateX(180deg) opacity-0"
+                      x-transition:enter-end="transform rotateX(0deg) opacity-100"
+                      @transitionend="animating[label] = false"></div>
+                  </div>
+                  <span class="text-sm text-hijau2025 mt-1 font-light" x-text="label"></span>
+                </div>
+              </template>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  
-<!-- cover -->
-<div x-show="loaded" 
-    x-transition.opacity.duration.700ms 
-    class="absolute inset-0 flex justify-center items-center">
-        <div class="h-screen w-full max-w-lg bg-[url('/images/maulid2025/bg-cover-web.gif')] bg-top bg-1-1">
+</div>
+
+<!-- ================= SLIDE 1 ================= -->
+<div id="slide1" x-data="{terlihat:false}"
+  class="min-h-[768px] md:min-h-[1080px] lg:min-h-[1920px] bg-emerald-600 flex flex-col justify-center items-center opacity-0 transition-opacity duration-700 ease-in-out">
+  <div
+    class="relative min-h-[768px] md:min-h-[1080px] lg:min-h-[1920px] w-screen bg-gradient-to-r from-[#269265] to-[#12533B]">
+    <video autoplay loop muted playsinline
+      class="absolute top-0 left-1/2 transform -translate-x-1/2 md:min-h-[768px] w-screen max-w-[1080px] object-cover">
+      <source src="/images/maulid2025/undangan-slide1.webm" type="video/webm" />
+    </video>
+  </div>
+  <!-- teks surat -->
+  <div x-intersect:enter="terlihat = true" x-intersect:leave="terlihat = false"
+    class="absolute top-[10%] w-10/12 left-1/2 transform -translate-x-1/2 text-xs md:text-4xl text-hijau2025 text-center">
+
+    <div x-bind:class="{'animate-bintang-show':terlihat}" class="w-fit mx-auto font-amiri">
+      <h1>بسم الله الرحمن الرحيم</h1>
+      <h3>السلام عليكم ورحمة الله وبركاته</h3>
+      <p class="font-Rundkursiv mt-6">
+        Puji syukur kepada Alloh SWT atas segala limpahan rahmatNya kepada kita semua baik berupa kesehatan maupun
+        keberkahan.</p>
+
+      <p class="font-Rundkursiv mt-4">Sholawat dan salam juga tak lupa kita panjatkan kepada Junjungan Nabi Besar
+        Muhammad SAW, kepada keluarganya
+        para sahabatnya sampai kepada kita semua sebagai umatnya hingga hari kiamat.</p>
+
+      <p class="font-Rundkursiv mt-4">
+        Dalam rangka memperingati Maulid Nabi Muhammad SAW, Kami akan menyelenggarakan acara Tabligh Akbar.
+        Maka dengan rasa hurmat kami mengundang Bapak/Ibu untuk Ikut berpatisipasi dalam acara tersebut yang Insya Alloh
+        akan dilaksanakan pada:
+      </p>
+
+      <p class="font-Rundkursiv mt-4">
+        Hari: Ahad <br>
+        Tanggal: 19 Oktober 2025 M (malam senin)<br>
+        Tempat: Majlis Ta'lim Al-Ukhuwwah Daarul Mushthofa <br>
+        Bunisari RT 04 RW 04 Desa Padasuka Kec. Kutawaringin Kab. Bandung <br>
+      </p>
+      <p class="font-Rundkursiv mt-4">
+        Demikian undangan dari kami Besar harapan kami Bapak/Ibu Jama'ah bisa berkenan hadir pada waktunya. Atas
+        perhatian dan kerjasananya kami atas nama Panitia mengucapkan <br>
+        terimakasih
+      </p>
+      <h3>والسلام عليكم ورحمة الله وبركاته</h3>
+    </div>
+  </div>
+</div>
+<!-- ================= SLIDE 2 ================= -->
+<div id="slide2"
+  class="min-h-[768px] md:min-h-[1080px] lg:min-h-[1920px] bg-emerald-600 flex flex-col justify-center items-center opacity-0 transition-opacity duration-700 ease-in-out">
+  <div
+    class="relative min-h-[768px] md:min-h-[1080px] lg:min-h-[1920px] w-screen bg-gradient-to-r from-[#269265] to-[#12533B]">
+    <video autoplay loop muted playsinline
+      class="absolute top-0 left-1/2 transform -translate-x-1/2 md:min-h-[768px] w-screen max-w-[1080px] object-cover">
+      <source src="/images/maulid2025/undangan-slide2.webm" type="video/webm" />
+    </video>
+  </div>
+</div>
+<!-- ================= SLIDE 3 ================= -->
+<div id="slide3"
+  class="bg-gradient-to-r from-[#269265] to-[#12533B] flex flex-col justify-center items-center opacity-0 transition-opacity duration-700 ease-in-out">
+  <div
+    class="relative flex flex-col justify-center items-center bg-gradient-to-r from-[#269265] to-[#12533B]">
+    <!-- infaq sodaqoh -->
+    <div class="container text-center flex flex-col items-center">
+      <div class="w-full mt-4 border border-hijau2025 rounded-xl bg-d-d bg-center bg-100%">
+        <h1 class="text-4xl font-light mb-1">Transfer<strong class="text-hijau2025"> Bank</strong></h1>
+        <div class='flex flex-col md:justify-around md:flex-row items-center'>
+          <div class="w-full md:w-1/4 bg-atm bg-hv bg-top bg-no-repeat h-24"></div>
+          <div class="w-10/12 md:w-3/4">
+            <h6 class="text-sm font-light mb-1">Bank<strong class="text-hijau2025">
+                <%= textsContents[11].namaBank %>
+              </strong></h6>
+            <div class="w-full flex flex-col justify-center items-start">
+              <label for="noRek">Nomor Rekening: </label>
+              <input id="noRek" value="<%= textsContents[11].noRek %>" readonly class="text-hijau2025" />
+              <label for="AN">Atas Nama: </label>
+              <input id="AN" value="<%= textsContents[11].userName %>" readonly class="text-hijau2025" />
+              <p class="text-xs">Catatan: Setelah melakukan transfer di mohon untuk melakukan
+                konfirmasi dengan mengirim screenshot / foto bukti transfer di Form konfirmasi.
+                Anda
+                akan di arahkan ke Whatsapp Khodim Majlis</p>
+
+            </div>
+          </div>
 
         </div>
-    
+        <hr />
+        <!-- akhir info rekening -->
+        <div class="container mx-auto p-4">
+          <h6 class="text-sm font-light mb-1">Form<strong class="text-hijau2025"> Konfirmasi
+            </strong></h6>
+          <form id="donaturForm" class="space-y-4">
+            <input id="namaDonatur" class="w-full p-2 border rounded" placeholder="Tulis nama Anda..."
+              name="namaDonatur" required maxlength="50" />
+            <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded">
+              Konfirmasi</button>
+          </form>
+
+          <!-- Menampilkan donatur -->
+          <div id="donatur" class="mt-6 space-y-4">
+            <!-- loop donatur -->
+            <h6 class="text-sm font-light mb-1">Terimakasih<strong class="text-hijau2025"> Kepada:
+              </strong></h6>
+            <div class="flex flex-col items-start p-1 border border-hijau2025-prime rounded-xl">
+              <div class="flex justify-between items-center">
+                <div class="w-3/4">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-person-circle fill-hijau2025-prime inline-block" viewBox="0 0 16 16">
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                    <path fill-rule="evenodd"
+                      d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+                  </svg><span> Nama Dermawan</span>
+                </div>
+                <div class="w-1/4 text-xs">
+                  <span>WPK: 14022024T04:05</span>
+                </div>
+              </div>
+              <div class="w-1/4 text-xs">
+                <img src="/images/person-check.svg" alt="Terkomfirmasi" class="inline-block" />
+                <span>Terkomfirmasi</span>
+              </div>
+            </div>
+            <!-- akhir loop -->
+          </div>
+        </div>
+        <!-- akhir konfir dan tampilkan donatur -->
+
+      </div>
+
+
+      <!-- akhir infaq sodaqoh -->
+      <!-- pesan dan kirim pesan -->
+      <div class="w-full mt-4 border border-hijau2025 rounded-xl bg-d-d bg-center bg-100%">
+        <h1 class="text-4xl font-light mb-1">Kirim <strong class="text-hijau2025">Pesan</strong></h1>
+        <form id="messageForm" class="flex flex-col items-center">
+          <% if (nama=='muslimin' ) { %>
+            <div class="container flex flex-col items-start p-4">
+              <label for="namaPengirim">Nama: </label>
+              <input type="text" id="namaPengirim" name="namaPengirim" maxlength="50" placeholder="Masukan nama anda"
+                required class="w-1/2 p-2 border rounded" />
+            </div>
+            <% } else { %>
+              <div class="container flex flex-col items-start p-4">
+                <label for="namaPengirim">Nama: </label>
+                <input type="text" id="namaPengirim" name="namaPengirim" value="<%= nama %>" readonly
+                  class="w-1/2 p-2 border rounded" />
+              </div>
+              <% } %>
+                <div class="container flex flex-col items-start p-4">
+                  <label for="messagePengirim">Pesan: </label>
+                  <textarea id="messagePengirim" maxlength="200" placeholder="Tulis pesan Anda..."
+                    class="w-full p-2 border rounded h-60"></textarea>
+                </div>
+                <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded">
+                  Kirim</button>
+        </form>
+        <hr>
+        <!-- Menampilkan pesan -->
+        <div id="pesan" class="mt-6">
+          <!-- loop pesan -->
+          <h6 class="text-sm font-light mb-1">Pesan<strong class="text-hijau2025"> Masuk:
+            </strong></h6>
+          <div class="flex flex-col items-start border border-hijau2025-prime rounded-xl mx-4  mb-4">
+            <div class="container flex justify-around p-1 items-center">
+              <div class="w-1/2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                  class="bi bi-person-circle fill-hijau2025-prime inline-block" viewBox="0 0 16 16">
+                  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                  <path fill-rule="evenodd"
+                    d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+                </svg><span> Nama Pengirim</span>
+              </div>
+              <div class="w-1/2 text-xs">
+                <span>WPK: 14022024T04:05</span>
+              </div>
+            </div>
+            <div class="container">
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam illum ab mollitia
+                blanditiis laboriosam totam quod libero! Dicta officia repellendus incidunt
+                suscipit enim alias architecto! Suscipit soluta temporibus fuga dignissimos!
+                Voluptate cumque laborum, saepe eum ad voluptas soluta rem sed repellat
+                voluptatem, quidem cupiditate autem iure quod nemo aspernatur cum! Reprehenderit
+                sint officia laborum, eaque voluptates error vero nemo tenetur.</p>
+            </div>
+
+          </div>
+          <!-- akhir loop -->
+        </div>
+      </div>
+    </div>
+    <!-- akhir sodakoh dan pesan -->
+  </div>
 </div>
- </div>
+<!-- ================= SLIDE 4 ================= -->
+<div id="slide4"
+  class="bg-gradient-to-r from-[#269265] to-[#12533B] flex flex-col justify-center items-center opacity-0 transition-opacity duration-700 ease-in-out">
+    <h1 class="text-4xl text-white font-light my-4">Lokasi di <strong class="text-hijau2025">Google Maps</strong></h1>
+  <div
+    class="relative bg-gradient-to-r from-[#269265] to-[#12533B]">
+    <!-- maps -->
+    <div class="container flex flex-col items-center bg-d-d bg-center bg-100% border-b-8 shadow shadow-hijau2025 rounded-lg">
+
+      <div class="w-full">
+        <img x-data="{
+                            qr:'',
+                            getQr(){
+                            // Fetch QR code dari server
+                            fetch('/generate-qr')
+                                .then(response => response.json())
+                                .then(data => {
+                                // Set QR code URL ke elemen <img>
+                                    this.qr = data.qrCodeUrl;
+                                     })
+                                  .catch(error => console.error('Error fetching QR code:', error));
+ 
+                        }}" x-intersect:enter="getQr()" :src="qr" alt="Qr Code Lokasi" class="mx-auto">
+      </div>
+      <div class="w-full m-1 rounded-xl h-96 overflow-hidden">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d350.01351372595707!2d107.526259885271!3d-7.015061433772681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68ed004cdddcc5%3A0x7aa9ccab763eb70!2sPesantren%20Al%20Ukhuwwah%20Darrul%20Mushtofa!5e0!3m2!1sid!2sid!4v1727464213681!5m2!1sid!2sid"
+          width="600" height="450" style="border:0; margin-left:auto;margin-right: auto;" allowfullscreen=""
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- tagline -->
+<div class='w-screen text-center text-sm bg-gradient-to-r from-[#269265] to-[#12533B] text-white py-2'>
+    <small>© 2025 Bebegig Al-Ukhuwwah @Santri118.</small>
+    <div class="w-screen flex justify-center items-center">
+        <div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-instagram inline-block" viewBox="0 0 16 16">
+                <path
+                    d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334" />
+            </svg> <a href="https://www.instagram.com/alukhuwwah_daarulmushtofaa?igsh=MWswM2dpbHc2aTNrZg==">
+                @alukhuwwah_daarulmushtofaa</a>
+        </div>
+        <div class="ms-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-instagram inline-block" viewBox="0 0 16 16">
+                <path
+                    d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334" />
+            </svg> <a href="https://www.instagram.com/ikhwaanii_adm?igsh=MXE0Ym52NDI3cXJ0dA=="> @ikhwaanii_adm</a>
+        </div>
+    </div>
+</div>
+
+<!-- ================= SCRIPT ================= -->
+<script>
+  document.addEventListener('alpine:init', () => {
+    // COVER CONTROL
+    Alpine.data('cover', () => ({
+      opened: false,
+      music: null,
+
+      init() {
+        // 🔒 Kunci scroll
+        document.body.style.overflow = 'hidden';
+        this.music = new Audio('/mp3/nabi.mp3');
+      },
+
+      openInvitation() {
+        this.opened = true;
+        try { this.music.play(); } catch (err) { console.warn('Gagal memutar audio:', err); }
+
+        // 🧭 Aktifkan scroll + tampilkan slide1
+        setTimeout(() => {
+          document.body.style.overflow = 'auto';
+          const slide1 = document.getElementById('slide1');
+          const slide2 = document.getElementById('slide2');
+          const slide3 = document.getElementById('slide3');
+          const slide4 = document.getElementById('slide4');
+          if (slide1) {
+            slide1.classList.remove('opacity-0');
+            slide1.classList.add('opacity-100');
+            slide1.scrollIntoView({ behavior: 'smooth' });
+          }
+          if (slide2) {
+            slide2.classList.remove('opacity-0');
+            slide2.classList.add('opacity-100');
+            setTimeout(() => {
+              slide2.scrollIntoView({ behavior: 'smooth' });
+            }, 10000); // Geser ke slide2 setelah 10 detik
+          }
+          if (slide3) {
+            slide3.classList.remove('opacity-0');
+            slide3.classList.add('opacity-100');
+            setTimeout(() => {
+              slide3.scrollIntoView({ behavior: 'smooth' });
+            }, 20000); // Geser ke slide3 setelah 20 detik
+          } // Akhir slide3
+          if (slide4) {
+            slide4.classList.remove('opacity-0');
+            slide4.classList.add('opacity-100');
+            setTimeout(() => {
+              slide4.scrollIntoView({ behavior: 'smooth' });
+            }, 30000); // Geser ke slide4 setelah 30 detik
+          } // Akhir slide4 
+        }, 800);
+      }
+    }));
+
+    // COUNTDOWN
+    Alpine.data('countdown', () => ({
+      target: new Date('2025-10-19T07:00:00').getTime(),
+      values: { Hari: '00', Jam: '00', Menit: '00', Detik: '00' },
+      animating: { Hari: false, Jam: false, Menit: false, Detik: false },
+
+      init() {
+        this.update();
+        setInterval(() => this.update(), 1000);
+      },
+
+      update() {
+        const now = new Date().getTime();
+        const diff = this.target - now;
+        if (diff <= 0) return;
+
+        const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+        const newValues = {
+          Hari: String(d).padStart(2, '0'),
+          Jam: String(h).padStart(2, '0'),
+          Menit: String(m).padStart(2, '0'),
+          Detik: String(s).padStart(2, '0')
+        };
+
+        for (const key in newValues) {
+          if (this.values[key] !== newValues[key]) {
+            this.animating[key] = true;
+            this.values[key] = newValues[key];
+          }
+        }
+      },
+
+      getValue(label) {
+        return this.values[label];
+      }
+    }));
+  });
+</script>
+<!-- ================= SCRIPT DONATUR & PESAN ================= -->
+<script defer src="/javascripts/database2025.js?v=<%= Date.now() %>"></script>

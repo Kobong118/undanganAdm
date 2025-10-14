@@ -3,166 +3,203 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: "kufi";
-    src: url("/fonts/ReemKufi-Bold.ttf");
-  };
+  font-family: "kufi";
+  src: url("/fonts/ReemKufi-Bold.ttf");
+}
+
+;
 
 @font-face {
   font-family: "Zilla Slab";
   src: url("/fonts/ZillaSlab-Medium.ttf");
 }
+
 @font-face {
   font-family: "Amiri Quran";
-  src : url("/fonts/AmiriQuran-Regular.ttf");
+  src: url("/fonts/AmiriQuran-Regular.ttf");
 }
+
 @font-face {
   font-family: "Rundkursiv";
-  src : url("/fonts/Rundkursiv.ttf");
+  src: url("/fonts/Rundkursiv.ttf");
 }
+
 @font-face {
   font-family: "Sofia";
-  src : url("/fonts/Sofia-Regular.ttf");
+  src: url("/fonts/Sofia-Regular.ttf");
 }
+
 @keyframes typing {
-  from { width: 0; }
-  to { width: 90%; }
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 90%;
+  }
 }
 
 @keyframes blink-caret {
-  from, to { border-color: transparent; }
-  50% { border-color: black; }
+
+  from,
+  to {
+    border-color: transparent;
+  }
+
+  50% {
+    border-color: black;
+  }
 }
-@layer components{
+
+@layer components {
   .typing {
-    text-align:center;
+    text-align: center;
     overflow: hidden;
     white-space: nowrap;
     /* border-right: 2px solid; */
     animation: typing 3s linear;
-},
-.rotate {
-  transform: rotateX(-180deg);
-  transition: transform 0.8s ease;
-}
-/* --- tool logatan --- */
-/* ui logatan */
-@layer components {
-  .logat-container {
-    @apply mx-1 my-5 font-amiri; /* Margin 20px, font-family: 'Amiri', serif */
   }
 
-  .arabic-text {
-    @apply text-right text-2xl leading-snug rtl:mr-0; /* Teks Arab */
+  ,
+  .rotate {
+    transform: rotateX(-180deg);
+    transition: transform 0.8s ease;
   }
 
-  .arabic-text span {
-    @apply relative mx-1 cursor-pointer; /* Margin 5px antara span */
-  }
+  /* --- tool logatan --- */
+  /* ui logatan */
+  @layer components {
+    .logat-container {
+      @apply mx-1 my-5 font-amiri;
+      /* Margin 20px, font-family: 'Amiri', serif */
+    }
 
-  .arabic-text span::before {
-    content: attr(data-irob); /* Menampilkan tanda i'rab */
-    @apply absolute -top-0 right-0 text-xs text-red-950 -rotate-45; /* Posisi di atas huruf */
-  }
+    .arabic-text {
+      @apply text-right text-2xl leading-snug rtl:mr-0;
+      /* Teks Arab */
+    }
 
-  .arabic-text span::after {
-    content: attr(data-logat); /* Menampilkan logat */
-    @apply absolute -bottom-4 right-1 text-xs text-red-950 -rotate-45; /* Posisi di atas huruf */
-  }
+    .arabic-text span {
+      @apply relative mx-1 cursor-pointer;
+      /* Margin 5px antara span */
+    }
 
-  .meaning-text {
-    @apply text-left text-lg mt-10 text-gray-700; /* Teks makna di bawah */
-  }
-/* form input logatan*/
-  .form-container {
-    @apply m-5 p-4 border border-gray-300 rounded-lg bg-gray-50 w-full max-w-xl; /* Form logatan */
-  }
+    .arabic-text span::before {
+      content: attr(data-irob);
+      /* Menampilkan tanda i'rab */
+      @apply absolute -top-0 right-0 text-xs text-red-950 -rotate-45;
+      /* Posisi di atas huruf */
+    }
 
-  .form-container label {
-    @apply font-bold block mt-2; /* Label input */
-  }
+    .arabic-text span::after {
+      content: attr(data-logat);
+      /* Menampilkan logat */
+      @apply absolute -bottom-4 right-1 text-xs text-red-950 -rotate-45;
+      /* Posisi di atas huruf */
+    }
 
-  .form-container textarea,
-  .form-container input {
-    @apply w-full p-2 mt-1 border border-gray-300 rounded text-base font-zilla; /* Input dan textarea */
-  }
+    .meaning-text {
+      @apply text-left text-lg mt-10 text-gray-700;
+      /* Teks makna di bawah */
+    }
 
-  .form-container button {
-    @apply mt-4 px-4 py-2 text-white bg-blue-500 border-none rounded cursor-pointer hover:bg-blue-700; /* Tombol */
-  }
-  /* --- page link logatan kitab --- */
-  /* slider */
-  .slider-container {
-    @apply relative w-full overflow-hidden max-w-[800px] my-5 mx-auto border border-gray-300 rounded-lg shadow-lg bg-gray-100;
-  }
-  
+    /* form input logatan*/
+    .form-container {
+      @apply m-5 p-4 border border-gray-300 rounded-lg bg-gray-50 w-full max-w-xl;
+      /* Form logatan */
+    }
+
+    .form-container label {
+      @apply font-bold block mt-2;
+      /* Label input */
+    }
+
+    .form-container textarea,
+    .form-container input {
+      @apply w-full p-2 mt-1 border border-gray-300 rounded text-base font-zilla;
+      /* Input dan textarea */
+    }
+
+    .form-container button {
+      @apply mt-4 px-4 py-2 text-white bg-blue-500 border-none rounded cursor-pointer hover:bg-blue-700;
+      /* Tombol */
+    }
+
+    /* --- page link logatan kitab --- */
+    /* slider */
+    .slider-container {
+      @apply relative w-full overflow-hidden max-w-[800px] my-5 mx-auto border border-gray-300 rounded-lg shadow-lg bg-gray-100;
+    }
+
     .slide-search {
       @apply absolute -top-0 left-0 right-0 flex flex-row justify-center m-3;
     }
-  
-    .slide-search input{
+
+    .slide-search input {
       @apply border border-turqu-prime rounded-ss-md rounded-bl-md p-1 w-1/2;
     }
-  
-    .slide-search button{
+
+    .slide-search button {
       @apply border border-turqu-prime rounded-se-md rounded-br-md p-1;
     }
 
-  .slider {
-    @apply flex transition-transform duration-500 ease-in-out;
+    .slider {
+      @apply flex transition-transform duration-500 ease-in-out;
+    }
+
+    .slide {
+      @apply w-full min-w-full box-border p-5 text-center mt-10;
+    }
+
+    .slide-title {
+      @apply font-Rundkursiv text-xl;
+    }
+
+    .id {
+      @apply relative p-1 rounded-full bg-blue-200 border border-turqu inline-block w-6 h-6 leading-[10px] text-center font-zilla cursor-pointer;
+    }
+
+    .id::before {
+      content: "ID kitab";
+      @apply absolute -top-9 left-0 text-xs inline-block w-16 invisible opacity-0 border border-turqu-prime rounded-full p-2 font-zilla bg-violet-200 transition-all;
+    }
+
+    .id:hover::before {
+      @apply visible opacity-100;
+    }
+
+    .slide-title-kitab {
+      @apply text-2xl text-gray-800 flex flex-col justify-center items-center font-kufi bg-d-cl bg-100% bg-center rounded-lg;
+    }
+
+    .slide-title-kitab .sub {
+      @apply text-sm text-gray-800;
+    }
+
+
+    .slide-excerpt {
+      @apply text-gray-600 text-base mt-2 no-underline font-sofia;
+    }
+
+    .nav-btn {
+      @apply absolute top-1/2 transform -translate-y-1/2 bg-black/60 text-white text-2xl p-2 cursor-pointer rounded-full w-10 h-10 leading-none border-0;
+    }
+
+    .prev-btn {
+      @apply left-2.5;
+    }
+
+    .next-btn {
+      @apply right-2.5;
+    }
+
+    .nav-btn:hover {
+      @apply bg-black/80;
+    }
   }
 
-  .slide {
-    @apply w-full min-w-full box-border p-5 text-center mt-10;
-  }
-
-  .slide-title {
-    @apply font-Rundkursiv text-xl;
-  }
-
-  .id {
-    @apply relative p-1 rounded-full bg-blue-200 border border-turqu inline-block w-6 h-6 leading-[10px] text-center font-zilla cursor-pointer;
-  }
-
-  .id::before {
-    content: "ID kitab";
-    @apply absolute -top-9 left-0 text-xs inline-block w-16 invisible opacity-0 border border-turqu-prime rounded-full p-2 font-zilla bg-violet-200 transition-all;
-  }
-
-  .id:hover::before {
-    @apply visible opacity-100;
-  }
-
-  .slide-title-kitab{
-    @apply text-2xl text-gray-800 flex flex-col justify-center items-center font-kufi bg-d-cl bg-100% bg-center rounded-lg;
-  }
-
-  .slide-title-kitab .sub{
-    @apply text-sm text-gray-800;
-  }
-
-
-  .slide-excerpt {
-    @apply text-gray-600 text-base mt-2 no-underline font-sofia;
-  }
-
-  .nav-btn {
-    @apply absolute top-1/2 transform -translate-y-1/2 bg-black/60 text-white text-2xl p-2 cursor-pointer rounded-full w-10 h-10 leading-none border-0;
-  }
-
-  .prev-btn {
-    @apply left-2.5;
-  }
-
-  .next-btn {
-    @apply right-2.5;
-  }
-
-  .nav-btn:hover {
-    @apply bg-black/80;
-  }
 }
 
-}
 .countdown {
   .figure {
     position: relative;
@@ -171,7 +208,8 @@
     height: 120px;
     perspective: 1000px;
 
-    .top, .bottom {
+    .top,
+    .bottom {
       display: block;
       position: absolute;
       width: 100%;
@@ -183,18 +221,32 @@
 
     .top {
       z-index: 2;
-      background-color: #f3f4f6; /* Tailwind gray-100 */
-      border-radius: 0.375rem 0.375rem 0 0; /* rounded-t */
+      background-color: #f3f4f6;
+      /* Tailwind gray-100 */
+      border-radius: 0.375rem 0.375rem 0 0;
+      /* rounded-t */
       transform: rotateX(0deg);
     }
 
     .bottom {
       z-index: 1;
       background-color: #f3f4f6;
-      border-radius: 0 0 0.375rem 0.375rem; /* rounded-b */
+      border-radius: 0 0 0.375rem 0.375rem;
+      /* rounded-b */
       transform: rotateX(90deg);
     }
   }
+}
+/* count down 2025 */
+.perspective {
+  perspective: 1000px;
+}
+
+.flip-card,
+.flip-overlay {
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease, opacity 0.4s ease;
 }
 
 /* Animasi flip */
@@ -210,6 +262,7 @@
   0% {
     transform: rotateX(0deg);
   }
+
   100% {
     transform: rotateX(90deg);
   }
@@ -219,14 +272,17 @@
   0% {
     transform: rotateX(90deg);
   }
+
   100% {
     transform: rotateX(0deg);
   }
 }
+
 /* CRUD tourADM */
 .input {
   @apply block w-full p-2 border rounded;
 }
+
 .btn {
   @apply bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded shadow;
 }

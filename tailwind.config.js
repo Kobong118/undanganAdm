@@ -49,7 +49,11 @@ module.exports = {
         'd-top-right-littel': "url('/images/haulapalimbangan2025/d-top-right-littel.png')",
         'd-top-left-lam': "url('/images/haulapalimbangan2025/d-top-left-lam.png')",
         'd-top-right-lam': "url('/images/haulapalimbangan2025/d-top-right-lam.png')",
-        'd-kotak': "url('/images/haulapalimbangan2025/d-kotak.png')"
+        'd-kotak': "url('/images/haulapalimbangan2025/d-kotak.png')",
+        'bg-ta26': "url('/images/touradm2026/bg-ta26.jpg')",
+        'bg-head-ta26': "url('/images/touradm2026/head-ta26.jpg')",
+        'bg-vitta26': "url('/images/touradm2026/vita-ta26.png')",
+        'bg-teks-ta26': "url('/images/touradm2026/teks-ta26.png')",
       },
       backgroundSize: {
         '20%': '20%',

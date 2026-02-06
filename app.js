@@ -19,6 +19,7 @@ const haulApaLimbangan = require ('./routes/haulApaLimbangan');
 const tourADM = require ('./routes/tourADM');
 const tarkiban = require ('./routes/tarkib');
 const undanganMaulid2025 = require ('./routes/undanganMaulid2025');
+const tourAdm2026 = require ('./routes/tour-adm-2026');
 
 
 var app = express();
@@ -51,6 +52,7 @@ app.use('/admin', admin);
 app.use('/api/blog', blogger);
 app.use('/haul-apa-limbangan', haulApaLimbangan);
 app.use('/tour-adm', tourADM);
+app.use('/tour-adm-2026', tourAdm2026);
 app.use('/narkib', tarkiban);
 
 // catch 404 and forward to error handler

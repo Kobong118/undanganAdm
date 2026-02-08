@@ -1,129 +1,407 @@
 <!-- gb -->
- <div class="h-screen w-screen bg-bg-ta26 bg-cover bg-center bg-no-repeat overflow-y-scroll overflow-x-hidden">
+<div x-data="tourADMComponent" x-init="getData()"
+    class="h-screen w-screen bg-bg-ta26 bg-cover bg-center bg-no-repeat overflow-y-scroll overflow-x-hidden">
     <!-- head -->
-        <img src="images/touradm2026/head-ta26.jpg" alt="Tour ADM 2026" width="100%">
-    <!-- vita -->     
-     <div
-  x-data="countdown"
-  x-init="init()"
-  class="sticky top-9 -translate-y-10 w-full z-10 bg-gradient-to-b from-text1 to-transparent"
->
-  <!-- WRAPPER: tinggi ikut IMG -->
-  <div class="relative w-full">
-    
-    <!-- IMG: penentu tinggi -->
-    <img
-      src="images/touradm2026/vita-ta26.png"
-      alt="Tour ADM 2026"
-      class="w-full h-auto block"
-    />
+    <img src="images/touradm2026/head-ta26.jpg" alt="Tour ADM 2026" width="100%">
+    <!-- vita -->
+    <div x-data="countdown" x-init="init()"
+        class="sticky top-9 -translate-y-10 w-full z-10 bg-gradient-to-b from-text1 to-transparent">
+        <!-- WRAPPER: tinggi ikut IMG -->
+        <div class="relative w-full">
 
-    <!-- COUNTDOWN: overlay, tidak memengaruhi tinggi -->
-    <div class="absolute inset-0 pointer-events-none">
-      <div class="h-full flex items-center justify-between px-4 md:px-10">
-        
-        <!-- LEFT -->
-        <div class="pointer-events-auto flex items-center gap-2">
-          <!-- Left: Hari & Jam -->
-            <div class="flex items-center justify-start">
-            <template x-for="(label, i) in ['Hari','Jam']" :key="label">
-                <div class="flex items-center">
-                <div class="relative w-8 h-8 perspective">
-                    <div class="absolute inset-0 flex items-center justify-center text-xs md:text-lg font-extrabold text-white transition-all duration-300"
-                    x-text="getValue(label)"
-                    :class="animating[label] ? 'opacity-0 scale-75' : 'opacity-100 scale-100'"></div>
-                    <div class="absolute inset-0 flex items-center justify-center text-xs md:text-lg font-extrabold text-text1 transition-all duration-300"
-                    x-text="getValue(label)"
-                    :class="animating[label] ? 'opacity-100 scale-100' : 'opacity-0 scale-75'"
-                    @transitionend="animating[label] = false"></div>
+            <!-- IMG: penentu tinggi -->
+            <img src="images/touradm2026/vita-ta26.png" alt="Tour ADM 2026" class="w-full h-auto block" />
+
+            <!-- COUNTDOWN: overlay, tidak memengaruhi tinggi -->
+            <div class="absolute inset-0 pointer-events-none">
+                <div class="h-full flex items-center justify-between px-4 md:px-10">
+
+                    <!-- LEFT -->
+                    <div class="pointer-events-auto flex items-center gap-2">
+                        <!-- Left: Hari & Jam -->
+                        <div class="flex items-center justify-start">
+                            <template x-for="(label, i) in ['Hari','Jam']" :key="label">
+                                <div class="flex items-center">
+                                    <div class="relative w-8 h-8 perspective">
+                                        <div class="absolute inset-0 flex items-center justify-center text-xs md:text-lg font-extrabold text-white transition-all duration-300"
+                                            x-text="getValue(label)"
+                                            :class="animating[label] ? 'opacity-0 scale-75' : 'opacity-100 scale-100'">
+                                        </div>
+                                        <div class="absolute inset-0 flex items-center justify-center text-xs md:text-lg font-extrabold text-text1 transition-all duration-300"
+                                            x-text="getValue(label)"
+                                            :class="animating[label] ? 'opacity-100 scale-100' : 'opacity-0 scale-75'"
+                                            @transitionend="animating[label] = false"></div>
+                                    </div>
+                                    <span class="text-xs md:text-sm text-text1 font-light" x-text="label"></span>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT -->
+                    <div class="pointer-events-auto flex items-center gap-2">
+                        <!-- Right: Menit & Detik -->
+                        <div class="flex items-center justify-end">
+                            <template x-for="(label, i) in ['Menit','Detik']" :key="label">
+                                <div class="flex items-center">
+                                    <div class="relative w-8 h-8 perspective">
+                                        <div class="absolute inset-0 flex items-center justify-center text-xs md:text-lg font-extrabold text-white transition-all duration-300"
+                                            x-text="getValue(label)"
+                                            :class="animating[label] ? 'opacity-0 scale-75' : 'opacity-100 scale-100'">
+                                        </div>
+                                        <div class="absolute inset-0 flex items-center justify-center text-xs md:text-lg font-extrabold text-text1 transition-all duration-300"
+                                            x-text="getValue(label)"
+                                            :class="animating[label] ? 'opacity-100 scale-100' : 'opacity-0 scale-75'"
+                                            @transitionend="animating[label] = false"></div>
+                                    </div>
+                                    <span class="text-xs md:text-sm text-text1 font-light" x-text="label"></span>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+
                 </div>
-                <span class="text-xs md:text-sm text-text1 font-light" x-text="label"></span>
-                </div>
-            </template>
             </div>
-        </div>
 
-        <!-- RIGHT -->
-        <div class="pointer-events-auto flex items-center gap-2">
-          <!-- Right: Menit & Detik -->
-            <div class="flex items-center justify-end">
-            <template x-for="(label, i) in ['Menit','Detik']" :key="label">
-                <div class="flex items-center">
-                <div class="relative w-8 h-8 perspective">
-                    <div class="absolute inset-0 flex items-center justify-center text-xs md:text-lg font-extrabold text-white transition-all duration-300"
-                    x-text="getValue(label)"
-                    :class="animating[label] ? 'opacity-0 scale-75' : 'opacity-100 scale-100'"></div>
-                    <div class="absolute inset-0 flex items-center justify-center text-xs md:text-lg font-extrabold text-text1 transition-all duration-300"
-                    x-text="getValue(label)"
-                    :class="animating[label] ? 'opacity-100 scale-100' : 'opacity-0 scale-75'"
-                    @transitionend="animating[label] = false"></div>
-                </div>
-                <span class="text-xs md:text-sm text-text1 font-light" x-text="label"></span>
-                </div>
-            </template>
-            </div>
         </div>
-
-      </div>
     </div>
 
-  </div>
-</div>
-
     <!-- teks -->
-     <div class="w-full relative -translate-y-10">
+    <div class="w-full relative -translate-y-10">
         <img src="images/touradm2026/teks-ta26.png" alt="Deskripsi Tour ADM 2026" width="100%">
         <!-- vita -->
-     <div class="w-full h-[100px] bg-bg-vitta26 bg-100% bg-center bg-no-repeat px-4 leading-[100px] font-Rundkursiv text-haul-text-header text-xl ">Armada Bus</div>
-     <!-- foto bus -->
-      <div class="w-full p-1">
-        <img src="images/touradm2026/bintara.jpeg" alt="Safana Holiday" width="100%">
-        <img src="images/touradm2026/militer.jpeg" alt="Safana Holiday" width="100%">
-      </div>
-     </div>
- </div>
+        <div class="w-full font-Rundkursiv text-haul-text-header">
+            <div class="relative w-full">
+                <!-- IMG: penentu tinggi -->
+                <img src="images/touradm2026/vita-ta26.png" alt="Tour ADM 2026" class="w-full h-auto block" />
+                <!-- COUNTDOWN: overlay, tidak memengaruhi tinggi -->
+                <div class="absolute inset-0 pointer-events-none">
+                    <div class="h-full flex items-center justify-between px-4 md:px-10">
+                        <!-- LEFT -->
+                        <div class="pointer-events-auto flex items-center gap-2">
+                            Armada Bus
+                        </div>
+                        <!-- RIGHT -->
+                        <div class="pointer-events-auto flex items-center gap-2">
+                            Tour ADM 2026
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- foto bus -->
+        <div class="w-full p-1">
+            <h1 class="font-Rundkursiv text-haul-text-header text-xl text-center">Bus 1 : Bintara
+            </h1>
+            <img src="images/touradm2026/bintara.jpeg" alt="Safana Holiday" width="100%">
+            <hr class="my-10 h-px border-0 bg-gradient-to-r from-transparent via-yellow-500 to-transparent">
+            <h1 class="font-Rundkursiv text-haul-text-header text-xl text-center">Bus 2 : Militeri
+            </h1>
+            <img src="images/touradm2026/militer.jpeg" alt="Safana Holiday" width="100%">
+        </div>
+        <!-- vita -->
+        <div class="w-full font-Rundkursiv text-haul-text-header text-xl ">
+            <div class="relative w-full">
+                <!-- IMG: penentu tinggi -->
+                <img src="images/touradm2026/vita-ta26.png" alt="Tour ADM 2026" class="w-full h-auto block" />
+                <!-- COUNTDOWN: overlay, tidak memengaruhi tinggi -->
+                <div class="absolute inset-0 pointer-events-none">
+                    <div class="h-full flex items-center justify-between px-4 md:px-10">
+                        <!-- LEFT -->
+                        <div class="pointer-events-auto flex items-center gap-2">
+                            Jama'ah Ikhwan
+                        </div>
+                        <!-- RIGHT -->
+                        <div class="pointer-events-auto flex items-center gap-2">
+                            Jama'ah Akhwat
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- jamaah -->
+        <div class="w-full font-zilla text-haul-text text-xl relative">
+            <div class="relative w-full">
+                <div class="h-full flex flex-wrap justify-between px-4 md:px-10">
+                    <!-- LEFT laki laki-->
+                    <div class="pointer-events-auto flex flex-col gap-2">
+                        <template x-for="item in data.ikutTour.filter(i => i.Gen === 'L')" :key="item.Nama">
+                            <div class="font-bold" x-text="item.Nama"></div>
+                        </template>
+                    </div>
 
- <script>
- document.addEventListener('alpine:init', () => {
-     // COUNTDOWN
-    Alpine.data('countdown', () => ({
-      target: new Date('2026-04-05T23:00:00').getTime(),
-      values: { Hari: '00', Jam: '00', Menit: '00', Detik: '00' },
-      animating: { Hari: false, Jam: false, Menit: false, Detik: false },
+                    <!-- RIGHT perempuan-->
+                    <div class="pointer-events-auto flex flex-col gap-2">
+                        <template x-for="item in data.ikutTour.filter(i => i.Gen === 'P')" :key="item.Nama">
+                            <div class="font-bold" x-text="item.Nama"></div>
+                        </template>
+                    </div>
 
-      init() {
-        this.update();
-        setInterval(() => this.update(), 1000);
-      },
+                </div>
+            </div>
+        </div>
+        <!-- layout kursi -->
+        <!-- vita Kursi bintara-->
+        <div class="w-full font-Rundkursiv text-haul-text-header text-xl relative z-0">
+            <div class="relative w-full">
+                <!-- IMG: penentu tinggi -->
+                <img src="images/touradm2026/vita-ta26.png" alt="Tour ADM 2026" class="w-full h-auto block" />
+                <!-- COUNTDOWN: overlay, tidak memengaruhi tinggi -->
+                <div class="absolute inset-0 pointer-events-none">
+                    <div class="h-full flex items-center justify-between px-4 md:px-10">
+                        <!-- LEFT -->
+                        <div class="pointer-events-auto flex items-center gap-2">
+                            No Kursi
+                        </div>
+                        <!-- RIGHT -->
+                        <div class="pointer-events-auto flex items-center gap-2">
+                            Bintara
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <template x-if="loaded">
+            <div class="grid grid-cols-[1fr_1fr_0.5fr_1fr_1fr_1fr] gap-1">
+                <template x-for="(slot, i) in kursiMapBintara()" :key="i">
+                    <div
+                        :class="(layoutBintara[i] === 57 || layoutBintara[i] === 58)? 'col-span-2 relative':'relative'">
+                        <template x-if="slot === 'P'">
+                            <div
+                                class="bg-yellow-300 text-center text-xs font-bold rounded flex items-center justify-center min-h-[40px]">
+                                PINTU
+                            </div>
+                        </template>
+                        <template x-if="slot === 'L'">
+                            <div class="min-h-[40px]"></div>
+                        </template>
+                        <template x-if="typeof slot === 'object' && slot !== null && slot !== 'kosong'">
+                            <div
+                                class="border rounded p-2 text-xs bg-white shadow min-h-[40px] flex flex-col justify-center font-zilla">
+                                <div class="font-semibold font-Rundkursiv text-lg text-center" x-text="slot.Nama"></div>
+                                <div x-text="'Kursi: ' + slot.kursi"></div>
+                                <div x-text="'Kamar: ' + slot.kamar"></div>
+                                <template x-if="slot.ongkos == 370000">
+                                    <div class="absolute top-0 right-0 rounded-full text-blue-500 shadow-lg"">
+                                <svg xmlns=" http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="inline-block" viewBox="0 0 16 16">
+                                        <path
+                                            d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708" />
+                                        </svg>
+                                    </div>
+                                </template>
+                                <template x-if="slot.ongkos != 370000">
+                                    <div x-text="'Ongkos: ' + formatRupiah(slot.ongkos)"></div>
+                                </template>
+                            </div>
+                        </template>
+                        <template x-if="slot === 'kosong'">
+                            <div
+                                class="border border-dashed rounded p-2 text-xs text-gray-400 text-center min-h-[40px] flex flex-col justify-center">
+                                Kursi <span x-text="layoutBintara[i]"></span><br>
+                                Kosong
+                            </div>
+                        </template>
+                    </div>
+                </template>
+            </div>
+            <template x-if="!loaded">
+                <div class="col-span-6 text-center text-gray-400 py-4">Memuat data kursi...</div>
+            </template>
+        </template>
 
-      update() {
-        const now = new Date().getTime();
-        const diff = this.target - now;
-        if (diff <= 0) return;
 
-        const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        const s = Math.floor((diff % (1000 * 60)) / 1000);
+        <!-- vita kursi militeri-->
+        <div class="w-full font-Rundkursiv text-haul-text-header text-xl relative z-0">
+            <div class="relative w-full">
+                <!-- IMG: penentu tinggi -->
+                <img src="images/touradm2026/vita-ta26.png" alt="Tour ADM 2026" class="w-full h-auto block" />
+                <!-- COUNTDOWN: overlay, tidak memengaruhi tinggi -->
+                <div class="absolute inset-0 pointer-events-none">
+                    <div class="h-full flex items-center justify-between px-4 md:px-10">
+                        <!-- LEFT -->
+                        <div class="pointer-events-auto flex items-center gap-2">
+                            No Kursi
+                        </div>
+                        <!-- RIGHT -->
+                        <div class="pointer-events-auto flex items-center gap-2">
+                            Militeri
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <template x-if="loaded">
+            <div class="grid grid-cols-[1fr_1fr_0.5fr_1fr_1fr_1fr] gap-1">
+                <template x-for="(slot, i) in kursiMapMiliteri()" :key="i">
+                    <div class="relative">
+                        <template x-if="slot === 'P'">
+                            <div
+                                class="bg-yellow-300 text-center text-xs font-bold rounded flex items-center justify-center min-h-[40px]">
+                                PINTU
+                            </div>
+                        </template>
+                        <template x-if="slot === 'L'">
+                            <div class="min-h-[40px]"></div>
+                        </template>
+                        <template x-if="typeof slot === 'object' && slot !== null && slot !== 'kosong'">
+                            <div
+                                class="border rounded p-2 text-xs bg-white shadow min-h-[40px] flex flex-col justify-center font-zilla">
+                                <div class="font-semibold font-Rundkursiv text-lg text-center" x-text="slot.Nama"></div>
+                                <div x-text="'Kursi: ' + (slot.kursi-60)"></div>
+                                <div x-text="'Kamar: ' + slot.kamar"></div>
+                                <template x-if="slot.ongkos == 370000">
+                                    <div class="absolute top-0 right-0 rounded-full text-blue-500 shadow-lg"">
+                                <svg xmlns=" http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="inline-block" viewBox="0 0 16 16">
+                                        <path
+                                            d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708" />
+                                        </svg>
+                                    </div>
+                                </template>
+                                <template x-if="slot.ongkos != 370000">
+                                    <div x-text="'Ongkos: ' + formatRupiah(slot.ongkos)"></div>
+                                </template>
+                            </div>
+                        </template>
+                        <template x-if="slot === 'kosong'">
+                            <div
+                                class="border border-dashed rounded p-2 text-xs text-gray-400 text-center min-h-[40px] flex flex-col justify-center">
+                                Kursi <span x-text="layoutMiliteri[i]-60"></span><br>
+                                Kosong
+                            </div>
+                        </template>
+                    </div>
+                </template>
+            </div>
+            <template x-if="!loaded">
+                <div class="col-span-6 text-center text-gray-400 py-4">Memuat data kursi...</div>
+            </template>
+        </template>
+    </div>
+</div>
+<!-- java script -->
+<script>
+    document.addEventListener('alpine:init', () => {
+        // API
+        Alpine.data('tourADMComponent', () => ({
+            urlTourADM: "https://script.google.com/macros/s/AKfycbwfkoHCevue6ltFsB93gWib2xSvCgJbHBTJ2Gnq2nu07mzrUKOgyUSeVUYMBAQIi2m7/exec",
+            data: { ikutTour: [] },
+            error: '',
+            loaded: false,
+            formatRupiah(angka) {
+                return new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR" }).format(angka);
+            },
+            async getData() {
+                try {
+                    const result = await fetch(this.urlTourADM);
+                    if (!result.ok) throw new Error("Data tidak bisa diakses, hubungi pengembang !!!");
+                    const response = await result.json();
+                    this.data.ikutTour = response.ikutTour || [];
+                    this.loaded = true;
+                    // console.log('data siap')
+                    // console.log(this.layoutBintara)
+                    // console.log(this.kursiMapBintara())
+                } catch (err) {
+                    console.error(err);
+                    this.error = err.message;
+                }
+            },
+            layoutBintara: [
+                'P', 60,'L' , 'L', 'L', 'L',
+                1, 2, 'L', 3, 4, 5,
+                6, 7, 'L', 8, 9, 10,
+                11, 12, 'L', 13, 14, 15,
+                16, 17, 'L', 18, 19, 20,
+                21, 22, 'L', 23, 24, 25,
+                26, 27, 'L', 28, 29, 30,
+                31, 32, 'L', 33, 34, 35,
+                36, 37, 'L', 38, 39, 40,
+                41, 42, 'L', 43, 44, 45,
+                46, 47, 'L', 48, 49, 50,
+                'P', 'L', 'L', 51, 52, 53,
+                54, 'L', 'L', 'L', 'L', 55,
+                56, 57, 58, 59
+            ],
+            kursiMapBintara() {
+                // Membuat array baru dengan isi sama seperti layoutBintara,
+                // tetapi jika slot berupa angka, diganti dengan data peserta (atau null jika tidak ada)
+                return this.layoutBintara.map(slot => {
+                    if (typeof slot === 'number') {
+                        const peserta = this.data.ikutTour.find(p => p.kursi == slot);
+                        return peserta || 'kosong';
+                    }
+                    // Untuk 'P' dan 'L', tetap seperti aslinya
+                    return slot;
+                });
+            },
+            layoutMiliteri: [
+                'P', 'L', 120, 'L', 'L', 'L',
+                61, 62, 'L', 63, 64, 65,
+                66, 67, 'L', 68, 69, 70,
+                71, 72, 'L', 73, 74, 75,
+                76, 77, 'L', 78, 79, 80,
+                81, 82, 'L', 83, 84, 85,
+                86, 87, 'L', 88, 89, 90,
+                91, 92, 'L', 93, 94, 95,
+                96, 97, 'L', 98, 99, 100,
+                101, 102, 'L', 103, 104, 105,
+                106, 107, 'L', 108, 109, 110,
+                'P', 'L', 'L', 111, 112, 113,
+                114, 115, 116, 117, 118, 119
+            ],
+            kursiMapMiliteri() {
+                // Membuat array baru dengan isi sama seperti layoutMiliteri,
+                // tetapi jika slot berupa angka, diganti dengan data peserta (atau null jika tidak ada)
+                return this.layoutMiliteri.map(slot => {
+                    if (typeof slot === 'number') {
+                        const peserta = this.data.ikutTour.find(p => p.kursi == slot);
+                        return peserta || 'kosong';
+                    }
+                    // Untuk 'P' dan 'L', tetap seperti aslinya
+                    return slot;
+                });
+            }
+        }));
+        // COUNTDOWN
+        Alpine.data('countdown', () => ({
+            target: new Date('2026-04-05T23:00:00').getTime(),
+            values: { Hari: '00', Jam: '00', Menit: '00', Detik: '00' },
+            animating: { Hari: false, Jam: false, Menit: false, Detik: false },
 
-        const newValues = {
-          Hari: String(d).padStart(2, '0'),
-          Jam: String(h).padStart(2, '0'),
-          Menit: String(m).padStart(2, '0'),
-          Detik: String(s).padStart(2, '0')
-        };
+            init() {
+                this.update();
+                setInterval(() => this.update(), 1000);
+            },
 
-        for (const key in newValues) {
-          if (this.values[key] !== newValues[key]) {
-            this.animating[key] = true;
-            this.values[key] = newValues[key];
-          }
-        }
-      },
+            update() {
+                const now = new Date().getTime();
+                const diff = this.target - now;
+                if (diff <= 0) return;
 
-      getValue(label) {
-        return this.values[label];
-      }
-    }));
-  });
+                const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+                const newValues = {
+                    Hari: String(d).padStart(2, '0'),
+                    Jam: String(h).padStart(2, '0'),
+                    Menit: String(m).padStart(2, '0'),
+                    Detik: String(s).padStart(2, '0')
+                };
+
+                for (const key in newValues) {
+                    if (this.values[key] !== newValues[key]) {
+                        this.animating[key] = true;
+                        this.values[key] = newValues[key];
+                    }
+                }
+            },
+
+            getValue(label) {
+                return this.values[label];
+            }
+        }));
+    });
 </script>

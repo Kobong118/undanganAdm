@@ -223,54 +223,57 @@
                 </div>
             </div>
         </div>
-        <template x-if="loaded">
-            <div class="grid grid-cols-[1fr_1fr_0.5fr_1fr_1fr_1fr] gap-1">
-                <template x-for="(slot, i) in kursiMapBintara()" :key="i">
-                    <div
-                        :class="(layoutBintara[i] === 57 || layoutBintara[i] === 58)? 'col-span-2 relative':'relative'">
-                        <template x-if="slot === 'P'">
-                            <div
-                                class="bg-yellow-300 text-center text-xs font-bold rounded flex items-center justify-center min-h-[40px]">
-                                PINTU
-                            </div>
-                        </template>
-                        <template x-if="slot === 'L'">
-                            <div class="min-h-[40px]"></div>
-                        </template>
-                        <template x-if="typeof slot === 'object' && slot !== null && slot !== 'kosong'">
-                            <div
-                                class="border rounded p-2 text-xs bg-white shadow min-h-[40px] flex flex-col justify-center font-zilla">
-                                <div class="font-semibold font-Rundkursiv text-lg text-center" x-text="slot.Nama"></div>
-                                <div x-text="'Kursi: ' + slot.kursi"></div>
-                                <div x-text="'Kamar: ' + slot.kamar"></div>
-                                <template x-if="slot.ongkos == 370000 || slot.ongkos == 'L'">
-                                    <div class="absolute top-0 right-0 rounded-full text-blue-500 shadow-lg"">
-                                <svg xmlns=" http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                        class="inline-block" viewBox="0 0 16 16">
-                                        <path
-                                            d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708" />
-                                        </svg>
+        <div class="w-full overflow-x-auto scroll-smooth">
+            <template x-if="loaded">
+                <div class="grid grid-cols-[1fr_1fr_0.5fr_1fr_1fr_1fr] gap-1">
+                    <template x-for="(slot, i) in kursiMapBintara()" :key="i">
+                        <div
+                            :class="(layoutBintara[i] === 57 || layoutBintara[i] === 58)? 'col-span-2 relative':'relative'">
+                            <template x-if="slot === 'P'">
+                                <div
+                                    class="bg-yellow-300 text-center text-xs font-bold rounded flex items-center justify-center min-h-[40px]">
+                                    PINTU
+                                </div>
+                            </template>
+                            <template x-if="slot === 'L'">
+                                <div class="min-h-[40px]"></div>
+                            </template>
+                            <template x-if="typeof slot === 'object' && slot !== null && slot !== 'kosong'">
+                                <div
+                                    class="border rounded p-2 text-xs bg-white shadow min-h-[40px] flex flex-col justify-center font-zilla">
+                                    <div class="font-semibold font-Rundkursiv text-lg text-center" x-text="slot.Nama">
                                     </div>
-                                </template>
-                                <template x-if="slot.ongkos != 370000 && slot.ongkos != 'L'">
-                                    <div x-text="'Ongkos: ' + formatRupiah(slot.ongkos)"></div>
-                                </template>
-                            </div>
-                        </template>
-                        <template x-if="slot === 'kosong'">
-                            <div
-                                class="border border-dashed rounded p-2 text-xs text-gray-400 text-center min-h-[40px] flex flex-col justify-center">
-                                Kursi <span x-text="layoutBintara[i]"></span><br>
-                                Kosong
-                            </div>
-                        </template>
-                    </div>
+                                    <div x-text="'Kursi: ' + slot.kursi"></div>
+                                    <div x-text="'Kamar: ' + slot.kamar"></div>
+                                    <template x-if="slot.ongkos == 370000 || slot.ongkos == 'L'">
+                                        <div class="absolute top-0 right-0 rounded-full text-blue-500 shadow-lg"">
+                                <svg xmlns=" http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                            class="inline-block" viewBox="0 0 16 16">
+                                            <path
+                                                d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708" />
+                                            </svg>
+                                        </div>
+                                    </template>
+                                    <template x-if="slot.ongkos != 370000 && slot.ongkos != 'L'">
+                                        <div x-text="'Ongkos: ' + formatRupiah(slot.ongkos)"></div>
+                                    </template>
+                                </div>
+                            </template>
+                            <template x-if="slot === 'kosong'">
+                                <div
+                                    class="border border-dashed rounded p-2 text-xs text-gray-400 text-center min-h-[40px] flex flex-col justify-center">
+                                    Kursi <span x-text="layoutBintara[i]"></span><br>
+                                    Kosong
+                                </div>
+                            </template>
+                        </div>
+                    </template>
+                </div>
+                <template x-if="!loaded">
+                    <div class="col-span-6 text-center text-gray-400 py-4">Memuat data kursi...</div>
                 </template>
-            </div>
-            <template x-if="!loaded">
-                <div class="col-span-6 text-center text-gray-400 py-4">Memuat data kursi...</div>
             </template>
-        </template>
+        </div>
 
 
         <!-- vita kursi militeri-->
@@ -294,53 +297,56 @@
                 </div>
             </div>
         </div>
-        <template x-if="loaded">
-            <div class="grid grid-cols-[1fr_1fr_0.5fr_1fr_1fr_1fr] gap-1">
-                <template x-for="(slot, i) in kursiMapMiliteri()" :key="i">
-                    <div class="relative">
-                        <template x-if="slot === 'P'">
-                            <div
-                                class="bg-yellow-300 text-center text-xs font-bold rounded flex items-center justify-center min-h-[40px]">
-                                PINTU
-                            </div>
-                        </template>
-                        <template x-if="slot === 'L'">
-                            <div class="min-h-[40px]"></div>
-                        </template>
-                        <template x-if="typeof slot === 'object' && slot !== null && slot !== 'kosong'">
-                            <div
-                                class="border rounded p-2 text-xs bg-white shadow min-h-[40px] flex flex-col justify-center font-zilla">
-                                <div class="font-semibold font-Rundkursiv text-lg text-center" x-text="slot.Nama"></div>
-                                <div x-text="'Kursi: ' + (slot.kursi-60)"></div>
-                                <div x-text="'Kamar: ' + slot.kamar"></div>
-                                <template x-if="slot.ongkos == 370000 || slot.ongkos == 'L'">
-                                    <div class="absolute top-0 right-0 rounded-full text-blue-500 shadow-lg"">
-                                <svg xmlns=" http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                        class="inline-block" viewBox="0 0 16 16">
-                                        <path
-                                            d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708" />
-                                        </svg>
+        <div class="w-full overflow-x-auto scroll-smooth">
+            <template x-if="loaded">
+                <div class="grid grid-cols-[1fr_1fr_0.5fr_1fr_1fr_1fr] gap-1">
+                    <template x-for="(slot, i) in kursiMapMiliteri()" :key="i">
+                        <div class="relative">
+                            <template x-if="slot === 'P'">
+                                <div
+                                    class="bg-yellow-300 text-center text-xs font-bold rounded flex items-center justify-center min-h-[40px]">
+                                    PINTU
+                                </div>
+                            </template>
+                            <template x-if="slot === 'L'">
+                                <div class="min-h-[40px]"></div>
+                            </template>
+                            <template x-if="typeof slot === 'object' && slot !== null && slot !== 'kosong'">
+                                <div
+                                    class="border rounded p-2 text-xs bg-white shadow min-h-[40px] flex flex-col justify-center font-zilla">
+                                    <div class="font-semibold font-Rundkursiv text-lg text-center" x-text="slot.Nama">
                                     </div>
-                                </template>
-                                <template x-if="slot.ongkos != 370000 && slot.ongkos != 'L'">
-                                    <div x-text="'Ongkos: ' + formatRupiah(slot.ongkos)"></div>
-                                </template>
-                            </div>
-                        </template>
-                        <template x-if="slot === 'kosong'">
-                            <div
-                                class="border border-dashed rounded p-2 text-xs text-gray-400 text-center min-h-[40px] flex flex-col justify-center">
-                                Kursi <span x-text="layoutMiliteri[i]-60"></span><br>
-                                Kosong
-                            </div>
-                        </template>
-                    </div>
+                                    <div x-text="'Kursi: ' + (slot.kursi-60)"></div>
+                                    <div x-text="'Kamar: ' + slot.kamar"></div>
+                                    <template x-if="slot.ongkos == 370000 || slot.ongkos == 'L'">
+                                        <div class="absolute top-0 right-0 rounded-full text-blue-500 shadow-lg"">
+                                <svg xmlns=" http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                            class="inline-block" viewBox="0 0 16 16">
+                                            <path
+                                                d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708" />
+                                            </svg>
+                                        </div>
+                                    </template>
+                                    <template x-if="slot.ongkos != 370000 && slot.ongkos != 'L'">
+                                        <div x-text="'Ongkos: ' + formatRupiah(slot.ongkos)"></div>
+                                    </template>
+                                </div>
+                            </template>
+                            <template x-if="slot === 'kosong'">
+                                <div
+                                    class="border border-dashed rounded p-2 text-xs text-gray-400 text-center min-h-[40px] flex flex-col justify-center">
+                                    Kursi <span x-text="layoutMiliteri[i]-60"></span><br>
+                                    Kosong
+                                </div>
+                            </template>
+                        </div>
+                    </template>
+                </div>
+                <template x-if="!loaded">
+                    <div class="col-span-6 text-center text-gray-400 py-4">Memuat data kursi...</div>
                 </template>
-            </div>
-            <template x-if="!loaded">
-                <div class="col-span-6 text-center text-gray-400 py-4">Memuat data kursi...</div>
             </template>
-        </template>
+        </div>
 
         <!-- vita kursi Taruna-->
         <div class="w-full font-Rundkursiv text-haul-text-header text-xl relative z-0">
@@ -363,53 +369,56 @@
                 </div>
             </div>
         </div>
-        <template x-if="loaded">
-            <div class="grid grid-cols-[1fr_1fr_0.5fr_1fr_1fr] gap-1">
-                <template x-for="(slot, i) in kursiMapTaruna()" :key="i">
-                    <div class="relative">
-                        <template x-if="slot === 'P'">
-                            <div
-                                class="bg-yellow-300 text-center text-xs font-bold rounded flex items-center justify-center min-h-[40px]">
-                                PINTU
-                            </div>
-                        </template>
-                        <template x-if="slot === 'L'">
-                            <div class="min-h-[40px]"></div>
-                        </template>
-                        <template x-if="typeof slot === 'object' && slot !== null && slot !== 'kosong'">
-                            <div
-                                class="border rounded p-2 text-xs bg-white shadow min-h-[40px] flex flex-col justify-center font-zilla">
-                                <div class="font-semibold font-Rundkursiv text-lg text-center" x-text="slot.Nama"></div>
-                                <div x-text="'Kursi: ' + (slot.kursi-120)"></div>
-                                <div x-text="'Kamar: ' + slot.kamar"></div>
-                                <template x-if="slot.ongkos == 370000 || slot.ongkos == 'L'">
-                                    <div class="absolute top-0 right-0 rounded-full text-blue-500 shadow-lg"">
-                                <svg xmlns=" http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                        class="inline-block" viewBox="0 0 16 16">
-                                        <path
-                                            d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708" />
-                                        </svg>
+        <div class="w-full overflow-x-auto scroll-smooth">
+            <template x-if="loaded">
+                <div class="grid grid-cols-[1fr_1fr_0.5fr_1fr_1fr] gap-1">
+                    <template x-for="(slot, i) in kursiMapTaruna()" :key="i">
+                        <div class="relative">
+                            <template x-if="slot === 'P'">
+                                <div
+                                    class="bg-yellow-300 text-center text-xs font-bold rounded flex items-center justify-center min-h-[40px]">
+                                    PINTU
+                                </div>
+                            </template>
+                            <template x-if="slot === 'L'">
+                                <div class="min-h-[40px]"></div>
+                            </template>
+                            <template x-if="typeof slot === 'object' && slot !== null && slot !== 'kosong'">
+                                <div
+                                    class="border rounded p-2 text-xs bg-white shadow min-h-[40px] flex flex-col justify-center font-zilla">
+                                    <div class="font-semibold font-Rundkursiv text-lg text-center" x-text="slot.Nama">
                                     </div>
-                                </template>
-                                <template x-if="slot.ongkos != 370000 && slot.ongkos != 'L'">
-                                    <div x-text="'Ongkos: ' + formatRupiah(slot.ongkos)"></div>
-                                </template>
-                            </div>
-                        </template>
-                        <template x-if="slot === 'kosong'">
-                            <div
-                                class="border border-dashed rounded p-2 text-xs text-gray-400 text-center min-h-[40px] flex flex-col justify-center">
-                                Kursi <span x-text="layoutTaruna[i]-60"></span><br>
-                                Kosong
-                            </div>
-                        </template>
-                    </div>
+                                    <div x-text="'Kursi: ' + (slot.kursi-120)"></div>
+                                    <div x-text="'Kamar: ' + slot.kamar"></div>
+                                    <template x-if="slot.ongkos == 370000 || slot.ongkos == 'L'">
+                                        <div class="absolute top-0 right-0 rounded-full text-blue-500 shadow-lg"">
+                                <svg xmlns=" http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                            class="inline-block" viewBox="0 0 16 16">
+                                            <path
+                                                d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708" />
+                                            </svg>
+                                        </div>
+                                    </template>
+                                    <template x-if="slot.ongkos != 370000 && slot.ongkos != 'L'">
+                                        <div x-text="'Ongkos: ' + formatRupiah(slot.ongkos)"></div>
+                                    </template>
+                                </div>
+                            </template>
+                            <template x-if="slot === 'kosong'">
+                                <div
+                                    class="border border-dashed rounded p-2 text-xs text-gray-400 text-center min-h-[40px] flex flex-col justify-center">
+                                    Kursi <span x-text="layoutTaruna[i]-60"></span><br>
+                                    Kosong
+                                </div>
+                            </template>
+                        </div>
+                    </template>
+                </div>
+                <template x-if="!loaded">
+                    <div class="col-span-6 text-center text-gray-400 py-4">Memuat data kursi...</div>
                 </template>
-            </div>
-            <template x-if="!loaded">
-                <div class="col-span-6 text-center text-gray-400 py-4">Memuat data kursi...</div>
             </template>
-        </template>
+        </div>
         <!-- end layout kursi -->
 
         <!-- vita penginapan -->

@@ -238,7 +238,7 @@
                             <template x-if="slot === 'L'">
                                 <div class="min-h-[40px]"></div>
                             </template>
-                            <template x-if="typeof slot === 'object' && slot !== null && slot !== 'kosong'">
+                            <template x-if="typeof slot === 'object' && slot !== null && slot !== 'kosong' && slot.ongkos !== 0">
                                 <div
                                     class="border rounded p-2 text-xs bg-white shadow min-h-[40px] flex flex-col justify-center font-zilla">
                                     <div class="font-semibold font-Rundkursiv text-lg text-center" x-text="slot.Nama">
@@ -257,6 +257,17 @@
                                     <template x-if="slot.ongkos != 370000 && slot.ongkos != 'L'">
                                         <div x-text="'Ongkos: ' + formatRupiah(slot.ongkos)"></div>
                                     </template>
+                                </div>
+                            </template>
+                            <!-- boking kursi -->
+                            <template
+                                x-if="typeof slot === 'object' && slot !== null && slot !== 'kosong' && slot.ongkos === 0">
+                                <div
+                                    class="border rounded p-2 text-xs bg-white shadow min-h-[40px] flex flex-col justify-center font-zilla">
+                                    <div class="font-semibold font-Rundkursiv text-lg text-center" x-text="'Terisi'">
+                                    </div>
+                                    <div x-text="'Kursi: ' + slot.kursi"></div>
+                                    <div x-text="'Kamar: ' + slot.kamar"></div>
                                 </div>
                             </template>
                             <template x-if="slot === 'kosong'">
@@ -291,7 +302,7 @@
                         </div>
                         <!-- RIGHT -->
                         <div class="pointer-events-auto flex items-center gap-2">
-                            Militeri
+                            Militer
                         </div>
                     </div>
                 </div>
@@ -311,7 +322,7 @@
                             <template x-if="slot === 'L'">
                                 <div class="min-h-[40px]"></div>
                             </template>
-                            <template x-if="typeof slot === 'object' && slot !== null && slot !== 'kosong'">
+                            <template x-if="typeof slot === 'object' && slot !== null && slot !== 'kosong' && slot.ongkos !== 0">
                                 <div
                                     class="border rounded p-2 text-xs bg-white shadow min-h-[40px] flex flex-col justify-center font-zilla">
                                     <div class="font-semibold font-Rundkursiv text-lg text-center" x-text="slot.Nama">
@@ -330,6 +341,17 @@
                                     <template x-if="slot.ongkos != 370000 && slot.ongkos != 'L'">
                                         <div x-text="'Ongkos: ' + formatRupiah(slot.ongkos)"></div>
                                     </template>
+                                </div>
+                            </template>
+                            <!-- boking kursi -->
+                            <template
+                                x-if="typeof slot === 'object' && slot !== null && slot !== 'kosong' && slot.ongkos === 0">
+                                <div
+                                    class="border rounded p-2 text-xs bg-white shadow min-h-[40px] flex flex-col justify-center font-zilla">
+                                    <div class="font-semibold font-Rundkursiv text-lg text-center" x-text="'Terisi'">
+                                    </div>
+                                    <div x-text="'Kursi: ' + slot.kursi"></div>
+                                    <div x-text="'Kamar: ' + slot.kamar"></div>
                                 </div>
                             </template>
                             <template x-if="slot === 'kosong'">
@@ -383,7 +405,7 @@
                             <template x-if="slot === 'L'">
                                 <div class="min-h-[40px]"></div>
                             </template>
-                            <template x-if="typeof slot === 'object' && slot !== null && slot !== 'kosong'">
+                            <template x-if="typeof slot === 'object' && slot !== null && slot !== 'kosong' && slot.ongkos !== 0">
                                 <div
                                     class="border rounded p-2 text-xs bg-white shadow min-h-[40px] flex flex-col justify-center font-zilla">
                                     <div class="font-semibold font-Rundkursiv text-lg text-center" x-text="slot.Nama">
@@ -404,6 +426,18 @@
                                     </template>
                                 </div>
                             </template>
+                            <!-- boking kursi -->
+                            <template
+                                x-if="typeof slot === 'object' && slot !== null && slot !== 'kosong' && slot.ongkos === 0">
+                                <div
+                                    class="border rounded p-2 text-xs bg-white shadow min-h-[40px] flex flex-col justify-center font-zilla">
+                                    <div class="font-semibold font-Rundkursiv text-lg text-center" x-text="'Terisi'">
+                                    </div>
+                                    <div x-text="'Kursi: ' + slot.kursi"></div>
+                                    <div x-text="'Kamar: ' + slot.kamar"></div>
+                                </div>
+                            </template>
+
                             <template x-if="slot === 'kosong'">
                                 <div
                                     class="border border-dashed rounded p-2 text-xs text-gray-400 text-center min-h-[40px] flex flex-col justify-center">

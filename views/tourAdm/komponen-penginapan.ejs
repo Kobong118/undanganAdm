@@ -1,0 +1,410 @@
+<!-- layout kamar -->
+<hr class="my-10 h-px border-0 bg-gradient-to-r from-transparent via-yellow-500 to-transparent">
+<div id="hotel" class="m-6">
+    <!-- catatan -->
+    <div class="w-full font-mono text-sm bg-gray-100 border-l-4 border-yellow-500 p-4 my-4">
+        <p class="font-semibold text-gray-800 mb-2">Perhatian:</p>
+        <p class="text-gray-700 whitespace-pre-wrap">
+            Denah bangunan. <strong>99% akurat</strong>
+        </p>
+    </div>
+    <hr class="my-10 h-px border-0 bg-gradient-to-r from-transparent via-yellow-500 to-transparent">
+    <!-- parkem1 lantai 1 -->
+    <h1 class="font-Rundkursiv text-haul-text-header text-2xl text-center mb-6">Parkem 1 - Lantai 1
+    </h1>
+    <div class="text-center text-xs text-gray-500 mt-1">
+        ← Geser untuk melihat denah →
+    </div>
+    <div class="w-full overflow-x-auto pb-2 scroll-smooth">
+        <div class="min-w-[768px] mx-auto">
+            <!-- GRID DENAH DI SINI -->
+            <!-- parkem1 lantai 1 -->
+            <div class="grid grid-cols-[1fr_0.5fr_1fr_1fr] w-full min-h-[40vh] text-sm md:text-md">
+                <!-- kamar 4 & 5 -->
+                <div class="border-2 grid grid-cols-2 min-h-[380px] border-turqu">
+                    <!-- kamar 4 -->
+                    <div class="border-r border-b  min-h-[180px]">
+                        <h3 class="font-bold text-center mb-2 text-sm md:text-md">Kamar 4</h3>
+                        <template x-for="(item, index) in kamarFilter(4)" :key="item.Nama">
+                            <div class=" text-[11px] md:text-xs leading-snug px-1">
+                                <span x-text="index + 1"></span>. <span x-text="item.Nama"></span>
+                            </div>
+                        </template>
+                    </div>
+                    <!-- kamar 5 -->
+                    <div class="border-b  min-h-[180px]">
+                        <h3 class="font-bold text-center mb-2 text-sm md:text-md">Kamar 5</h3>
+                        <template x-for="(item, index) in kamarFilter(5)" :key="item.Nama">
+                            <div class=" text-[11px] md:text-xs leading-snug px-1">
+                                <span x-text="index + 1"></span>. <span x-text="item.Nama"></span>
+                            </div>
+                        </template>
+                    </div>
+                    <!-- ruangan -->
+                    <div class="col-span-2 flex items-center justify-center">
+                        <h3 class="font-semibold text-center text-sm md:text-base text-gray-700/70">ruangan Bungalow 2
+                            kamar</h3>
+                    </div>
+                </div>
+                <!-- tangga -->
+                <div class="grid grid-cols-2 border-t-2 border-turqu">
+                    <div class="col-start-2 border-l-2 border-turqu">
+                        <h3 class="font-semibold text-center text-sm md:text-base text-gray-700/70">Tangga</h3>
+                        <div class=" h-4 border-b"></div>
+                        <div class=" h-4 border-b border-t"></div>
+                        <div class=" h-4 border-b border-t"></div>
+                        <div class=" h-4 border-b border-t"></div>
+                        <div class=" h-4 border-b border-t"></div>
+                        <div class=" h-4 border-b border-t"></div>
+                        <div class=" h-4 border-b border-t"></div>
+                        <div class=" h-4 border-t"></div>
+                    </div>
+                </div>
+                <!-- kamar 6, 7, 8, 9 -->
+                <div
+                    class="border-2 col-span-2 row-span-2 grid grid-cols-[1fr_1fr_0.5fr_1fr] min-h-[380px] border-turqu">
+                    <!-- kamar 6 -->
+                    <div class="border-r border-b  min-h-[180px]">
+                        <h3 class="font-bold text-center mb-2 text-sm md:text-md">Kamar 6</h3>
+                        <template x-for="(item, index) in kamarFilter(6)" :key="item.Nama">
+                            <div class=" text-[11px] md:text-xs leading-snug px-1">
+                                <span x-text="index + 1"></span>. <span x-text="item.Nama"></span>
+                            </div>
+                        </template>
+                    </div>
+                    <!-- kamar 7 -->
+                    <div class="border-r border-b  min-h-[180px]">
+                        <h3 class="font-bold text-center mb-2 text-sm md:text-md">Kamar 7</h3>
+                        <template x-for="(item, index) in kamarFilter(7)" :key="item.Nama">
+                            <div class=" text-[11px] md:text-xs leading-snug px-1">
+                                <span x-text="index + 1"></span>. <span x-text="item.Nama"></span>
+                            </div>
+                        </template>
+                    </div>
+                    <!-- kamar 8 -->
+                    <div class="col-start-4 border-l border-b  min-h-[180px]">
+                        <h3 class="font-bold text-center mb-2 text-sm md:text-md">Kamar 8</h3>
+                        <template x-for="(item, index) in kamarFilter(8)" :key="item.Nama">
+                            <div class=" text-[11px] md:text-xs leading-snug px-1">
+                                <span x-text="index + 1"></span>. <span x-text="item.Nama"></span>
+                            </div>
+                        </template>
+                    </div>
+                    <div class="col-span-3 flex items-center justify-center">
+                        <h3 class="font-semibold text-center text-sm md:text-base text-gray-700/70">Ruangan Bungalow 4
+                            kamar</h3>
+                    </div>
+                    <!-- kamar 9 -->
+                    <div class="border-l">
+                        <h3 class="font-bold text-center mb-2 text-sm md:text-md">Kamar 9</h3>
+                        <template x-for="(item, index) in kamarFilter(9)" :key="item.Nama">
+                            <div class=" text-[11px] md:text-xs leading-snug px-1">
+                                <span x-text="index + 1"></span>. <span x-text="item.Nama"></span>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+                <!-- kamar 2 -->
+                <div class="border-l-2 border-r-2 border-b-2  min-h-[180px] border-turqu">
+                    <h3 class="font-bold text-center mb-2 text-sm md:text-md">Kamar 2</h3>
+                    <template x-for="(item, index) in kamarFilter(2)" :key="item.Nama">
+                        <div class=" text-[11px] md:text-xs leading-snug px-1">
+                            <span x-text="index + 1"></span>. <span x-text="item.Nama"></span>
+                        </div>
+                    </template>
+                </div>
+                <!-- kamar 1 -->
+                <div class="col-start-1 border-l-2 border-r-2 border-b-2  min-h-[180px] border-turqu">
+                    <h3 class="font-bold text-center mb-2 text-sm md:text-md">Kamar 1</h3>
+                    <template x-for="(item, index) in kamarFilter(1)" :key="item.Nama">
+                        <div class=" text-[11px] md:text-xs leading-snug px-1">
+                            <span x-text="index + 1"></span>. <span x-text="item.Nama"></span>
+                        </div>
+                    </template>
+                </div>
+
+                <!-- kamar 3 -->
+                <div class="col-start-4 border-l-2 border-r-2 border-b-2  min-h-[180px] border-turqu">
+                    <h3 class="font-bold text-center mb-2 text-sm md:text-md">Kamar 3</h3>
+                    <template x-for="(item, index) in kamarFilter(3)" :key="item.Nama">
+                        <div class=" text-[11px] md:text-xs leading-snug px-1">
+                            <span x-text="index + 1"></span>. <span x-text="item.Nama"></span>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end parkem1 lantai 1 -->
+
+    <hr class="my-10 h-px border-0 bg-gradient-to-r from-transparent via-yellow-500 to-transparent">
+    <!-- parkem1 lantai 2 -->
+    <h1 class="font-Rundkursiv text-haul-text-header text-2xl text-center mb-6">Parkem 1 - Lantai 2
+    </h1>
+    <div class="text-center text-xs text-gray-500 mt-1">
+        ← Geser untuk melihat denah →
+    </div>
+    <div class="w-full overflow-x-auto pb-2 scroll-smooth">
+        <div class="min-w-[768px] mx-auto">
+            <!-- GRID DENAH DI SINI -->
+            <!-- parkem1 lantai 2 -->
+            <div
+                class="grid grid-cols-[1fr_0.5fr_1fr_0.5fr_1fr] border-t-2 border-t-turqu w-full min-h-[40vh] text-sm md:text-md">
+                <!-- kamar 10 & 11 -->
+                <div class="border-2 border-t-0 grid grid-cols-2 min-h-[380px] border-turqu">
+                    <!-- kamar 10 -->
+                    <div class="border-r border-b  min-h-[180px]">
+                        <h3 class="font-bold text-center mb-2 text-sm md:text-md">Kamar 10</h3>
+                        <template x-for="(item, index) in kamarFilter(10)" :key="item.Nama">
+                            <div class=" text-[11px] md:text-xs leading-snug px-1">
+                                <span x-text="index + 1"></span>. <span x-text="item.Nama"></span>
+                            </div>
+                        </template>
+                    </div>
+                    <!-- kamar 11 -->
+                    <div class="border-b  min-h-[180px]">
+                        <h3 class="font-bold text-center mb-2 text-sm md:text-md">Kamar 11</h3>
+                        <template x-for="(item, index) in kamarFilter(11)" :key="item.Nama">
+                            <div class=" text-[11px] md:text-xs leading-snug px-1">
+                                <span x-text="index + 1"></span>. <span x-text="item.Nama"></span>
+                            </div>
+                        </template>
+                    </div>
+                    <!-- ruangan -->
+                    <div class="col-span-2 flex items-center justify-center">
+                        <h3 class="font-semibold text-center text-sm md:text-base text-gray-700/70">ruangan Bungalow 2
+                            kamar</h3>
+                    </div>
+                </div>
+                <!-- tangga -->
+                <div class="grid grid-cols-2">
+                    <div class="col-start-2 border-l-2 border-turqu">
+                        <h3 class="font-semibold text-center text-sm md:text-base text-gray-700/70">Tangga</h3>
+                        <div class=" h-4 border-b"></div>
+                        <div class=" h-4 border-b border-t"></div>
+                        <div class=" h-4 border-b border-t"></div>
+                        <div class=" h-4 border-b border-t"></div>
+                        <div class=" h-4 border-b border-t"></div>
+                        <div class=" h-4 border-b border-t"></div>
+                        <div class=" h-4 border-b border-t"></div>
+                        <div class=" h-4 border-t"></div>
+                    </div>
+                </div>
+                <!-- kamar 16, 17 -->
+                <div class="border-2 border-t-0 grid grid-cols-2 min-h-[380px] border-turqu">
+                    <!-- kamar 16 -->
+                    <div class="border-r border-b  min-h-[180px]">
+                        <h3 class="font-bold text-center mb-2 text-sm md:text-md">Kamar 16</h3>
+                        <template x-for="(item, index) in kamarFilter(16)" :key="item.Nama">
+                            <div class=" text-[11px] md:text-xs leading-snug px-1">
+                                <span x-text="index + 1"></span>. <span x-text="item.Nama"></span>
+                            </div>
+                        </template>
+                    </div>
+                    <!-- kamar 17 -->
+                    <div class="border-r border-b  min-h-[180px]">
+                        <h3 class="font-bold text-center mb-2 text-sm md:text-md">Kamar 17</h3>
+                        <template x-for="(item, index) in kamarFilter(17)" :key="item.Nama">
+                            <div class=" text-[11px] md:text-xs leading-snug px-1">
+                                <span x-text="index + 1"></span>. <span x-text="item.Nama"></span>
+                            </div>
+                        </template>
+                    </div>
+                    <div class="col-span-2 col-start-1 flex items-center justify-center">
+                        <h3 class="font-semibold text-center text-sm md:text-base text-gray-700/70">Ruangan Bungalow 2
+                            kamar</h3>
+                    </div>
+                </div>
+                <!-- kamar 18 -->
+                <div class="col-start-5 border-t-0 border-2 min-h-[180px] border-turqu">
+                    <h3 class="font-bold text-center mb-2 text-sm md:text-md">Kamar 18</h3>
+                    <template x-for="(item, index) in kamarFilter(18)" :key="item.Nama">
+                        <div class=" text-[11px] md:text-xs leading-snug px-1">
+                            <span x-text="index + 1"></span>. <span x-text="item.Nama"></span>
+                        </div>
+                    </template>
+                </div>
+                <!-- kamar 12 -->
+                <div class="col-start-1 border-l-2 border-r-2 border-b-2  min-h-[180px] border-turqu">
+                    <h3 class="font-bold text-center mb-2 text-sm md:text-md">Kamar 12</h3>
+                    <template x-for="(item, index) in kamarFilter(12)" :key="item.Nama">
+                        <div class=" text-[11px] md:text-xs leading-snug px-1">
+                            <span x-text="index + 1"></span>. <span x-text="item.Nama"></span>
+                        </div>
+                    </template>
+                </div>
+
+                <!-- kamar 19 -->
+                <div class="col-start-5 border-l-2 border-r-2 border-b-2  min-h-[180px] border-turqu">
+                    <h3 class="font-bold text-center mb-2 text-sm md:text-md">Kamar 19</h3>
+                    <template x-for="(item, index) in kamarFilter(19)" :key="item.Nama">
+                        <div class=" text-[11px] md:text-xs leading-snug px-1">
+                            <span x-text="index + 1"></span>. <span x-text="item.Nama"></span>
+                        </div>
+                    </template>
+                </div>
+                <!-- kamar 13 -->
+                <div class="col-start-1 border-l-2 border-r-2 border-b-2  min-h-[180px] border-turqu">
+                    <h3 class="font-bold text-center mb-2 text-sm md:text-md">Kamar 13</h3>
+                    <template x-for="(item, index) in kamarFilter(13)" :key="item.Nama">
+                        <div class=" text-[11px] md:text-xs leading-snug px-1">
+                            <span x-text="index + 1"></span>. <span x-text="item.Nama"></span>
+                        </div>
+                    </template>
+                </div>
+
+                <!-- kamar 20 -->
+                <div class="col-start-5 border-l-2 border-r-2 border-b-2  min-h-[180px] border-turqu">
+                    <h3 class="font-bold text-center mb-2 text-sm md:text-md">Kamar 20</h3>
+                    <template x-for="(item, index) in kamarFilter(20)" :key="item.Nama">
+                        <div class=" text-[11px] md:text-xs leading-snug px-1">
+                            <span x-text="index + 1"></span>. <span x-text="item.Nama"></span>
+                        </div>
+                    </template>
+                </div>
+                <!-- kamar 14 -->
+                <div class="col-start-1 border-l-2 border-r-2 border-b-2  min-h-[180px] border-turqu">
+                    <h3 class="font-bold text-center mb-2 text-sm md:text-md">Kamar 14</h3>
+                    <template x-for="(item, index) in kamarFilter(14)" :key="item.Nama">
+                        <div class=" text-[11px] md:text-xs leading-snug px-1">
+                            <span x-text="index + 1"></span>. <span x-text="item.Nama"></span>
+                        </div>
+                    </template>
+                </div>
+
+                <!-- kamar 21 -->
+                <div class="col-start-5 border-l-2 border-r-2 border-b-2  min-h-[180px] border-turqu">
+                    <h3 class="font-bold text-center mb-2 text-sm md:text-md">Kamar 21</h3>
+                    <template x-for="(item, index) in kamarFilter(21)" :key="item.Nama">
+                        <div class=" text-[11px] md:text-xs leading-snug px-1">
+                            <span x-text="index + 1"></span>. <span x-text="item.Nama"></span>
+                        </div>
+                    </template>
+                </div>
+                <!-- kamar 15 -->
+                <div class="col-start-1 border-l-2 border-r-2 border-b-2  min-h-[180px] border-turqu">
+                    <h3 class="font-bold text-center mb-2 text-sm md:text-md">Kamar 15</h3>
+                    <template x-for="(item, index) in kamarFilter(15)" :key="item.Nama">
+                        <div class=" text-[11px] md:text-xs leading-snug px-1">
+                            <span x-text="index + 1"></span>. <span x-text="item.Nama"></span>
+                        </div>
+                    </template>
+                </div>
+
+                <!-- kamar 22 -->
+                <div class="col-start-5 border-l-2 border-r-2 border-b-2  min-h-[180px] border-turqu">
+                    <h3 class="font-bold text-center mb-2 text-sm md:text-md">Kamar 22</h3>
+                    <template x-for="(item, index) in kamarFilter(22)" :key="item.Nama">
+                        <div class=" text-[11px] md:text-xs leading-snug px-1">
+                            <span x-text="index + 1"></span>. <span x-text="item.Nama"></span>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end parkem1 lantai 2 -->
+
+    <hr class="my-10 h-px border-0 bg-gradient-to-r from-transparent via-yellow-500 to-transparent">
+    <!-- homestay 8 kamar -->
+    <h1 class="font-Rundkursiv text-haul-text-header text-2xl text-center mb-6">HomeStay 8 kamar
+    </h1>
+    <div class="text-center text-xs text-gray-500 mt-1">
+        ← Geser untuk melihat denah →
+    </div>
+    <div class="w-full overflow-x-auto pb-2 scroll-smooth">
+        <div class="min-w-[768px] mx-auto">
+            <!-- GRID DENAH DI SINI -->
+            <div
+                class="grid grid-cols-[1fr_0.5fr_1fr_0.5fr] border-2 border-t-0 border-l-0 border-turqu w-full min-h-[40vh] text-sm md:text-md">
+                <!-- kamar 23 -->
+                <div class="col-start-1 border-2 min-h-[180px] border-turqu">
+                    <h3 class="font-bold text-center mb-2 text-sm md:text-md">Kamar 23</h3>
+                    <template x-for="(item, index) in kamarFilter(23)" :key="item.Nama">
+                        <div class=" text-[11px] md:text-xs leading-snug px-1">
+                            <span x-text="index + 1"></span>. <span x-text="item.Nama"></span>
+                        </div>
+                    </template>
+                </div>
+                <!-- kamar 24 -->
+                <div class="col-start-1 border-2 border-t-0 border-b-0 min-h-[180px] border-turqu">
+                    <h3 class="font-bold text-center mb-2 text-sm md:text-md">Kamar 24</h3>
+                    <template x-for="(item, index) in kamarFilter(24)" :key="item.Nama">
+                        <div class=" text-[11px] md:text-xs leading-snug px-1">
+                            <span x-text="index + 1"></span>. <span x-text="item.Nama"></span>
+                        </div>
+                    </template>
+                </div>
+                <!-- kamar 25, 26, 27 -->
+                <div class="col-start-1 col-span-3 grid grid-cols-[1fr_0.5fr_1fr] min-h-[380px] border-2 border-l-0  border-turqu">
+                    <!-- kamar 25 -->
+                    <div class="border-2 border-t-0 min-h-[180px] border-turqu">
+                        <h3 class="font-bold text-center mb-2 text-sm md:text-md">Kamar 25</h3>
+                        <template x-for="(item, index) in kamarFilter(25)" :key="item.Nama">
+                            <div class=" text-[11px] md:text-xs leading-snug px-1">
+                                <span x-text="index + 1"></span>. <span x-text="item.Nama"></span>
+                            </div>
+                        </template>
+                    </div>
+                    <!-- kamar 26 -->
+                    <div class="col-start-1 border-2 border-t-0 min-h-[180px] border-turqu">
+                        <h3 class="font-bold text-center mb-2 text-sm md:text-md">Kamar 26</h3>
+                        <template x-for="(item, index) in kamarFilter(26)" :key="item.Nama">
+                            <div class=" text-[11px] md:text-xs leading-snug px-1">
+                                <span x-text="index + 1"></span>. <span x-text="item.Nama"></span>
+                            </div>
+                        </template>
+                    </div>
+                    <!-- kamar mandi -->
+                    <div class="col-start-3 row-span-2 border-2 border-b-0 border-r-0 min-h-[360px] border-turqu">
+                        <div class="flex items-center border-b-2 border-turqu h-[180px] justify-center">
+                            <h3 class="font-semibold text-center text-sm md:text-base text-gray-700/70">Kamar mandi</h3>
+                        </div>
+                        <div class="flex items-center h-[180px] justify-center">
+                            <h3 class="font-semibold text-center text-sm md:text-base text-gray-700/70">Kamar mandi</h3>
+                        </div>
+                    </div>
+                    <!-- kamar 27 -->
+                    <div class="col-start-1 border-2 border-t-0 border-b-0 min-h-[180px] border-turqu">
+                        <h3 class="font-bold text-center mb-2 text-sm md:text-md">Kamar 27</h3>
+                        <template x-for="(item, index) in kamarFilter(27)" :key="item.Nama">
+                            <div class=" text-[11px] md:text-xs leading-snug px-1">
+                                <span x-text="index + 1"></span>. <span x-text="item.Nama"></span>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+                <!-- kamar 28 -->
+                <div class="col-start-1 border-2 border-t-0 min-h-[180px] border-turqu">
+                    <h3 class="font-bold text-center mb-2 text-sm md:text-md">Kamar 28</h3>
+                    <template x-for="(item, index) in kamarFilter(28)" :key="item.Nama">
+                        <div class=" text-[11px] md:text-xs leading-snug px-1">
+                            <span x-text="index + 1"></span>. <span x-text="item.Nama"></span>
+                        </div>
+                    </template>
+                </div>
+                <!-- kamar 29 -->
+                <div class="col-start-1 border-2 border-t-0 border-b-0 min-h-[180px] border-turqu">
+                    <h3 class="font-bold text-center mb-2 text-sm md:text-md">Kamar 29</h3>
+                    <template x-for="(item, index) in kamarFilter(29)" :key="item.Nama">
+                        <div class=" text-[11px] md:text-xs leading-snug px-1">
+                            <span x-text="index + 1"></span>. <span x-text="item.Nama"></span>
+                        </div>
+                    </template>
+                </div>
+                <!-- kamar 30 -->
+                <div class="col-start-3 col-span-2 border-2 border-r-0 border-b-0 min-h-[180px] border-turqu">
+                    <h3 class="font-bold text-center mb-2 text-sm md:text-md">Kamar 30</h3>
+                    <template x-for="(item, index) in kamarFilter(30)" :key="item.Nama">
+                        <div class=" text-[11px] md:text-xs leading-snug px-1">
+                            <span x-text="index + 1"></span>. <span x-text="item.Nama"></span>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end homestay 8 kamar -->
+</div>
+<!-- end layout kamar -->

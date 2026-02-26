@@ -1,0 +1,199 @@
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+
+  <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border-l-4 border-blue-500">
+    <div class="flex items-center justify-between">
+      <div>
+        <p class="text-gray-600 text-sm font-medium">Jumlah Jamaah</p>
+        <h2 class="text-3xl font-bold text-blue-600 mt-2">
+          <%= ((ikhwan || []).length + (akhwat || []).length) %>
+        </h2>
+        <p class="text-gray-500 text-xs mt-1">Total Peserta</p>
+      </div>
+      <div class="text-blue-200 text-4xl">👥</div>
+    </div>
+  </div>
+
+  <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border-l-4 border-green-500">
+    <div class="flex items-center justify-between">
+      <div>
+        <p class="text-gray-600 text-sm font-medium">Ongkos Terkumpul</p>
+        <h2 class="text-2xl font-bold text-green-600 mt-2">
+          Rp <%= Number(ongkosTerkumpul || 0).toLocaleString() %>
+        </h2>
+        <p class="text-gray-500 text-xs mt-1">Dana Masuk</p>
+      </div>
+      <div class="text-green-200 text-4xl">💰</div>
+    </div>
+  </div>
+
+  <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border-l-4 border-purple-500">
+    <div class="flex items-center justify-between">
+      <div>
+        <p class="text-gray-600 text-sm font-medium">Total Anggaran</p>
+        <h2 class="text-2xl font-bold text-purple-600 mt-2">
+          Rp <%= Number(totalAnggaran || 0).toLocaleString() %>
+        </h2>
+        <p class="text-gray-500 text-xs mt-1">Budget Keseluruhan</p>
+      </div>
+      <div class="text-purple-200 text-4xl">📊</div>
+    </div>
+  </div>
+
+  <div class="bg-gradient-to-br from-red-50 to-red-100 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border-l-4 border-red-500">
+    <div class="flex items-center justify-between">
+      <div>
+        <p class="text-gray-600 text-sm font-medium">Realisasi Pengeluaran</p>
+        <h2 class="text-2xl font-bold text-red-600 mt-2">
+          Rp <%= Number(totalRealisasi || 0).toLocaleString() %>
+        </h2>
+        <p class="text-gray-500 text-xs mt-1">Dana Keluar</p>
+      </div>
+      <div class="text-red-200 text-4xl">📉</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 pb-60">
+  
+  <!-- daftar jamaah -->
+  <div id="daftar-jamaah" class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+    <div class="bg-gradient-to-r from-blue-500 to-blue-600 p-4">
+      <h3 class="text-white font-semibold text-lg">👥 Daftar Jamaah</h3>
+    </div>
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm">
+        <thead class="bg-gray-100 border-b">
+          <tr>
+            <th class="p-3 text-left font-semibold text-gray-700">Nama</th>
+            <th class="p-3 text-left font-semibold text-gray-700">No HP</th>
+            <th class="p-3 text-left font-semibold text-gray-700">Status</th>
+            <th class="p-3 text-right font-semibold text-gray-700">Bayar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% (jamaah || []).forEach((j, idx) => { %>
+            <tr class="border-t hover:bg-blue-50 transition-colors <%= idx % 2 === 0 ? 'bg-gray-50' : '' %>">
+              <td class="p-3 font-medium text-gray-800">
+                <%= j.Nama || '-' %>
+              </td>
+              <td class="p-3 text-gray-600">
+                <%= j.noWa || '-' %>
+              </td>
+              <td class="p-3">
+                <span class="px-2 py-1 rounded-full text-xs font-semibold <%= (j.ongkos === 370000 || j.ongkos === 'L') ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700' %>">
+                  <%= (j.ongkos !== 'L' && Number(j.ongkos || 0) < 370000) ? 'Belum Lunas' : 'Lunas' %>
+                </span>
+              </td>
+              <td class="p-3 text-right font-semibold text-gray-800">
+                <%= j.ongkos !== 'L' ? `Rp ${Number(j.ongkos || 0).toLocaleString()}` : 'Prioritas' %>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- anggaran -->
+  <div id="daftar-anggaran" class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+    <div class="bg-gradient-to-r from-purple-500 to-purple-600 p-4">
+      <h3 class="text-white font-semibold text-lg">📊 Daftar Anggaran</h3>
+    </div>
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm">
+        <thead class="bg-gray-100 border-b">
+          <tr>
+            <th class="p-3 text-left font-semibold text-gray-700">Keterangan</th>
+            <th class="p-3 text-right font-semibold text-gray-700">Estimasi</th>
+            <th class="p-3 text-right font-semibold text-gray-700">Realisasi</th>
+            <th class="p-3 text-right font-semibold text-gray-700">Selisih</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% (Anggaran || []).forEach((a, idx) => { %>
+            <tr class="border-t hover:bg-purple-50 transition-colors <%= idx % 2 === 0 ? 'bg-gray-50' : '' %>">
+              <td class="p-3 font-medium text-gray-800 truncate max-w-xs" title="<%= a.Keterangan || '' %>">
+                <%= a.Keterangan || '-' %>
+              </td>
+              <td class="p-3 text-right text-gray-600">
+                <%= Number(a.Estimasi || 0).toLocaleString() %>
+              </td>
+              <td class="p-3 text-right font-semibold">
+                <span class="<%= Number(a.Realisasi || 0) > Number(a.Estimasi || 0) ? 'text-red-600' : 'text-green-600' %>">
+                  <%= Number(a.Realisasi || 0).toLocaleString() %>
+                </span>
+              </td>
+              <td class="p-3 text-right font-semibold <%= Number(a.Estimasi || 0) - Number(a.Realisasi || 0) > 0 ? 'text-green-600' : 'text-red-600' %>">
+                <%= Number(a.Estimasi || 0) - Number(a.Realisasi || 0) > 0 ? 'Rp ' + (Number(a.Estimasi || 0) - Number(a.Realisasi || 0)).toLocaleString() : '0' %>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Pengeluaran -->
+  <div id="daftar-pengeluaran" class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+    <div class="bg-gradient-to-r from-red-500 to-red-600 p-4">
+      <h3 class="text-white font-semibold text-lg">💸 Daftar Pengeluaran</h3>
+    </div>
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm">
+        <thead class="bg-gray-100 border-b">
+          <tr>
+            <th class="p-3 text-left font-semibold text-gray-700">Tanggal</th>
+            <th class="p-3 text-left font-semibold text-gray-700">Keterangan</th>
+            <th class="p-3 text-left font-semibold text-gray-700">Kategori</th>
+            <th class="p-3 text-right font-semibold text-gray-700">Jumlah</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% (pengeluaran || []).forEach((a, idx) => { %>
+            <tr class="border-t hover:bg-red-50 transition-colors <%= idx % 2 === 0 ? 'bg-gray-50' : '' %>">
+              <td class="p-3 font-medium text-gray-800 whitespace-nowrap">
+                <%= a.Tanggal || '-' %>
+              </td>
+              <td class="p-3 text-gray-600 truncate max-w-xs" title="<%= a.Keterangan || '' %>">
+                <%= a.Keterangan || '-' %>
+              </td>
+              <td class="p-3">
+                <span class="px-2 py-1 rounded text-xs font-semibold bg-orange-100 text-orange-700">
+                  <%= a.Kategori || '-' %>
+                </span>
+              </td>
+              <td class="p-3 text-right font-semibold text-gray-800">
+                Rp <%= Number(a.Q || 0).toLocaleString() %>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<!-- menu navigasi -->
+<div class="fixed bottom-8 right-8 flex gap-3 flex-col">
+  <a href="#daftar-jamaah" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-4 rounded-full shadow-lg transition-all hover:shadow-xl flex items-center gap-2">
+    👥 Jamaah
+  </a>
+  <a href="#daftar-anggaran" class="bg-purple-500 hover:bg-purple-600 text-white font-semibold py-3 px-4 rounded-full shadow-lg transition-all hover:shadow-xl flex items-center gap-2">
+    📊 Anggaran
+  </a>
+  <a href="#daftar-pengeluaran" class="bg-red-500 hover:bg-red-600 text-white font-semibold py-3 px-4 rounded-full shadow-lg transition-all hover:shadow-xl flex items-center gap-2">
+    💸 Pengeluaran
+  </a>
+</div>
+
+<script>
+  document.querySelectorAll('.fixed a').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>

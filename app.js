@@ -1,3 +1,5 @@
+require('dotenv').config();
+// console.log("ENV TEST:", process.env.SPREADSHEET_API);
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -20,6 +22,9 @@ const tourADM = require ('./routes/tourADM');
 const tarkiban = require ('./routes/tarkib');
 const undanganMaulid2025 = require ('./routes/undanganMaulid2025');
 const tourAdm2026 = require ('./routes/tour-adm-2026');
+const authRoutes = require("./routes/managementTourAdm/auth");
+const { authRequired } = require("./middleware/authMiddleware");
+const management = require("./routes/managementTourAdm/managementTour");
 
 
 var app = express();
@@ -54,6 +59,9 @@ app.use('/haul-apa-limbangan', haulApaLimbangan);
 app.use('/tour-adm', tourADM);
 app.use('/tour-adm-2026', tourAdm2026);
 app.use('/narkib', tarkiban);
+app.use(authRoutes);
+app.use('/management-tour-adm',management);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

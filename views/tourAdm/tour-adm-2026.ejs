@@ -238,7 +238,8 @@
                             <template x-if="slot === 'L'">
                                 <div class="min-h-[40px]"></div>
                             </template>
-                            <template x-if="typeof slot === 'object' && slot !== null && slot !== 'kosong' && slot.ongkos !== 0">
+                            <template
+                                x-if="typeof slot === 'object' && slot !== null && slot !== 'kosong' && slot.ongkos !== 0">
                                 <div
                                     class="border rounded p-2 text-xs bg-white shadow min-h-[40px] flex flex-col justify-center font-zilla">
                                     <div class="font-semibold font-Rundkursiv text-lg text-center" x-text="slot.Nama">
@@ -322,7 +323,8 @@
                             <template x-if="slot === 'L'">
                                 <div class="min-h-[40px]"></div>
                             </template>
-                            <template x-if="typeof slot === 'object' && slot !== null && slot !== 'kosong' && slot.ongkos !== 0">
+                            <template
+                                x-if="typeof slot === 'object' && slot !== null && slot !== 'kosong' && slot.ongkos !== 0">
                                 <div
                                     class="border rounded p-2 text-xs bg-white shadow min-h-[40px] flex flex-col justify-center font-zilla">
                                     <div class="font-semibold font-Rundkursiv text-lg text-center" x-text="slot.Nama">
@@ -405,7 +407,8 @@
                             <template x-if="slot === 'L'">
                                 <div class="min-h-[40px]"></div>
                             </template>
-                            <template x-if="typeof slot === 'object' && slot !== null && slot !== 'kosong' && slot.ongkos !== 0">
+                            <template
+                                x-if="typeof slot === 'object' && slot !== null && slot !== 'kosong' && slot.ongkos !== 0">
                                 <div
                                     class="border rounded p-2 text-xs bg-white shadow min-h-[40px] flex flex-col justify-center font-zilla">
                                     <div class="font-semibold font-Rundkursiv text-lg text-center" x-text="slot.Nama">
@@ -681,6 +684,34 @@
                             class="col-span-4 space-y-2 border rounded-b-lg text-center h-28 flex flex-col items-center justify-center">
                             <p>ruangan</p>
                         </div>
+                    </div><hr class="my-10 h-px border-0 bg-gradient-to-r from-transparent via-yellow-500 to-transparent">
+                    <h1 class="font-Rundkursiv text-haul-text-header text-2xl text-center mb-6">12 kamar Standart</h1>
+                    <!-- 12 kamar standart -->
+                    <div class="grid grid-cols-2 gap-2">
+                        <template x-for="(kamar,index) in 12">
+                            <div class="space-y-2 border rounded-lg">
+                                <h3 class="font-bold text-center mb-3" x-text="'Kamar '+ (index + 11)"></h3>
+                                <template x-for="(item, index) in kamarFilter(index + 11)" :key="item.Nama">
+                                    <div class="bg-white">
+                                        <span x-text="index + 1"></span>. <span x-text="item.Nama"></span>
+                                    </div>
+                                </template>
+                            </div>
+                        </template>
+                    </div>
+                    <h1 class="font-Rundkursiv text-haul-text-header text-2xl text-center mb-6">8 kamar Standart</h1>
+                    <!-- 8 kamar standart -->
+                    <div class="grid grid-cols-2 gap-2">
+                        <template x-for="(kamar,index) in 8">
+                            <div class="space-y-2 border rounded-lg">
+                                <h3 class="font-bold text-center mb-3" x-text="'Kamar '+ (index + 21)"></h3>
+                                <template x-for="(item, index) in kamarFilter(index + 21)" :key="item.Nama">
+                                    <div class="bg-white">
+                                        <span x-text="index + 1"></span>. <span x-text="item.Nama"></span>
+                                    </div>
+                                </template>
+                            </div>
+                        </template>
                     </div>
                 </div>
             </template>

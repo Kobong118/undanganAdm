@@ -8,7 +8,7 @@ const { sessions } = require("../../middleware/authMiddleware");
 router.get("/login", (req, res) => {
   res.render("managementTourAdm/auth/login", {
     title: "Login Panitia",
-    layout: "layouts/main-layout"
+    layout: "layouts/tour-adm-2026-layout"
   });
 });
 
@@ -24,7 +24,7 @@ router.post("/login", (req, res) => {
     return res.render("managementTourAdm/auth/login", {
       title: "Login Panitia",
       error: "Username atau password salah",
-      layout: "layouts/main-layout"
+      layout: "layouts/tour-adm-2026-layout"
     });
   }
 

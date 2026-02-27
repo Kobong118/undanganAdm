@@ -33,7 +33,8 @@ router.get('/', authRequired, async (req, res, next) => {
             ongkosTerkumpul,
             totalRealisasi,
             jamaah: JamaahIkutTour,
-            Anggaran: Anggaran
+            Anggaran: Anggaran,
+            JamaahPrioritas
         });
     } catch (err) {
         next(err);

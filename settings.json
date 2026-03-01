@@ -6,5 +6,9 @@
 //   agar tailwindcss mengenali class di alpinejs
   "tailwindCSS.experimental.classRegex": [
     ["x-bind:class=\"([^\"]*)\"", "'([^']*)'"]
-  ]
+  ],
+  // agar vscode mengenali file .ejs sebagai html
+  "files.associations": {
+  "*.ejs": "html"
+}
 }

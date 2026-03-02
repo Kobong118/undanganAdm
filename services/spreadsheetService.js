@@ -113,6 +113,11 @@ async function getJamaah() {
   return data.jamaah;
 }
 
+async function getJamaahIkut() {
+  const data = await getData();
+  return data.IkutTour;
+}
+
 async function getPengeluaran() {
   const data = await getData();
   return data.pengeluaran;
@@ -155,6 +160,7 @@ async function getStats(Ongkos) {
 module.exports = {
   getData,
   getJamaah,
+  getJamaahIkut,
   getPengeluaran,
   getAnggaran,
   getStats

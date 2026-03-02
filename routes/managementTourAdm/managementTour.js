@@ -20,6 +20,7 @@ router.get('/', authRequired, async (req, res, next) => {
         title: 'Management Tour ADM',
         stats,
         Ongkos,
+        formatWaktu : options,
         waktu : new Date().toLocaleDateString('id-ID', options)
     });
 });

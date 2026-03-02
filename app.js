@@ -61,6 +61,7 @@ app.use('/tour-adm-2026', tourAdm2026);
 app.use('/narkib', tarkiban);
 app.use(authRoutes);
 app.use('/management-tour-adm',management);
+app.use('/api/tour-adm', require('./routes/managementTourAdm/api'));
 
 
 // catch 404 and forward to error handler

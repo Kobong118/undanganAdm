@@ -26,14 +26,18 @@
         <%= stats.meta.kenaOngkos %> Org
       </p>
       <p class="text-xs text-gray-500 mt-1">
-        Sudah bayar: <%= stats.meta.berbayar %> Org
+        Sudah Lunas: <%= stats.meta.ongkosLunas %> Org <span class="text-xs text-white font-semibold"><button class="btn-detail bg-blue-400 rounded-lg px-1 my-1" data-nama="ongkos-lunas">Lihat</button></span>
+        <br>
+        Belum Lunas: <%= stats.meta.ongkosBelumLunas %> Org <span class="text-xs text-white font-semibold"><button class="btn-detail bg-blue-400 rounded-lg px-1 my-1" data-nama="ongkos-belum-lunas">Lihat</button></span>
+        <br>
+        Belum Bayar: <%= stats.meta.ongkosKosong %> Org <span class="text-xs text-white font-semibold"><button class="btn-detail bg-blue-400 rounded-lg px-1 my-1" data-nama="ongkos-kosong">Lihat</button></span>
       </p>
     </div>
 
     <!-- PRIORITAS -->
     <div class="bg-yellow-50 rounded-lg p-4 shadow-sm">
       <p class="text-xs uppercase tracking-wide text-gray-500 font-semibold">
-        Prioritas
+        Prioritas <span class="text-xs text-white font-semibold"><button class="btn-detail bg-blue-400 rounded-lg px-1" data-nama="ongkos-prioritas">Lihat</button></span>
       </p>
       <p class="text-2xl font-bold text-yellow-600 mt-1">
         <%= stats.meta.prioritas %> Org
@@ -46,7 +50,7 @@
     <!-- PIUTANG -->
     <div class="bg-red-50 rounded-lg p-4 shadow-sm">
       <p class="text-xs uppercase tracking-wide text-gray-500 font-semibold">
-        Total Piutang
+        Total Piutang <span class="text-xs text-white font-semibold"><button class="btn-detail bg-blue-400 rounded-lg px-1" data-nama="ongkos-piutang">Lihat</button></span>
       </p>
       <p class="text-2xl font-bold text-red-600 mt-1">
         Rp <%= stats.totalPiutang.toLocaleString('id-ID') %>
@@ -268,191 +272,269 @@
 <!-- function tombol -->
 <script>
   const modal = document.getElementById('modal');
-  const modalContent = document.getElementById('modal-content');
+const modalContent = document.getElementById('modal-content');
+const modalTitle = document.getElementById('modal-title');
 
-  function closeModal() {
-    modal.classList.add('hidden');
-  }
+/* =========================
+   Utilities
+========================= */
 
-  document.querySelectorAll('.btn-detail').forEach(btn => {
-    btn.addEventListener('click', async function() {
+const formatRupiah = (val) =>
+  `Rp ${Number(val || 0).toLocaleString("id-ID")}`;
 
-      const nama = this.dataset.nama;
-      console.log(`Fetching URL: /api/tour-adm/${encodeURIComponent(nama)}`);
+const isEmptyObject = (obj) =>
+  !obj || typeof obj !== "object" || Object.keys(obj).length === 0;
 
-      modal.classList.remove('hidden');
-      modal.classList.add('flex');
-      modalContent.innerHTML = "Loading...";
+const openModal = () => {
+  modal.classList.remove('hidden');
+  modal.classList.add('flex');
+};
 
-      try {
-        const res = await fetch(`/api/tour-adm/${encodeURIComponent(nama)}`);
-        const data = await res.json();
-        // type jamaah ikutTour
-        if (nama === 'jamaah') {
-          const title = document.getElementById('modal-title');
-          title.textContent = `Daftar Jamaah (${data.length} Orang)`;
-          const rows = data.map((j, index) => {
+const closeModal = () => {
+  modal.classList.add('hidden');
+};
 
-            let statusText = "Belum";
-            let statusClass = "bg-yellow-100 text-yellow-700";
+const renderTable = (headers, rows) => `
+  <div class="w-full overflow-x-auto max-h-[400px] overflow-y-auto">
+    <table class="min-w-full text-sm">
+      <thead class="bg-gray-100 text-xs uppercase tracking-wide text-gray-600 sticky top-0 z-10">
+        <tr>
+          ${headers.map(h => `<th class="${h.class}">${h.label}</th>`).join("")}
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100">
+        ${rows}
+      </tbody>
+    </table>
+  </div>
+`;
 
-            if (j.ongkos === "L") {
-              statusText = "Prioritas";
-              statusClass = "bg-blue-100 text-blue-700";
-            } else if (Number(j.ongkos) >= Number(Ongkos)) {
-              statusText = "Lunas";
-              statusClass = "bg-green-100 text-green-700";
-            }
+/* =========================
+   Renderers
+========================= */
 
-            return `
+function renderJamaah(data) {
+  modalTitle.textContent = `Daftar Jamaah (${data.length} Orang)`;
+
+  const rows = data.map((j, index) => {
+    let statusText = "Belum";
+    let statusClass = "bg-yellow-100 text-yellow-700";
+
+    if (j.ongkos === "L") {
+      statusText = "Prioritas";
+      statusClass = "bg-blue-100 text-blue-700";
+    } else if (Number(j.ongkos) >= Number(Ongkos)) {
+      statusText = "Lunas";
+      statusClass = "bg-green-100 text-green-700";
+    }
+
+    return `
+      <tr class="hover:bg-gray-50 transition ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50/40'}">
+        <td class="px-4 py-3 font-medium text-gray-800">${j.nama}</td>
+        <td class="px-4 py-3 text-gray-600">${j.noWa}</td>
+        <td class="px-4 py-3 text-center">
+          <span class="px-3 py-1 rounded-full text-xs font-semibold ${statusClass}">
+            ${statusText}
+          </span>
+        </td>
+        <td class="px-4 py-3 text-right font-semibold text-gray-700">
+          ${j.ongkos !== "L" ? formatRupiah(j.ongkos) : ""}
+        </td>
+      </tr>
+    `;
+  }).join("");
+
+  const headers = [
+    { label: "Nama", class: "px-4 py-3 text-left" },
+    { label: "No HP", class: "px-4 py-3 text-left" },
+    { label: "Status", class: "px-4 py-3 text-center" },
+    { label: "Bayar", class: "px-4 py-3 text-right" }
+  ];
+
+  modalContent.innerHTML = renderTable(headers, rows);
+}
+
+function renderAnggaran(data) {
+  modalTitle.textContent = `Rincian Anggaran Ziyaroh 2026 (Estimasi vs Realisasi)`;
+
+  const rows = data.map((item, index) => `
     <tr class="hover:bg-gray-50 transition ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50/40'}">
-
-      <td class="px-4 py-3 font-medium text-gray-800">
-        ${j.nama}
-      </td>
-
-      <td class="px-4 py-3 text-gray-600">
-        ${j.noWa}
-      </td>
-
-      <td class="px-4 py-3 text-center">
-        <span class="px-3 py-1 rounded-full text-xs font-semibold ${statusClass}">
-          ${statusText}
-        </span>
-      </td>
-
-      <td class="px-4 py-3 text-right font-semibold text-gray-700">
-        ${j.ongkos !== "L" ? `Rp ${Number(j.ongkos || 0).toLocaleString()}` : ""}
-      </td>
-
+      <td class="px-4 py-3 font-medium text-gray-800">${item.keterangan}</td>
+      <td class="px-4 py-3 text-right font-semibold text-gray-700">${formatRupiah(item.estimasi)}</td>
+      <td class="px-4 py-3 text-right font-semibold text-gray-700">${formatRupiah(item.realisasi)}</td>
     </tr>
-  `;
-          }).join('');
+  `).join("");
 
-          modalContent.innerHTML = `
-  <div class="w-full overflow-x-auto max-h-[400px] overflow-y-auto">
-   <table class="min-w-full text-sm">
-      <thead class="bg-gray-100 text-xs uppercase tracking-wide text-gray-600 sticky top-0 z-10">
-        <tr>
-          <th class="px-4 py-3 text-left">Nama</th>
-          <th class="px-4 py-3 text-left">No HP</th>
-          <th class="px-4 py-3 text-center">Status</th>
-          <th class="px-4 py-3 text-right">Bayar</th>
-        </tr>
-      </thead>
+  const headers = [
+    { label: "Keterangan", class: "px-4 py-3 text-left" },
+    { label: "Estimasi", class: "px-4 py-3 text-right" },
+    { label: "Realisasi", class: "px-4 py-3 text-right" }
+  ];
 
-      <tbody class="divide-y divide-gray-100">
+  modalContent.innerHTML = renderTable(headers, rows);
+}
 
-        ${rows}
+function renderPengeluaran(data) {
+  modalTitle.textContent = `Rincian Pengeluaran`;
 
-      </tbody>
+  const rows = data.map((item, index) => `
+    <tr class="hover:bg-gray-50 transition ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50/40'}">
+      <td class="px-4 py-3">${new Date(item.tanggal).toLocaleDateString('id-ID')}</td>
+      <td class="px-4 py-3">${item.keterangan}</td>
+      <td class="px-4 py-3">${item.kategori}</td>
+      <td class="px-4 py-3">${item.metode}</td>
+      <td class="px-4 py-3 text-right font-semibold">${formatRupiah(item.jumlah)}</td>
+      <td class="px-4 py-3 text-right font-semibold">
+        ${isEmptyObject(item.nota) ? 'Hubungi Bendahara' : item.nota}
+      </td>
+    </tr>
+  `).join("");
 
-    </table>
+  const headers = [
+    { label: "Tanggal", class: "px-4 py-3 text-left" },
+    { label: "Keterangan", class: "px-4 py-3 text-left" },
+    { label: "Kategori", class: "px-4 py-3 text-left" },
+    { label: "Metode", class: "px-4 py-3 text-left" },
+    { label: "Jumlah", class: "px-4 py-3 text-right" },
+    { label: "Bukti", class: "px-4 py-3 text-right" }
+  ];
 
-  </div>
-  `;
-          return;
-        }
+  modalContent.innerHTML = renderTable(headers, rows);
+}
 
-        if (nama === 'anggaran') {
-          const title = document.getElementById('modal-title');
-          title.textContent = `Rincian Anggaran Ziyaroh 2026 (Estimasi vs Realisasi)`;
-          const rows = data.map((item, index) => {
-            return `
-              <tr class="hover:bg-gray-50 transition ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50/40'}">
-                <td class="px-4 py-3 font-medium text-gray-800">
-                  ${item.keterangan}
-                </td>
-                <td class="px-4 py-3 text-right font-semibold text-gray-700">
-                  Rp ${Number(item.estimasi).toLocaleString()}
-                </td>
-                <td class="px-4 py-3 text-right font-semibold text-gray-700">
-                  Rp ${Number(item.realisasi).toLocaleString()}
-                </td>
-              </tr>
-            `;
-          }).join('');
-          modalContent.innerHTML = `
-  <div class="w-full overflow-x-auto max-h-[400px] overflow-y-auto">
-   <table class="min-w-full text-sm">
-      <thead class="bg-gray-100 text-xs uppercase tracking-wide text-gray-600 sticky top-0 z-10">
-        <tr>
-          <th class="px-4 py-3 text-left">Keterangan</th>
-          <th class="px-4 py-3 text-left">Estimasi</th>
-          <th class="px-4 py-3 text-center">Realisasi</th>
-        </tr>
-      </thead>
+function renderOngkosPrioritas(data) {
+  modalTitle.textContent = `Daftar Jamaah Prioritas (${data.length} Orang)`;
 
-      <tbody class="divide-y divide-gray-100">
+  const rows = data.map((j, index) => `
+    <tr class="hover:bg-gray-50 transition ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50/40'}">
+      <td class="px-4 py-3 font-medium text-gray-800">${j.nama}</td>
+      <td class="px-4 py-3 text-gray-600">${j.noWa}</td>
+    </tr>
+  `).join("");
 
-        ${rows}
+  const headers = [
+    { label: "Nama", class: "px-4 py-3 text-left" },
+    { label: "No HP", class: "px-4 py-3 text-left" }
+  ];
 
-      </tbody>
+  modalContent.innerHTML = renderTable(headers, rows);
+}
 
-    </table>
+function renderOngkosLunas(data) {
+  modalTitle.textContent = `Daftar Jamaah Ongkos Lunas (${data.length} Orang)`;
 
-  </div>
-  `;
-          return;
-        }
+  const rows = data.map((j, index) => `
+    <tr class="hover:bg-gray-50 transition ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50/40'}">
+      <td class="px-4 py-3 font-medium text-gray-800">${j.nama}</td>
+      <td class="px-4 py-3 text-gray-600">${j.noWa}</td>
+    </tr>
+  `).join("");
 
-        if (nama === 'pengeluaran') {
-          const title = document.getElementById('modal-title');
-          title.textContent = `Rincian Pengeluaran `;
-          const rows = data.map((item, index) => {
-            return `
-              <tr class="hover:bg-gray-50 transition ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50/40'}">
-                <td class="px-4 py-3 font-medium text-gray-800">
-                  ${ new Date(item.tanggal).toLocaleDateString('id-ID', formatWaktu)}
-                </td>
-                <td class="px-4 py-3 font-medium text-gray-800">
-                  ${item.keterangan}
-                </td>
-                <td class="px-4 py-3 font-medium text-gray-800">
-                  ${item.kategori}
-                </td>
-                <td class="px-4 py-3 font-medium text-gray-800">
-                  ${item.metode}
-                </td>
-                <td class="px-4 py-3 text-right font-semibold text-gray-700">
-                  Rp ${Number(item.jumlah).toLocaleString()}
-                </td>
-                <td class="px-4 py-3 text-right font-semibold text-gray-700">
-                  ${Object.keys(item.nota).length !== 0?item.nota:'Hubungi Bendahara'}
-                </td>
-              </tr>
-            `;
-          }).join('');
-          modalContent.innerHTML = `
-  <div class="w-full overflow-x-auto max-h-[400px] overflow-y-auto">
-   <table class="min-w-full text-sm">
-      <thead class="bg-gray-100 text-xs uppercase tracking-wide text-gray-600 sticky top-0 z-10">
-        <tr>
-          <th class="px-4 py-3 text-left">Tanggal</th>
-          <th class="px-4 py-3 text-left">Keterangan</th>
-          <th class="px-4 py-3 text-center">Kategori</th>
-          <th class="px-4 py-3 text-center">Metode Pembayaran</th>
-          <th class="px-4 py-3 text-center">Jumlah</th>
-          <th class="px-4 py-3 text-center">Bukti Pembayaran</th>
-        </tr>
-      </thead>
+  const headers = [
+    { label: "Nama", class: "px-4 py-3 text-left" },
+    { label: "No HP", class: "px-4 py-3 text-left" }
+  ];
 
-      <tbody class="divide-y divide-gray-100">
+  modalContent.innerHTML = renderTable(headers, rows);
+}
 
-        ${rows}
+function renderOngkosBelumLunas(data) {
+  modalTitle.textContent = `Daftar Jamaah Ongkos Belum Lunas (${data.length} Orang)`;
 
-      </tbody>
+  const rows = data.map((j, index) => `
+    <tr class="hover:bg-gray-50 transition ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50/40'}">
+      <td class="px-4 py-3 font-medium text-gray-800">${j.nama}</td>
+      <td class="px-4 py-3 text-gray-600">${j.noWa}</td>
+      <td class="px-4 py-3 text-right font-semibold text-gray-700">${formatRupiah(j.ongkos)}</td>
+    </tr>
+  `).join("");
 
-    </table>
+  const headers = [
+    { label: "Nama", class: "px-4 py-3 text-left" },
+    { label: "No HP", class: "px-4 py-3 text-left" },
+    { label: "Bayar", class: "px-4 py-3 text-right" }
+  ];
 
-  </div>
-  `;
-          return;
-        }
+  modalContent.innerHTML = renderTable(headers, rows);
+}
 
-      } catch (err) {
-        modalContent.innerHTML = `"Gagal mengambil data" ${err.message}`;
-      }
-    });
-  });
+function renderOngkosKosong(data) {
+  modalTitle.textContent = `Daftar Jamaah Ongkos Kosong (${data.length} Orang)`;
+
+  const rows = data.map((j, index) => `
+    <tr class="hover:bg-gray-50 transition ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50/40'}">
+      <td class="px-4 py-3 font-medium text-gray-800">${j.nama}</td>
+      <td class="px-4 py-3 text-gray-600">${j.noWa}</td>
+    </tr>
+  `).join("");
+
+  const headers = [
+    { label: "Nama", class: "px-4 py-3 text-left" },
+    { label: "No HP", class: "px-4 py-3 text-left" }
+  ];
+
+  modalContent.innerHTML = renderTable(headers, rows);
+}
+
+function renderOngkosPiutang(data) {
+  modalTitle.textContent = `Daftar Jamaah Piutang (${data.length} Orang)`;
+
+  const rows = data.map((j, index) => `
+    <tr class="hover:bg-gray-50 transition ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50/40'}">
+      <td class="px-4 py-3 font-medium text-gray-800">${j.nama}</td>
+      <td class="px-4 py-3 text-gray-600">${j.noWa}</td>
+      <td class="px-4 py-3 text-right font-semibold text-gray-700">${formatRupiah(370000 - j.ongkos)}</td>
+    </tr>
+  `).join("");
+
+  const headers = [
+    { label: "Nama", class: "px-4 py-3 text-left" },
+    { label: "No HP", class: "px-4 py-3 text-left" },
+    { label: "Piutang", class: "px-4 py-3 text-right" }
+  ];
+
+  modalContent.innerHTML = renderTable(headers, rows);
+}
+
+/* =========================
+   Controller
+========================= */
+
+async function handleDetailClick(e) {
+  const nama = e.currentTarget.dataset.nama;
+
+  openModal();
+  modalContent.innerHTML = "Loading...";
+
+  try {
+    const res = await fetch(`/api/tour-adm/${encodeURIComponent(nama)}`);
+    const data = await res.json();
+
+    const rendererMap = {
+      jamaah: renderJamaah,
+      anggaran: renderAnggaran,
+      pengeluaran: renderPengeluaran,
+      "ongkos-prioritas": renderOngkosPrioritas,
+      "ongkos-lunas": renderOngkosLunas,
+      "ongkos-belum-lunas": renderOngkosBelumLunas,
+      "ongkos-kosong": renderOngkosKosong,
+      "ongkos-piutang": renderOngkosPiutang
+    };
+
+    if (rendererMap[nama]) {
+      rendererMap[nama](data);
+    }
+
+  } catch (err) {
+    modalContent.innerHTML = `Gagal mengambil data: ${err.message}`;
+  }
+}
+
+/* =========================
+   Event Binding
+========================= */
+
+document
+  .querySelectorAll('.btn-detail')
+  .forEach(btn => btn.addEventListener('click', handleDetailClick));
 </script>

@@ -61,7 +61,10 @@ function normalize(data) {
       ikutTour: data.JamaahIkutTour.length,
       berbayar: data.JamaahBerbayar.length,
       prioritas: data.JamaahPrioritas.length,
-      kenaOngkos: data.JamaahIkutTour.length - data.JamaahPrioritas.length
+      kenaOngkos: data.JamaahIkutTour.length - data.JamaahPrioritas.length,
+      ongkosLunas: data.JamaahIkutTour.filter(j => j.ongkos === 370000).length,
+      ongkosBelumLunas: data.JamaahIkutTour.filter(j => j.ongkos < 370000 && j.ongkos !== 0 && j.ongkos !== "" && j.ongkos !== "L").length,
+      ongkosKosong: data.JamaahIkutTour.filter(j => j.ongkos === 0 || j.ongkos === "" && j.ongkos !== "L").length
     }
   };
 }

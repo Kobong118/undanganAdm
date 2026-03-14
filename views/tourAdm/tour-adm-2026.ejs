@@ -1,946 +1,1060 @@
 <!-- gb -->
-<div x-data="tourADMComponent" x-init="getData()" class="h-screen w-screen bg-bg-ta26 bg-cover bg-center bg-no-repeat overflow-y-scroll overflow-x-hidden">
-  <!-- head -->
-  <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhN8IsG8iqhJRTlorGIjdii9ADv3b88oRkUb_tAcxmMDt16Z6oOlZOa_SSRhUa7WZ3KGoyWMEhQQqbDm3Z8cMaRgqv6EAaXlbr-q-GQ9p90lWsnXYmS73eFyhMISWfI2r0IXv0DwwKZgRoWlcpSTMbmEImieGNxgzNbFfQG1Ry-MreQNmjykXWfWSA6R18/s3200/head-ta26.jpg" alt="Tour ADM 2026" width="100%">
-  <!-- vita -->
-  <div x-data="countdown" x-init="init()" class="sticky top-9 -translate-y-10 w-full z-10 bg-gradient-to-b from-text1 to-transparent">
-    <!-- WRAPPER: tinggi ikut IMG -->
-    <div class="relative w-full">
-
-      <!-- IMG: penentu tinggi -->
-      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEittV-SFiHEgmktdzRs8KUg-Noen9BHCI5xcylkiRq3GX6hhf8V0V7J5GFKlTBXj2j4zkvrLLlpNZi2i3PeCR_FMjQxJSmvri7L1j9WkeZAhrW2iz79-pD2qAl0yvsvxFfgHREHX55Id5iHGn35Fb44Ik6jn_K1iivtEeUt8Y3wrpW78r37KuPf-J0OINU/s3200/vita-ta26.png" alt="Tour ADM 2026" class="w-full h-auto block" />
-
-      <!-- COUNTDOWN: overlay, tidak memengaruhi tinggi -->
-      <div class="absolute inset-0 pointer-events-none">
-        <div class="h-full flex items-center justify-between px-4 md:px-10">
-
-          <!-- LEFT -->
-          <div class="pointer-events-auto flex items-center gap-2">
-            <!-- Left: Hari & Jam -->
-            <div class="flex items-center justify-start">
-              <template x-for="(label, i) in ['Hari','Jam']" :key="label">
-                <div class="flex items-center">
-                  <div class="relative w-8 h-8 perspective">
-                    <div class="absolute inset-0 flex items-center justify-center text-xs md:text-lg font-extrabold text-white transition-all duration-300" x-text="getValue(label)" :class="animating[label] ? 'opacity-0 scale-75' : 'opacity-100 scale-100'">
-                    </div>
-                    <div class="absolute inset-0 flex items-center justify-center text-xs md:text-lg font-extrabold text-text1 transition-all duration-300" x-text="getValue(label)" :class="animating[label] ? 'opacity-100 scale-100' : 'opacity-0 scale-75'" @transitionend="animating[label] = false"></div>
-                  </div>
-                  <span class="text-xs md:text-sm text-text1 font-light" x-text="label"></span>
-                </div>
-              </template>
-            </div>
-          </div>
-
-          <!-- RIGHT -->
-          <div class="pointer-events-auto flex items-center gap-2">
-            <!-- Right: Menit & Detik -->
-            <div class="flex items-center justify-end">
-              <template x-for="(label, i) in ['Menit','Detik']" :key="label">
-                <div class="flex items-center">
-                  <div class="relative w-8 h-8 perspective">
-                    <div class="absolute inset-0 flex items-center justify-center text-xs md:text-lg font-extrabold text-white transition-all duration-300" x-text="getValue(label)" :class="animating[label] ? 'opacity-0 scale-75' : 'opacity-100 scale-100'">
-                    </div>
-                    <div class="absolute inset-0 flex items-center justify-center text-xs md:text-lg font-extrabold text-text1 transition-all duration-300" x-text="getValue(label)" :class="animating[label] ? 'opacity-100 scale-100' : 'opacity-0 scale-75'" @transitionend="animating[label] = false"></div>
-                  </div>
-                  <span class="text-xs md:text-sm text-text1 font-light" x-text="label"></span>
-                </div>
-              </template>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- teks -->
-  <div class="w-full relative -translate-y-10">
-    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiHUXJxp2CAgRP2T0dPhs9DgZ_biZZvZdJ2V83OqmLyNfPuyshj1m3l9SFgMAXI5qkR5ASUJPpQesxuJRiESih50ZQkmteux_OTqnj5k2zimsIsry72VYUWxwJiLWFwfaPNJr4XqTIlhmY1Vu0650Ku09DdvnT-1wvZjDQ3lftMatJrx47TGLQ6cElC3O0/s3027/teks-ta26.png" alt="Deskripsi Tour ADM 2026" width="100%">
+<div x-data="tourADMComponent" x-init="getData()"
+    class="h-screen w-screen bg-bg-ta26 bg-cover bg-center bg-no-repeat overflow-y-scroll overflow-x-hidden">
+    <!-- head -->
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhN8IsG8iqhJRTlorGIjdii9ADv3b88oRkUb_tAcxmMDt16Z6oOlZOa_SSRhUa7WZ3KGoyWMEhQQqbDm3Z8cMaRgqv6EAaXlbr-q-GQ9p90lWsnXYmS73eFyhMISWfI2r0IXv0DwwKZgRoWlcpSTMbmEImieGNxgzNbFfQG1Ry-MreQNmjykXWfWSA6R18/s3200/head-ta26.jpg"
+        alt="Tour ADM 2026" width="100%">
     <!-- vita -->
-    <div class="w-full font-Rundkursiv text-haul-text-header">
-      <div class="relative w-full">
-        <!-- IMG: penentu tinggi -->
-        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEittV-SFiHEgmktdzRs8KUg-Noen9BHCI5xcylkiRq3GX6hhf8V0V7J5GFKlTBXj2j4zkvrLLlpNZi2i3PeCR_FMjQxJSmvri7L1j9WkeZAhrW2iz79-pD2qAl0yvsvxFfgHREHX55Id5iHGn35Fb44Ik6jn_K1iivtEeUt8Y3wrpW78r37KuPf-J0OINU/s3200/vita-ta26.png" alt="Tour ADM 2026" class="w-full h-auto block" />
-        <!-- COUNTDOWN: overlay, tidak memengaruhi tinggi -->
-        <div class="absolute inset-0 pointer-events-none">
-          <div class="h-full flex items-center justify-between px-4 md:px-10">
-            <!-- LEFT -->
-            <div class="pointer-events-auto flex items-center gap-2">
-              Armada Bus
-            </div>
-            <!-- RIGHT -->
-            <div class="pointer-events-auto flex items-center gap-2">
-              Tour ADM 2026
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- foto bus -->
-    <div class="w-full p-1">
-      <h1 class="font-Rundkursiv text-haul-text-header text-xl text-center">Bus 1 : Bintara
-      </h1>
-      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEijRWEhMk8qqX19gnrR9fPLVYm1ib2RBdc4lTy9Xn3GUeeMxrhI4DteZnRuEjr4kUzV5CEuXqVde1jsTHg7O3ojZjdiv-y7yGzfVsoim6FSU49STPtiQkXbz8g5PWzLYjV4-VGnAA7erODwTE7lGkFNMZ4XRkvg-jCb7uMJ1tI3ODgfz7VNHA2eq0PLpUQ/s1350/bintara.jpeg" alt="Safana Holiday" width="100%" />
-      <hr class="my-10 h-px border-0 bg-gradient-to-r from-transparent via-yellow-500 to-transparent">
-      <h1 class="font-Rundkursiv text-haul-text-header text-xl text-center">Bus 2 : Militer
-      </h1>
-      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhfT6Pb4YYxJg22pNfAMBwPAvnawoISXFbIQf2FUF8SQksf6cRDjtNzCwNQJTXWGFk9LqMDLn3Gh87Smupqu3mQCNyKIjqloqaVMRP_9aI7lT_p9DA3tXukCTPIXSo2trNjeYGzf3ZBQdtptsJjukL-oT3y-zwNMGr3ppTAoQJ9nfuP29ggqKkWknRgPm4/s1350/militer.jpeg" alt="Safana Holiday" width="100%" />
-      <h1 class="font-Rundkursiv text-haul-text-header text-xl text-center">Bus 3 : Taruna
-      </h1>
-      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhRyJsH2vw2MuJbWvVMReU8GAW-Qj-_opLR-jtAsFe3ofbWwYsvyvR3pQVlQ7S8Eoo6suOhsK2vWFwUzkm-N6BlQ7MBOTzi2jgfeadKYHdHkERrtKppYaAMLOn7MwKAYRJHOtDxP0B4XORe-TuApKTA9HyOkhwK4fsgugbfQ8X5OsDvYypoAEG0UHX0lRQ/s1350/taruna.jpeg" alt="Safana Holiday" width="100%" />
-    </div>
-    <!-- vita -->
-    <div class="w-full font-Rundkursiv text-haul-text-header text-xl ">
-      <div class="relative w-full">
-        <!-- IMG: penentu tinggi -->
-        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEittV-SFiHEgmktdzRs8KUg-Noen9BHCI5xcylkiRq3GX6hhf8V0V7J5GFKlTBXj2j4zkvrLLlpNZi2i3PeCR_FMjQxJSmvri7L1j9WkeZAhrW2iz79-pD2qAl0yvsvxFfgHREHX55Id5iHGn35Fb44Ik6jn_K1iivtEeUt8Y3wrpW78r37KuPf-J0OINU/s3200/vita-ta26.png" alt="Tour ADM 2026" class="w-full h-auto block" />
-        <!-- COUNTDOWN: overlay, tidak memengaruhi tinggi -->
-        <div class="absolute inset-0 pointer-events-none">
-          <div class="h-full flex items-center justify-between px-4 md:px-10">
-            <!-- LEFT -->
-            <div class="pointer-events-auto flex items-center gap-2">
-              Jama'ah Ikhwan
-            </div>
-            <!-- RIGHT -->
-            <div class="pointer-events-auto flex items-center gap-2">
-              Jama'ah Akhwat
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- jamaah -->
-    <div class="w-full font-zilla text-haul-text text-xl relative">
-      <div class="relative w-full">
-        <div class="grid grid-cols-2 gap-4 px-4 md:px-10 w-full">
-          <!-- LEFT laki laki-->
-          <div class="pointer-events-auto flex flex-col gap-2 relative">
-            <template x-for="(item, index) in data.ikutTour.filter(i => i.Gen === 'L')" :key="item.Nama">
-              <div class="font-bold relative">
-                <span x-text="index + 1"></span>. <span x-text="item.Nama"></span>
-                <!-- centang biru -->
-                <template x-if="item.ongkos == 370000 || item.ongkos == 'L'">
-                  <span class="absolute top-0 right-0 text-blue-500">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="inline-block" viewBox="0 0 16 16">
-                      <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708" />
-                    </svg>
-                  </span>
-                </template>
-                <!-- cencang hijau -->
-                <template x-if="item.ongkos >= 1 && item.ongkos < 370000">
-                  <span class="absolute top-0 right-0 text-haul-text-header">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="inline-block" viewBox="0 0 16 16">
-                      <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708" />
-                    </svg>
-                  </span>
-                </template>
-              </div>
-            </template>
-          </div>
+    <div x-data="countdown" x-init="init()"
+        class="sticky top-9 -translate-y-10 w-full z-10 bg-gradient-to-b from-text1 to-transparent">
+        <!-- WRAPPER: tinggi ikut IMG -->
+        <div class="relative w-full">
 
-          <!-- RIGHT perempuan-->
-          <div class="pointer-events-auto flex flex-col gap-2 relative">
-            <template x-for="(item, index) in data.ikutTour.filter(i => i.Gen === 'P')" :key="item.Nama">
-              <div class="font-bold relative">
-                <span x-text="index + 1"></span>. <span x-text="item.Nama"></span>
-                <template x-if="item.ongkos == 370000  || item.ongkos == 'L'">
-                  <span class="absolute top-0 right-0 text-blue-500">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="inline-block" viewBox="0 0 16 16">
-                      <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708" />
-                    </svg>
-                  </span>
-                </template>
-                <!-- cencang hijau -->
-                <template x-if="item.ongkos >= 1 && item.ongkos < 370000">
-                  <span class="absolute top-0 right-0 text-haul-text-header">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="inline-block" viewBox="0 0 16 16">
-                      <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708" />
-                    </svg>
-                  </span>
-                </template>
-              </div>
-            </template>
-          </div>
+            <!-- IMG: penentu tinggi -->
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEittV-SFiHEgmktdzRs8KUg-Noen9BHCI5xcylkiRq3GX6hhf8V0V7J5GFKlTBXj2j4zkvrLLlpNZi2i3PeCR_FMjQxJSmvri7L1j9WkeZAhrW2iz79-pD2qAl0yvsvxFfgHREHX55Id5iHGn35Fb44Ik6jn_K1iivtEeUt8Y3wrpW78r37KuPf-J0OINU/s3200/vita-ta26.png"
+                alt="Tour ADM 2026" class="w-full h-auto block" />
 
-        </div>
-      </div>
-      <!-- catatan -->
-      <div class="w-full overflow-hidden rounded-xl bg-amber-50 border border-amber-200 shadow-sm my-6">
-        <div class="flex">
-          <!-- Accent Bar (Pengganti border-l-4 yang kaku) -->
-          <div class="w-1.5 bg-amber-500"></div>
+            <!-- COUNTDOWN: overlay, tidak memengaruhi tinggi -->
+            <div class="absolute inset-0 pointer-events-none">
+                <div class="h-full flex items-center justify-between px-4 md:px-10">
 
-          <div class="p-5">
-            <div class="flex items-center gap-2 mb-3">
-              <!-- Ikon Lampu/Catatan -->
-              <svg xmlns="http://www.w3.org" class="h-5 w-5 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <p class="font-bold text-amber-900 uppercase tracking-wider text-xs">Informasi:</p>
-            </div>
-
-            <div class="text-amber-800 leading-relaxed">
-              <p class="whitespace-pre-wrap mb-3 opacity-90">
-                Pendaftaran Tour ADM 2026 yang masuk setelah limit kursi "149" penuh, masuk ke daftar tunggu.
-              </p>
-
-              <!-- Status Badge Style -->
-              <div class="flex flex-wrap gap-3 font-mono text-xs">
-                <span class="px-2 py-1 bg-white/60 border border-amber-200 rounded-md">
-                  Kursi terisi: <span class="font-bold text-amber-700" x-text="data.ikutTour.length"></span>
-                </span>
-                <span class="px-2 py-1 bg-white/60 border border-amber-200 rounded-md">
-                  Kursi kosong: <span class="font-bold text-green-600" x-text="149 - data.ikutTour.length"></span>
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-    <!-- layout kursi -->
-    <!-- vita Kursi bintara-->
-    <div id="kursi" class="w-full font-Rundkursiv text-haul-text-header text-xl relative z-0">
-      <div class="relative w-full">
-        <!-- IMG: penentu tinggi -->
-        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEittV-SFiHEgmktdzRs8KUg-Noen9BHCI5xcylkiRq3GX6hhf8V0V7J5GFKlTBXj2j4zkvrLLlpNZi2i3PeCR_FMjQxJSmvri7L1j9WkeZAhrW2iz79-pD2qAl0yvsvxFfgHREHX55Id5iHGn35Fb44Ik6jn_K1iivtEeUt8Y3wrpW78r37KuPf-J0OINU/s3200/vita-ta26.png" alt="Tour ADM 2026" class="w-full h-auto block" />
-        <!-- COUNTDOWN: overlay, tidak memengaruhi tinggi -->
-        <div class="absolute inset-0 pointer-events-none">
-          <div class="h-full flex items-center justify-between px-4 md:px-10">
-            <!-- LEFT -->
-            <div class="pointer-events-auto flex items-center gap-2">
-              No Kursi
-            </div>
-            <!-- RIGHT -->
-            <div class="pointer-events-auto flex items-center gap-2">
-              Bintara
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="w-full overflow-x-auto scroll-smooth">
-      <template x-if="loaded">
-        <div class="grid grid-cols-[1fr_1fr_0.5fr_1fr_1fr_1fr] gap-1">
-          <template x-for="(slot, i) in kursiMapBintara()" :key="i">
-            <div :class="(layoutBintara[i] === 57 || layoutBintara[i] === 58)? 'col-span-2 relative':'relative'">
-              <template x-if="slot === 'P'">
-                <div class="bg-yellow-300 text-center text-xs font-bold rounded flex items-center justify-center min-h-[40px]">
-                  PINTU
-                </div>
-              </template>
-              <template x-if="slot === 'L'">
-                <div class="min-h-[40px]"></div>
-              </template>
-              <!-- Slot dengan ongkos remove template boking kursi dan pengkondisian && slot.ongkos !== 0 untuk menampilkan Rp.0 -->
-              <template x-if="typeof slot === 'object' && slot !== null && slot !== 'kosong' && slot.ongkos !== 0">
-                <div class="border rounded p-2 text-xs bg-white shadow min-h-[40px] flex flex-col justify-center font-zilla">
-                  <div class="font-semibold font-Rundkursiv text-lg text-center" x-text="slot.Nama">
-                  </div>
-                  <div x-text="'Kursi: ' + slot.kursi"></div>
-                  <div x-text="'Kamar: ' + slot.kamar"></div>
-                  <template x-if="slot.ongkos == 370000 || slot.ongkos == 'L'">
-                    <div class="absolute top-0 right-0 rounded-full text-blue-500 shadow-lg"">
-                                <svg xmlns=" http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="inline-block" viewBox="0 0 16 16">
-                      <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708" />
-                      </svg>
+                    <!-- LEFT -->
+                    <div class="pointer-events-auto flex items-center gap-2">
+                        <!-- Left: Hari & Jam -->
+                        <div class="flex items-center justify-start">
+                            <template x-for="(label, i) in ['Hari','Jam']" :key="label">
+                                <div class="flex items-center">
+                                    <div class="relative w-8 h-8 perspective">
+                                        <div class="absolute inset-0 flex items-center justify-center text-xs md:text-lg font-extrabold text-white transition-all duration-300"
+                                            x-text="getValue(label)"
+                                            :class="animating[label] ? 'opacity-0 scale-75' : 'opacity-100 scale-100'">
+                                        </div>
+                                        <div class="absolute inset-0 flex items-center justify-center text-xs md:text-lg font-extrabold text-text1 transition-all duration-300"
+                                            x-text="getValue(label)"
+                                            :class="animating[label] ? 'opacity-100 scale-100' : 'opacity-0 scale-75'"
+                                            @transitionend="animating[label] = false"></div>
+                                    </div>
+                                    <span class="text-xs md:text-sm text-text1 font-light" x-text="label"></span>
+                                </div>
+                            </template>
+                        </div>
                     </div>
-                  </template>
-                  <template x-if="slot.ongkos != 370000 && slot.ongkos != 'L'">
-                    <div x-text="'Ongkos: ' + formatRupiah(slot.ongkos)"></div>
-                  </template>
-                </div>
-              </template>
-              <!-- boking kursi -->
-              <template x-if="typeof slot === 'object' && slot !== null && slot !== 'kosong' && slot.ongkos === 0">
-                <div class="border rounded p-2 text-xs bg-white shadow min-h-[40px] flex flex-col justify-center font-zilla">
-                  <div class="font-semibold font-Rundkursiv text-lg text-center" x-text="'Terisi'">
-                  </div>
-                  <div x-text="'Kursi: ' + slot.kursi"></div>
-                  <div x-text="'Kamar: ' + slot.kamar"></div>
-                </div>
-              </template>
-              <template x-if="slot === 'kosong'">
-                <div class="border border-dashed rounded p-2 text-xs text-gray-400 text-center min-h-[40px] flex flex-col justify-center">
-                  Kursi <span x-text="layoutBintara[i]"></span><br>
-                  Kosong
-                </div>
-              </template>
-            </div>
-          </template>
-        </div>
-        <template x-if="!loaded">
-          <div class="col-span-6 text-center text-gray-400 py-4">Memuat data kursi...</div>
-        </template>
-      </template>
-    </div>
 
-
-    <!-- vita kursi militeri-->
-    <div class="w-full font-Rundkursiv text-haul-text-header text-xl relative z-0">
-      <div class="relative w-full">
-        <!-- IMG: penentu tinggi -->
-        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEittV-SFiHEgmktdzRs8KUg-Noen9BHCI5xcylkiRq3GX6hhf8V0V7J5GFKlTBXj2j4zkvrLLlpNZi2i3PeCR_FMjQxJSmvri7L1j9WkeZAhrW2iz79-pD2qAl0yvsvxFfgHREHX55Id5iHGn35Fb44Ik6jn_K1iivtEeUt8Y3wrpW78r37KuPf-J0OINU/s3200/vita-ta26.png" alt="Tour ADM 2026" class="w-full h-auto block" />
-        <!-- COUNTDOWN: overlay, tidak memengaruhi tinggi -->
-        <div class="absolute inset-0 pointer-events-none">
-          <div class="h-full flex items-center justify-between px-4 md:px-10">
-            <!-- LEFT -->
-            <div class="pointer-events-auto flex items-center gap-2">
-              No Kursi
-            </div>
-            <!-- RIGHT -->
-            <div class="pointer-events-auto flex items-center gap-2">
-              Militer
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="w-full overflow-x-auto scroll-smooth">
-      <template x-if="loaded">
-        <div class="grid grid-cols-[1fr_1fr_0.5fr_1fr_1fr_1fr] gap-1">
-          <template x-for="(slot, i) in kursiMapMiliteri()" :key="i">
-            <div class="relative">
-              <template x-if="slot === 'P'">
-                <div class="bg-yellow-300 text-center text-xs font-bold rounded flex items-center justify-center min-h-[40px]">
-                  PINTU
-                </div>
-              </template>
-              <template x-if="slot === 'L'">
-                <div class="min-h-[40px]"></div>
-              </template>
-              <!-- Slot dengan ongkos remove template boking kursi dan pengkondisian && slot.ongkos !== 0 untuk menampilkan Rp.0 -->
-              <template x-if="typeof slot === 'object' && slot !== null && slot !== 'kosong' && slot.ongkos !== 0">
-                <div class="border rounded p-2 text-xs bg-white shadow min-h-[40px] flex flex-col justify-center font-zilla">
-                  <div class="font-semibold font-Rundkursiv text-lg text-center" x-text="slot.Nama">
-                  </div>
-                  <div x-text="'Kursi: ' + (slot.kursi-60)"></div>
-                  <div x-text="'Kamar: ' + slot.kamar"></div>
-                  <template x-if="slot.ongkos == 370000 || slot.ongkos == 'L'">
-                    <div class="absolute top-0 right-0 rounded-full text-blue-500 shadow-lg"">
-                                <svg xmlns=" http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="inline-block" viewBox="0 0 16 16">
-                      <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708" />
-                      </svg>
+                    <!-- RIGHT -->
+                    <div class="pointer-events-auto flex items-center gap-2">
+                        <!-- Right: Menit & Detik -->
+                        <div class="flex items-center justify-end">
+                            <template x-for="(label, i) in ['Menit','Detik']" :key="label">
+                                <div class="flex items-center">
+                                    <div class="relative w-8 h-8 perspective">
+                                        <div class="absolute inset-0 flex items-center justify-center text-xs md:text-lg font-extrabold text-white transition-all duration-300"
+                                            x-text="getValue(label)"
+                                            :class="animating[label] ? 'opacity-0 scale-75' : 'opacity-100 scale-100'">
+                                        </div>
+                                        <div class="absolute inset-0 flex items-center justify-center text-xs md:text-lg font-extrabold text-text1 transition-all duration-300"
+                                            x-text="getValue(label)"
+                                            :class="animating[label] ? 'opacity-100 scale-100' : 'opacity-0 scale-75'"
+                                            @transitionend="animating[label] = false"></div>
+                                    </div>
+                                    <span class="text-xs md:text-sm text-text1 font-light" x-text="label"></span>
+                                </div>
+                            </template>
+                        </div>
                     </div>
-                  </template>
-                  <template x-if="slot.ongkos != 370000 && slot.ongkos != 'L'">
-                    <div x-text="'Ongkos: ' + formatRupiah(slot.ongkos)"></div>
-                  </template>
+
                 </div>
-              </template>
-              <!-- boking kursi -->
-              <template x-if="typeof slot === 'object' && slot !== null && slot !== 'kosong' && slot.ongkos === 0">
-                <div class="border rounded p-2 text-xs bg-white shadow min-h-[40px] flex flex-col justify-center font-zilla">
-                  <div class="font-semibold font-Rundkursiv text-lg text-center" x-text="'Terisi'">
-                  </div>
-                  <div x-text="'Kursi: ' + slot.kursi"></div>
-                  <div x-text="'Kamar: ' + slot.kamar"></div>
-                </div>
-              </template>
-              <template x-if="slot === 'kosong'">
-                <div class="border border-dashed rounded p-2 text-xs text-gray-400 text-center min-h-[40px] flex flex-col justify-center">
-                  Kursi <span x-text="layoutMiliteri[i]-60"></span><br>
-                  Kosong
-                </div>
-              </template>
             </div>
-          </template>
+
         </div>
-        <template x-if="!loaded">
-          <div class="col-span-6 text-center text-gray-400 py-4">Memuat data kursi...</div>
-        </template>
-      </template>
     </div>
 
-    <!-- vita kursi Taruna-->
-    <div class="w-full font-Rundkursiv text-haul-text-header text-xl relative z-0">
-      <div class="relative w-full">
-        <!-- IMG: penentu tinggi -->
-        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEittV-SFiHEgmktdzRs8KUg-Noen9BHCI5xcylkiRq3GX6hhf8V0V7J5GFKlTBXj2j4zkvrLLlpNZi2i3PeCR_FMjQxJSmvri7L1j9WkeZAhrW2iz79-pD2qAl0yvsvxFfgHREHX55Id5iHGn35Fb44Ik6jn_K1iivtEeUt8Y3wrpW78r37KuPf-J0OINU/s3200/vita-ta26.png" alt="Tour ADM 2026" class="w-full h-auto block" />
-        <!-- COUNTDOWN: overlay, tidak memengaruhi tinggi -->
-        <div class="absolute inset-0 pointer-events-none">
-          <div class="h-full flex items-center justify-between px-4 md:px-10">
-            <!-- LEFT -->
-            <div class="pointer-events-auto flex items-center gap-2">
-              No Kursi
-            </div>
-            <!-- RIGHT -->
-            <div class="pointer-events-auto flex items-center gap-2">
-              Taruna
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="w-full overflow-x-auto scroll-smooth">
-      <template x-if="loaded">
-        <div class="grid grid-cols-[1fr_1fr_0.5fr_1fr_1fr] gap-1">
-          <template x-for="(slot, i) in kursiMapTaruna()" :key="i">
-            <div class="relative">
-              <template x-if="slot === 'P'">
-                <div class="bg-yellow-300 text-center text-xs font-bold rounded flex items-center justify-center min-h-[40px]">
-                  PINTU
-                </div>
-              </template>
-              <template x-if="slot === 'L'">
-                <div class="min-h-[40px]"></div>
-              </template>
-              <!-- Slot dengan ongkos remove template boking kursi dan pengkondisian && slot.ongkos !== 0 untuk menampilkan Rp.0 -->
-              <template x-if="typeof slot === 'object' && slot !== null && slot !== 'kosong' && slot.ongkos !== 0">
-                <div class="border rounded p-2 text-xs bg-white shadow min-h-[40px] flex flex-col justify-center font-zilla">
-                  <div class="font-semibold font-Rundkursiv text-lg text-center" x-text="slot.Nama">
-                  </div>
-                  <div x-text="'Kursi: ' + (slot.kursi-120)"></div>
-                  <div x-text="'Kamar: ' + slot.kamar"></div>
-                  <template x-if="slot.ongkos == 370000 || slot.ongkos == 'L'">
-                    <div class="absolute top-0 right-0 rounded-full text-blue-500 shadow-lg"">
-                                <svg xmlns=" http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="inline-block" viewBox="0 0 16 16">
-                      <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708" />
-                      </svg>
+    <!-- teks -->
+    <div class="w-full relative -translate-y-10">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiHUXJxp2CAgRP2T0dPhs9DgZ_biZZvZdJ2V83OqmLyNfPuyshj1m3l9SFgMAXI5qkR5ASUJPpQesxuJRiESih50ZQkmteux_OTqnj5k2zimsIsry72VYUWxwJiLWFwfaPNJr4XqTIlhmY1Vu0650Ku09DdvnT-1wvZjDQ3lftMatJrx47TGLQ6cElC3O0/s3027/teks-ta26.png"
+            alt="Deskripsi Tour ADM 2026" width="100%">
+        <!-- vita -->
+        <div class="w-full font-Rundkursiv text-haul-text-header">
+            <div class="relative w-full">
+                <!-- IMG: penentu tinggi -->
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEittV-SFiHEgmktdzRs8KUg-Noen9BHCI5xcylkiRq3GX6hhf8V0V7J5GFKlTBXj2j4zkvrLLlpNZi2i3PeCR_FMjQxJSmvri7L1j9WkeZAhrW2iz79-pD2qAl0yvsvxFfgHREHX55Id5iHGn35Fb44Ik6jn_K1iivtEeUt8Y3wrpW78r37KuPf-J0OINU/s3200/vita-ta26.png"
+                    alt="Tour ADM 2026" class="w-full h-auto block" />
+                <!-- COUNTDOWN: overlay, tidak memengaruhi tinggi -->
+                <div class="absolute inset-0 pointer-events-none">
+                    <div class="h-full flex items-center justify-between px-4 md:px-10">
+                        <!-- LEFT -->
+                        <div class="pointer-events-auto flex items-center gap-2">
+                            Armada Bus
+                        </div>
+                        <!-- RIGHT -->
+                        <div class="pointer-events-auto flex items-center gap-2">
+                            Tour ADM 2026
+                        </div>
                     </div>
-                  </template>
-                  <template x-if="slot.ongkos != 370000 && slot.ongkos != 'L'">
-                    <div x-text="'Ongkos: ' + formatRupiah(slot.ongkos)"></div>
-                  </template>
                 </div>
-              </template>
-              <!-- boking kursi -->
-              <template x-if="typeof slot === 'object' && slot !== null && slot !== 'kosong' && slot.ongkos === 0">
-                <div class="border rounded p-2 text-xs bg-white shadow min-h-[40px] flex flex-col justify-center font-zilla">
-                  <div class="font-semibold font-Rundkursiv text-lg text-center" x-text="'Terisi'">
-                  </div>
-                  <div x-text="'Kursi: ' + slot.kursi"></div>
-                  <div x-text="'Kamar: ' + slot.kamar"></div>
-                </div>
-              </template>
-
-              <template x-if="slot === 'kosong'">
-                <div class="border border-dashed rounded p-2 text-xs text-gray-400 text-center min-h-[40px] flex flex-col justify-center">
-                  Kursi <span x-text="layoutTaruna[i]-60"></span><br>
-                  Kosong
-                </div>
-              </template>
             </div>
-          </template>
         </div>
-        <template x-if="!loaded">
-          <div class="col-span-6 text-center text-gray-400 py-4">Memuat data kursi...</div>
-        </template>
-      </template>
-    </div>
-    <!-- end layout kursi -->
-
-    <!-- penginapan -->
-    <!-- vita penginapan -->
-    <div class="w-full font-Rundkursiv text-haul-text-header text-xl relative z-0">
-      <div class="relative w-full">
-        <!-- IMG: penentu tinggi -->
-        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEittV-SFiHEgmktdzRs8KUg-Noen9BHCI5xcylkiRq3GX6hhf8V0V7J5GFKlTBXj2j4zkvrLLlpNZi2i3PeCR_FMjQxJSmvri7L1j9WkeZAhrW2iz79-pD2qAl0yvsvxFfgHREHX55Id5iHGn35Fb44Ik6jn_K1iivtEeUt8Y3wrpW78r37KuPf-J0OINU/s3200/vita-ta26.png" alt="Tour ADM 2026" class="w-full h-auto block" />
-        <!-- COUNTDOWN: overlay, tidak memengaruhi tinggi -->
-        <div class="absolute inset-0 pointer-events-none">
-          <div class="h-full flex items-center justify-between px-4 md:px-10">
-            <!-- LEFT -->
-            <div class="pointer-events-auto flex items-center gap-2">
-              Penginapan
-            </div>
-            <!-- RIGHT -->
-            <div class="pointer-events-auto flex items-center gap-2">
-              Parkem 1 & Pondok Violet
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- foto penginapan -->
-    <div class="w-full p-1">
-      <h1 class="font-Rundkursiv text-haul-text-header text-xl text-center">Parkem 1
-      </h1>
-      
-    <div class="w-full flex justify-center items-center">
-      <iframe src="https://www.google.com/maps/embed?pb=!4v1770551593791!6m8!1m7!1scLy_ZkKWK4bcIQg7yovUGQ!2m2!1d-7.693732464181466!2d108.6541011899071!3f286.95831225216756!4f17.7062555325286!5f0.7820865974627469" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
-    
-      <h1 class="font-Rundkursiv text-haul-text-header text-xl text-center">Pondok Violet
-      </h1>
-      
-    <div class="w-full flex justify-center items-center">
-      <iframe src="https://www.google.com/maps/embed?pb=!4v1773468943626!6m8!1m7!1sf9S651BKqRgJsXPFaKyiJQ!2m2!1d-7.693642417541873!2d108.654110613565!3f307.0701052170967!4f-3.505881014550596!5f0.7820865974627469" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
-      <!-- list penginapan -->
-      <div class="relative w-full">
-        <div class="flex justify-center items-center w-full py-8">
-          <div class="max-w-md w-full">
-            <h1 class="font-Rundkursiv text-haul-text-header text-2xl text-center mb-6">Kamar Penginapan
+        <!-- foto bus -->
+        <div class="w-full p-1">
+            <h1 class="font-Rundkursiv text-haul-text-header text-xl text-center">Bus 1 : Bintara
             </h1>
-            <ol class="space-y-3">
-              <li class="flex items-center gap-3 p-3 bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg border border-yellow-200 shadow-sm hover:shadow-md transition-shadow">
-                <span class="flex-shrink-0 w-6 h-6 bg-yellow-400 text-white rounded-full flex items-center justify-center text-sm font-bold">1</span>
-                <span class="font-semibold text-gray-700">Bungalow 4 Kamar AC</span>
-              </li>
-              <li class="flex items-center gap-3 p-3 bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg border border-yellow-200 shadow-sm hover:shadow-md transition-shadow">
-                <span class="flex-shrink-0 w-6 h-6 bg-yellow-400 text-white rounded-full flex items-center justify-center text-sm font-bold">2</span>
-                <span class="font-semibold text-gray-700">Bungalow 2 Kamar AC</span>
-              </li>
-              <li class="flex items-center gap-3 p-3 bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg border border-yellow-200 shadow-sm hover:shadow-md transition-shadow">
-                <span class="flex-shrink-0 w-6 h-6 bg-yellow-400 text-white rounded-full flex items-center justify-center text-sm font-bold">3</span>
-                <span class="font-semibold text-gray-700">Bungalow 2 Kamar AC</span>
-              </li>
-              <li class="flex items-center gap-3 p-3 bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg border border-yellow-200 shadow-sm hover:shadow-md transition-shadow">
-                <span class="flex-shrink-0 w-6 h-6 bg-yellow-400 text-white rounded-full flex items-center justify-center text-sm font-bold">4</span>
-                <span class="font-semibold text-gray-700">Bungalow 2 Kamar AC</span>
-              </li>
-              <li class="flex items-center gap-3 p-3 bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg border border-yellow-200 shadow-sm hover:shadow-md transition-shadow">
-                <span class="flex-shrink-0 w-6 h-6 bg-yellow-400 text-white rounded-full flex items-center justify-center text-sm font-bold">5</span>
-                <span class="font-semibold text-gray-700">12 Kamar Standar AC</span>
-              </li>
-              <li class="flex items-center gap-3 p-3 bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg border border-yellow-200 shadow-sm hover:shadow-md transition-shadow">
-                <span class="flex-shrink-0 w-6 h-6 bg-yellow-400 text-white rounded-full flex items-center justify-center text-sm font-bold">6</span>
-                <span class="font-semibold text-gray-700">Homestay 8 Kamar</span>
-              </li>
-              <li class="flex items-center gap-3 p-3 bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg border border-yellow-200 shadow-sm hover:shadow-md transition-shadow">
-                <span class="flex-shrink-0 w-6 h-6 bg-yellow-400 text-white rounded-full flex items-center justify-center text-sm font-bold">7</span>
-                <span class="font-semibold text-gray-700">Lantai-2 Pondok Violet 7 Kamar</span>
-              </li>
-            </ol>
-          </div>
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEijRWEhMk8qqX19gnrR9fPLVYm1ib2RBdc4lTy9Xn3GUeeMxrhI4DteZnRuEjr4kUzV5CEuXqVde1jsTHg7O3ojZjdiv-y7yGzfVsoim6FSU49STPtiQkXbz8g5PWzLYjV4-VGnAA7erODwTE7lGkFNMZ4XRkvg-jCb7uMJ1tI3ODgfz7VNHA2eq0PLpUQ/s1350/bintara.jpeg"
+                alt="Safana Holiday" width="100%" />
+            <hr class="my-10 h-px border-0 bg-gradient-to-r from-transparent via-yellow-500 to-transparent">
+            <h1 class="font-Rundkursiv text-haul-text-header text-xl text-center">Bus 2 : Militer
+            </h1>
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhfT6Pb4YYxJg22pNfAMBwPAvnawoISXFbIQf2FUF8SQksf6cRDjtNzCwNQJTXWGFk9LqMDLn3Gh87Smupqu3mQCNyKIjqloqaVMRP_9aI7lT_p9DA3tXukCTPIXSo2trNjeYGzf3ZBQdtptsJjukL-oT3y-zwNMGr3ppTAoQJ9nfuP29ggqKkWknRgPm4/s1350/militer.jpeg"
+                alt="Safana Holiday" width="100%" />
+            <h1 class="font-Rundkursiv text-haul-text-header text-xl text-center">Bus 3 : Taruna
+            </h1>
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhRyJsH2vw2MuJbWvVMReU8GAW-Qj-_opLR-jtAsFe3ofbWwYsvyvR3pQVlQ7S8Eoo6suOhsK2vWFwUzkm-N6BlQ7MBOTzi2jgfeadKYHdHkERrtKppYaAMLOn7MwKAYRJHOtDxP0B4XORe-TuApKTA9HyOkhwK4fsgugbfQ8X5OsDvYypoAEG0UHX0lRQ/s1350/taruna.jpeg"
+                alt="Safana Holiday" width="100%" />
         </div>
-      </div>
-    </div>
-    <hr class="my-10 h-px border-0 bg-gradient-to-r from-transparent via-yellow-500 to-transparent">
-    <!-- end list penginapan -->
-    <%- include('komponen-penginapan') %>
-    <hr class="my-10 h-px border-0 bg-gradient-to-r from-transparent via-yellow-500 to-transparent">
-    <!-- vita panitia -->
-    <div id="kontak" class="w-full font-Rundkursiv text-haul-text-header text-xl relative z-0">
-      <div class="relative w-full">
-        <!-- IMG: penentu tinggi -->
-        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEittV-SFiHEgmktdzRs8KUg-Noen9BHCI5xcylkiRq3GX6hhf8V0V7J5GFKlTBXj2j4zkvrLLlpNZi2i3PeCR_FMjQxJSmvri7L1j9WkeZAhrW2iz79-pD2qAl0yvsvxFfgHREHX55Id5iHGn35Fb44Ik6jn_K1iivtEeUt8Y3wrpW78r37KuPf-J0OINU/s3200/vita-ta26.png" alt="Tour ADM 2026" class="w-full h-auto block" />
-        <!-- COUNTDOWN: overlay, tidak memengaruhi tinggi -->
-        <div class="absolute inset-0 pointer-events-none">
-          <div class="h-full flex items-center justify-between px-4 md:px-10">
-            <!-- LEFT -->
-            <div class="pointer-events-auto flex items-center gap-2">
-              Struktur Panitia
+        <!-- vita -->
+        <div class="w-full font-Rundkursiv text-haul-text-header text-xl ">
+            <div class="relative w-full">
+                <!-- IMG: penentu tinggi -->
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEittV-SFiHEgmktdzRs8KUg-Noen9BHCI5xcylkiRq3GX6hhf8V0V7J5GFKlTBXj2j4zkvrLLlpNZi2i3PeCR_FMjQxJSmvri7L1j9WkeZAhrW2iz79-pD2qAl0yvsvxFfgHREHX55Id5iHGn35Fb44Ik6jn_K1iivtEeUt8Y3wrpW78r37KuPf-J0OINU/s3200/vita-ta26.png"
+                    alt="Tour ADM 2026" class="w-full h-auto block" />
+                <!-- COUNTDOWN: overlay, tidak memengaruhi tinggi -->
+                <div class="absolute inset-0 pointer-events-none">
+                    <div class="h-full flex items-center justify-between px-4 md:px-10">
+                        <!-- LEFT -->
+                        <div class="pointer-events-auto flex items-center gap-2">
+                            Jama'ah Ikhwan
+                        </div>
+                        <!-- RIGHT -->
+                        <div class="pointer-events-auto flex items-center gap-2">
+                            Jama'ah Akhwat
+                        </div>
+                    </div>
+                </div>
             </div>
-            <!-- RIGHT -->
-            <div class="pointer-events-auto flex items-center gap-2">
-              Tour ADM 2026
+        </div>
+        <!-- jamaah -->
+        <div class="w-full font-zilla text-haul-text text-xl relative">
+            <div class="relative w-full">
+                <div class="grid grid-cols-2 gap-4 px-4 md:px-10 w-full">
+                    <!-- LEFT laki laki-->
+                    <div class="pointer-events-auto flex flex-col gap-2 relative">
+                        <template x-for="(item, index) in data.ikutTour.filter(i => i.Gen === 'L')" :key="item.Nama">
+                            <div class="font-bold relative">
+                                <span x-text="index + 1"></span>. <span x-text="item.Nama"></span>
+                                <!-- centang biru -->
+                                <template x-if="item.ongkos == 370000 || item.ongkos == 'L'">
+                                    <span class="absolute top-0 right-0 text-blue-500">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="inline-block" viewBox="0 0 16 16">
+                                            <path
+                                                d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708" />
+                                        </svg>
+                                    </span>
+                                </template>
+                                <!-- cencang hijau -->
+                                <template x-if="item.ongkos >= 1 && item.ongkos < 370000">
+                                    <span class="absolute top-0 right-0 text-haul-text-header">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="inline-block" viewBox="0 0 16 16">
+                                            <path
+                                                d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708" />
+                                        </svg>
+                                    </span>
+                                </template>
+                            </div>
+                        </template>
+                    </div>
+
+                    <!-- RIGHT perempuan-->
+                    <div class="pointer-events-auto flex flex-col gap-2 relative">
+                        <template x-for="(item, index) in data.ikutTour.filter(i => i.Gen === 'P')" :key="item.Nama">
+                            <div class="font-bold relative">
+                                <span x-text="index + 1"></span>. <span x-text="item.Nama"></span>
+                                <template x-if="item.ongkos == 370000  || item.ongkos == 'L'">
+                                    <span class="absolute top-0 right-0 text-blue-500">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="inline-block" viewBox="0 0 16 16">
+                                            <path
+                                                d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708" />
+                                        </svg>
+                                    </span>
+                                </template>
+                                <!-- cencang hijau -->
+                                <template x-if="item.ongkos >= 1 && item.ongkos < 370000">
+                                    <span class="absolute top-0 right-0 text-haul-text-header">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="inline-block" viewBox="0 0 16 16">
+                                            <path
+                                                d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708" />
+                                        </svg>
+                                    </span>
+                                </template>
+                            </div>
+                        </template>
+                    </div>
+
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="w-full space-y-4 px-4 md:px-10">
-      <!-- Ketua Panitia -->
-      <div class="border rounded-lg shadow-md p-4 bg-white">
-        <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-          <div class="flex-1">
+            <!-- catatan -->
+            <div class="w-full overflow-hidden rounded-xl bg-amber-50 border border-amber-200 shadow-sm my-6">
+                <div class="flex">
+                    <!-- Accent Bar (Pengganti border-l-4 yang kaku) -->
+                    <div class="w-1.5 bg-amber-500"></div>
 
-            <p class="font-bold text-lg">Apa Khodim MT.Al-Ukhuwwah Daarul Mushthofa</p>
-            <p class="text-gray-700 text-sm pt-1">KETUA PANITIA</p>
-          </div>
-          <a href="http://wa.me/6281320505035" class="px-4 py-2 bg-gradient-to-r from-green-400 to-green-500 text-white rounded-lg font-semibold hover:shadow-lg transition-shadow duration-300 flex items-center gap-2 whitespace-nowrap">
-            Kontak
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
-              <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232" />
-            </svg>
-          </a>
-        </div>
-      </div>
+                    <div class="p-5">
+                        <div class="flex items-center gap-2 mb-3">
+                            <!-- Ikon Lampu/Catatan -->
+                            <svg xmlns="http://www.w3.org" class="h-5 w-5 text-amber-600" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <p class="font-bold text-amber-900 uppercase tracking-wider text-xs">Informasi:</p>
+                        </div>
 
-      <!-- Panitia Pelaksana -->
-      <div class="border rounded-lg shadow-md p-4 bg-white">
-        <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-          <div class="flex-1">
+                        <div class="text-amber-800 leading-relaxed">
+                            <p class="whitespace-pre-wrap mb-3 opacity-90">
+                                Pendaftaran Tour ADM 2026 yang masuk setelah limit kursi "149" penuh, masuk ke daftar
+                                tunggu.
+                            </p>
 
-            <p class="font-bold text-lg">M.Ahid Muwahid</p>
-            <p class="text-gray-700 text-sm pt-1">KETUA PELAKSANA</p>
-          </div>
-          <a href="http://wa.me/6289522574422" class="px-4 py-2 bg-gradient-to-r from-green-400 to-green-500 text-white rounded-lg font-semibold hover:shadow-lg transition-shadow duration-300 flex items-center gap-2 whitespace-nowrap">
-            Kontak
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
-              <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232" />
-            </svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- Koordinator Pendaftaran -->
-      <div class="border rounded-lg shadow-md p-4 bg-white">
-        <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-          <div class="flex-1">
-
-            <p class="font-bold text-lg">M.Wahyu Adam</p>
-            <p class="text-gray-700 text-sm pt-1">KOORDINATOR PENDAFTARAN</p>
-          </div>
-          <a href="http://wa.me/6285871094828" class="px-4 py-2 bg-gradient-to-r from-green-400 to-green-500 text-white rounded-lg font-semibold hover:shadow-lg transition-shadow duration-300 flex items-center gap-2 whitespace-nowrap">
-            Kontak
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
-              <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232" />
-            </svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- Procurement Officer -->
-      <div class="border rounded-lg shadow-md p-4 bg-white">
-        <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-          <div class="flex-1">
-
-            <p class="font-bold text-lg">M.Farohan</p>
-            <p class="text-gray-700 text-sm pt-1">PROCUREMENT OFFICER</p>
-          </div>
-          <a href="http://wa.me/6283829770998" class="px-4 py-2 bg-gradient-to-r from-green-400 to-green-500 text-white rounded-lg font-semibold hover:shadow-lg transition-shadow duration-300 flex items-center gap-2 whitespace-nowrap">
-            Kontak
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
-              <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232" />
-            </svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- Bendahara -->
-      <div class="border rounded-lg shadow-md p-4 bg-white">
-        <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-          <div class="flex-1">
-
-            <p class="font-bold text-lg">M.Yusya</p>
-            <p class="text-gray-700 text-sm pt-1">BENDAHARA</p>
-          </div>
-          <a href="http://wa.me/6281220206315" class="px-4 py-2 bg-gradient-to-r from-green-400 to-green-500 text-white rounded-lg font-semibold hover:shadow-lg transition-shadow duration-300 flex items-center gap-2 whitespace-nowrap">
-            Kontak
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
-              <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232" />
-            </svg>
-          </a>
-        </div>
-      </div>
-    </div>
-    <hr class="my-10 h-px border-0 bg-gradient-to-r from-transparent via-yellow-500 to-transparent">
-    <!-- pembayaran -->
-    <!-- vita pembayaran -->
-    <div id="tf" class="w-full font-Rundkursiv text-haul-text-header text-xl relative z-0">
-      <div class="relative w-full">
-        <!-- IMG: penentu tinggi -->
-        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEittV-SFiHEgmktdzRs8KUg-Noen9BHCI5xcylkiRq3GX6hhf8V0V7J5GFKlTBXj2j4zkvrLLlpNZi2i3PeCR_FMjQxJSmvri7L1j9WkeZAhrW2iz79-pD2qAl0yvsvxFfgHREHX55Id5iHGn35Fb44Ik6jn_K1iivtEeUt8Y3wrpW78r37KuPf-J0OINU/s3200/vita-ta26.png" alt="Tour ADM 2026" class="w-full h-auto block" />
-        <!-- COUNTDOWN: overlay, tidak memengaruhi tinggi -->
-        <div class="absolute inset-0 pointer-events-none">
-          <div class="h-full flex items-center justify-between px-4 md:px-10">
-            <!-- LEFT -->
-            <div class="pointer-events-auto flex items-center gap-2">
-              Pembayaran
+                            <!-- Status Badge Style -->
+                            <div class="flex flex-wrap gap-3 font-mono text-xs">
+                                <span class="px-2 py-1 bg-white/60 border border-amber-200 rounded-md">
+                                    Kursi terisi: <span class="font-bold text-amber-700"
+                                        x-text="data.ikutTour.length"></span>
+                                </span>
+                                <span class="px-2 py-1 bg-white/60 border border-amber-200 rounded-md">
+                                    Kursi kosong: <span class="font-bold text-green-600"
+                                        x-text="149 - data.ikutTour.length"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <!-- RIGHT -->
-            <div class="pointer-events-auto flex items-center gap-2">
-              Cash & Transfer
+
+        </div>
+        <!-- layout kursi -->
+        <!-- vita Kursi bintara-->
+        <div id="kursi" class="w-full font-Rundkursiv text-haul-text-header text-xl relative z-0">
+            <div class="relative w-full">
+                <!-- IMG: penentu tinggi -->
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEittV-SFiHEgmktdzRs8KUg-Noen9BHCI5xcylkiRq3GX6hhf8V0V7J5GFKlTBXj2j4zkvrLLlpNZi2i3PeCR_FMjQxJSmvri7L1j9WkeZAhrW2iz79-pD2qAl0yvsvxFfgHREHX55Id5iHGn35Fb44Ik6jn_K1iivtEeUt8Y3wrpW78r37KuPf-J0OINU/s3200/vita-ta26.png"
+                    alt="Tour ADM 2026" class="w-full h-auto block" />
+                <!-- COUNTDOWN: overlay, tidak memengaruhi tinggi -->
+                <div class="absolute inset-0 pointer-events-none">
+                    <div class="h-full flex items-center justify-between px-4 md:px-10">
+                        <!-- LEFT -->
+                        <div class="pointer-events-auto flex items-center gap-2">
+                            No Kursi
+                        </div>
+                        <!-- RIGHT -->
+                        <div class="pointer-events-auto flex items-center gap-2">
+                            Bintara
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
+        <div class="w-full overflow-x-auto scroll-smooth">
+            <template x-if="loaded">
+                <div class="grid grid-cols-[1fr_1fr_0.5fr_1fr_1fr_1fr] gap-1">
+                    <template x-for="(slot, i) in kursiMapBintara()" :key="i">
+                        <div
+                            :class="(layoutBintara[i] === 57 || layoutBintara[i] === 58)? 'col-span-2 relative':'relative'">
+                            <template x-if="slot === 'P'">
+                                <div
+                                    class="bg-yellow-300 text-center text-xs font-bold rounded flex items-center justify-center min-h-[40px]">
+                                    PINTU
+                                </div>
+                            </template>
+                            <template x-if="slot === 'L'">
+                                <div class="min-h-[40px]"></div>
+                            </template>
+                            <!-- Slot dengan ongkos remove template boking kursi dan pengkondisian && slot.ongkos !== 0 untuk menampilkan Rp.0 -->
+                            <template
+                                x-if="typeof slot === 'object' && slot !== null && slot !== 'kosong' && slot.ongkos !== 0">
+                                <div
+                                    class="border rounded p-2 text-xs bg-white shadow min-h-[40px] flex flex-col justify-center font-zilla">
+                                    <div class="font-semibold font-Rundkursiv text-lg text-center" x-text="slot.Nama">
+                                    </div>
+                                    <div x-text="'Kursi: ' + slot.kursi"></div>
+                                    <div x-text="'Kamar: ' + slot.kamar"></div>
+                                    <template x-if="slot.ongkos == 370000 || slot.ongkos == 'L'">
+                                        <div class="absolute top-0 right-0 rounded-full text-blue-500 shadow-lg"">
+                                <svg xmlns=" http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                            class="inline-block" viewBox="0 0 16 16">
+                                            <path
+                                                d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708" />
+                                            </svg>
+                                        </div>
+                                    </template>
+                                    <template x-if="slot.ongkos != 370000 && slot.ongkos != 'L'">
+                                        <div x-text="'Ongkos: ' + formatRupiah(slot.ongkos)"></div>
+                                    </template>
+                                </div>
+                            </template>
+                            <!-- boking kursi -->
+                            <template
+                                x-if="typeof slot === 'object' && slot !== null && slot !== 'kosong' && slot.ongkos === 0">
+                                <div
+                                    class="border rounded p-2 text-xs bg-white shadow min-h-[40px] flex flex-col justify-center font-zilla">
+                                    <div class="font-semibold font-Rundkursiv text-lg text-center" x-text="'Terisi'">
+                                    </div>
+                                    <div x-text="'Kursi: ' + slot.kursi"></div>
+                                    <div x-text="'Kamar: ' + slot.kamar"></div>
+                                </div>
+                            </template>
+                            <template x-if="slot === 'kosong'">
+                                <div
+                                    class="border border-dashed rounded p-2 text-xs text-gray-400 text-center min-h-[40px] flex flex-col justify-center">
+                                    Kursi <span x-text="layoutBintara[i]"></span><br>
+                                    Kosong
+                                </div>
+                            </template>
+                        </div>
+                    </template>
+                </div>
+                <template x-if="!loaded">
+                    <div class="col-span-6 text-center text-gray-400 py-4">Memuat data kursi...</div>
+                </template>
+            </template>
+        </div>
+
+
+        <!-- vita kursi militeri-->
+        <div class="w-full font-Rundkursiv text-haul-text-header text-xl relative z-0">
+            <div class="relative w-full">
+                <!-- IMG: penentu tinggi -->
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEittV-SFiHEgmktdzRs8KUg-Noen9BHCI5xcylkiRq3GX6hhf8V0V7J5GFKlTBXj2j4zkvrLLlpNZi2i3PeCR_FMjQxJSmvri7L1j9WkeZAhrW2iz79-pD2qAl0yvsvxFfgHREHX55Id5iHGn35Fb44Ik6jn_K1iivtEeUt8Y3wrpW78r37KuPf-J0OINU/s3200/vita-ta26.png"
+                    alt="Tour ADM 2026" class="w-full h-auto block" />
+                <!-- COUNTDOWN: overlay, tidak memengaruhi tinggi -->
+                <div class="absolute inset-0 pointer-events-none">
+                    <div class="h-full flex items-center justify-between px-4 md:px-10">
+                        <!-- LEFT -->
+                        <div class="pointer-events-auto flex items-center gap-2">
+                            No Kursi
+                        </div>
+                        <!-- RIGHT -->
+                        <div class="pointer-events-auto flex items-center gap-2">
+                            Militer
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="w-full overflow-x-auto scroll-smooth">
+            <template x-if="loaded">
+                <div class="grid grid-cols-[1fr_1fr_0.5fr_1fr_1fr_1fr] gap-1">
+                    <template x-for="(slot, i) in kursiMapMiliteri()" :key="i">
+                        <div class="relative">
+                            <template x-if="slot === 'P'">
+                                <div
+                                    class="bg-yellow-300 text-center text-xs font-bold rounded flex items-center justify-center min-h-[40px]">
+                                    PINTU
+                                </div>
+                            </template>
+                            <template x-if="slot === 'L'">
+                                <div class="min-h-[40px]"></div>
+                            </template>
+                            <!-- Slot dengan ongkos remove template boking kursi dan pengkondisian && slot.ongkos !== 0 untuk menampilkan Rp.0 -->
+                            <template
+                                x-if="typeof slot === 'object' && slot !== null && slot !== 'kosong' && slot.ongkos !== 0">
+                                <div
+                                    class="border rounded p-2 text-xs bg-white shadow min-h-[40px] flex flex-col justify-center font-zilla">
+                                    <div class="font-semibold font-Rundkursiv text-lg text-center" x-text="slot.Nama">
+                                    </div>
+                                    <div x-text="'Kursi: ' + (slot.kursi-60)"></div>
+                                    <div x-text="'Kamar: ' + slot.kamar"></div>
+                                    <template x-if="slot.ongkos == 370000 || slot.ongkos == 'L'">
+                                        <div class="absolute top-0 right-0 rounded-full text-blue-500 shadow-lg"">
+                                <svg xmlns=" http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                            class="inline-block" viewBox="0 0 16 16">
+                                            <path
+                                                d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708" />
+                                            </svg>
+                                        </div>
+                                    </template>
+                                    <template x-if="slot.ongkos != 370000 && slot.ongkos != 'L'">
+                                        <div x-text="'Ongkos: ' + formatRupiah(slot.ongkos)"></div>
+                                    </template>
+                                </div>
+                            </template>
+                            <!-- boking kursi -->
+                            <template
+                                x-if="typeof slot === 'object' && slot !== null && slot !== 'kosong' && slot.ongkos === 0">
+                                <div
+                                    class="border rounded p-2 text-xs bg-white shadow min-h-[40px] flex flex-col justify-center font-zilla">
+                                    <div class="font-semibold font-Rundkursiv text-lg text-center" x-text="'Terisi'">
+                                    </div>
+                                    <div x-text="'Kursi: ' + slot.kursi"></div>
+                                    <div x-text="'Kamar: ' + slot.kamar"></div>
+                                </div>
+                            </template>
+                            <template x-if="slot === 'kosong'">
+                                <div
+                                    class="border border-dashed rounded p-2 text-xs text-gray-400 text-center min-h-[40px] flex flex-col justify-center">
+                                    Kursi <span x-text="layoutMiliteri[i]-60"></span><br>
+                                    Kosong
+                                </div>
+                            </template>
+                        </div>
+                    </template>
+                </div>
+                <template x-if="!loaded">
+                    <div class="col-span-6 text-center text-gray-400 py-4">Memuat data kursi...</div>
+                </template>
+            </template>
+        </div>
+
+        <!-- vita kursi Taruna-->
+        <div class="w-full font-Rundkursiv text-haul-text-header text-xl relative z-0">
+            <div class="relative w-full">
+                <!-- IMG: penentu tinggi -->
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEittV-SFiHEgmktdzRs8KUg-Noen9BHCI5xcylkiRq3GX6hhf8V0V7J5GFKlTBXj2j4zkvrLLlpNZi2i3PeCR_FMjQxJSmvri7L1j9WkeZAhrW2iz79-pD2qAl0yvsvxFfgHREHX55Id5iHGn35Fb44Ik6jn_K1iivtEeUt8Y3wrpW78r37KuPf-J0OINU/s3200/vita-ta26.png"
+                    alt="Tour ADM 2026" class="w-full h-auto block" />
+                <!-- COUNTDOWN: overlay, tidak memengaruhi tinggi -->
+                <div class="absolute inset-0 pointer-events-none">
+                    <div class="h-full flex items-center justify-between px-4 md:px-10">
+                        <!-- LEFT -->
+                        <div class="pointer-events-auto flex items-center gap-2">
+                            No Kursi
+                        </div>
+                        <!-- RIGHT -->
+                        <div class="pointer-events-auto flex items-center gap-2">
+                            Taruna
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="w-full overflow-x-auto scroll-smooth">
+            <template x-if="loaded">
+                <div class="grid grid-cols-[1fr_1fr_0.5fr_1fr_1fr] gap-1">
+                    <template x-for="(slot, i) in kursiMapTaruna()" :key="i">
+                        <div class="relative">
+                            <template x-if="slot === 'P'">
+                                <div
+                                    class="bg-yellow-300 text-center text-xs font-bold rounded flex items-center justify-center min-h-[40px]">
+                                    PINTU
+                                </div>
+                            </template>
+                            <template x-if="slot === 'L'">
+                                <div class="min-h-[40px]"></div>
+                            </template>
+                            <!-- Slot dengan ongkos remove template boking kursi dan pengkondisian && slot.ongkos !== 0 untuk menampilkan Rp.0 -->
+                            <template
+                                x-if="typeof slot === 'object' && slot !== null && slot !== 'kosong' && slot.ongkos !== 0">
+                                <div
+                                    class="border rounded p-2 text-xs bg-white shadow min-h-[40px] flex flex-col justify-center font-zilla">
+                                    <div class="font-semibold font-Rundkursiv text-lg text-center" x-text="slot.Nama">
+                                    </div>
+                                    <div x-text="'Kursi: ' + (slot.kursi-120)"></div>
+                                    <div x-text="'Kamar: ' + slot.kamar"></div>
+                                    <template x-if="slot.ongkos == 370000 || slot.ongkos == 'L'">
+                                        <div class="absolute top-0 right-0 rounded-full text-blue-500 shadow-lg"">
+                                <svg xmlns=" http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                            class="inline-block" viewBox="0 0 16 16">
+                                            <path
+                                                d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708" />
+                                            </svg>
+                                        </div>
+                                    </template>
+                                    <template x-if="slot.ongkos != 370000 && slot.ongkos != 'L'">
+                                        <div x-text="'Ongkos: ' + formatRupiah(slot.ongkos)"></div>
+                                    </template>
+                                </div>
+                            </template>
+                            <!-- boking kursi -->
+                            <template
+                                x-if="typeof slot === 'object' && slot !== null && slot !== 'kosong' && slot.ongkos === 0">
+                                <div
+                                    class="border rounded p-2 text-xs bg-white shadow min-h-[40px] flex flex-col justify-center font-zilla">
+                                    <div class="font-semibold font-Rundkursiv text-lg text-center" x-text="'Terisi'">
+                                    </div>
+                                    <div x-text="'Kursi: ' + slot.kursi"></div>
+                                    <div x-text="'Kamar: ' + slot.kamar"></div>
+                                </div>
+                            </template>
+
+                            <template x-if="slot === 'kosong'">
+                                <div
+                                    class="border border-dashed rounded p-2 text-xs text-gray-400 text-center min-h-[40px] flex flex-col justify-center">
+                                    Kursi <span x-text="layoutTaruna[i]-60"></span><br>
+                                    Kosong
+                                </div>
+                            </template>
+                        </div>
+                    </template>
+                </div>
+                <template x-if="!loaded">
+                    <div class="col-span-6 text-center text-gray-400 py-4">Memuat data kursi...</div>
+                </template>
+            </template>
+        </div>
+        <!-- end layout kursi -->
+
+        <!-- penginapan -->
+        <!-- vita penginapan -->
+        <div class="w-full font-Rundkursiv text-haul-text-header text-xl relative z-0">
+            <div class="relative w-full">
+                <!-- IMG: penentu tinggi -->
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEittV-SFiHEgmktdzRs8KUg-Noen9BHCI5xcylkiRq3GX6hhf8V0V7J5GFKlTBXj2j4zkvrLLlpNZi2i3PeCR_FMjQxJSmvri7L1j9WkeZAhrW2iz79-pD2qAl0yvsvxFfgHREHX55Id5iHGn35Fb44Ik6jn_K1iivtEeUt8Y3wrpW78r37KuPf-J0OINU/s3200/vita-ta26.png"
+                    alt="Tour ADM 2026" class="w-full h-auto block" />
+                <!-- COUNTDOWN: overlay, tidak memengaruhi tinggi -->
+                <div class="absolute inset-0 pointer-events-none">
+                    <div class="h-full flex items-center justify-between px-4 md:px-10">
+                        <!-- LEFT -->
+                        <div class="pointer-events-auto flex items-center gap-2">
+                            Penginapan
+                        </div>
+                        <!-- RIGHT -->
+                        <div class="pointer-events-auto flex items-center gap-2">
+                            Parkem 1 & Pondok Violet
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- foto penginapan -->
+        <div class="w-full p-1">
+            <h1 class="font-Rundkursiv text-haul-text-header text-xl text-center">Parkem 1
+            </h1>
+
+            <div class="w-full flex justify-center items-center">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!4v1770551593791!6m8!1m7!1scLy_ZkKWK4bcIQg7yovUGQ!2m2!1d-7.693732464181466!2d108.6541011899071!3f286.95831225216756!4f17.7062555325286!5f0.7820865974627469"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+
+            <h1 class="font-Rundkursiv text-haul-text-header text-xl text-center">Pondok Violet
+            </h1>
+
+            <div class="w-full flex justify-center items-center">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!4v1773468943626!6m8!1m7!1sf9S651BKqRgJsXPFaKyiJQ!2m2!1d-7.693642417541873!2d108.654110613565!3f307.0701052170967!4f-3.505881014550596!5f0.7820865974627469"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <!-- list penginapan -->
+            <div class="relative w-full">
+                <div class="flex justify-center items-center w-full py-8">
+                    <div class="max-w-md w-full">
+                        <h1 class="font-Rundkursiv text-haul-text-header text-2xl text-center mb-6">Kamar Penginapan
+                        </h1>
+                        <ol class="space-y-3">
+                            <li
+                                class="flex items-center gap-3 p-3 bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg border border-yellow-200 shadow-sm hover:shadow-md transition-shadow">
+                                <span
+                                    class="flex-shrink-0 w-6 h-6 bg-yellow-400 text-white rounded-full flex items-center justify-center text-sm font-bold">1</span>
+                                <span class="font-semibold text-gray-700">Bungalow 4 Kamar AC</span>
+                            </li>
+                            <li
+                                class="flex items-center gap-3 p-3 bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg border border-yellow-200 shadow-sm hover:shadow-md transition-shadow">
+                                <span
+                                    class="flex-shrink-0 w-6 h-6 bg-yellow-400 text-white rounded-full flex items-center justify-center text-sm font-bold">2</span>
+                                <span class="font-semibold text-gray-700">Bungalow 2 Kamar AC</span>
+                            </li>
+                            <li
+                                class="flex items-center gap-3 p-3 bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg border border-yellow-200 shadow-sm hover:shadow-md transition-shadow">
+                                <span
+                                    class="flex-shrink-0 w-6 h-6 bg-yellow-400 text-white rounded-full flex items-center justify-center text-sm font-bold">3</span>
+                                <span class="font-semibold text-gray-700">Bungalow 2 Kamar AC</span>
+                            </li>
+                            <li
+                                class="flex items-center gap-3 p-3 bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg border border-yellow-200 shadow-sm hover:shadow-md transition-shadow">
+                                <span
+                                    class="flex-shrink-0 w-6 h-6 bg-yellow-400 text-white rounded-full flex items-center justify-center text-sm font-bold">4</span>
+                                <span class="font-semibold text-gray-700">Bungalow 2 Kamar AC</span>
+                            </li>
+                            <li
+                                class="flex items-center gap-3 p-3 bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg border border-yellow-200 shadow-sm hover:shadow-md transition-shadow">
+                                <span
+                                    class="flex-shrink-0 w-6 h-6 bg-yellow-400 text-white rounded-full flex items-center justify-center text-sm font-bold">5</span>
+                                <span class="font-semibold text-gray-700">12 Kamar Standar AC</span>
+                            </li>
+                            <li
+                                class="flex items-center gap-3 p-3 bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg border border-yellow-200 shadow-sm hover:shadow-md transition-shadow">
+                                <span
+                                    class="flex-shrink-0 w-6 h-6 bg-yellow-400 text-white rounded-full flex items-center justify-center text-sm font-bold">6</span>
+                                <span class="font-semibold text-gray-700">Homestay 8 Kamar</span>
+                            </li>
+                            <li
+                                class="flex items-center gap-3 p-3 bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg border border-yellow-200 shadow-sm hover:shadow-md transition-shadow">
+                                <span
+                                    class="flex-shrink-0 w-6 h-6 bg-yellow-400 text-white rounded-full flex items-center justify-center text-sm font-bold">7</span>
+                                <span class="font-semibold text-gray-700">Lantai-2 Pondok Violet 7 Kamar</span>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr class="my-10 h-px border-0 bg-gradient-to-r from-transparent via-yellow-500 to-transparent">
+        <!-- end list penginapan -->
+        <%- include('komponen-penginapan') %>
+            <hr class="my-10 h-px border-0 bg-gradient-to-r from-transparent via-yellow-500 to-transparent">
+            <!-- vita panitia -->
+            <div id="kontak" class="w-full font-Rundkursiv text-haul-text-header text-xl relative z-0">
+                <div class="relative w-full">
+                    <!-- IMG: penentu tinggi -->
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEittV-SFiHEgmktdzRs8KUg-Noen9BHCI5xcylkiRq3GX6hhf8V0V7J5GFKlTBXj2j4zkvrLLlpNZi2i3PeCR_FMjQxJSmvri7L1j9WkeZAhrW2iz79-pD2qAl0yvsvxFfgHREHX55Id5iHGn35Fb44Ik6jn_K1iivtEeUt8Y3wrpW78r37KuPf-J0OINU/s3200/vita-ta26.png"
+                        alt="Tour ADM 2026" class="w-full h-auto block" />
+                    <!-- COUNTDOWN: overlay, tidak memengaruhi tinggi -->
+                    <div class="absolute inset-0 pointer-events-none">
+                        <div class="h-full flex items-center justify-between px-4 md:px-10">
+                            <!-- LEFT -->
+                            <div class="pointer-events-auto flex items-center gap-2">
+                                Struktur Panitia
+                            </div>
+                            <!-- RIGHT -->
+                            <div class="pointer-events-auto flex items-center gap-2">
+                                Tour ADM 2026
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full space-y-4 px-4 md:px-10">
+                <!-- Ketua Panitia -->
+                <div class="border rounded-lg shadow-md p-4 bg-white">
+                    <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                        <div class="flex-1">
+
+                            <p class="font-bold text-lg">Apa Khodim MT.Al-Ukhuwwah Daarul Mushthofa</p>
+                            <p class="text-gray-700 text-sm pt-1">KETUA PANITIA</p>
+                        </div>
+                        <a href="http://wa.me/6281320505035"
+                            class="px-4 py-2 bg-gradient-to-r from-green-400 to-green-500 text-white rounded-lg font-semibold hover:shadow-lg transition-shadow duration-300 flex items-center gap-2 whitespace-nowrap">
+                            Kontak
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-whatsapp" viewBox="0 0 16 16">
+                                <path
+                                    d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Panitia Pelaksana -->
+                <div class="border rounded-lg shadow-md p-4 bg-white">
+                    <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                        <div class="flex-1">
+
+                            <p class="font-bold text-lg">M.Ahid Muwahid</p>
+                            <p class="text-gray-700 text-sm pt-1">KETUA PELAKSANA</p>
+                        </div>
+                        <a href="http://wa.me/6289522574422"
+                            class="px-4 py-2 bg-gradient-to-r from-green-400 to-green-500 text-white rounded-lg font-semibold hover:shadow-lg transition-shadow duration-300 flex items-center gap-2 whitespace-nowrap">
+                            Kontak
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-whatsapp" viewBox="0 0 16 16">
+                                <path
+                                    d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Koordinator Pendaftaran -->
+                <div class="border rounded-lg shadow-md p-4 bg-white">
+                    <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                        <div class="flex-1">
+
+                            <p class="font-bold text-lg">M.Wahyu Adam</p>
+                            <p class="text-gray-700 text-sm pt-1">KOORDINATOR PENDAFTARAN</p>
+                        </div>
+                        <a href="http://wa.me/6285871094828"
+                            class="px-4 py-2 bg-gradient-to-r from-green-400 to-green-500 text-white rounded-lg font-semibold hover:shadow-lg transition-shadow duration-300 flex items-center gap-2 whitespace-nowrap">
+                            Kontak
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-whatsapp" viewBox="0 0 16 16">
+                                <path
+                                    d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Procurement Officer -->
+                <div class="border rounded-lg shadow-md p-4 bg-white">
+                    <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                        <div class="flex-1">
+
+                            <p class="font-bold text-lg">M.Farohan</p>
+                            <p class="text-gray-700 text-sm pt-1">PROCUREMENT OFFICER</p>
+                        </div>
+                        <a href="http://wa.me/6283829770998"
+                            class="px-4 py-2 bg-gradient-to-r from-green-400 to-green-500 text-white rounded-lg font-semibold hover:shadow-lg transition-shadow duration-300 flex items-center gap-2 whitespace-nowrap">
+                            Kontak
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-whatsapp" viewBox="0 0 16 16">
+                                <path
+                                    d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Bendahara -->
+                <div class="border rounded-lg shadow-md p-4 bg-white">
+                    <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                        <div class="flex-1">
+
+                            <p class="font-bold text-lg">M.Yusya</p>
+                            <p class="text-gray-700 text-sm pt-1">BENDAHARA</p>
+                        </div>
+                        <a href="http://wa.me/6281220206315"
+                            class="px-4 py-2 bg-gradient-to-r from-green-400 to-green-500 text-white rounded-lg font-semibold hover:shadow-lg transition-shadow duration-300 flex items-center gap-2 whitespace-nowrap">
+                            Kontak
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-whatsapp" viewBox="0 0 16 16">
+                                <path
+                                    d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-10 h-px border-0 bg-gradient-to-r from-transparent via-yellow-500 to-transparent">
+            <!-- pembayaran -->
+            <!-- vita pembayaran -->
+            <div id="tf" class="w-full font-Rundkursiv text-haul-text-header text-xl relative z-0">
+                <div class="relative w-full">
+                    <!-- IMG: penentu tinggi -->
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEittV-SFiHEgmktdzRs8KUg-Noen9BHCI5xcylkiRq3GX6hhf8V0V7J5GFKlTBXj2j4zkvrLLlpNZi2i3PeCR_FMjQxJSmvri7L1j9WkeZAhrW2iz79-pD2qAl0yvsvxFfgHREHX55Id5iHGn35Fb44Ik6jn_K1iivtEeUt8Y3wrpW78r37KuPf-J0OINU/s3200/vita-ta26.png"
+                        alt="Tour ADM 2026" class="w-full h-auto block" />
+                    <!-- COUNTDOWN: overlay, tidak memengaruhi tinggi -->
+                    <div class="absolute inset-0 pointer-events-none">
+                        <div class="h-full flex items-center justify-between px-4 md:px-10">
+                            <!-- LEFT -->
+                            <div class="pointer-events-auto flex items-center gap-2">
+                                Pembayaran
+                            </div>
+                            <!-- RIGHT -->
+                            <div class="pointer-events-auto flex items-center gap-2">
+                                Cash & Transfer
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- info rekening -->
+            <div class="max-w-md mx-auto bg-white border rounded-xl shadow p-4 space-y-4">
+
+                <h2 class="text-center font-semibold text-lg text-gray-700">
+                    Pembayaran Transfer
+                </h2>
+                <div class="border rounded-lg p-4 space-y-3">
+
+                    <div class="text-sm text-gray-500 flex justify-between items-center">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEijBZ4hMFFrDtHgASk5R6S3orTzYT6VU32xNLwFtsygwN4qkTXBD2fIYjSCHmJt88R7wvo7e8JzzoWi6RSadAHJLpqPJjK8WoAQV5tEXCcLH9NVh2M5tczzgXbYYdeq4vZIsONZCs9yBoBE79t3E4yquuhkfEsIc9s5j22K6eEt17ELgFvjJUgNSrDFj5g/s320/bni.png"
+                            alt="" width="50px">
+                    </div>
+
+                    <div class="flex items-center justify-between gap-2">
+                        <div class="font-semibold text-gray-800 text-lg select-all" id="nomor-rek">
+                            1921083803
+                        </div>
+
+                        <button onclick="salinNomor('nomor-rek')"
+                            class="px-3 py-1.5 text-xs bg-blue-600 text-white rounded hover:bg-blue-700 active:bg-blue-800 transition duration-200 font-medium">
+                            Salin
+                        </button>
+                    </div>
+
+                    <div class="text-xs text-gray-500">
+                        S**i N********h A***i***h
+                    </div>
+
+                </div>
+
+                <div class="border rounded-lg p-4 space-y-3">
+
+
+                    <div class="text-sm text-gray-500 flex justify-center items-center">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj_IxlSqtYbdC6l0fL6LBvj6hWAmDOvLaAPxDFpFlcebyNeZ8oUyVUnzGjiQSxO8wtkroTngCMP1e2BoYhaYiAbO2GpVKmE9kg-wdgxQGldY3VHw_BfyDcVrr8265Rvsne4xxQoVMEQHjgODKrBGtL_zsQbOwlOFXJSO06peRWnU0CnM5kgIB2Ddt6K7qo/s2482/dana.png"
+                            alt="" width="50px">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiyMZoKW7_tCtMb8lj1lMnkmPeeVapG_wBhqHdyZSp5-nxMlDBQ-cvAN9jCyGbdlbQGx5DxdekNwyCx2wqLO6JyzZQkgr-2SSxzXdjqO-sGu9QBxU1Umth28LbtCuSFU-2KvrirUZrUVx9peu-Uy8AkjxjOqJR7ZU_Z4Mh7gKJV6BQXJkIRoo_EpeVyCqk/s320/gopay.png"
+                            alt="" width="50px">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhv7MhEkSSZNpRfd-L5s6jvFK0Yp0oG9o7huN50HrqoW4uDg-lsaptlPMDiomtgfSabc8WRK51X1HGdPhi9NCqvWPt0lXxlHeR4h5T42-SEtKCFo-KDkUBU8q5W2setSHorSAFkrMYQFgI5mU3hfOYqaOa4IEIDlKeaJCgxypbaXIT4-cOtPTn10zikPag/s320/shopeepay.png"
+                            alt="" width="50px">
+                    </div>
+
+                    <div class="flex items-center justify-between gap-2">
+                        <div class="font-semibold text-gray-800 text-lg select-all" id="nomor-ewallet">
+                            081220206315
+                        </div>
+
+                        <button onclick="salinNomor('nomor-ewallet')"
+                            class="px-3 py-1.5 text-xs bg-blue-600 text-white rounded hover:bg-blue-700 active:bg-blue-800 transition duration-200 font-medium">
+                            Salin
+                        </button>
+                    </div>
+
+                    <div class="text-xs text-gray-500">
+                        U**n S**r*****n
+                    </div>
+
+                </div>
+            </div>
+            <!-- catatan -->
+            <div class="w-full font-mono text-sm bg-gray-100 border-l-4 border-yellow-500 p-4 my-4">
+                <p class="font-semibold text-gray-800 mb-2">Catatan:</p>
+                <p class="text-gray-700 whitespace-pre-wrap">
+                    Untuk setor tunai, bisa melalui staff KOORDINATOR PENDAFTARAN ( M.Wahyu Adam ). Dan jika ada kendala
+                    terkait transfer, silakan hubungi staff BENDAHARA yang tersedia di atas.
+                </p>
+            </div>
+
+
+            <script>
+                function salinNomor(no) {
+                    const nomor = document.getElementById(no).innerText;
+                    navigator.clipboard.writeText(nomor).then(() => {
+                        tampilToast();
+                        // console.log('Nomor disalin:', nomor);
+                    }).catch(err => {
+                        console.error('Gagal menyalin:', err);
+                    });
+                }
+
+                function tampilToast() {
+                    const toast = document.getElementById('toast');
+                    toast.classList.remove('opacity-0', 'translate-y-[-20px]', 'pointer-events-none');
+                    toast.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+
+                    setTimeout(() => {
+                        toast.classList.add('opacity-0', 'translate-y-[-20px]', 'pointer-events-none');
+                        toast.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+                    }, 2000);
+                }
+            </script>
+
     </div>
-    <!-- info rekening -->
-    <div class="max-w-md mx-auto bg-white border rounded-xl shadow p-4 space-y-4">
-
-      <h2 class="text-center font-semibold text-lg text-gray-700">
-        Pembayaran Transfer
-      </h2>
-      <div class="border rounded-lg p-4 space-y-3">
-
-        <div class="text-sm text-gray-500 flex justify-between items-center">
-          <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEijBZ4hMFFrDtHgASk5R6S3orTzYT6VU32xNLwFtsygwN4qkTXBD2fIYjSCHmJt88R7wvo7e8JzzoWi6RSadAHJLpqPJjK8WoAQV5tEXCcLH9NVh2M5tczzgXbYYdeq4vZIsONZCs9yBoBE79t3E4yquuhkfEsIc9s5j22K6eEt17ELgFvjJUgNSrDFj5g/s320/bni.png" alt="" width="50px">
+    <!-- vita navigasi -->
+    <div class='fixed bottom-0 w-full left-0 right-0 font-Rundkursiv text-haul-text-header text-xs lg:text-xl z-50'>
+        <div class='relative w-full'>
+            <!-- IMG: penentu tinggi -->
+            <img alt='Tour ADM 2026' class='w-full h-auto block'
+                src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEittV-SFiHEgmktdzRs8KUg-Noen9BHCI5xcylkiRq3GX6hhf8V0V7J5GFKlTBXj2j4zkvrLLlpNZi2i3PeCR_FMjQxJSmvri7L1j9WkeZAhrW2iz79-pD2qAl0yvsvxFfgHREHX55Id5iHGn35Fb44Ik6jn_K1iivtEeUt8Y3wrpW78r37KuPf-J0OINU/s3200/vita-ta26.png' />
+            <!-- COUNTDOWN: overlay, tidak memengaruhi tinggi -->
+            <div class='absolute inset-0 pointer-events-none text-haul-text-header'>
+                <div class='h-full flex items-center justify-between px-4 md:px-10'>
+                    <!-- LEFT -->
+                    <div class='pointer-events-auto flex items-center gap-2 md:gap-4'>
+                        <a class='hover:opacity-80 transition-opacity flex flex-col items-center' href='#kursi'>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="20px" width="20px" class="md:h-6 md:w-6"
+                                viewbox="0 -960 960 960" fill="#f1d0a8">
+                                <path
+                                    d="M340-720q-33 0-56.5-23.5T260-800q0-33 23.5-56.5T340-880q33 0 56.5 23.5T420-800q0 33-23.5 56.5T340-720Zm220 560H302q-33 0-60.5-23.5T207-240l-87-440h82l88 440h270v80Zm220 80L664-280H386q-29 0-50.5-17.5T308-344l-44-214q-11-48 22.5-85t81.5-37q35 0 63.5 21t36.5 57l44 202h130q21 0 39 11t29 29l140 240-70 40Z" />
+                            </svg>
+                            <span class='text-xs md:text-sm mt-1'>Kursi</span>
+                        </a>
+                        <a class='hover:opacity-80 transition-opacity flex flex-col items-center' href='#hotel'>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="20px" width="20px" class="md:h-6 md:w-6"
+                                viewbox="0 -960 960 960" fill="#f1d0a8">
+                                <path
+                                    d="M40-200v-600h80v400h320v-320h320q66 0 113 47t47 113v360h-80v-120H120v120H40Zm155-275q-35-35-35-85t35-85q35-35 85-35t85 35q35 35 35 85t-35 85q-35 35-85 35t-85-35Zm325 75h320v-160q0-33-23.5-56.5T760-640H520v240ZM308.5-531.5Q320-543 320-560t-11.5-28.5Q297-600 280-600t-28.5 11.5Q240-577 240-560t11.5 28.5Q263-520 280-520t28.5-11.5ZM280-560Zm240-80v240-240Z" />
+                            </svg>
+                            <span class='text-xs md:text-sm mt-1'>Homestay</span>
+                        </a>
+                    </div>
+                    <!-- RIGHT -->
+                    <div class='pointer-events-auto flex items-center gap-2 md:gap-4'>
+                        <a class='hover:opacity-80 transition-opacity flex flex-col items-center' href='#tf'>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="20px" width="20px" class="md:h-6 md:w-6"
+                                viewbox="0 -960 960 960" fill="#f1d0a8">
+                                <path
+                                    d="M470-320h29v-32q28-4 47.5-23t19.5-49q0-26-20-43.5T500-496v-74q10 3 16.5 10t9.5 17l36-15q-7-21-24-33.5T500-608v-32h-30v31q-28 3-47.5 20.5T403-542q0 27 20.5 45t46.5 29v79q-16-5-27-17t-15-28l-35 15q8 28 28 46t49 22v31Zm30-70v-66q11 5 19.5 12t8.5 21q0 16-8 22.5T500-390Zm-30-119q-11-5-20-12t-9-21q0-14 9-20.5t20-8.5v62ZM320-200q-117 0-198.5-81.5T40-480q0-117 81.5-198.5T320-760h320q117 0 198.5 81.5T920-480q0 117-81.5 198.5T640-200H320Zm0-60h320q91.3 0 155.65-64.29Q860-388.58 860-479.79T795.65-635.5Q731.3-700 640-700H320q-91.3 0-155.65 64.29Q100-571.42 100-480.21t64.35 155.71Q228.7-260 320-260Zm160-220Z" />
+                            </svg>
+                            <span class='text-xs md:text-sm mt-1'>Pembayaran</span>
+                        </a>
+                        <a class='hover:opacity-80 transition-opacity flex flex-col items-center' href='#kontak'>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="20px" width="20px" class="md:h-6 md:w-6"
+                                viewbox="0 -960 960 960" fill="#f1d0a8">
+                                <path
+                                    d="M60-120q-24 0-42-18T0-180v-600q0-24 18-42t42-18h840q24 0 42 18t18 42v600q0 24-18 42t-42 18H60Zm531-60h309v-600H60v600h7q44-69 112.5-109T329-329q81 0 149.5 40T591-180ZM414-435q35-35 35-85t-35-85q-35-35-85-35t-85 35q-35 35-35 85t35 85q35 35 85 35t85-35Zm342 207 77-76-57-81h-70q-9-25-12.5-46.5T690-479q0-26 3.5-47t12.5-47h70l57-81-77-76q-55 45-85.5 111T640-479q0 74 30.5 140T756-228Zm-613 48h372q-36-42-84.5-65.5T329-269q-53 0-101.5 23.5T143-180Zm143-297q-17-17-17-43t17-43q17-17 43-17t43 17q17 17 17 43t-17 43q-17 17-43 17t-43-17Zm194-3Z" />
+                            </svg>
+                            <span class='text-xs md:text-sm mt-1'>Kontak</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <div class="flex items-center justify-between gap-2">
-          <div class="font-semibold text-gray-800 text-lg select-all" id="nomor-rek">
-            1921083803
-          </div>
-
-          <button onclick="salinNomor('nomor-rek')" class="px-3 py-1.5 text-xs bg-blue-600 text-white rounded hover:bg-blue-700 active:bg-blue-800 transition duration-200 font-medium">
-            Salin
-          </button>
-        </div>
-
-        <div class="text-xs text-gray-500">
-          S**i N********h A***i***h
-        </div>
-
-      </div>
-
-      <div class="border rounded-lg p-4 space-y-3">
-
-
-        <div class="text-sm text-gray-500 flex justify-center items-center">
-          <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj_IxlSqtYbdC6l0fL6LBvj6hWAmDOvLaAPxDFpFlcebyNeZ8oUyVUnzGjiQSxO8wtkroTngCMP1e2BoYhaYiAbO2GpVKmE9kg-wdgxQGldY3VHw_BfyDcVrr8265Rvsne4xxQoVMEQHjgODKrBGtL_zsQbOwlOFXJSO06peRWnU0CnM5kgIB2Ddt6K7qo/s2482/dana.png" alt="" width="50px">
-          <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiyMZoKW7_tCtMb8lj1lMnkmPeeVapG_wBhqHdyZSp5-nxMlDBQ-cvAN9jCyGbdlbQGx5DxdekNwyCx2wqLO6JyzZQkgr-2SSxzXdjqO-sGu9QBxU1Umth28LbtCuSFU-2KvrirUZrUVx9peu-Uy8AkjxjOqJR7ZU_Z4Mh7gKJV6BQXJkIRoo_EpeVyCqk/s320/gopay.png" alt="" width="50px">
-          <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhv7MhEkSSZNpRfd-L5s6jvFK0Yp0oG9o7huN50HrqoW4uDg-lsaptlPMDiomtgfSabc8WRK51X1HGdPhi9NCqvWPt0lXxlHeR4h5T42-SEtKCFo-KDkUBU8q5W2setSHorSAFkrMYQFgI5mU3hfOYqaOa4IEIDlKeaJCgxypbaXIT4-cOtPTn10zikPag/s320/shopeepay.png" alt="" width="50px">
-        </div>
-
-        <div class="flex items-center justify-between gap-2">
-          <div class="font-semibold text-gray-800 text-lg select-all" id="nomor-ewallet">
-            081220206315
-          </div>
-
-          <button onclick="salinNomor('nomor-ewallet')" class="px-3 py-1.5 text-xs bg-blue-600 text-white rounded hover:bg-blue-700 active:bg-blue-800 transition duration-200 font-medium">
-            Salin
-          </button>
-        </div>
-
-        <div class="text-xs text-gray-500">
-          U**n S**r*****n
-        </div>
-
-      </div>
     </div>
-    <!-- catatan -->
-    <div class="w-full font-mono text-sm bg-gray-100 border-l-4 border-yellow-500 p-4 my-4">
-      <p class="font-semibold text-gray-800 mb-2">Catatan:</p>
-      <p class="text-gray-700 whitespace-pre-wrap">
-        Untuk setor tunai, bisa melalui staff KOORDINATOR PENDAFTARAN ( M.Wahyu Adam ). Dan jika ada kendala
-        terkait transfer, silakan hubungi staff BENDAHARA yang tersedia di atas.
-      </p>
-    </div>
-
-
-    <script>
-      function salinNomor(no) {
-        const nomor = document.getElementById(no).innerText;
-        navigator.clipboard.writeText(nomor).then(() => {
-          tampilToast();
-          // console.log('Nomor disalin:', nomor);
-        }).catch(err => {
-          console.error('Gagal menyalin:', err);
-        });
-      }
-
-      function tampilToast() {
-        const toast = document.getElementById('toast');
-        toast.classList.remove('opacity-0', 'translate-y-[-20px]', 'pointer-events-none');
-        toast.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
-
-        setTimeout(() => {
-          toast.classList.add('opacity-0', 'translate-y-[-20px]', 'pointer-events-none');
-          toast.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
-        }, 2000);
-      }
-    </script>
-
-  </div>
-  <!-- vita navigasi -->
-  <div class='fixed bottom-0 w-full left-0 right-0 font-Rundkursiv text-haul-text-header text-xs lg:text-xl z-50'>
-    <div class='relative w-full'>
-      <!-- IMG: penentu tinggi -->
-      <img alt='Tour ADM 2026' class='w-full h-auto block' src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEittV-SFiHEgmktdzRs8KUg-Noen9BHCI5xcylkiRq3GX6hhf8V0V7J5GFKlTBXj2j4zkvrLLlpNZi2i3PeCR_FMjQxJSmvri7L1j9WkeZAhrW2iz79-pD2qAl0yvsvxFfgHREHX55Id5iHGn35Fb44Ik6jn_K1iivtEeUt8Y3wrpW78r37KuPf-J0OINU/s3200/vita-ta26.png' />
-      <!-- COUNTDOWN: overlay, tidak memengaruhi tinggi -->
-      <div class='absolute inset-0 pointer-events-none text-haul-text-header'>
-        <div class='h-full flex items-center justify-between px-4 md:px-10'>
-          <!-- LEFT -->
-          <div class='pointer-events-auto flex items-center gap-2 md:gap-4'>
-            <a class='hover:opacity-80 transition-opacity flex flex-col items-center' href='#kursi'>
-              <svg xmlns="http://www.w3.org/2000/svg" height="20px" width="20px" class="md:h-6 md:w-6" viewbox="0 -960 960 960" fill="#f1d0a8">
-                <path d="M340-720q-33 0-56.5-23.5T260-800q0-33 23.5-56.5T340-880q33 0 56.5 23.5T420-800q0 33-23.5 56.5T340-720Zm220 560H302q-33 0-60.5-23.5T207-240l-87-440h82l88 440h270v80Zm220 80L664-280H386q-29 0-50.5-17.5T308-344l-44-214q-11-48 22.5-85t81.5-37q35 0 63.5 21t36.5 57l44 202h130q21 0 39 11t29 29l140 240-70 40Z" />
-              </svg>
-              <span class='text-xs md:text-sm mt-1'>Kursi</span>
-            </a>
-            <a class='hover:opacity-80 transition-opacity flex flex-col items-center' href='#hotel'>
-              <svg xmlns="http://www.w3.org/2000/svg" height="20px" width="20px" class="md:h-6 md:w-6" viewbox="0 -960 960 960" fill="#f1d0a8">
-                <path d="M40-200v-600h80v400h320v-320h320q66 0 113 47t47 113v360h-80v-120H120v120H40Zm155-275q-35-35-35-85t35-85q35-35 85-35t85 35q35 35 35 85t-35 85q-35 35-85 35t-85-35Zm325 75h320v-160q0-33-23.5-56.5T760-640H520v240ZM308.5-531.5Q320-543 320-560t-11.5-28.5Q297-600 280-600t-28.5 11.5Q240-577 240-560t11.5 28.5Q263-520 280-520t28.5-11.5ZM280-560Zm240-80v240-240Z" />
-              </svg>
-              <span class='text-xs md:text-sm mt-1'>Homestay</span>
-            </a>
-          </div>
-          <!-- RIGHT -->
-          <div class='pointer-events-auto flex items-center gap-2 md:gap-4'>
-            <a class='hover:opacity-80 transition-opacity flex flex-col items-center' href='#tf'>
-              <svg xmlns="http://www.w3.org/2000/svg" height="20px" width="20px" class="md:h-6 md:w-6" viewbox="0 -960 960 960" fill="#f1d0a8">
-                <path d="M470-320h29v-32q28-4 47.5-23t19.5-49q0-26-20-43.5T500-496v-74q10 3 16.5 10t9.5 17l36-15q-7-21-24-33.5T500-608v-32h-30v31q-28 3-47.5 20.5T403-542q0 27 20.5 45t46.5 29v79q-16-5-27-17t-15-28l-35 15q8 28 28 46t49 22v31Zm30-70v-66q11 5 19.5 12t8.5 21q0 16-8 22.5T500-390Zm-30-119q-11-5-20-12t-9-21q0-14 9-20.5t20-8.5v62ZM320-200q-117 0-198.5-81.5T40-480q0-117 81.5-198.5T320-760h320q117 0 198.5 81.5T920-480q0 117-81.5 198.5T640-200H320Zm0-60h320q91.3 0 155.65-64.29Q860-388.58 860-479.79T795.65-635.5Q731.3-700 640-700H320q-91.3 0-155.65 64.29Q100-571.42 100-480.21t64.35 155.71Q228.7-260 320-260Zm160-220Z" />
-              </svg>
-              <span class='text-xs md:text-sm mt-1'>Pembayaran</span>
-            </a>
-            <a class='hover:opacity-80 transition-opacity flex flex-col items-center' href='#kontak'>
-              <svg xmlns="http://www.w3.org/2000/svg" height="20px" width="20px" class="md:h-6 md:w-6" viewbox="0 -960 960 960" fill="#f1d0a8">
-                <path d="M60-120q-24 0-42-18T0-180v-600q0-24 18-42t42-18h840q24 0 42 18t18 42v600q0 24-18 42t-42 18H60Zm531-60h309v-600H60v600h7q44-69 112.5-109T329-329q81 0 149.5 40T591-180ZM414-435q35-35 35-85t-35-85q-35-35-85-35t-85 35q-35 35-35 85t35 85q35 35 85 35t85-35Zm342 207 77-76-57-81h-70q-9-25-12.5-46.5T690-479q0-26 3.5-47t12.5-47h70l57-81-77-76q-55 45-85.5 111T640-479q0 74 30.5 140T756-228Zm-613 48h372q-36-42-84.5-65.5T329-269q-53 0-101.5 23.5T143-180Zm143-297q-17-17-17-43t17-43q17-17 43-17t43 17q17 17 17 43t-17 43q-17 17-43 17t-43-17Zm194-3Z" />
-              </svg>
-              <span class='text-xs md:text-sm mt-1'>Kontak</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
 </div>
 <!-- TOAST -->
 <div id="toast" class="fixed top-4 right-4 bg-green-600 text-white text-sm px-4 py-2 rounded-lg shadow
             opacity-0 translate-y-[-20px] pointer-events-none transition-all duration-300 z-50">
-  ✔ Nomor berhasil disalin
+    ✔ Nomor berhasil disalin
 </div>
 <!-- java script -->
 <script>
-  document.addEventListener('alpine:init', () => {
-    // API
-    Alpine.data('tourADMComponent', () => ({
-      urlTourADM: "https://script.google.com/macros/s/AKfycbwfkoHCevue6ltFsB93gWib2xSvCgJbHBTJ2Gnq2nu07mzrUKOgyUSeVUYMBAQIi2m7/exec",
-      data: {
-        ikutTour: []
-      },
-      error: '',
-      loaded: false,
-      formatRupiah(angka) {
-        return new Intl.NumberFormat("id-ID", {
-          style: "currency",
-          currency: "IDR"
-        }).format(angka);
-      },
-      async getData() {
-        try {
-          const result = await fetch(this.urlTourADM);
-          if (!result.ok) throw new Error("Data tidak bisa diakses, hubungi pengembang !!!");
-          const response = await result.json();
-          this.data.ikutTour = response.ikutTour || [];
-          this.loaded = true;
-          // console.log('data siap')
-          // console.log(this.layoutBintara)
-          // console.log(this.kursiMapBintara())
-        } catch (err) {
-          console.error(err);
-          this.error = err.message;
-        }
-      },
-      layoutBintara: [
-        'P', 'L', 60, 'L', 'L', 'L',
-        1, 2, 'L', 3, 4, 5,
-        6, 7, 'L', 8, 9, 10,
-        11, 12, 'L', 13, 14, 15,
-        16, 17, 'L', 18, 19, 20,
-        21, 22, 'L', 23, 24, 25,
-        26, 27, 'L', 28, 29, 30,
-        31, 32, 'L', 33, 34, 35,
-        36, 37, 'L', 38, 39, 40,
-        41, 42, 'L', 43, 44, 45,
-        46, 47, 'L', 48, 49, 50,
-        'P', 'L', 'L', 51, 52, 53,
-        54, 'L', 'L', 'L', 'L', 55,
-        56, 57, 58, 59
-      ],
-      kursiMapBintara() {
-        // Membuat array baru dengan isi sama seperti layoutBintara,
-        // tetapi jika slot berupa angka, diganti dengan data peserta (atau null jika tidak ada)
-        return this.layoutBintara.map(slot => {
-          if (typeof slot === 'number') {
-            const peserta = this.data.ikutTour.find(p => p.kursi == slot);
-            return peserta || 'kosong';
-          }
-          // Untuk 'P' dan 'L', tetap seperti aslinya
-          return slot;
-        });
-      },
-      layoutMiliteri: [
-        'P', 120, 'L', 'L', 'L', 'L',
-        61, 62, 'L', 63, 64, 65,
-        66, 67, 'L', 68, 69, 70,
-        71, 72, 'L', 73, 74, 75,
-        76, 77, 'L', 78, 79, 80,
-        81, 82, 'L', 83, 84, 85,
-        86, 87, 'L', 88, 89, 90,
-        91, 92, 'L', 93, 94, 95,
-        96, 97, 'L', 98, 99, 100,
-        101, 102, 'L', 103, 104, 105,
-        106, 107, 'L', 108, 109, 110,
-        'P', 'L', 'L', 111, 112, 113,
-        114, 115, 116, 117, 118, 119
-      ],
-      kursiMapMiliteri() {
-        // Membuat array baru dengan isi sama seperti layoutMiliteri,
-        // tetapi jika slot berupa angka, diganti dengan data peserta (atau null jika tidak ada)
-        return this.layoutMiliteri.map(slot => {
-          if (typeof slot === 'number') {
-            const peserta = this.data.ikutTour.find(p => p.kursi == slot);
-            return peserta || 'kosong';
-          }
-          // Untuk 'P' dan 'L', tetap seperti aslinya
-          return slot;
-        });
-      },
-      layoutTaruna: [
-        'P', 152, 'L', 'L', 'L',
-        121, 122, 'L', 123, 124,
-        125, 126, 'L', 127, 128,
-        129, 130, 'L', 131, 132,
-        133, 134, 'L', 135, 136,
-        137, 138, 'L', 139, 140,
-        141, 142, 'L', 143, 144,
-        'P', 'L', 'L', 145, 146,
-        147, 148, 149, 150, 151
+    document.addEventListener('alpine:init', () => {
+        // API
+        Alpine.data('tourADMComponent', () => ({
+            urlTourADM: "https://script.google.com/macros/s/AKfycbwfkoHCevue6ltFsB93gWib2xSvCgJbHBTJ2Gnq2nu07mzrUKOgyUSeVUYMBAQIi2m7/exec",
+            data: {
+                ikutTour: []
+            },
+            error: '',
+            loaded: false,
+            formatRupiah(angka) {
+                return new Intl.NumberFormat("id-ID", {
+                    style: "currency",
+                    currency: "IDR"
+                }).format(angka);
+            },
+            async getData() {
+                try {
+                    const result = await fetch(this.urlTourADM);
+                    if (!result.ok) throw new Error("Data tidak bisa diakses, hubungi pengembang !!!");
+                    const response = await result.json();
+                    this.data.ikutTour = response.ikutTour || [];
+                    this.loaded = true;
+                    // console.log('data siap')
+                    // console.log(this.layoutBintara)
+                    // console.log(this.kursiMapBintara())
+                } catch (err) {
+                    console.error(err);
+                    this.error = err.message;
+                }
+            },
+            layoutBintara: [
+                'P', 'L', 60, 'L', 'L', 'L',
+                1, 2, 'L', 3, 4, 5,
+                6, 7, 'L', 8, 9, 10,
+                11, 12, 'L', 13, 14, 15,
+                16, 17, 'L', 18, 19, 20,
+                21, 22, 'L', 23, 24, 25,
+                26, 27, 'L', 28, 29, 30,
+                31, 32, 'L', 33, 34, 35,
+                36, 37, 'L', 38, 39, 40,
+                41, 42, 'L', 43, 44, 45,
+                46, 47, 'L', 48, 49, 50,
+                'P', 'L', 'L', 51, 52, 53,
+                54, 'L', 'L', 'L', 'L', 55,
+                56, 57, 58, 59
+            ],
+            kursiMapBintara() {
+                // Membuat array baru dengan isi sama seperti layoutBintara,
+                // tetapi jika slot berupa angka, diganti dengan data peserta (atau null jika tidak ada)
+                return this.layoutBintara.map(slot => {
+                    if (typeof slot === 'number') {
+                        const peserta = this.data.ikutTour.find(p => p.kursi == slot);
+                        return peserta || 'kosong';
+                    }
+                    // Untuk 'P' dan 'L', tetap seperti aslinya
+                    return slot;
+                });
+            },
+            layoutMiliteri: [
+                'P', 120, 'L', 'L', 'L', 'L',
+                61, 62, 'L', 63, 64, 65,
+                66, 67, 'L', 68, 69, 70,
+                71, 72, 'L', 73, 74, 75,
+                76, 77, 'L', 78, 79, 80,
+                81, 82, 'L', 83, 84, 85,
+                86, 87, 'L', 88, 89, 90,
+                91, 92, 'L', 93, 94, 95,
+                96, 97, 'L', 98, 99, 100,
+                101, 102, 'L', 103, 104, 105,
+                106, 107, 'L', 108, 109, 110,
+                'P', 'L', 'L', 111, 112, 113,
+                114, 115, 116, 117, 118, 119
+            ],
+            kursiMapMiliteri() {
+                // Membuat array baru dengan isi sama seperti layoutMiliteri,
+                // tetapi jika slot berupa angka, diganti dengan data peserta (atau null jika tidak ada)
+                return this.layoutMiliteri.map(slot => {
+                    if (typeof slot === 'number') {
+                        const peserta = this.data.ikutTour.find(p => p.kursi == slot);
+                        return peserta || 'kosong';
+                    }
+                    // Untuk 'P' dan 'L', tetap seperti aslinya
+                    return slot;
+                });
+            },
+            layoutTaruna: [
+                'P', 152, 'L', 'L', 'L',
+                121, 122, 'L', 123, 124,
+                125, 126, 'L', 127, 128,
+                129, 130, 'L', 131, 132,
+                133, 134, 'L', 135, 136,
+                137, 138, 'L', 139, 140,
+                141, 142, 'L', 143, 144,
+                'P', 'L', 'L', 145, 146,
+                147, 148, 149, 150, 151
 
-      ],
-      kursiMapTaruna() {
-        // Membuat array baru dengan isi sama seperti layoutMiliteri,
-        // tetapi jika slot berupa angka, diganti dengan data peserta (atau null jika tidak ada)
-        return this.layoutTaruna.map(slot => {
-          if (typeof slot === 'number') {
-            const peserta = this.data.ikutTour.find(p => p.kursi == slot);
-            return peserta || 'kosong';
-          }
-          // Untuk 'P' dan 'L', tetap seperti aslinya
-          return slot;
-        });
-      },
-      kamarFilter(nok) {
-        return this.data.ikutTour
-          .filter(p => p.kamar == nok)
-      }
-    }));
-    // COUNTDOWN
-    Alpine.data('countdown', () => ({
-      target: new Date('2026-04-05T23:00:00').getTime(),
-      values: {
-        Hari: '00',
-        Jam: '00',
-        Menit: '00',
-        Detik: '00'
-      },
-      animating: {
-        Hari: false,
-        Jam: false,
-        Menit: false,
-        Detik: false
-      },
+            ],
+            kursiMapTaruna() {
+                // Membuat array baru dengan isi sama seperti layoutMiliteri,
+                // tetapi jika slot berupa angka, diganti dengan data peserta (atau null jika tidak ada)
+                return this.layoutTaruna.map(slot => {
+                    if (typeof slot === 'number') {
+                        const peserta = this.data.ikutTour.find(p => p.kursi == slot);
+                        return peserta || 'kosong';
+                    }
+                    // Untuk 'P' dan 'L', tetap seperti aslinya
+                    return slot;
+                });
+            },
+            kamarFilter(nok) {
+                return this.data.ikutTour
+                    .filter(p => p.kamar == nok)
+            }
+        }));
+        // COUNTDOWN
+        Alpine.data('countdown', () => ({
+            target: new Date('2026-04-05T23:00:00').getTime(),
+            values: {
+                Hari: '00',
+                Jam: '00',
+                Menit: '00',
+                Detik: '00'
+            },
+            animating: {
+                Hari: false,
+                Jam: false,
+                Menit: false,
+                Detik: false
+            },
 
-      init() {
-        this.update();
-        setInterval(() => this.update(), 1000);
-      },
+            init() {
+                this.update();
+                setInterval(() => this.update(), 1000);
+            },
 
-      update() {
-        const now = new Date().getTime();
-        const diff = this.target - now;
-        if (diff <= 0) return;
+            update() {
+                const now = new Date().getTime();
+                const diff = this.target - now;
+                if (diff <= 0) return;
 
-        const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        const s = Math.floor((diff % (1000 * 60)) / 1000);
+                const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const s = Math.floor((diff % (1000 * 60)) / 1000);
 
-        const newValues = {
-          Hari: String(d).padStart(2, '0'),
-          Jam: String(h).padStart(2, '0'),
-          Menit: String(m).padStart(2, '0'),
-          Detik: String(s).padStart(2, '0')
-        };
+                const newValues = {
+                    Hari: String(d).padStart(2, '0'),
+                    Jam: String(h).padStart(2, '0'),
+                    Menit: String(m).padStart(2, '0'),
+                    Detik: String(s).padStart(2, '0')
+                };
 
-        for (const key in newValues) {
-          if (this.values[key] !== newValues[key]) {
-            this.animating[key] = true;
-            this.values[key] = newValues[key];
-          }
-        }
-      },
+                for (const key in newValues) {
+                    if (this.values[key] !== newValues[key]) {
+                        this.animating[key] = true;
+                        this.values[key] = newValues[key];
+                    }
+                }
+            },
 
-      getValue(label) {
-        return this.values[label];
-      }
-    }));
-  });
+            getValue(label) {
+                return this.values[label];
+            }
+        }));
+    });
 </script>

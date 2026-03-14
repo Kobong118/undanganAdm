@@ -79,7 +79,7 @@
                                 Kamar 4
                             </h3>
 
-                            <template x-if="kamarFilter(4).length > 4">
+                            <template x-if="kamarFilter(4).length >= 4">
                                 <!-- Label Floating di sudut kanan atas -->
                                 <h5
                                     class="text-center bg-blue-500 text-white text-[10px] md:text-xs rounded-lg py-1 m-1">
@@ -100,7 +100,7 @@
                                 Kamar 5
                             </h3>
 
-                            <template x-if="kamarFilter(5).length > 4">
+                            <template x-if="kamarFilter(5).length >= 4">
                                 <!-- Label Floating di sudut kanan atas -->
                                 <h5
                                     class="text-center bg-blue-500 text-white text-[10px] md:text-xs rounded-lg py-1 m-1">
@@ -144,7 +144,7 @@
                                 Kamar 6
                             </h3>
 
-                            <template x-if="kamarFilter(6).length > 4">
+                            <template x-if="kamarFilter(6).length >= 4">
                                 <!-- Label Floating di sudut kanan atas -->
                                 <h5
                                     class="text-center bg-blue-500 text-white text-[10px] md:text-xs rounded-lg py-1 m-1">
@@ -165,7 +165,7 @@
                                 Kamar 7
                             </h3>
 
-                            <template x-if="kamarFilter(7).length > 4">
+                            <template x-if="kamarFilter(7).length >= 4">
                                 <!-- Label Floating di sudut kanan atas -->
                                 <h5
                                     class="text-center bg-blue-500 text-white text-[10px] md:text-xs rounded-lg py-1 m-1">
@@ -186,7 +186,7 @@
                                 Kamar 8
                             </h3>
 
-                            <template x-if="kamarFilter(8).length > 4">
+                            <template x-if="kamarFilter(8).length >= 4">
                                 <!-- Label Floating di sudut kanan atas -->
                                 <h5
                                     class="text-center bg-blue-500 text-white text-[10px] md:text-xs rounded-lg py-1 m-1">
@@ -211,7 +211,7 @@
                                 Kamar 9
                             </h3>
 
-                            <template x-if="kamarFilter(9).length > 4">
+                            <template x-if="kamarFilter(9).length >= 4">
                                 <!-- Label Floating di sudut kanan atas -->
                                 <h5
                                     class="text-center bg-blue-500 text-white text-[10px] md:text-xs rounded-lg py-1 m-1">
@@ -233,7 +233,7 @@
                             Kamar 2
                         </h3>
 
-                        <template x-if="kamarFilter(2).length > 4">
+                        <template x-if="kamarFilter(2).length >= 4">
                             <!-- Label Floating di sudut kanan atas -->
                             <h5 class="text-center bg-blue-500 text-white text-[10px] md:text-xs rounded-lg py-1 m-1">
                                 + extra BED
@@ -253,7 +253,7 @@
                             Kamar 1
                         </h3>
 
-                        <template x-if="kamarFilter(1).length > 4">
+                        <template x-if="kamarFilter(1).length >= 4">
                             <!-- Label Floating di sudut kanan atas -->
                             <h5 class="text-center bg-blue-500 text-white text-[10px] md:text-xs rounded-lg py-1 m-1">
                                 + extra BED
@@ -274,7 +274,7 @@
                             Kamar 3
                         </h3>
 
-                        <template x-if="kamarFilter(3).length > 4">
+                        <template x-if="kamarFilter(3).length >= 4">
                             <!-- Label Floating di sudut kanan atas -->
                             <h5 class="text-center bg-blue-500 text-white text-[10px] md:text-xs rounded-lg py-1 m-1">
                                 + extra BED
@@ -398,7 +398,7 @@
                                 Kamar 10
                             </h3>
 
-                            <template x-if="kamarFilter(10).length > 4">
+                            <template x-if="kamarFilter(10).length >= 4">
                                 <!-- Label Floating di sudut kanan atas -->
                                 <h5
                                     class="text-center bg-blue-500 text-white text-[10px] md:text-xs rounded-lg py-1 m-1">
@@ -419,7 +419,7 @@
                             Kamar 11
                         </h3>
 
-                        <template x-if="kamarFilter(11).length > 4">
+                        <template x-if="kamarFilter(11).length >= 4">
                             <!-- Label Floating di sudut kanan atas -->
                             <h5 class="text-center bg-blue-500 text-white text-[10px] md:text-xs rounded-lg py-1 m-1">
                                 + extra BED
@@ -456,7 +456,18 @@
             <div class="border-2 border-t-0 grid grid-cols-2 min-h-[380px] border-turqu">
                 <!-- kamar 16 -->
                 <div class="border-r border-b  min-h-[180px]">
-                    <h3 class="font-bold text-center mb-2 text-sm md:text-md">Kamar 16</h3>
+                    <div>
+                        <h3 class="font-bold text-center mb-2 text-sm md:text-md">
+                            Kamar 16
+                        </h3>
+
+                        <template x-if="kamarFilter(16).length >= 4">
+                            <!-- Label Floating di sudut kanan atas -->
+                            <h5 class="text-center bg-blue-500 text-white text-[10px] md:text-xs rounded-lg py-1 m-1">
+                                + extra BED
+                            </h5>
+                        </template>
+                    </div>
                     <template x-for="(item, index) in kamarFilter(16)" :key="item.Nama">
                         <div class=" text-[11px] md:text-xs leading-snug px-1">
                             <span x-text="index + 1"></span>. <span x-text="item.Nama"></span>
@@ -470,7 +481,7 @@
                             Kamar 17
                         </h3>
 
-                        <template x-if="kamarFilter(17).length > 4">
+                        <template x-if="kamarFilter(17).length >= 4">
                             <!-- Label Floating di sudut kanan atas -->
                             <h5 class="text-center bg-blue-500 text-white text-[10px] md:text-xs rounded-lg py-1 m-1">
                                 + extra BED
@@ -495,7 +506,7 @@
                         Kamar 18
                     </h3>
 
-                    <template x-if="kamarFilter(18).length > 4">
+                    <template x-if="kamarFilter(18).length >= 4">
                         <!-- Label Floating di sudut kanan atas -->
                         <h5 class="text-center bg-blue-500 text-white text-[10px] md:text-xs rounded-lg py-1 m-1">
                             + extra BED
@@ -515,7 +526,7 @@
                         Kamar 12
                     </h3>
 
-                    <template x-if="kamarFilter(12).length > 4">
+                    <template x-if="kamarFilter(12).length >= 4">
                         <!-- Label Floating di sudut kanan atas -->
                         <h5 class="text-center bg-blue-500 text-white text-[10px] md:text-xs rounded-lg py-1 m-1">
                             + extra BED
@@ -536,7 +547,7 @@
                         Kamar 19
                     </h3>
 
-                    <template x-if="kamarFilter(19).length > 4">
+                    <template x-if="kamarFilter(19).length >= 4">
                         <!-- Label Floating di sudut kanan atas -->
                         <h5 class="text-center bg-blue-500 text-white text-[10px] md:text-xs rounded-lg py-1 m-1">
                             + extra BED
@@ -556,7 +567,7 @@
                         Kamar 13
                     </h3>
 
-                    <template x-if="kamarFilter(13).length > 4">
+                    <template x-if="kamarFilter(13).length >= 4">
                         <!-- Label Floating di sudut kanan atas -->
                         <h5 class="text-center bg-blue-500 text-white text-[10px] md:text-xs rounded-lg py-1 m-1">
                             + extra BED
@@ -577,7 +588,7 @@
                         Kamar 20
                     </h3>
 
-                    <template x-if="kamarFilter(20).length > 4">
+                    <template x-if="kamarFilter(20).length >= 4">
                         <!-- Label Floating di sudut kanan atas -->
                         <h5 class="text-center bg-blue-500 text-white text-[10px] md:text-xs rounded-lg py-1 m-1">
                             + extra BED
@@ -597,7 +608,7 @@
                         Kamar 14
                     </h3>
 
-                    <template x-if="kamarFilter(14).length > 4">
+                    <template x-if="kamarFilter(14).length >= 4">
                         <!-- Label Floating di sudut kanan atas -->
                         <h5 class="text-center bg-blue-500 text-white text-[10px] md:text-xs rounded-lg py-1 m-1">
                             + extra BED
@@ -618,7 +629,7 @@
                         Kamar 21
                     </h3>
 
-                    <template x-if="kamarFilter(21).length > 4">
+                    <template x-if="kamarFilter(21).length >= 4">
                         <!-- Label Floating di sudut kanan atas -->
                         <h5 class="text-center bg-blue-500 text-white text-[10px] md:text-xs rounded-lg py-1 m-1">
                             + extra BED
@@ -638,7 +649,7 @@
                         Kamar 15
                     </h3>
 
-                    <template x-if="kamarFilter(15).length > 4">
+                    <template x-if="kamarFilter(15).length >= 4">
                         <!-- Label Floating di sudut kanan atas -->
                         <h5 class="text-center bg-blue-500 text-white text-[10px] md:text-xs rounded-lg py-1 m-1">
                             + extra BED
@@ -659,7 +670,7 @@
                         Kamar 22
                     </h3>
 
-                    <template x-if="kamarFilter(22).length > 4">
+                    <template x-if="kamarFilter(22).length >= 4">
                         <!-- Label Floating di sudut kanan atas -->
                         <h5 class="text-center bg-blue-500 text-white text-[10px] md:text-xs rounded-lg py-1 m-1">
                             + extra BED
@@ -686,7 +697,7 @@
                         Kamar 37
                     </h3>
 
-                    <template x-if="kamarFilter(37).length > 4">
+                    <template x-if="kamarFilter(37).length >= 4">
                         <!-- Label Floating di sudut kanan atas -->
                         <h5 class="text-center bg-blue-500 text-white text-[10px] md:text-xs rounded-lg py-1 m-1">
                             + extra BED
@@ -706,7 +717,7 @@
                         Kamar 36
                     </h3>
 
-                    <template x-if="kamarFilter(36).length > 4">
+                    <template x-if="kamarFilter(36).length >= 4">
                         <!-- Label Floating di sudut kanan atas -->
                         <h5 class="text-center bg-blue-500 text-white text-[10px] md:text-xs rounded-lg py-1 m-1">
                             + extra BED
@@ -744,7 +755,7 @@
                         Kamar 35
                     </h3>
 
-                    <template x-if="kamarFilter(35).length > 4">
+                    <template x-if="kamarFilter(35).length >= 4">
                         <!-- Label Floating di sudut kanan atas -->
                         <h5 class="text-center bg-blue-500 text-white text-[10px] md:text-xs rounded-lg py-1 m-1">
                             + extra BED
@@ -778,7 +789,7 @@
                         Kamar 34
                     </h3>
 
-                    <template x-if="kamarFilter(34).length > 4">
+                    <template x-if="kamarFilter(34).length >= 4">
                         <!-- Label Floating di sudut kanan atas -->
                         <h5 class="text-center bg-blue-500 text-white text-[10px] md:text-xs rounded-lg py-1 m-1">
                             + extra BED
@@ -798,7 +809,7 @@
                         Kamar 33
                     </h3>
 
-                    <template x-if="kamarFilter(33).length > 4">
+                    <template x-if="kamarFilter(33).length >= 4">
                         <!-- Label Floating di sudut kanan atas -->
                         <h5 class="text-center bg-blue-500 text-white text-[10px] md:text-xs rounded-lg py-1 m-1">
                             + extra BED
@@ -822,7 +833,7 @@
                         Kamar 32
                     </h3>
 
-                    <template x-if="kamarFilter(32).length > 4">
+                    <template x-if="kamarFilter(32).length >= 4">
                         <!-- Label Floating di sudut kanan atas -->
                         <h5 class="text-center bg-blue-500 text-white text-[10px] md:text-xs rounded-lg py-1 m-1">
                             + extra BED
@@ -842,7 +853,7 @@
                         Kamar 31
                     </h3>
 
-                    <template x-if="kamarFilter(31).length > 4">
+                    <template x-if="kamarFilter(31).length >= 4">
                         <!-- Label Floating di sudut kanan atas -->
                         <h5 class="text-center bg-blue-500 text-white text-[10px] md:text-xs rounded-lg py-1 m-1">
                             + extra BED
@@ -879,7 +890,7 @@
                         Kamar 23
                     </h3>
 
-                    <template x-if="kamarFilter(23).length > 4">
+                    <template x-if="kamarFilter(23).length >= 4">
                         <!-- Label Floating di sudut kanan atas -->
                         <h5 class="text-center bg-blue-500 text-white text-[10px] md:text-xs rounded-lg py-1 m-1">
                             + extra BED
@@ -899,7 +910,7 @@
                         Kamar 24
                     </h3>
 
-                    <template x-if="kamarFilter(24).length > 4">
+                    <template x-if="kamarFilter(24).length >= 4">
                         <!-- Label Floating di sudut kanan atas -->
                         <h5 class="text-center bg-blue-500 text-white text-[10px] md:text-xs rounded-lg py-1 m-1">
                             + extra BED
@@ -922,7 +933,7 @@
                             Kamar 25
                         </h3>
 
-                        <template x-if="kamarFilter(25).length > 4">
+                        <template x-if="kamarFilter(25).length >= 4">
                             <!-- Label Floating di sudut kanan atas -->
                             <h5 class="text-center bg-blue-500 text-white text-[10px] md:text-xs rounded-lg py-1 m-1">
                                 + extra BED
@@ -951,7 +962,7 @@
                             Kamar 26
                         </h3>
 
-                        <template x-if="kamarFilter(26).length > 4">
+                        <template x-if="kamarFilter(26).length >= 4">
                             <!-- Label Floating di sudut kanan atas -->
                             <h5 class="text-center bg-blue-500 text-white text-[10px] md:text-xs rounded-lg py-1 m-1">
                                 + extra BED
@@ -971,7 +982,7 @@
                             Kamar 27
                         </h3>
 
-                        <template x-if="kamarFilter(27).length > 4">
+                        <template x-if="kamarFilter(27).length >= 4">
                             <!-- Label Floating di sudut kanan atas -->
                             <h5 class="text-center bg-blue-500 text-white text-[10px] md:text-xs rounded-lg py-1 m-1">
                                 + extra BED
@@ -1002,7 +1013,7 @@
                         Kamar 28
                     </h3>
 
-                    <template x-if="kamarFilter(28).length > 4">
+                    <template x-if="kamarFilter(28).length >= 4">
                         <!-- Label Floating di sudut kanan atas -->
                         <h5 class="text-center bg-blue-500 text-white text-[10px] md:text-xs rounded-lg py-1 m-1">
                             + extra BED
@@ -1022,7 +1033,7 @@
                         Kamar 29
                     </h3>
 
-                    <template x-if="kamarFilter(29).length > 4">
+                    <template x-if="kamarFilter(29).length >= 4">
                         <!-- Label Floating di sudut kanan atas -->
                         <h5 class="text-center bg-blue-500 text-white text-[10px] md:text-xs rounded-lg py-1 m-1">
                             + extra BED
@@ -1042,7 +1053,7 @@
                         Kamar 30
                     </h3>
 
-                    <template x-if="kamarFilter(30).length > 4">
+                    <template x-if="kamarFilter(30).length >= 4">
                         <!-- Label Floating di sudut kanan atas -->
                         <h5 class="text-center bg-blue-500 text-white text-[10px] md:text-xs rounded-lg py-1 m-1">
                             + extra BED
